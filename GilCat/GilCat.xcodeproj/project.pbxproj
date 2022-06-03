@@ -74,6 +74,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF1DEE3D2849B796000268C7 /* Build configuration list for PBXNativeTarget "GilCat" */;
 			buildPhases = (
+				EFA7B9292849E847006671EF /* SwiftLint Script */,
 				EF1DEE2B2849B795000268C7 /* Sources */,
 				EF1DEE2C2849B795000268C7 /* Frameworks */,
 				EF1DEE2D2849B795000268C7 /* Resources */,
@@ -131,6 +132,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EFA7B9292849E847006671EF /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# 설정하기 https://github.com/realm/SwiftLint\n# ⚠️ M1 과 Intel 에서 SwiftLint 파일 경로가 다르기 때문에 주의\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF1DEE2B2849B795000268C7 /* Sources */ = {
