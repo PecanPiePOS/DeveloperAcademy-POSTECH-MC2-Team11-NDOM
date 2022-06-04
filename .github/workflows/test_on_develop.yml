@@ -23,4 +23,4 @@ jobs:
     # shell 이용해서 하나의 command 수행
     - name: Start xcode build 🛠
       run: |
-        xcodebuild clean test -project GilCat/GilCat.xcodeproj -scheme GilCat -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.5'
+        xcodebuild clean build -project GilCat/GilCat.xcodeproj -scheme GilCat -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.2'
