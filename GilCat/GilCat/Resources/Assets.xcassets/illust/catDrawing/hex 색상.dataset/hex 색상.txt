@@ -1,0 +1,12 @@
+gray - A7A7A7
+brown - AC7D83
+peach - F9CCBE
+pink - FF9CBA
+red - FF7C7C
+orange - FFBA52
+gold - E9E00B
+green - CDED88
+emerald - 91F4C4
+sky - B7E5FF
+navy - 9CA6FF
+purple - BC9CFF
