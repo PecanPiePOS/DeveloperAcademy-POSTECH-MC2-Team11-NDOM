@@ -6,18 +6,18 @@ struct register3: View {
             Color.backgroundColor.ignoresSafeArea()
             VStack {
                 HStack {
-                    CustomTitle().customTitle(TitleText: "이름").padding()
+                    CustomTitle(titleText: "이름").padding([.top, .leading])
                     Spacer()
                 }
-                CustomTextField(placeHolder: "고양이 이름을 지어볼까요?").padding()
+                CustomTextField(placeHolder: "고양이 이름을 지어볼까요?").padding([.leading, .bottom])
                 
-                Spacer().frame(height: 350)
-                }
+                Spacer().frame(height: 300)
                 
+                CustomButton()
             }
         }
     }
-
+}
 struct register3_Previews: PreviewProvider {
     static var previews: some View {
         register3()
