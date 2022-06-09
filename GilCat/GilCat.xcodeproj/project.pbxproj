@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */; };
 		5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59D285191F3002F6A75 /* BarColorNavigation.swift */; };
+		58A200272852095200C656DF /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 58A200262852095200C656DF /* PartialSheet */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58A200272852095200C656DF /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +210,7 @@
 			);
 			name = GilCat;
 			packageProductDependencies = (
+				58A200262852095200C656DF /* PartialSheet */,
 			);
 			productName = GilCat;
 			productReference = EF1DEE2F2849B795000268C7 /* GilCat.app */;
@@ -260,6 +263,7 @@
 			);
 			mainGroup = EF1DEE262849B795000268C7;
 			packageReferences = (
+				58A200252852095200C656DF /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = EF1DEE302849B795000268C7 /* Products */;
 			projectDirPath = "";
@@ -586,6 +590,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		58A200252852095200C656DF /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet#installation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		58A200262852095200C656DF /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58A200252852095200C656DF /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF1DEE272849B795000268C7 /* Project object */;
 }
