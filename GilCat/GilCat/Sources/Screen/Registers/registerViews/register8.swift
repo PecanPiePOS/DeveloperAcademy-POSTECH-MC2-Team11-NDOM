@@ -9,13 +9,13 @@ import SwiftUI
 import ConfettiSwiftUI
 
 struct Register8: View {
+    @State var isLinkActive = false
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
-            Spacer()
             CustomTitle(titleText: "축하드려요🎉")
             ZStack {
                 Rectangle()
@@ -42,12 +42,14 @@ struct Register8: View {
                 getDescribeView(title: "종", content: "치즈냥이")
             }
             Spacer()
-            Button {
-                
-            } label: {
-                CustomMainButton(text: "관리 시작하기", foreground: .white, background: .buttonColor)
+            NavigationLink(destination: TagView(), isActive: $isLinkActive) {
+                Button {
+                    isLinkActive = true
+                } label: {
+                    CustomMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
+                }
+                .padding()
             }
-            .padding()
         }
         .background(Color.backgroundColor)
         .confettiCannon(counter: $effectCounter)

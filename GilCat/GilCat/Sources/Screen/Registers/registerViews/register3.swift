@@ -2,6 +2,7 @@ import SwiftUI
 
 struct Register3: View {
     @State var inputText = ""
+    @State var isLinkActive = false
     var body: some View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea()
@@ -12,9 +13,16 @@ struct Register3: View {
                 }
                 CustomTextField(inputText: $inputText, placeHolder: "고양이 이름을 지어볼까요?").padding([.leading, .bottom])
                 
-                Spacer().frame(height: 300)
+                Spacer()
                 
-                CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                NavigationLink(destination: Register4(), isActive: $isLinkActive) {
+                    Button {
+                        isLinkActive = true
+                    } label: {
+                        CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                    }
+                    .padding()
+                }
             }
         }
     }

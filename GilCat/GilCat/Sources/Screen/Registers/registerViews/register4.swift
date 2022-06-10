@@ -2,6 +2,7 @@ import SwiftUI
 
 struct Register4: View {
     @State var isClick: Bool = false
+    @State var isLinkActive = false
     let male: String = "수컷"
     let female: String = "암컷"
     
@@ -41,8 +42,15 @@ struct Register4: View {
                 CustomPicker(firstSelect: "⭕️", secondSelect: "❌", isClick: true)
                 // picker로 select된 값들 저장하게 만들어야함
                 
-                Spacer().frame(height: 300)
-                CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                Spacer()
+                NavigationLink(destination: Register5(), isActive: $isLinkActive) {
+                    Button {
+                        isLinkActive = true
+                    } label: {
+                        CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                    }
+                    .padding()
+                }
             }
         }
     }

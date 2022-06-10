@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Register7: View {
     let gridSpace: CGFloat = 20
+    @State var isLinkActive = false
     @State var selectedCatColor = CatColor.gray
     @State var selectedImageIndex = 0
     
@@ -31,11 +32,14 @@ struct Register7: View {
             getColorSelectView()
             
             Spacer()
-            Button {
-                
-            } label: {
-                CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
-            }.padding()
+            NavigationLink(destination: Register8(), isActive: $isLinkActive) {
+                Button {
+                    isLinkActive = true
+                } label: {
+                    CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                }
+                .padding()
+            }
         }
         .background(Color.backgroundColor)
     }

@@ -8,24 +8,29 @@
 import SwiftUI
 
 struct Register1: View {
+    @State var isLinkActive = false
     var body: some View {
-        VStack(alignment: .leading) {
-            CustomTitle(titleText: "나만의 길고양이 기록장을 만들어보세요!")
-            VStack {
-                getProcessContentView(order: 1, text: "공유 코드가 있다면 알려주세요!")
-                getProcessContentView(order: 2, text: "길냥이 프로필을 적아주세요!")
-                getProcessContentView(order: 3, text: "나만의 길냥이를 만들어주세요!")
+        NavigationView {
+            VStack(alignment: .leading) {
+                CustomTitle(titleText: "나만의 길고양이 기록장을 만들어보세요!")
+                VStack {
+                    getProcessContentView(order: 1, text: "공유 코드가 있다면 알려주세요!")
+                    getProcessContentView(order: 2, text: "길냥이 프로필을 적아주세요!")
+                    getProcessContentView(order: 3, text: "나만의 길냥이를 만들어주세요!")
+                }
+                .padding()
+                Spacer()
+                NavigationLink(destination: Register2(), isActive: $isLinkActive) {
+                    Button {
+                        isLinkActive = true
+                    } label: {
+                        CustomMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
+                    }
+                    .padding()
+                }
             }
-            .padding()
-            Spacer()
-            Button {
-            
-            } label: {
-                CustomMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
-            }
-            .padding()
+            .background(Color.backgroundColor)
         }
-        .background(Color.backgroundColor)
     }
     
     func getProcessContentView(order: Int, text: String) -> some View {
@@ -41,7 +46,7 @@ struct Register1: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .background(Color.backgroundColor)
+        .background(Color.pickerColor)
         .cornerRadius(20)
     }
 }

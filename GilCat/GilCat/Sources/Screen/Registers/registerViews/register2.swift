@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Register2: View {
     @FocusState private var focusedCode: Int?
+    @State var isLinkActive = false
     @State private var codeInput = ["", "", "", "", "", ""]
     
     init() {
@@ -19,7 +20,6 @@ struct Register2: View {
         VStack(alignment: .leading) {
             CustomSubTitle(text: "※ 다른 사람과 공유할 시, 개인 메모를 제외한 이전 기록이 모두 공유됩니다. ")
                 .padding()
-            Spacer()
             CustomTitle(titleText: "공유 코드")
             HStack {
                 getCodeInputView(index: 0)
@@ -32,20 +32,21 @@ struct Register2: View {
             }
             .padding()
             Spacer()
-            Spacer()
-            HStack {
-                Button {
-                
-                } label: {
-                    CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+            NavigationLink(destination: Register3(), isActive: $isLinkActive) {
+                HStack {
+                    Button {
+                        isLinkActive = true
+                    } label: {
+                        CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                    }
+                    Button {
+                        isLinkActive = true
+                    } label: {
+                        CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                    }
                 }
-                Button {
-                
-                } label: {
-                    CustomMainButton(text: "시작하기", foreground: .white, background: .buttonColor)
-                }
+                .padding()
             }
-            .padding()
         }
         .background(Color.backgroundColor)
         .onAppear {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Register6: View {
     @State var inputText = ""
+    @State var isLinkActive = false
     var body: some View {
         ZStack {
         Color.backgroundColor.ignoresSafeArea()
@@ -20,11 +21,22 @@ struct Register6: View {
                 }
                 CustomTextField(inputText: $inputText, placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
                 
-                Spacer().frame(height: 300)
+                Spacer()
                 
-                HStack {
-                    // 여기도 navigationLink로 버튼 처럼 만들어야 할듯
-                    CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                NavigationLink(destination: Register7(), isActive: $isLinkActive) {
+                    HStack {
+                        Button {
+                            isLinkActive = true
+                        } label: {
+                            CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                        }
+                        Button {
+                            isLinkActive = true
+                        } label: {
+                            CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                        }
+                    }
+                    .padding()
                 }
             }
         }
