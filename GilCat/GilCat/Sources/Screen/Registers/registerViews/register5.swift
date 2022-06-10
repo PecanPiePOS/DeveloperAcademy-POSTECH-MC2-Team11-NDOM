@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Register5: View {
+    @State var inputText = ""
     var body: some View {
         ZStack{
         Color.backgroundColor.ignoresSafeArea()
@@ -17,7 +18,7 @@ struct Register5: View {
                     CustomTitle(titleText: "나이").padding([.top, .leading])
                     Spacer()
                 }
-                CustomTextField(placeHolder: "나비는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
+                CustomTextField(inputText: $inputText, placeHolder: "나비는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
                 	
                 Spacer().frame(height: 300)
                 

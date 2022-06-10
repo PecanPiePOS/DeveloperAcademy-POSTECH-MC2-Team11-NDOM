@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Register6: View {
+    @State var inputText = ""
     var body: some View {
         ZStack{
         Color.backgroundColor.ignoresSafeArea()
@@ -17,7 +18,7 @@ struct Register6: View {
                     CustomTitle(titleText: "종").padding()
                     Spacer()
                 }
-                CustomTextField(placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
+                CustomTextField(inputText: $inputText, placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
                 
                 Spacer().frame(height: 300)
                 
