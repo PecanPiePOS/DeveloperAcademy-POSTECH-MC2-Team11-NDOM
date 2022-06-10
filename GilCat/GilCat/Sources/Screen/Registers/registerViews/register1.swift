@@ -21,7 +21,7 @@ struct Register1: View {
             Button {
             
             } label: {
-                CustomMainButton(text: "시작하기", foreground: Color.white, background: Color.lightOrange)
+                CustomMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
             }
             .padding()
         }

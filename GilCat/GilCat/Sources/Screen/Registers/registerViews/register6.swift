@@ -23,7 +23,7 @@ struct Register6: View {
                 
                 HStack {
                     //여기도 navigationLink로 버튼 처럼 만들어야 할듯
-                    CustomButton()
+                    CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
                 }
             }
         }

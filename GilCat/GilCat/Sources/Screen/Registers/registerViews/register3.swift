@@ -13,7 +13,7 @@ struct Register3: View {
                 
                 Spacer().frame(height: 300)
                 
-                CustomButton()
+                CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
             }
         }
     }

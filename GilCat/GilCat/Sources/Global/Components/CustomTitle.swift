@@ -22,10 +22,6 @@ struct CustomTitle: View {
             imageName = "fiveLetter"
             imageWidth = 150
         }
-//        } else if titleText.count == 6 {
-//            imageName = "fiveLetter"
-//            imageWidth = 150
-//        }
         else if titleText.count > 5 {
             imageName = "twoLine"
             imageWidth = 200

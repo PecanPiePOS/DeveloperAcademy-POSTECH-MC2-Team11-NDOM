@@ -42,7 +42,7 @@ struct Register4: View {
                 //picker로 select된 값들 저장하게 만들어야함
                 
                 Spacer().frame(height: 300)
-                CustomButton()
+                CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
             }
         }
     }

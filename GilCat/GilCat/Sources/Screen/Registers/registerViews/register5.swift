@@ -22,8 +22,7 @@ struct Register5: View {
                 Spacer().frame(height: 300)
                 
                 HStack {
-                    //여기에 navigationLink로 버튼처럼 만들어야 하지않나?
-                    CustomButton()
+                    CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
                 }
             }
         }

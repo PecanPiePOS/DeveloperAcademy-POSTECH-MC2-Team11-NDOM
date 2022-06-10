@@ -9,7 +9,6 @@ struct CustomTextField: View {
             if catInfo.isEmpty {
                 HStack {
                     Text("\(placeHolder)").foregroundColor(.gray).padding()
-                
                 Spacer()
                 }
             }
