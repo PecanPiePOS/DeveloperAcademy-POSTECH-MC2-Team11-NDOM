@@ -6,10 +6,10 @@
 //
 
 struct CatInfo {
-    var name: String
-    var age: Int
-    var gender: String
-    var neutralized: Bool
-    var type: String
-    var imageName: String
+    var name: String?
+    var age: String?
+    var gender: String?
+    var neutralized: Bool?
+    var type: String?
+    var imageName: String?
 }

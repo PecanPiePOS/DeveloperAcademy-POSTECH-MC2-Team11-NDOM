@@ -12,7 +12,12 @@ struct Register8: View {
     @State var isLinkActive = false
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
+    @State var catInfo: CatInfo
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
+    
+    init(_ catInfo: CatInfo) {
+        self.catInfo = catInfo
+    }
     
     var body: some View {
         VStack {
@@ -22,7 +27,7 @@ struct Register8: View {
                     .frame(width: 130, height: 130)
                     .background(.white)
                     .blur(radius: 50.0)
-                Image("cat_gray_1")
+                Image(catInfo.imageName!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 130, height: 130)
@@ -35,11 +40,11 @@ struct Register8: View {
                     }
             }.padding(30)
             VStack(spacing: 15) {
-                getDescribeView(title: "이름", content: "나비")
-                getDescribeView(title: "성별", content: "수컷")
-                getDescribeView(title: "중성화", content: "O")
-                getDescribeView(title: "나이", content: "3개월")
-                getDescribeView(title: "종", content: "치즈냥이")
+                getDescribeView(title: "이름", index: 0)
+                getDescribeView(title: "성별", index: 1)
+                getDescribeView(title: "중성화", index: 2)
+                getDescribeView(title: "나이", index: 3)
+                getDescribeView(title: "종", index: 4)
             }
             Spacer()
             NavigationLink(destination: TagView(), isActive: $isLinkActive) {
@@ -63,7 +68,42 @@ struct Register8: View {
         }
     }
     
-    func getDescribeView(title: String, content: String) -> some View {
+    func getDescribeView(title: String, index: Int) -> some View {
+        var content = "-"
+        switch index {
+        case 0:
+            if let name = catInfo.name {
+                if !name.isEmpty {
+                    content = name
+                }
+            }
+        case 1:
+            if let gender = catInfo.gender {
+                content = gender
+            }
+        case 2:
+            if let neutralized = catInfo.neutralized {
+                if neutralized {
+                    content = "o"
+                } else {
+                    content = "x"
+                }
+            }
+        case 3:
+            if let age = catInfo.age {
+                if !age.isEmpty {
+                    content = age
+                }
+            }
+        case 4:
+            if let type = catInfo.type {
+                if !type.isEmpty {
+                    content = type
+                }
+            }
+        default:
+            content = "-"
+        }
         return HStack {
             Text(title)
                 .foregroundColor(.white)
@@ -80,6 +120,6 @@ struct Register8: View {
 
 struct Register8_Previews: PreviewProvider {
     static var previews: some View {
-        Register8()
+        Register8(CatInfo())
     }
 }

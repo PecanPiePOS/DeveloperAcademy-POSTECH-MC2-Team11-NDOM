@@ -10,6 +10,12 @@ import SwiftUI
 struct Register6: View {
     @State var inputText = ""
     @State var isLinkActive = false
+    @State var catInfo: CatInfo
+    
+    init(_ catInfo: CatInfo) {
+        self.catInfo = catInfo
+    }
+    
     var body: some View {
         ZStack {
         Color.backgroundColor.ignoresSafeArea()
@@ -23,7 +29,7 @@ struct Register6: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: Register7(), isActive: $isLinkActive) {
+                NavigationLink(destination: Register7(catInfo), isActive: $isLinkActive) {
                     HStack {
                         Button {
                             isLinkActive = true
@@ -31,6 +37,7 @@ struct Register6: View {
                             CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                         }
                         Button {
+                            catInfo.type = inputText
                             isLinkActive = true
                         } label: {
                             CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
@@ -45,6 +52,6 @@ struct Register6: View {
 
 struct Register6_Previews: PreviewProvider {
     static var previews: some View {
-        Register6()
+        Register6(CatInfo())
     }
 }

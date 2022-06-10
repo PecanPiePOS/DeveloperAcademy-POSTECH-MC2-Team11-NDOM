@@ -3,8 +3,13 @@ import SwiftUI
 struct Register4: View {
     @State var isClick: Bool = false
     @State var isLinkActive = false
+    @State var catInfo: CatInfo
     let male: String = "수컷"
     let female: String = "암컷"
+    
+    init(_ catInfo: CatInfo) {
+        self.catInfo = catInfo
+    }
     
 //    enum Gender: String, CaseIterable, Identifiable {
 //        case 수컷, 암컷
@@ -43,8 +48,11 @@ struct Register4: View {
                 // picker로 select된 값들 저장하게 만들어야함
                 
                 Spacer()
-                NavigationLink(destination: Register5(), isActive: $isLinkActive) {
+                NavigationLink(destination: Register5(catInfo), isActive: $isLinkActive) {
                     Button {
+                        // 어떤게 클릭됐는지에 따라 값 줘야함 (지금은 그냥 임시로 넣어놓음)
+                        catInfo.gender = "MALE"
+                        catInfo.neutralized = true
                         isLinkActive = true
                     } label: {
                         CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
@@ -57,7 +65,7 @@ struct Register4: View {
 }
 struct Register4_Previews: PreviewProvider {
     static var previews: some View {
-        Register4()
+        Register4(CatInfo())
     }
 }
 
