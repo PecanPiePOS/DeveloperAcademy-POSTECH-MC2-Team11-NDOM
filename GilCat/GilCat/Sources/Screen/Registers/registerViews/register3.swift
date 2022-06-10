@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct register3: View {
+struct Register3: View {
     var body: some View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea()
@@ -18,8 +18,8 @@ struct register3: View {
         }
     }
 }
-struct register3_Previews: PreviewProvider {
+struct Register3_Previews: PreviewProvider {
     static var previews: some View {
-        register3()
+        Register3()
     }
 }

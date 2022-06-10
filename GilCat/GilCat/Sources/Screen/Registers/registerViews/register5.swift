@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct register5: View {
+struct Register5: View {
     var body: some View {
         ZStack{
         Color.backgroundColor.ignoresSafeArea()
@@ -30,8 +30,8 @@ struct register5: View {
     }
 }
 
-struct register5_Previews: PreviewProvider {
+struct Register5_Previews: PreviewProvider {
     static var previews: some View {
-        register5()
+        Register5()
     }
 }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct register4: View {
+struct Register4: View {
     @State var isClick: Bool = false
     let male : String = "수컷"
     let female : String = "암컷"
@@ -47,9 +47,9 @@ struct register4: View {
         }
     }
 }
-struct register4_Previews: PreviewProvider {
+struct Register4_Previews: PreviewProvider {
     static var previews: some View {
-        register4()
+        Register4()
     }
 }
 
