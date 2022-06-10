@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A89A6EE32852CF93001680D7 /* GilCatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A6EE22852CF93001680D7 /* GilCatAPI.swift */; };
+		A89A6EE62852DCF1001680D7 /* Moya.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89A6EE52852DCF1001680D7 /* Moya.xcframework */; };
+		A89A6EE72852DCF1001680D7 /* Moya.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A89A6EE52852DCF1001680D7 /* Moya.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
@@ -29,7 +32,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A89A6EE82852DCF2001680D7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A89A6EE72852DCF1001680D7 /* Moya.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A89A6EE22852CF93001680D7 /* GilCatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatAPI.swift; sourceTree = "<group>"; };
+		A89A6EE52852DCF1001680D7 /* Moya.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Moya.xcframework; path = Carthage/Build/Moya.xcframework; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1DEE322849B795000268C7 /* GilCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatApp.swift; sourceTree = "<group>"; };
 		EF1DEE362849B796000268C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89A6EE62852DCF1001680D7 /* Moya.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +82,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A89A6EE12852CF5A001680D7 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				A89A6EE22852CF93001680D7 /* GilCatAPI.swift */,
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
+		A89A6EE42852DCF1001680D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A89A6EE52852DCF1001680D7 /* Moya.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EF1DEE262849B795000268C7 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +105,7 @@
 				EF1DEE312849B795000268C7 /* GilCat */,
 				EFA7B967284B23EC006671EF /* GilCatTests */,
 				EF1DEE302849B795000268C7 /* Products */,
+				A89A6EE42852DCF1001680D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +121,7 @@
 		EF1DEE312849B795000268C7 /* GilCat */ = {
 			isa = PBXGroup;
 			children = (
+				A89A6EE12852CF5A001680D7 /* networking */,
 				EF1DEE322849B795000268C7 /* GilCatApp.swift */,
 				EFA7B9322849EAB7006671EF /* Sources */,
 				EFA7B92C2849E9EA006671EF /* Resources */,
@@ -195,6 +233,7 @@
 				EF1DEE2B2849B795000268C7 /* Sources */,
 				EF1DEE2C2849B795000268C7 /* Frameworks */,
 				EF1DEE2D2849B795000268C7 /* Resources */,
+				A89A6EE82852DCF2001680D7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,6 +348,7 @@
 			files = (
 				EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
+				A89A6EE32852CF93001680D7 /* GilCatAPI.swift in Sources */,
 				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
 				EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */,
