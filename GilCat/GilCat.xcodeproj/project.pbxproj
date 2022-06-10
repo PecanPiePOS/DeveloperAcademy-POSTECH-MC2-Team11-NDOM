@@ -23,6 +23,8 @@
 		BC5179FF2852CE2500992BC5 /* CustomMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FE2852CE2500992BC5 /* CustomMainButton.swift */; };
 		BC517A032852DAEE00992BC5 /* register8.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A022852DAEE00992BC5 /* register8.swift */; };
 		BC517A062852E84D00992BC5 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BC517A052852E84D00992BC5 /* ConfettiSwiftUI */; };
+		BC517A0A2853769D00992BC5 /* CatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A092853769D00992BC5 /* CatInfo.swift */; };
+		BC517A0D2853780B00992BC5 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A0C2853780B00992BC5 /* TagView.swift */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
@@ -61,6 +63,8 @@
 		BC5179FC2852CE0500992BC5 /* CustomSubTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubTitle.swift; sourceTree = "<group>"; };
 		BC5179FE2852CE2500992BC5 /* CustomMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMainButton.swift; sourceTree = "<group>"; };
 		BC517A022852DAEE00992BC5 /* register8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register8.swift; sourceTree = "<group>"; };
+		BC517A092853769D00992BC5 /* CatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatInfo.swift; sourceTree = "<group>"; };
+		BC517A0C2853780B00992BC5 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1DEE322849B795000268C7 /* GilCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatApp.swift; sourceTree = "<group>"; };
 		EF1DEE362849B796000268C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +121,14 @@
 			path = registerViews;
 			sourceTree = "<group>";
 		};
+		BC517A0B285377E900992BC5 /* Note_Dophi */ = {
+			isa = PBXGroup;
+			children = (
+				BC517A0C2853780B00992BC5 /* TagView.swift */,
+			);
+			path = Note_Dophi;
+			sourceTree = "<group>";
+		};
 		EF1DEE262849B795000268C7 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +178,7 @@
 		EFA7B92D2849EA09006671EF /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				BC517A0B285377E900992BC5 /* Note_Dophi */,
 				107A58CF284F98A0003D6F2B /* Registers */,
 				EFA7B93C2849EBD6006671EF /* Home */,
 			);
@@ -201,6 +214,7 @@
 				BC5179F82852CC7100992BC5 /* CatImage.swift */,
 				BC5179FC2852CE0500992BC5 /* CustomSubTitle.swift */,
 				BC5179FE2852CE2500992BC5 /* CustomMainButton.swift */,
+				BC517A092853769D00992BC5 /* CatInfo.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -384,6 +398,8 @@
 				107A58DF284FA0A3003D6F2B /* register7.swift in Sources */,
 				107A58D3284FA041003D6F2B /* register2.swift in Sources */,
 				10CFA9AF28503560003DBF63 /* CustomTextField.swift in Sources */,
+				BC517A0D2853780B00992BC5 /* TagView.swift in Sources */,
+				BC517A0A2853769D00992BC5 /* CatInfo.swift in Sources */,
 				BC5179FF2852CE2500992BC5 /* CustomMainButton.swift in Sources */,
 				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
