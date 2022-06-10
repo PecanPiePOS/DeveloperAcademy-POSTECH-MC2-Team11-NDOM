@@ -9,11 +9,14 @@ import SwiftUI
 
 struct Register7: View {
     let gridSpace: CGFloat = 20
+    @State var isLinkActive = false
     @State var selectedCatColor = CatColor.gray
     @State var selectedImageIndex = 0
-    
-    init() {
+    @State var catInfo: CatInfo
+
+    init(_ catInfo: CatInfo) {
         UIScrollView.appearance().bounces = false
+        self.catInfo = catInfo
     }
     
     var body: some View {
@@ -28,14 +31,19 @@ struct Register7: View {
                 .cornerRadius(50)
                 .frame(maxWidth: .infinity)
             
+            // 피커에 따라 getColorSelectView, getBodySelectView 이 둘중에 나오게 하면 될듯
             getColorSelectView()
             
             Spacer()
-            Button {
-                
-            } label: {
-                CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
-            }.padding()
+            NavigationLink(destination: Register8(catInfo), isActive: $isLinkActive) {
+                Button {
+                    catInfo.imageName = selectedCatColor.group[selectedImageIndex]
+                    isLinkActive = true
+                } label: {
+                    CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                }
+                .padding()
+            }
         }
         .background(Color.backgroundColor)
     }
@@ -55,6 +63,7 @@ struct Register7: View {
             }
     }
     
+    // 몸체 선택하는 창 나오게 하기
     func getBodySelectView() -> some View {
         return ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: gridSpace) {
@@ -81,6 +90,7 @@ struct Register7: View {
             
     }
     
+    // 색깔 선택하는 창 나오게 하기
     func getColorSelectView() -> some View {
         return HStack(spacing: gridSpace) {
             ForEach(0..<CatColor.allCases.count/3, id: \.self) { index in
@@ -99,6 +109,6 @@ struct Register7: View {
 
 struct Register7_Previews: PreviewProvider {
     static var previews: some View {
-        Register7()
+        Register7(CatInfo())
     }
 }
