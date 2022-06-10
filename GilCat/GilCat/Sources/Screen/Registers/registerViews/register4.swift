@@ -2,8 +2,8 @@ import SwiftUI
 
 struct Register4: View {
     @State var isClick: Bool = false
-    let male : String = "수컷"
-    let female : String = "암컷"
+    let male: String = "수컷"
+    let female: String = "암컷"
     
 //    enum Gender: String, CaseIterable, Identifiable {
 //        case 수컷, 암컷
@@ -31,15 +31,15 @@ struct Register4: View {
 //                    .scaleEffect(CGSize(width: 1, height: 1.5))
                 
                 CustomPicker(firstSelect: "수컷", secondSelect: "암컷", isClick: true)
-                //picker로 select된 값들 저장하게 만들어야함
-                HStack{
-                    CustomTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing:0))
+                // picker로 select된 값들 저장하게 만들어야함
+                HStack {
+                    CustomTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
 //                    Text("여부").bold().foregroundColor(.white).font(.system(size: 40))
                     Spacer()
                 }
                 
                 CustomPicker(firstSelect: "⭕️", secondSelect: "❌", isClick: true)
-                //picker로 select된 값들 저장하게 만들어야함
+                // picker로 select된 값들 저장하게 만들어야함
                 
                 Spacer().frame(height: 300)
                 CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
@@ -53,8 +53,7 @@ struct Register4_Previews: PreviewProvider {
     }
 }
 
-
-//ZStack {
+// ZStack {
 //    Rectangle().frame(width: 200, height: 50).cornerRadius(20).foregroundColor(.white).offset(x: isClick ? 100 : -100).onTapGesture {
 //        //하얀색과 배경이 같이 클릭될 시 안 움직이게 하는 방법
 //    }
@@ -62,7 +61,7 @@ struct Register4_Previews: PreviewProvider {
 //        Text(male).offset(x: -70).foregroundColor(isClick ? .white : .buttonColor)
 //        Text(female).offset(x: 70).foregroundColor(isClick ? .buttonColor : .white)
 //    }//클릭시 좌표값에 따라 도형이 안움직이게 해야함
-//}.frame(width: 350, height: 50).background(Color.pickerColor).cornerRadius(20).onTapGesture {
+// }.frame(width: 350, height: 50).background(Color.pickerColor).cornerRadius(20).onTapGesture {
 //        withAnimation {
 //        isClick.toggle()
 //        }

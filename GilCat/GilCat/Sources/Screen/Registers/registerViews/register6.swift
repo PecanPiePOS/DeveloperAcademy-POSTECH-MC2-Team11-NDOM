@@ -10,7 +10,7 @@ import SwiftUI
 struct Register6: View {
     @State var inputText = ""
     var body: some View {
-        ZStack{
+        ZStack {
         Color.backgroundColor.ignoresSafeArea()
         
             VStack {
@@ -23,7 +23,7 @@ struct Register6: View {
                 Spacer().frame(height: 300)
                 
                 HStack {
-                    //여기도 navigationLink로 버튼 처럼 만들어야 할듯
+                    // 여기도 navigationLink로 버튼 처럼 만들어야 할듯
                     CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
                 }
             }

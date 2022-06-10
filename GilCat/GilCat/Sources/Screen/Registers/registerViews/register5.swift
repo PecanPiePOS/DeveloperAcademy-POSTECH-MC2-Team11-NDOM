@@ -10,7 +10,7 @@ import SwiftUI
 struct Register5: View {
     @State var inputText = ""
     var body: some View {
-        ZStack{
+        ZStack {
         Color.backgroundColor.ignoresSafeArea()
         
             VStack {
