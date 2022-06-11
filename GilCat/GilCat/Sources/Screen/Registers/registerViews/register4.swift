@@ -3,24 +3,9 @@ import SwiftUI
 struct Register4: View {
     @State var isClick: Bool = false
     @State var isLinkActive = false
-    @State var catInfo: CatInfo
-    let male: String = "수컷"
-    let female: String = "암컷"
-    
-    init(_ catInfo: CatInfo) {
-        self.catInfo = catInfo
-    }
-    
-//    enum Gender: String, CaseIterable, Identifiable {
-//        case 수컷, 암컷
-//        var id: Self { self }
-//    }
-//    @State private var selectedGender: Gender = .수컷
-//    init(){
-//        UISegmentedControl.appearance().backgroundColor = UIColor(named: "PickerColor" )
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.orange], for: .selected)
-//        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-//    }
+    @EnvironmentObject var catInfo: CatInfoList
+    @State var selectedGender: String = "암컷"
+    @State var selectedTNR: String = "❌"
     
     var body: some View {
         ZStack {
@@ -30,29 +15,22 @@ struct Register4: View {
                     CustomTitle(titleText: "성별").padding([.top, .leading])
                     Spacer()
                 }
-//                Picker("Gender", selection: $selectedGender) {
-//                    ForEach(Gender.allCases) {gender in Text(gender.rawValue.capitalized).bold()}
-//                }.pickerStyle(.segmented).frame(width: 350).cornerRadius(30)
-//                    .scaledToFit()
-//                    .scaleEffect(CGSize(width: 1, height: 1.5))
-                
-                CustomPicker(firstSelect: "수컷", secondSelect: "암컷", isClick: true)
+
+                CustomPicker(firstSelect: "수컷", secondSelect: "암컷", selected: $selectedGender)
                 // picker로 select된 값들 저장하게 만들어야함
                 HStack {
                     CustomTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
-//                    Text("여부").bold().foregroundColor(.white).font(.system(size: 40))
                     Spacer()
                 }
                 
-                CustomPicker(firstSelect: "⭕️", secondSelect: "❌", isClick: true)
-                // picker로 select된 값들 저장하게 만들어야함
+                CustomPicker(firstSelect: "⭕️", secondSelect: "❌", selected: $selectedTNR)
                 
                 Spacer()
-                NavigationLink(destination: Register5(catInfo), isActive: $isLinkActive) {
+                NavigationLink(destination: Register5(), isActive: $isLinkActive) {
                     Button {
                         // 어떤게 클릭됐는지에 따라 값 줘야함 (지금은 그냥 임시로 넣어놓음)
-                        catInfo.gender = "MALE"
-                        catInfo.neutralized = true
+                        catInfo.infoList[catInfo.infoList.endIndex-1].gender = selectedGender
+                        catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = selectedTNR
                         isLinkActive = true
                     } label: {
                         CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
@@ -65,7 +43,7 @@ struct Register4: View {
 }
 struct Register4_Previews: PreviewProvider {
     static var previews: some View {
-        Register4(CatInfo())
+        Register4()
     }
 }
 

@@ -12,12 +12,8 @@ struct Register8: View {
     @State var isLinkActive = false
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
-    @State var catInfo: CatInfo
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
-    
-    init(_ catInfo: CatInfo) {
-        self.catInfo = catInfo
-    }
+    @EnvironmentObject var catInfo: CatInfoList
     
     var body: some View {
         VStack {
@@ -27,7 +23,7 @@ struct Register8: View {
                     .frame(width: 130, height: 130)
                     .background(.white)
                     .blur(radius: 50.0)
-                Image(catInfo.imageName!)
+                Image(catInfo.infoList[catInfo.infoList.endIndex-1].imageName!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 130, height: 130)
@@ -68,40 +64,34 @@ struct Register8: View {
         }
     }
     
+    // 린트를 고칠 수가 없어요
     func getDescribeView(title: String, index: Int) -> some View {
         var content = "-"
         switch index {
         case 0:
-            if let name = catInfo.name {
-                if !name.isEmpty {
-                    content = name
-                }
+            if let name = catInfo.infoList[catInfo.infoList.endIndex-1].name {
+                content = name
             }
         case 1:
-            if let gender = catInfo.gender {
+            if let gender = catInfo.infoList[catInfo.infoList.endIndex-1].gender {
                 content = gender
             }
         case 2:
-            if let neutralized = catInfo.neutralized {
-                if neutralized {
-                    content = "o"
-                } else {
-                    content = "x"
-                }
+            if let neutralized = catInfo.infoList[catInfo.infoList.endIndex-1].neutralized {
+                content = neutralized
             }
         case 3:
-            if let age = catInfo.age {
-                if !age.isEmpty {
-                    content = age
-                }
+            if let age = catInfo.infoList[catInfo.infoList.endIndex-1].age {
+                content = age
             }
         case 4:
-            if let type = catInfo.type {
-                if !type.isEmpty {
-                    content = type
-                }
+            if let type = catInfo.infoList[catInfo.infoList.endIndex-1].type {
+                content = type
             }
         default:
+            content = "-"
+        }
+        if content.isEmpty {
             content = "-"
         }
         return HStack {
@@ -120,6 +110,6 @@ struct Register8: View {
 
 struct Register8_Previews: PreviewProvider {
     static var previews: some View {
-        Register8(CatInfo())
+        Register8()
     }
 }
