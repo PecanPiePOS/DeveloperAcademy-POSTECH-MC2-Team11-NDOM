@@ -18,7 +18,7 @@ struct TagView: View {
     var body: some View {
         VStack(alignment: .leading) {
             CustomSubTitle(text: "※ 해당되는 건강 태그를 선택해주세요. ")
-            CustomTitle(titleText: "건강")
+            GilCatTitle(titleText: "건강")
             VStack(alignment: .leading) {
                 ForEach(tags.indices, id: \.self) { indexOfLine in
                     HStack {
@@ -42,7 +42,7 @@ struct TagView: View {
             Button {
             
             } label: {
-                CustomMainButton(text: "등록 완료", foreground: .white, background: .buttonColor)
+                GilCatMainButton(text: "등록 완료", foreground: .white, background: .buttonColor)
             }
             
         }
@@ -112,7 +112,7 @@ struct WriteTagView: View {
                         .font(.system(size: 20, weight: Font.Weight.heavy))
                 }
             }
-            CustomTextField(inputText: $newTagText, placeHolder: "태그를 추가하세요.")
+            GilCatTextField(inputText: $newTagText, placeHolder: "태그를 추가하세요.")
                 .focused($isModalFocused, equals: true)
             Spacer()
             Button {
@@ -120,7 +120,7 @@ struct WriteTagView: View {
                 newTagText = ""
                 isModalPresented = false
             } label: {
-                CustomMainButton(text: "태그 추가", foreground: .white, background: .buttonColor)
+                GilCatMainButton(text: "태그 추가", foreground: .white, background: .buttonColor)
             }
         }
         .padding()

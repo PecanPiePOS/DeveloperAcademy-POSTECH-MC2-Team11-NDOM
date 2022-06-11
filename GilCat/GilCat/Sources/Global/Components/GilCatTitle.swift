@@ -1,7 +1,7 @@
 import SwiftUI
 
 // 얼룩 무늬와 함께 제목이 나타나게 해주는 뷰
-struct CustomTitle: View {
+struct GilCatTitle: View {
     @State var titleText: String = ""
     
     func customTitle(titleText: String) -> some View {
@@ -45,7 +45,7 @@ struct CustomTitle: View {
 
 struct CustomTitle_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTitle(titleText: "aaa")
+        GilCatTitle(titleText: "aaa")
             .frame(width: 300, height: 700)
             .background(Color.backgroundColor)
     }

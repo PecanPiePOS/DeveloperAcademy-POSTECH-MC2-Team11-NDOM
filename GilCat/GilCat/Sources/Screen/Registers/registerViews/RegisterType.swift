@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct Register6: View {
+struct RegisterType: View {
     @State var inputText = ""
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo: CatInfoList
+    @EnvironmentObject var catInfo: GilCatInfoList
     
     var body: some View {
         ZStack {
@@ -18,25 +18,25 @@ struct Register6: View {
         
             VStack {
                 HStack {
-                    CustomTitle(titleText: "종").padding()
+                    GilCatTitle(titleText: "종").padding()
                     Spacer()
                 }
-                CustomTextField(inputText: $inputText, placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
+                GilCatTextField(inputText: $inputText, placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
                 
                 Spacer()
                 
-                NavigationLink(destination: Register7(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
                     HStack {
                         Button {
                             isLinkActive = true
                         } label: {
-                            CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                            GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                         }
                         Button {
                             catInfo.infoList[catInfo.infoList.endIndex-1].type = inputText
                             isLinkActive = true
                         } label: {
-                            CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                            GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
                         }
                     }
                     .padding()
@@ -46,8 +46,8 @@ struct Register6: View {
     }
 }
 
-struct Register6_Previews: PreviewProvider {
+struct RegisterType_Previews: PreviewProvider {
     static var previews: some View {
-        Register6()
+        RegisterType()
     }
 }

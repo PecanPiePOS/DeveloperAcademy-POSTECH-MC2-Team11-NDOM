@@ -2,11 +2,11 @@ import SwiftUI
 
 @main
 struct GilCatApp: App {
-    var catInfo: CatInfoList = CatInfoList()
+    var catInfo: GilCatInfoList = GilCatInfoList()
     
     var body: some Scene {
         WindowGroup {
-            Register1().environmentObject(catInfo)
+            RegisterStart().environmentObject(catInfo)
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 // 앱에 색깔에 맞춰서 두가지 선택지가 있는 피커 뷰
-struct CustomPicker: View {
+struct GilCatPicker: View {
     @State var isClick: Bool = true
     let firstSelect: String
     let secondSelect: String

@@ -8,17 +8,17 @@
 import SwiftUI
 import ConfettiSwiftUI
 
-struct Register8: View {
+struct RegisterFinish: View {
     @State var isLinkActive = false
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
-    @EnvironmentObject var catInfo: CatInfoList
+    @EnvironmentObject var catInfo: GilCatInfoList
     
     var body: some View {
         VStack {
             // 제목
-            CustomTitle(titleText: "축하드려요🎉")
+            GilCatTitle(titleText: "축하드려요🎉")
             // 커스텀한 아바타 + 약간 빛나는 느낌의 효과
             ZStack {
                 Rectangle()
@@ -53,7 +53,7 @@ struct Register8: View {
                     // Todo: 완성된 고양이 정보 객체를 서버에 보내기
                     isLinkActive = true
                 } label: {
-                    CustomMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
+                    GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
                 }
                 .padding()
             }
@@ -119,8 +119,8 @@ struct Register8: View {
     }
 }
 
-struct Register8_Previews: PreviewProvider {
+struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        Register8()
+        RegisterFinish()
     }
 }

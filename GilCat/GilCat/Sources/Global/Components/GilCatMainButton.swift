@@ -8,7 +8,7 @@
 import SwiftUI
 
 // 앱에서 메인 버튼으로 쓰이는 뷰
-struct CustomMainButton: View {
+struct GilCatMainButton: View {
     @State var text: String
     @State var foreground: Color
     @State var background: Color
@@ -24,8 +24,8 @@ struct CustomMainButton: View {
     }
 }
 
-struct CustomMainButton_Previews: PreviewProvider {
+struct GilGatMainButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomMainButton(text: "다음", foreground: Color.white, background: Color.black)
+        GilCatMainButton(text: "다음", foreground: Color.white, background: Color.black)
     }
 }

@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct Register1: View {
+struct RegisterStart: View {
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo: CatInfoList
+    @EnvironmentObject var catInfo: GilCatInfoList
     var body: some View {
         // Todo: 현재는 네비게이션뷰로 다른 뷰들을 연결했지만 괜찮은 애니메이션 전환 요소를 찾으면 바꿀 예정입니다.
         NavigationView {
             VStack(alignment: .leading) {
                 // 제목
-                CustomTitle(titleText: "나만의 길고양이 기록장을 만들어보세요!")
+                GilCatTitle(titleText: "나만의 길고양이 기록장을 만들어보세요!")
                 // 목차
                 VStack {
                     getProcessContentView(order: 1, text: "공유 코드가 있다면 알려주세요!")
@@ -25,13 +25,13 @@ struct Register1: View {
                 .padding()
                 Spacer()
                 // 메인 버튼
-                NavigationLink(destination: Register2(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
                     Button {
                         isLinkActive = true
                         // 고양이 정보를 저장하는 새로운 객체 생성
-                        catInfo.infoList.append(CatInfo())
+                        catInfo.infoList.append(GilCatInfo())
                     } label: {
-                        CustomMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
+                        GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
                     }
                     .padding()
                 }
@@ -59,8 +59,8 @@ struct Register1: View {
     }
 }
 
-struct Register1_Previews: PreviewProvider {
+struct RegisterStart_Previews: PreviewProvider {
     static var previews: some View {
-        Register1()
+        RegisterStart()
     }
 }

@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct Register4: View {
+struct RegisterGender: View {
     @State var isClick: Bool = false
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo: CatInfoList
+    @EnvironmentObject var catInfo: GilCatInfoList
     @State var selectedGender: String = "암컷"
     @State var selectedTNR: String = "❌"
     
@@ -12,28 +12,28 @@ struct Register4: View {
             Color.backgroundColor.ignoresSafeArea()
             VStack {
                 HStack {
-                    CustomTitle(titleText: "성별").padding([.top, .leading])
+                    GilCatTitle(titleText: "성별").padding([.top, .leading])
                     Spacer()
                 }
 
-                CustomPicker(firstSelect: "수컷", secondSelect: "암컷", selected: $selectedGender)
+                GilCatPicker(firstSelect: "수컷", secondSelect: "암컷", selected: $selectedGender)
                 // picker로 select된 값들 저장하게 만들어야함
                 HStack {
-                    CustomTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
+                    GilCatTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
                     Spacer()
                 }
                 
-                CustomPicker(firstSelect: "⭕️", secondSelect: "❌", selected: $selectedTNR)
+                GilCatPicker(firstSelect: "⭕️", secondSelect: "❌", selected: $selectedTNR)
                 
                 Spacer()
-                NavigationLink(destination: Register5(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
                     Button {
                         // 어떤게 클릭됐는지에 따라 값 줘야함 (지금은 그냥 임시로 넣어놓음)
                         catInfo.infoList[catInfo.infoList.endIndex-1].gender = selectedGender
                         catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = selectedTNR
                         isLinkActive = true
                     } label: {
-                        CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                        GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
                     }
                     .padding()
                 }
@@ -41,9 +41,9 @@ struct Register4: View {
         }
     }
 }
-struct Register4_Previews: PreviewProvider {
+struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        Register4()
+        RegisterGender()
     }
 }
 

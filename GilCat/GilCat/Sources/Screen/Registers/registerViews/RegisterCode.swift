@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct Register2: View {
+struct RegisterCode: View {
     @FocusState private var focusedCode: Int?
     @State var isLinkActive = false
     @State private var codeInput = ["", "", "", "", "", ""]
-    @EnvironmentObject var catInfo: CatInfoList
+    @EnvironmentObject var catInfo: GilCatInfoList
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -23,7 +23,7 @@ struct Register2: View {
             CustomSubTitle(text: "※ 다른 사람과 공유할 시, 개인 메모를 제외한 이전 기록이 모두 공유됩니다. ")
                 .padding()
             // 제목
-            CustomTitle(titleText: "공유 코드")
+            GilCatTitle(titleText: "공유 코드")
             // 코드 입력 칸
             HStack {
                 getCodeInputView(index: 0)
@@ -37,19 +37,19 @@ struct Register2: View {
             .padding()
             Spacer()
             // 메인 버튼
-            NavigationLink(destination: Register3(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
                 HStack {
                     Button {
                         isLinkActive = true
                     } label: {
-                        CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                        GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                     }
                     Button {
                         // Todo: 코드가 다 입력이 안됐다면, 코드를 입력해주라는 메시지 보여주기
                         // Todo: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
                         isLinkActive = true
                     } label: {
-                        CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                        GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
                     }
                 }
                 .padding()
@@ -89,8 +89,8 @@ struct Register2: View {
     }
 }
 
-struct Register2_Previews: PreviewProvider {
+struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        Register2()
+        RegisterCode()
     }
 }

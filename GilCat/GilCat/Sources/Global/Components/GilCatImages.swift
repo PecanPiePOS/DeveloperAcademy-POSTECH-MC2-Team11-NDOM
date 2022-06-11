@@ -8,7 +8,7 @@
 import SwiftUI
 
 // 수많은 고양이 이미지와 색깔을 쉽게 가져오게 하기 위해 만든 뷰
-enum CatColor: CaseIterable {
+enum GilCatColor: CaseIterable {
     case gray, brown, peach, pink, red, orange, gold, green, emerald, sky, navy, purple
     // 해당 색깔을 반환
     var color: Color {
@@ -43,35 +43,35 @@ enum CatColor: CaseIterable {
     var group: [String] {
         switch self {
         case .gray:
-            return CatImages.cats[0]
+            return GilCatImages.cats[0]
         case .brown:
-            return CatImages.cats[1]
+            return GilCatImages.cats[1]
         case .peach:
-            return CatImages.cats[2]
+            return GilCatImages.cats[2]
         case .pink:
-            return CatImages.cats[3]
+            return GilCatImages.cats[3]
         case .red:
-            return CatImages.cats[4]
+            return GilCatImages.cats[4]
         case .orange:
-            return CatImages.cats[5]
+            return GilCatImages.cats[5]
         case .gold:
-            return CatImages.cats[6]
+            return GilCatImages.cats[6]
         case .green:
-            return CatImages.cats[7]
+            return GilCatImages.cats[7]
         case .emerald:
-            return CatImages.cats[8]
+            return GilCatImages.cats[8]
         case .sky:
-            return CatImages.cats[9]
+            return GilCatImages.cats[9]
         case .navy:
-            return CatImages.cats[10]
+            return GilCatImages.cats[10]
         case .purple:
-            return CatImages.cats[11]
+            return GilCatImages.cats[11]
         }
     }
 }
 
 // 수많은 고양이 이미지들을 쉽게 가져오게 하기 위해 정리해놓은 이미지 이름 클래스
-class CatImages {
+class GilCatImages {
     static let cats = [
         [
             "cat_gray_1",
