@@ -13,7 +13,7 @@ struct Register8: View {
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
-    @EnvironmentObject var catInfo : CatInfo
+    @EnvironmentObject var catInfo : CatInfoList
     
     var body: some View {
         VStack {
@@ -23,7 +23,7 @@ struct Register8: View {
                     .frame(width: 130, height: 130)
                     .background(.white)
                     .blur(radius: 50.0)
-                Image(catInfo.imageName!)
+                Image(catInfo.infoList[catInfo.infoList.endIndex-1].imageName!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 130, height: 130)
@@ -68,31 +68,27 @@ struct Register8: View {
         var content = "-"
         switch index {
         case 0:
-            if let name = catInfo.name {
+            if let name = catInfo.infoList[catInfo.infoList.endIndex-1].name {
                 if !name.isEmpty {
                     content = name
                 }
             }
         case 1:
-            if let gender = catInfo.gender {
+            if let gender = catInfo.infoList[catInfo.infoList.endIndex-1].gender {
                 content = gender
             }
         case 2:
-            if let neutralized = catInfo.neutralized {
-                if neutralized {
-                    content = "o"
-                } else {
-                    content = "x"
-                }
+            if let neutralized = catInfo.infoList[catInfo.infoList.endIndex-1].neutralized {
+                content = neutralized
             }
         case 3:
-            if let age = catInfo.age {
+            if let age = catInfo.infoList[catInfo.infoList.endIndex-1].age {
                 if !age.isEmpty {
                     content = age
                 }
             }
         case 4:
-            if let type = catInfo.type {
+            if let type = catInfo.infoList[catInfo.infoList.endIndex-1].type {
                 if !type.isEmpty {
                     content = type
                 }

@@ -5,7 +5,9 @@ struct Register7: View {
     @State var isLinkActive = false
     @State var selectedCatColor = CatColor.gray
     @State var selectedImageIndex = 0
-    @EnvironmentObject var catInfo : CatInfo
+    @State var selectedView : String = "외형"
+    @EnvironmentObject var catInfo : CatInfoList
+    
     init() {
         UIScrollView.appearance().bounces = false
     }
@@ -22,13 +24,17 @@ struct Register7: View {
                 .cornerRadius(50)
                 .frame(maxWidth: .infinity)
             
-            // 피커에 따라 getColorSelectView, getBodySelectView 이 둘중에 나오게 하면 될듯
-            getColorSelectView()
+            CustomPicker(firstSelect: "색", secondSelect: "외형", selected: $selectedView)
+            if selectedView == "외형"{
+                getBodySelectView()
+            }else {
+                getColorSelectView()
+            }
             
             Spacer()
             NavigationLink(destination: Register8(), isActive: $isLinkActive) {
                 Button {
-                    catInfo.imageName = selectedCatColor.group[selectedImageIndex]
+                    catInfo.infoList[catInfo.infoList.endIndex-1].imageName = selectedCatColor.group[selectedImageIndex]
                     isLinkActive = true
                 } label: {
                     CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)

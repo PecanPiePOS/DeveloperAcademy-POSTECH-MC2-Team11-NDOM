@@ -10,7 +10,7 @@ import SwiftUI
 struct Register5: View {
     @State var inputText = ""
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo : CatInfo
+    @EnvironmentObject var catInfo : CatInfoList
     
     var body: some View {
         ZStack {
@@ -18,10 +18,10 @@ struct Register5: View {
         
             VStack {
                 HStack {
-                    CustomTitle(titleText: "나이").padding([.top, .leading])
+                    CustomTitle(titleText: "별명").padding([.top, .leading])
                     Spacer()
                 }
-                CustomTextField(inputText: $inputText, placeHolder: "나비는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
+                CustomTextField(inputText: $inputText, placeHolder:  "\(catInfo.infoList[catInfo.infoList.endIndex-1].name!)는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
                 	
                 Spacer()
                 
@@ -33,7 +33,7 @@ struct Register5: View {
                             CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                         }
                         Button {
-                            catInfo.age = inputText
+                            catInfo.infoList[catInfo.infoList.endIndex-1].age = inputText
                             isLinkActive = true
                         } label: {
                             CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)

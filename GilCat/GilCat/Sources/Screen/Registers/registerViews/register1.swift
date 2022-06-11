@@ -10,7 +10,7 @@ import SwiftUI
 struct Register1: View {
     @State var isLinkActive = false
     // 고양이 객체 생성
-    @EnvironmentObject var catInfo : CatInfo
+    @EnvironmentObject var catInfo : CatInfoList
     var body: some View {
         // NavigationView로 연결한거는 추후 다른 방식으로 바꿀 예정
         NavigationView {
@@ -26,6 +26,7 @@ struct Register1: View {
                 NavigationLink(destination:Register2(), isActive: $isLinkActive) {
                     Button {
                         isLinkActive = true
+                        catInfo.infoList.append(CatInfo())
                     } label: {
                         CustomMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
                     }

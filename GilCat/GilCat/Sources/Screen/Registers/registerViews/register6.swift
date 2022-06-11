@@ -10,7 +10,7 @@ import SwiftUI
 struct Register6: View {
     @State var inputText = ""
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo : CatInfo
+    @EnvironmentObject var catInfo : CatInfoList
     
     var body: some View {
         ZStack {
@@ -33,7 +33,7 @@ struct Register6: View {
                             CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                         }
                         Button {
-                            catInfo.type = inputText
+                            catInfo.infoList[catInfo.infoList.endIndex-1].type = inputText
                             isLinkActive = true
                         } label: {
                             CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)

@@ -3,7 +3,7 @@ import SwiftUI
 struct Register3: View {
     @State var inputText = ""
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo : CatInfo
+    @EnvironmentObject var catInfo : CatInfoList
     
     var body: some View {
         ZStack {
@@ -19,7 +19,7 @@ struct Register3: View {
                 
                 NavigationLink(destination: Register4(), isActive: $isLinkActive) {
                     Button {
-                        catInfo.name = inputText
+                        catInfo.infoList[catInfo.infoList.endIndex-1].name = inputText
                         isLinkActive = true
                     } label: {
                         CustomMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
