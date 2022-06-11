@@ -7,10 +7,12 @@
 
 import Combine
 
+// 고양이 정보 객체에 대한 리스트
 class CatInfoList: ObservableObject {
     var infoList = [CatInfo]()
 }
 
+// 고양이 정보 객체
 struct CatInfo {
     var name: String?
     var age: String?

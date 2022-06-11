@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+// 수많은 고양이 이미지와 색깔을 쉽게 가져오게 하기 위해 만든 뷰
 enum CatColor: CaseIterable {
     case gray, brown, peach, pink, red, orange, gold, green, emerald, sky, navy, purple
+    // 해당 색깔을 반환
     var color: Color {
         switch self {
         case .gray:
@@ -37,6 +39,7 @@ enum CatColor: CaseIterable {
             return Color("cat_purple")
         }
     }
+    // 해당 색깔을 가진 각각 다른 몸체의 고양이들 리스트를 반환
     var group: [String] {
         switch self {
         case .gray:
@@ -67,6 +70,7 @@ enum CatColor: CaseIterable {
     }
 }
 
+// 수많은 고양이 이미지들을 쉽게 가져오게 하기 위해 정리해놓은 이미지 이름 클래스
 class CatImages {
     static let cats = [
         [

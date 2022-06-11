@@ -1,11 +1,13 @@
 import SwiftUI
 
+// 얼룩 무늬와 함께 제목이 나타나게 해주는 뷰
 struct CustomTitle: View {
     @State var titleText: String = ""
     
     func customTitle(titleText: String) -> some View {
         var imageName = ""
         var imageWidth = 0
+        // 글자의 길이에 따라 어떤 얼룩 무늬로 할지, 얼룩 무늬 이미지의 크기는 얼마나 할지 정하기
         if titleText.count == 1 {
             imageName = "oneLetter"
             imageWidth = 30

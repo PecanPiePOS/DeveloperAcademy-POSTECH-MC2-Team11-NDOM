@@ -19,9 +19,12 @@ struct Register2: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            // 설명
             CustomSubTitle(text: "※ 다른 사람과 공유할 시, 개인 메모를 제외한 이전 기록이 모두 공유됩니다. ")
                 .padding()
+            // 제목
             CustomTitle(titleText: "공유 코드")
+            // 코드 입력 칸
             HStack {
                 getCodeInputView(index: 0)
                 getCodeInputView(index: 1)
@@ -33,6 +36,7 @@ struct Register2: View {
             }
             .padding()
             Spacer()
+            // 메인 버튼
             NavigationLink(destination: Register3(), isActive: $isLinkActive) {
                 HStack {
                     Button {
@@ -41,6 +45,8 @@ struct Register2: View {
                         CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                     }
                     Button {
+                        // Todo: 코드가 다 입력이 안됐다면, 코드를 입력해주라는 메시지 보여주기
+                        // Todo: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
                         isLinkActive = true
                     } label: {
                         CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
@@ -51,12 +57,14 @@ struct Register2: View {
         }
         .background(Color.backgroundColor)
         .onAppear {
+            // 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     focusedCode = 0
             }
         }
     }
     
+    // 코드 입력 칸 반환하기
     func getCodeInputView(index: Int) -> some View {
         return TextEditor(text: $codeInput[index])
             .frame(width: 50, height: 65)

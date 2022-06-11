@@ -7,17 +7,12 @@
 
 import SwiftUI
 
+// 앱에 색깔에 맞춰서 두가지 선택지가 있는 피커 뷰
 struct CustomPicker: View {
     @State var isClick: Bool = true
-    @State var selectedp = 1
     let firstSelect: String
     let secondSelect: String
     @Binding var selected: String
-//    init(firstSelect: String, secondSelect: String, selected: String) {
-//        self.firstSelect = firstSelect
-//        self.secondSelect = secondSelect
-//        self.selected = selected
-//    }
 
     var body: some View {
             ZStack {
@@ -32,13 +27,10 @@ struct CustomPicker: View {
             }.frame(width: 350, height: 50).background(Color.pickerColor).cornerRadius(20).onTapGesture {
                     withAnimation {
                     isClick.toggle()
-                        if selectedp == 1 {
-                            selectedp = 2
+                        if selected == secondSelect {
                             self.selected = firstSelect
                             print("\(selected)")
-                            
                         } else {
-                            selectedp = 1
                             self.selected = secondSelect
                             print("\(selected)")
                         }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// 앱에서 메인 버튼으로 쓰이는 뷰
 struct CustomMainButton: View {
     @State var text: String
     @State var foreground: Color

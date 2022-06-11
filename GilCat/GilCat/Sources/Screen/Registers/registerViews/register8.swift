@@ -17,7 +17,9 @@ struct Register8: View {
     
     var body: some View {
         VStack {
+            // 제목
             CustomTitle(titleText: "축하드려요🎉")
+            // 커스텀한 아바타 + 약간 빛나는 느낌의 효과
             ZStack {
                 Rectangle()
                     .frame(width: 130, height: 130)
@@ -32,9 +34,11 @@ struct Register8: View {
                     .cornerRadius(50)
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
+                        // 이미지를 클릭하면 폭죽효과 더 볼 수 있음
                         effectCounter -= 1
                     }
             }.padding(30)
+            // 입력했던 정보들
             VStack(spacing: 15) {
                 getDescribeView(title: "이름", index: 0)
                 getDescribeView(title: "성별", index: 1)
@@ -43,8 +47,10 @@ struct Register8: View {
                 getDescribeView(title: "종", index: 4)
             }
             Spacer()
+            // 메인 버튼
             NavigationLink(destination: TagView(), isActive: $isLinkActive) {
                 Button {
+                    // Todo: 완성된 고양이 정보 객체를 서버에 보내기
                     isLinkActive = true
                 } label: {
                     CustomMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
@@ -53,7 +59,9 @@ struct Register8: View {
             }
         }
         .background(Color.backgroundColor)
+        // 폭죽 효과
         .confettiCannon(counter: $effectCounter)
+        // 폭죽 효과 간격 세팅 (현재는 0.4, 0.8, 1.6초 이렇게 3번 터지게 해놨음)
         .onReceive(timer) { _ in
             if timerCounter > 0 && effectCounter > 0 {
                 if timerCounter != 2 {
@@ -63,10 +71,11 @@ struct Register8: View {
             }
         }
     }
-    
-    // 린트를 고칠 수가 없어요
+    // 린트.. 고치려 노력은 해봤지만 방법을 모르겠습니다....
+    // 각각의 고양이 정보 뷰 반환하기
     func getDescribeView(title: String, index: Int) -> some View {
         var content = "-"
+        // 고양이 정보 중 어떤 것인지 구분하기
         switch index {
         case 0:
             if let name = catInfo.infoList[catInfo.infoList.endIndex-1].name {
@@ -91,9 +100,11 @@ struct Register8: View {
         default:
             content = "-"
         }
+        // 비어있으면 짝대기로 하기
         if content.isEmpty {
             content = "-"
         }
+        // 뷰 반환하기
         return HStack {
             Text(title)
                 .foregroundColor(.white)

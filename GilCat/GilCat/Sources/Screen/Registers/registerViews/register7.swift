@@ -14,7 +14,9 @@ struct Register7: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            // 제목
             CustomTitle(titleText: "캐릭터")
+            // 커스텀한 아바타
             Image(selectedCatColor.group[selectedImageIndex])
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -23,17 +25,19 @@ struct Register7: View {
                 .background(Color.profileBackgroundColor)
                 .cornerRadius(50)
                 .frame(maxWidth: .infinity)
-            
+            // 색과 외형 중 고를 수 있는 피커
             CustomPicker(firstSelect: "색", secondSelect: "외형", selected: $selectedView)
+            // 피커에 따라 보여지는 커스텀 칸
             if selectedView == "외형"{
                 getBodySelectView()
             } else {
                 getColorSelectView()
             }
-            
             Spacer()
+            // 메인 버튼
             NavigationLink(destination: Register8(), isActive: $isLinkActive) {
                 Button {
+                    // 커스텀해서 선택된 이미지 이름 저장하기
                     catInfo.infoList[catInfo.infoList.endIndex-1].imageName = selectedCatColor.group[selectedImageIndex]
                     isLinkActive = true
                 } label: {
@@ -45,6 +49,7 @@ struct Register7: View {
         .background(Color.backgroundColor)
     }
     
+    // 몸체를 선택할 때 반복되는 이미지에 대한 뷰를 반환
     func getImageView(_ index: Int) -> some View {
         return Image(selectedCatColor.group[index])
             .resizable()
@@ -77,6 +82,7 @@ struct Register7: View {
         
     }
     
+    // 색깔을 선택할 때 반복되는 도형에 대한 뷰를 반환
     func getColorView(_ catColor: CatColor) -> some View {
         return Circle()
             .fill(catColor.color)
