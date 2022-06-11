@@ -5,7 +5,9 @@
 //  Created by 김동락 on 2022/06/10.
 //
 
-struct CatInfo {
+import Combine
+
+class CatInfo : ObservableObject {
     var name: String?
     var age: String?
     var gender: String?

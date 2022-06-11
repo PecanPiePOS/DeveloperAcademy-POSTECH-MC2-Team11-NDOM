@@ -10,7 +10,7 @@ import SwiftUI
 struct Register1: View {
     @State var isLinkActive = false
     // 고양이 객체 생성
-    @State var catInfo = CatInfo()
+    @EnvironmentObject var catInfo : CatInfo
     var body: some View {
         // NavigationView로 연결한거는 추후 다른 방식으로 바꿀 예정
         NavigationView {
@@ -23,7 +23,7 @@ struct Register1: View {
                 }
                 .padding()
                 Spacer()
-                NavigationLink(destination: Register2(catInfo), isActive: $isLinkActive) {
+                NavigationLink(destination:Register2(), isActive: $isLinkActive) {
                     Button {
                         isLinkActive = true
                     } label: {

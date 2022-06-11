@@ -10,11 +10,7 @@ import SwiftUI
 struct Register5: View {
     @State var inputText = ""
     @State var isLinkActive = false
-    @State var catInfo: CatInfo
-    
-    init(_ catInfo: CatInfo) {
-        self.catInfo = catInfo
-    }
+    @EnvironmentObject var catInfo : CatInfo
     
     var body: some View {
         ZStack {
@@ -29,7 +25,7 @@ struct Register5: View {
                 	
                 Spacer()
                 
-                NavigationLink(destination: Register6(catInfo), isActive: $isLinkActive) {
+                NavigationLink(destination: Register6(), isActive: $isLinkActive) {
                     HStack {
                         Button {
                             isLinkActive = true
@@ -52,6 +48,6 @@ struct Register5: View {
 
 struct Register5_Previews: PreviewProvider {
     static var previews: some View {
-        Register5(CatInfo())
+        Register5()
     }
 }

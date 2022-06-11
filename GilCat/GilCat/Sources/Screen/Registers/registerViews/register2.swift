@@ -11,11 +11,10 @@ struct Register2: View {
     @FocusState private var focusedCode: Int?
     @State var isLinkActive = false
     @State private var codeInput = ["", "", "", "", "", ""]
-    @State var catInfo: CatInfo
+    @EnvironmentObject var catInfo : CatInfo
     
-    init(_ catInfo: CatInfo) {
+    init() {
         UITextView.appearance().backgroundColor = .clear
-        self.catInfo = catInfo
     }
     
     var body: some View {
@@ -34,7 +33,7 @@ struct Register2: View {
             }
             .padding()
             Spacer()
-            NavigationLink(destination: Register3(catInfo), isActive: $isLinkActive) {
+            NavigationLink(destination: Register3(), isActive: $isLinkActive) {
                 HStack {
                     Button {
                         isLinkActive = true
@@ -84,6 +83,6 @@ struct Register2: View {
 
 struct Register2_Previews: PreviewProvider {
     static var previews: some View {
-        Register2(CatInfo())
+        Register2()
     }
 }

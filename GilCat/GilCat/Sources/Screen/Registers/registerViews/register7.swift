@@ -5,11 +5,9 @@ struct Register7: View {
     @State var isLinkActive = false
     @State var selectedCatColor = CatColor.gray
     @State var selectedImageIndex = 0
-    @State var catInfo: CatInfo
-
-    init(_ catInfo: CatInfo) {
+    @EnvironmentObject var catInfo : CatInfo
+    init() {
         UIScrollView.appearance().bounces = false
-        self.catInfo = catInfo
     }
     
     var body: some View {
@@ -28,7 +26,7 @@ struct Register7: View {
             getColorSelectView()
             
             Spacer()
-            NavigationLink(destination: Register8(catInfo), isActive: $isLinkActive) {
+            NavigationLink(destination: Register8(), isActive: $isLinkActive) {
                 Button {
                     catInfo.imageName = selectedCatColor.group[selectedImageIndex]
                     isLinkActive = true
@@ -102,6 +100,6 @@ struct Register7: View {
 
 struct Register7_Previews: PreviewProvider {
     static var previews: some View {
-        Register7(CatInfo())
+        Register7()
     }
 }

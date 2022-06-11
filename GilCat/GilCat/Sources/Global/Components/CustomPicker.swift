@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CustomPicker: View {
-    @State var firstSelect: String = ""
-    @State var secondSelect: String = ""
+    @State var firstSelect : String
+    @State var secondSelect : String
     @State var isClick: Bool = false
     @State var selected = 1
     
@@ -28,10 +28,13 @@ struct CustomPicker: View {
                 isClick.toggle()
                     if selected == 1 {
                         selected = 2
-                        print("\(selected)")
+                        self.firstSelect = firstSelect
+                        print("\(firstSelect)")
+                        
                     } else {
                         selected = 1
-                        print("\(selected)")
+                        self.secondSelect = secondSelect
+                        print("\(secondSelect)")
                     }
                 }
             }
@@ -41,8 +44,8 @@ struct CustomPicker: View {
     }
 }
 
-struct CustomPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomPicker()
-    }
-}
+//struct CustomPicker_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomPicker()
+//    }
+//}

@@ -12,12 +12,8 @@ struct Register8: View {
     @State var isLinkActive = false
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
-    @State var catInfo: CatInfo
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
-    
-    init(_ catInfo: CatInfo) {
-        self.catInfo = catInfo
-    }
+    @EnvironmentObject var catInfo : CatInfo
     
     var body: some View {
         VStack {
@@ -120,6 +116,6 @@ struct Register8: View {
 
 struct Register8_Previews: PreviewProvider {
     static var previews: some View {
-        Register8(CatInfo())
+        Register8()
     }
 }

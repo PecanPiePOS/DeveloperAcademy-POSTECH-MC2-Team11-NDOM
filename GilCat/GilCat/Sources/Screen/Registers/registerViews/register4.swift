@@ -3,13 +3,10 @@ import SwiftUI
 struct Register4: View {
     @State var isClick: Bool = false
     @State var isLinkActive = false
-    @State var catInfo: CatInfo
+    @EnvironmentObject var catInfo : CatInfo
     let male: String = "수컷"
     let female: String = "암컷"
     
-    init(_ catInfo: CatInfo) {
-        self.catInfo = catInfo
-    }
     
 //    enum Gender: String, CaseIterable, Identifiable {
 //        case 수컷, 암컷
@@ -36,22 +33,20 @@ struct Register4: View {
 //                    .scaledToFit()
 //                    .scaleEffect(CGSize(width: 1, height: 1.5))
                 
-                CustomPicker(firstSelect: "수컷", secondSelect: "암컷", isClick: true)
+                CustomPicker(firstSelect: male, secondSelect: female, isClick: true)
                 // picker로 select된 값들 저장하게 만들어야함
                 HStack {
                     CustomTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
-//                    Text("여부").bold().foregroundColor(.white).font(.system(size: 40))
                     Spacer()
                 }
                 
                 CustomPicker(firstSelect: "⭕️", secondSelect: "❌", isClick: true)
-                // picker로 select된 값들 저장하게 만들어야함
                 
                 Spacer()
-                NavigationLink(destination: Register5(catInfo), isActive: $isLinkActive) {
+                NavigationLink(destination: Register5(), isActive: $isLinkActive) {
                     Button {
                         // 어떤게 클릭됐는지에 따라 값 줘야함 (지금은 그냥 임시로 넣어놓음)
-                        catInfo.gender = "MALE"
+                        catInfo.gender = 
                         catInfo.neutralized = true
                         isLinkActive = true
                     } label: {
@@ -65,7 +60,7 @@ struct Register4: View {
 }
 struct Register4_Previews: PreviewProvider {
     static var previews: some View {
-        Register4(CatInfo())
+        Register4()
     }
 }
 

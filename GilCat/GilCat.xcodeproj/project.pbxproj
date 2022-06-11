@@ -118,8 +118,8 @@
 				107A58D8284FA08B003D6F2B /* register5.swift */,
 				107A58DA284FA094003D6F2B /* register6.swift */,
 				107A58DE284FA0A3003D6F2B /* register7.swift */,
-				10975A4F2852DCA5006CFD94 /* registerModel.swift */,
 				BC517A022852DAEE00992BC5 /* register8.swift */,
+				10975A4F2852DCA5006CFD94 /* registerModel.swift */,
 			);
 			path = registerViews;
 			sourceTree = "<group>";
