@@ -10,7 +10,7 @@ import SwiftUI
 struct Register6: View {
     @State var inputText = ""
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo : CatInfoList
+    @EnvironmentObject var catInfo: CatInfoList
     
     var body: some View {
         ZStack {

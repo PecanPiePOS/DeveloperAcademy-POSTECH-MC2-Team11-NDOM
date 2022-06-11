@@ -3,9 +3,9 @@ import SwiftUI
 struct Register4: View {
     @State var isClick: Bool = false
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo : CatInfoList
-    @State var selectedGender : String = "암컷"
-    @State var selectedTNR : String = "❌"
+    @EnvironmentObject var catInfo: CatInfoList
+    @State var selectedGender: String = "암컷"
+    @State var selectedTNR: String = "❌"
     
     var body: some View {
         ZStack {
@@ -16,8 +16,7 @@ struct Register4: View {
                     Spacer()
                 }
 
-                
-                CustomPicker(firstSelect: "수컷", secondSelect: "암컷",selected: $selectedGender)
+                CustomPicker(firstSelect: "수컷", secondSelect: "암컷", selected: $selectedGender)
                 // picker로 select된 값들 저장하게 만들어야함
                 HStack {
                     CustomTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))

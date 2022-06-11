@@ -7,7 +7,7 @@
 
 import Combine
 
-class CatInfoList : ObservableObject {
+class CatInfoList: ObservableObject {
     var infoList = [CatInfo]()
 }
 

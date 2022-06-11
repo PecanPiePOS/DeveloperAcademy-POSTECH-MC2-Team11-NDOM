@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct GilCatApp: App {
-    var catInfo : CatInfoList = CatInfoList()
+    var catInfo: CatInfoList = CatInfoList()
     
     var body: some Scene {
         WindowGroup {

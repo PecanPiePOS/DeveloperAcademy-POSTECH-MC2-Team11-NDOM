@@ -10,7 +10,7 @@ import SwiftUI
 struct Register5: View {
     @State var inputText = ""
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo : CatInfoList
+    @EnvironmentObject var catInfo: CatInfoList
     
     var body: some View {
         ZStack {
@@ -21,7 +21,7 @@ struct Register5: View {
                     CustomTitle(titleText: "별명").padding([.top, .leading])
                     Spacer()
                 }
-                CustomTextField(inputText: $inputText, placeHolder:  "\(catInfo.infoList[catInfo.infoList.endIndex-1].name!)는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
+                CustomTextField(inputText: $inputText, placeHolder: "\(catInfo.infoList[catInfo.infoList.endIndex-1].name!)는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
                 	
                 Spacer()
                 

@@ -13,7 +13,7 @@ struct Register8: View {
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
-    @EnvironmentObject var catInfo : CatInfoList
+    @EnvironmentObject var catInfo: CatInfoList
     
     var body: some View {
         VStack {
@@ -64,14 +64,13 @@ struct Register8: View {
         }
     }
     
+    // 린트를 고칠 수가 없어요
     func getDescribeView(title: String, index: Int) -> some View {
         var content = "-"
         switch index {
         case 0:
             if let name = catInfo.infoList[catInfo.infoList.endIndex-1].name {
-                if !name.isEmpty {
-                    content = name
-                }
+                content = name
             }
         case 1:
             if let gender = catInfo.infoList[catInfo.infoList.endIndex-1].gender {
@@ -83,17 +82,16 @@ struct Register8: View {
             }
         case 3:
             if let age = catInfo.infoList[catInfo.infoList.endIndex-1].age {
-                if !age.isEmpty {
-                    content = age
-                }
+                content = age
             }
         case 4:
             if let type = catInfo.infoList[catInfo.infoList.endIndex-1].type {
-                if !type.isEmpty {
-                    content = type
-                }
+                content = type
             }
         default:
+            content = "-"
+        }
+        if content.isEmpty {
             content = "-"
         }
         return HStack {

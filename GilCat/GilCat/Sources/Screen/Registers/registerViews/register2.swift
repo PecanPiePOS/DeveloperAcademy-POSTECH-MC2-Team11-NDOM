@@ -11,7 +11,7 @@ struct Register2: View {
     @FocusState private var focusedCode: Int?
     @State var isLinkActive = false
     @State private var codeInput = ["", "", "", "", "", ""]
-    @EnvironmentObject var catInfo : CatInfoList
+    @EnvironmentObject var catInfo: CatInfoList
     
     init() {
         UITextView.appearance().backgroundColor = .clear

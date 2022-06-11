@@ -5,8 +5,8 @@ struct Register7: View {
     @State var isLinkActive = false
     @State var selectedCatColor = CatColor.gray
     @State var selectedImageIndex = 0
-    @State var selectedView : String = "외형"
-    @EnvironmentObject var catInfo : CatInfoList
+    @State var selectedView: String = "외형"
+    @EnvironmentObject var catInfo: CatInfoList
     
     init() {
         UIScrollView.appearance().bounces = false
@@ -27,7 +27,7 @@ struct Register7: View {
             CustomPicker(firstSelect: "색", secondSelect: "외형", selected: $selectedView)
             if selectedView == "외형"{
                 getBodySelectView()
-            }else {
+            } else {
                 getColorSelectView()
             }
             

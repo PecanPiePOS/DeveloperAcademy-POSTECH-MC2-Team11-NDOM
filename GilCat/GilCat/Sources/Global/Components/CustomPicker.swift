@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct CustomPicker : View {
+struct CustomPicker: View {
     @State var isClick: Bool = true
     @State var selectedp = 1
-    let firstSelect : String
-    let secondSelect : String
-    @Binding var selected : String
+    let firstSelect: String
+    let secondSelect: String
+    @Binding var selected: String
 //    init(firstSelect: String, secondSelect: String, selected: String) {
 //        self.firstSelect = firstSelect
 //        self.secondSelect = secondSelect
@@ -46,10 +46,3 @@ struct CustomPicker : View {
                 }
         }
 }
-
-
-//struct CustomPicker_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CustomPicker()
-//    }
-//}
