@@ -15,7 +15,7 @@ struct CustomSubTitle: View {
     var body: some View {
         return Text(text)
             .foregroundColor(Color.white)
-            .font(.system(size: 20, weight: Font.Weight.heavy))
+            .font(.system(size: 15, weight: Font.Weight.heavy))
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct RegisterType: View {
     @State var inputText = ""
     @State var isLinkActive = false
+    @FocusState var isFocused: Bool?
     @EnvironmentObject var catInfo: GilCatInfoList
     
     var body: some View {
@@ -18,10 +19,10 @@ struct RegisterType: View {
         
             VStack {
                 HStack {
-                    GilCatTitle(titleText: "종").padding()
+                    GilCatTitle(titleText: "종").padding([.top, .leading])
                     Spacer()
                 }
-                GilCatTextField(inputText: $inputText, placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
+                GilCatTextField(inputText: $inputText, placeHolder: "\(catInfo.infoList[catInfo.infoList.endIndex-1].name!)의 종을 아신다면 알려주세요. ").padding([.leading, .bottom])
                 
                 Spacer()
                 
@@ -40,6 +41,14 @@ struct RegisterType: View {
                         }
                     }
                     .padding()
+                }
+            }
+            .navigationBarTitle("종", displayMode: .inline)
+            .focused($isFocused, equals: true)
+            .onAppear {
+                // 화면이 나타나고 0.5초 뒤에 자동으로 입력칸에 포커스 되도록 하기
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        isFocused = true
                 }
             }
         }

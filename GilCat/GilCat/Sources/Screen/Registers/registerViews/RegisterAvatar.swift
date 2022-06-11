@@ -13,9 +13,12 @@ struct RegisterAvatar: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             // 제목
-            GilCatTitle(titleText: "캐릭터")
+            HStack {
+                GilCatTitle(titleText: "캐릭터").padding([.top, .leading])
+                Spacer()
+            }
             // 커스텀한 아바타
             Image(selectedCatColor.group[selectedImageIndex])
                 .resizable()
@@ -27,6 +30,7 @@ struct RegisterAvatar: View {
                 .frame(maxWidth: .infinity)
             // 색과 외형 중 고를 수 있는 피커
             GilCatPicker(firstSelect: "색", secondSelect: "외형", selected: $selectedView)
+                .padding(.vertical)
             // 피커에 따라 보여지는 커스텀 칸
             if selectedView == "외형"{
                 getBodySelectView()
@@ -47,6 +51,7 @@ struct RegisterAvatar: View {
             }
         }
         .background(Color.backgroundColor)
+        .navigationBarTitle("아바타", displayMode: .inline)
     }
     
     // 몸체를 선택할 때 반복되는 이미지에 대한 뷰를 반환
@@ -54,11 +59,11 @@ struct RegisterAvatar: View {
         return Image(selectedCatColor.group[index])
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 100, height: 100)
+            .frame(width: 60, height: 60)
             .padding()
             .overlay(
-                RoundedRectangle(cornerRadius: 50)
-                    .stroke(selectedImageIndex == index ? .red : .blue, lineWidth: 4)
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(selectedImageIndex == index ? Color.buttonColor : Color.profileBackgroundColor, lineWidth: 4)
             )
             .onTapGesture {
                 selectedImageIndex = index
@@ -77,6 +82,7 @@ struct RegisterAvatar: View {
                 }
             }
             .padding()
+            .frame(height: 250)
             .background(Color.pickerColor)
         }
         
@@ -86,7 +92,7 @@ struct RegisterAvatar: View {
     func getColorView(_ catColor: GilCatColor) -> some View {
         return Circle()
             .fill(catColor.color)
-            .frame(width: 70, height: 70)
+            .frame(width: 50, height: 50)
             .onTapGesture {
                 selectedCatColor = catColor
             }
@@ -106,6 +112,7 @@ struct RegisterAvatar: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
+        .frame(height: 250)
         .background(Color.pickerColor)
     }
 }

@@ -3,6 +3,8 @@ import SwiftUI
 struct RegisterName: View {
     @State var inputText = ""
     @State var isLinkActive = false
+    @State var isAlertActive = false
+    @FocusState var isFocused: Bool?
     @EnvironmentObject var catInfo: GilCatInfoList
     
     var body: some View {
@@ -19,13 +21,29 @@ struct RegisterName: View {
                 
                 NavigationLink(destination: RegisterGender(), isActive: $isLinkActive) {
                     Button {
-                        catInfo.infoList[catInfo.infoList.endIndex-1].name = inputText
-                        isLinkActive = true
+                        // 이름이 입력이 안됐다면, 팝업 창 보여주기
+                        if inputText.isEmpty {
+                            isAlertActive = true
+                        } else {
+                            catInfo.infoList[catInfo.infoList.endIndex-1].name = inputText
+                            isLinkActive = true
+                        }
                     } label: {
                         GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
                     }
                     .padding()
                 }
+            }
+        }
+        .navigationBarTitle("이름", displayMode: .inline)
+        .focused($isFocused, equals: true)
+        .alert("이름을 입력해주세요", isPresented: $isAlertActive) {
+            Button("확인") {}
+        }
+        .onAppear {
+            // 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    isFocused = true
             }
         }
     }

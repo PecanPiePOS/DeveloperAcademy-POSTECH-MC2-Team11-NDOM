@@ -59,6 +59,7 @@ struct RegisterFinish: View {
             }
         }
         .background(Color.backgroundColor)
+        .navigationBarTitle("등록 완료", displayMode: .inline)
         // 폭죽 효과
         .confettiCannon(counter: $effectCounter)
         // 폭죽 효과 간격 세팅 (현재는 0.4, 0.8, 1.6초 이렇게 3번 터지게 해놨음)

@@ -39,6 +39,7 @@ struct RegisterGender: View {
                 }
             }
         }
+        .navigationBarTitle("성별 및 중성화", displayMode: .inline)
     }
 }
 struct RegisterGender_Previews: PreviewProvider {

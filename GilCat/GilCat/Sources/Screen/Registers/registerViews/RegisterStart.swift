@@ -13,13 +13,16 @@ struct RegisterStart: View {
     var body: some View {
         // Todo: 현재는 네비게이션뷰로 다른 뷰들을 연결했지만 괜찮은 애니메이션 전환 요소를 찾으면 바꿀 예정입니다.
         NavigationView {
-            VStack(alignment: .leading) {
+            VStack {
                 // 제목
-                GilCatTitle(titleText: "나만의 길고양이 기록장을 만들어보세요!")
+                HStack {
+                    GilCatTitle(titleText: "나만의 길고양이 기록장을 만들어보세요!").padding([.top, .leading])
+                    Spacer()
+                }
                 // 목차
-                VStack {
+                VStack(alignment: .leading) {
                     getProcessContentView(order: 1, text: "공유 코드가 있다면 알려주세요!")
-                    getProcessContentView(order: 2, text: "길냥이 프로필을 적아주세요!")
+                    getProcessContentView(order: 2, text: "길냥이 프로필을 적어주세요!")
                     getProcessContentView(order: 3, text: "나만의 길냥이를 만들어주세요!")
                 }
                 .padding()
@@ -37,6 +40,7 @@ struct RegisterStart: View {
                 }
             }
             .background(Color.backgroundColor)
+            .navigationBarTitle("목차", displayMode: .inline)
         }
     }
     
