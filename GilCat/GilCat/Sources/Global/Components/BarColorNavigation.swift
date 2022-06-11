@@ -8,6 +8,15 @@
 import Foundation
 import SwiftUI
 
+/*
+ * 사용 방법:
+ 
+        init(){Theme.navigationBarColors(background: .systemFill, titleColor: .white)}
+        var body: some View {} ~
+ 
+ 위 코드를 View 안에 넣고 원하는 UIColor 의 Color 로 설정해주면 된다.
+ */
+
 // MARK: Navigation Bar Color change
 class Theme {
     static func navigationBarColors(background: UIColor?, titleColor: UIColor? = nil, tintColor: UIColor? = nil ) {
@@ -26,11 +35,3 @@ class Theme {
         UINavigationBar.appearance().tintColor = tintColor ?? titleColor ?? .black
     }
 }
-/*
- * 사용 방법:
- 
-        init(){Theme.navigationBarColors(background: .systemFill, titleColor: .white)}
-        var body: some View {} ~
- 
- 위 코드를 View 안에 넣고 원하는 UIColor 의 Color 로 설정해주면 된다.
- */

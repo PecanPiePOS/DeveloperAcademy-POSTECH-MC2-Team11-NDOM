@@ -8,12 +8,22 @@
 import Foundation
 import SwiftUI
 
+/*
+ * 사용 방법:
+ 
+ TextField("", text: $nickName)
+     .modifier(PlaceholderStyle(showPlaceHolder: nickName.isEmpty, placeholder: "원하는 닉네임을 정해주세요!"))
+     .foregroundColor(Color.white)
+ 
+ 이렇게 붙여야함, .foregroundColor 에서 원하는 색으로 바꾸면 됨
+ */
+
 // MARK: Placeholder color change modifier
-public struct PlaceholderStyle: ViewModifier {
+struct PlaceholderStyle: ViewModifier {
     var showPlaceHolder: Bool
     var placeholder: String
     
-    public func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         ZStack(alignment: .leading) {
             if showPlaceHolder {
                 Text(placeholder)
@@ -25,12 +35,3 @@ public struct PlaceholderStyle: ViewModifier {
         }
     }
 }
-/*
- * 사용 방법:
- 
- TextField("", text: $nickName)
-     .modifier(PlaceholderStyle(showPlaceHolder: nickName.isEmpty, placeholder: "원하는 닉네임을 정해주세요!"))
-     .foregroundColor(Color.white)
- 
- 이렇게 붙여야함, .foregroundColor 에서 원하는 색으로 바꾸면 됨
- */
