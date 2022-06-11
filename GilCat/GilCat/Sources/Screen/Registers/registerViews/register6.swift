@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct Register6: View {
+    @State var inputText = ""
+    @State var isLinkActive = false
+    @State var catInfo: CatInfo
+    
+    init(_ catInfo: CatInfo) {
+        self.catInfo = catInfo
+    }
+    
     var body: some View {
-        ZStack{
+        ZStack {
         Color.backgroundColor.ignoresSafeArea()
         
             VStack {
@@ -17,13 +25,25 @@ struct Register6: View {
                     CustomTitle(titleText: "종").padding()
                     Spacer()
                 }
-                CustomTextField(placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
+                CustomTextField(inputText: $inputText, placeHolder: "고양이 종을 아신다면 알려주세요. ").padding()
                 
-                Spacer().frame(height: 300)
+                Spacer()
                 
-                HStack {
-                    //여기도 navigationLink로 버튼 처럼 만들어야 할듯
-                    CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                NavigationLink(destination: Register7(catInfo), isActive: $isLinkActive) {
+                    HStack {
+                        Button {
+                            isLinkActive = true
+                        } label: {
+                            CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                        }
+                        Button {
+                            catInfo.type = inputText
+                            isLinkActive = true
+                        } label: {
+                            CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                        }
+                    }
+                    .padding()
                 }
             }
         }
@@ -32,6 +52,6 @@ struct Register6: View {
 
 struct Register6_Previews: PreviewProvider {
     static var previews: some View {
-        Register6()
+        Register6(CatInfo())
     }
 }

@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct Register5: View {
+    @State var inputText = ""
+    @State var isLinkActive = false
+    @State var catInfo: CatInfo
+    
+    init(_ catInfo: CatInfo) {
+        self.catInfo = catInfo
+    }
+    
     var body: some View {
-        ZStack{
+        ZStack {
         Color.backgroundColor.ignoresSafeArea()
         
             VStack {
@@ -17,12 +25,25 @@ struct Register5: View {
                     CustomTitle(titleText: "나이").padding([.top, .leading])
                     Spacer()
                 }
-                CustomTextField(placeHolder: "나비는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
+                CustomTextField(inputText: $inputText, placeHolder: "나비는 몇 살인가요?").padding([.leading, .bottom]).keyboardType(.numberPad)
                 	
-                Spacer().frame(height: 300)
+                Spacer()
                 
-                HStack {
-                    CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                NavigationLink(destination: Register6(catInfo), isActive: $isLinkActive) {
+                    HStack {
+                        Button {
+                            isLinkActive = true
+                        } label: {
+                            CustomMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                        }
+                        Button {
+                            catInfo.age = inputText
+                            isLinkActive = true
+                        } label: {
+                            CustomMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                        }
+                    }
+                    .padding()
                 }
             }
         }
@@ -31,6 +52,6 @@ struct Register5: View {
 
 struct Register5_Previews: PreviewProvider {
     static var previews: some View {
-        Register5()
+        Register5(CatInfo())
     }
 }
