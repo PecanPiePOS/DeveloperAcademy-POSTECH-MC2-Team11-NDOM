@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */; };
+		5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59D285191F3002F6A75 /* BarColorNavigation.swift */; };
+		58A2002B28520B5500C656DF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002A28520B5500C656DF /* LoginView.swift */; };
+		58A2002D28520B6F00C656DF /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002C28520B6F00C656DF /* NoteView.swift */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
@@ -30,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextField.swift; sourceTree = "<group>"; };
+		5800E59D285191F3002F6A75 /* BarColorNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarColorNavigation.swift; sourceTree = "<group>"; };
+		58A2002A28520B5500C656DF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		58A2002C28520B6F00C656DF /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1DEE322849B795000268C7 /* GilCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatApp.swift; sourceTree = "<group>"; };
 		EF1DEE362849B796000268C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +70,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58A2002828520B2000C656DF /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				58A2002C28520B6F00C656DF /* NoteView.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		58A2002928520B2900C656DF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				58A2002A28520B5500C656DF /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		58A693992854CF6F00906D9D /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 		EF1DEE262849B795000268C7 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				EFA7B93C2849EBD6006671EF /* Home */,
+				58A2002828520B2000C656DF /* Note */,
+				58A2002928520B2900C656DF /* Login */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -119,6 +153,7 @@
 		EFA7B92E2849EA8B006671EF /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				58A693992854CF6F00906D9D /* ViewModifier */,
 				EFA7B9392849EB6E006671EF /* Helper */,
 				EFA7B9302849EAA0006671EF /* Components */,
 				EFA7B92F2849EA9B006671EF /* Extensions */,
@@ -138,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				EFA7B9352849EB22006671EF /* ComponentsTestView.swift */,
+				5800E59D285191F3002F6A75 /* BarColorNavigation.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -201,6 +237,8 @@
 			dependencies = (
 			);
 			name = GilCat;
+			packageProductDependencies = (
+			);
 			productName = GilCat;
 			productReference = EF1DEE2F2849B795000268C7 /* GilCat.app */;
 			productType = "com.apple.product-type.application";
@@ -251,6 +289,8 @@
 				Base,
 			);
 			mainGroup = EF1DEE262849B795000268C7;
+			packageReferences = (
+			);
 			productRefGroup = EF1DEE302849B795000268C7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -309,9 +349,13 @@
 			files = (
 				EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
+				5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */,
+				58A2002B28520B5500C656DF /* LoginView.swift in Sources */,
 				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
+				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
 				EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */,
+				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
