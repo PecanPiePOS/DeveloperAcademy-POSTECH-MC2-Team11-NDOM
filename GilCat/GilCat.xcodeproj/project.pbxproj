@@ -15,6 +15,7 @@
 		107A58DB284FA094003D6F2B /* register6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58DA284FA094003D6F2B /* register6.swift */; };
 		107A58DF284FA0A3003D6F2B /* register7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58DE284FA0A3003D6F2B /* register7.swift */; };
 		107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58E2284FA4E5003D6F2B /* ColorExtension.swift */; };
+		10975A502852DCA5006CFD94 /* registerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10975A4F2852DCA5006CFD94 /* registerModel.swift */; };
 		10B80EC92851D70D008EA0DF /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B80EC82851D70D008EA0DF /* CustomPicker.swift */; };
 		10CFA9AF28503560003DBF63 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9AE28503560003DBF63 /* CustomTextField.swift */; };
 		10CFA9B128504144003DBF63 /* CustomTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9B028504144003DBF63 /* CustomTitle.swift */; };
@@ -52,6 +53,7 @@
 		107A58DA284FA094003D6F2B /* register6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register6.swift; sourceTree = "<group>"; };
 		107A58DE284FA0A3003D6F2B /* register7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register7.swift; sourceTree = "<group>"; };
 		107A58E2284FA4E5003D6F2B /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		10975A4F2852DCA5006CFD94 /* registerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerModel.swift; sourceTree = "<group>"; };
 		10B80EC82851D70D008EA0DF /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		10CFA9AE28503560003DBF63 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		10CFA9B028504144003DBF63 /* CustomTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitle.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				107A58D8284FA08B003D6F2B /* register5.swift */,
 				107A58DA284FA094003D6F2B /* register6.swift */,
 				107A58DE284FA0A3003D6F2B /* register7.swift */,
+				10975A4F2852DCA5006CFD94 /* registerModel.swift */,
 			);
 			path = registerViews;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */,
+				10975A502852DCA5006CFD94 /* registerModel.swift in Sources */,
 				107A58D9284FA08B003D6F2B /* register5.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
 				BC5179FD2852CE0500992BC5 /* CustomSubTitle.swift in Sources */,

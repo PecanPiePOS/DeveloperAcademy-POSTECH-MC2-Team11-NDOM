@@ -11,6 +11,7 @@ struct CustomPicker: View {
     @State var firstSelect: String = ""
     @State var secondSelect: String = ""
     @State var isClick: Bool = false
+    @State var selected = 1
     
     func customPicker(firstSelect: String, secondSelect: String) -> some View {
         return ZStack {
@@ -25,6 +26,13 @@ struct CustomPicker: View {
         }.frame(width: 350, height: 50).background(Color.pickerColor).cornerRadius(20).onTapGesture {
                 withAnimation {
                 isClick.toggle()
+                    if selected == 1 {
+                        selected = 2
+                        print("\(selected)")
+                    } else {
+                        selected = 1
+                        print("\(selected)")
+                    }
                 }
             }
     }
