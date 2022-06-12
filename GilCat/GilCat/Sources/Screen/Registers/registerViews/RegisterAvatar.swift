@@ -2,11 +2,13 @@ import SwiftUI
 
 struct RegisterAvatar: View {
     let gridSpace: CGFloat = 20
+    @State var viewChoice: GilCatPicker.Choice = .first
     @State var isLinkActive = false
     @State var selectedCatColor = GilCatColor.gray
     @State var selectedImageIndex = 0
-    @State var selectedView: String = "외형"
     @EnvironmentObject var catInfo: GilCatInfoList
+    let viewFirstChoice: String = "외형"
+    let viewSecondChoice: String = "색"
     
     init() {
         UIScrollView.appearance().bounces = false
@@ -29,10 +31,10 @@ struct RegisterAvatar: View {
                 .cornerRadius(50)
                 .frame(maxWidth: .infinity)
             // 색과 외형 중 고를 수 있는 피커
-            GilCatPicker(firstSelect: "색", secondSelect: "외형", selected: $selectedView)
+            GilCatPicker(isClick: $viewChoice, firstSelect: viewFirstChoice, secondSelect: viewSecondChoice)
                 .padding(.vertical)
             // 피커에 따라 보여지는 커스텀 칸
-            if selectedView == "외형"{
+            if viewChoice == .first {
                 getBodySelectView()
             } else {
                 getColorSelectView()
