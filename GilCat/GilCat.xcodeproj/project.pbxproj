@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */; };
 		5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59D285191F3002F6A75 /* BarColorNavigation.swift */; };
+		58790F6828558F3C00B20552 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 58790F6728558F3C00B20552 /* PartialSheet */; };
+		58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6B28558FD800B20552 /* NoteProfileView.swift */; };
+		58790F6E28558FE300B20552 /* NoteFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6D28558FE300B20552 /* NoteFoodView.swift */; };
+		58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6F28558FEE00B20552 /* NoteWaterView.swift */; };
 		58A2002B28520B5500C656DF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002A28520B5500C656DF /* LoginView.swift */; };
 		58A2002D28520B6F00C656DF /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002C28520B6F00C656DF /* NoteView.swift */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
@@ -36,6 +40,9 @@
 /* Begin PBXFileReference section */
 		5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextField.swift; sourceTree = "<group>"; };
 		5800E59D285191F3002F6A75 /* BarColorNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarColorNavigation.swift; sourceTree = "<group>"; };
+		58790F6B28558FD800B20552 /* NoteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteProfileView.swift; sourceTree = "<group>"; };
+		58790F6D28558FE300B20552 /* NoteFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFoodView.swift; sourceTree = "<group>"; };
+		58790F6F28558FEE00B20552 /* NoteWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWaterView.swift; sourceTree = "<group>"; };
 		58A2002A28520B5500C656DF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		58A2002C28520B6F00C656DF /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58790F6828558F3C00B20552 /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				58A2002C28520B6F00C656DF /* NoteView.swift */,
+				58790F6B28558FD800B20552 /* NoteProfileView.swift */,
+				58790F6D28558FE300B20552 /* NoteFoodView.swift */,
+				58790F6F28558FEE00B20552 /* NoteWaterView.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -238,6 +249,7 @@
 			);
 			name = GilCat;
 			packageProductDependencies = (
+				58790F6728558F3C00B20552 /* PartialSheet */,
 			);
 			productName = GilCat;
 			productReference = EF1DEE2F2849B795000268C7 /* GilCat.app */;
@@ -290,6 +302,7 @@
 			);
 			mainGroup = EF1DEE262849B795000268C7;
 			packageReferences = (
+				58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = EF1DEE302849B795000268C7 /* Products */;
 			projectDirPath = "";
@@ -353,8 +366,11 @@
 				58A2002B28520B5500C656DF /* LoginView.swift in Sources */,
 				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
+				58790F6E28558FE300B20552 /* NoteFoodView.swift in Sources */,
+				58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */,
 				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
 				EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */,
+				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,
 				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
 			);
@@ -618,6 +634,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		58790F6728558F3C00B20552 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF1DEE272849B795000268C7 /* Project object */;
 }
