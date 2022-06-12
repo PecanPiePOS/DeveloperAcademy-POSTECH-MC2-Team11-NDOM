@@ -51,6 +51,7 @@ struct RegisterFinish: View {
             NavigationLink(destination: TagView(), isActive: $isLinkActive) {
                 Button {
                     // Todo: 완성된 고양이 정보 객체를 서버에 보내기
+                    catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer = true
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
