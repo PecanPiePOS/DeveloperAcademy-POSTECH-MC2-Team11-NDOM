@@ -7,14 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		106598C22856DD2C00F44728 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C12856DD2C00F44728 /* PartialSheet */; };
+		106598C52856DD7200F44728 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C42856DD7200F44728 /* ConfettiSwiftUI */; };
+		107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D0284F98BE003D6F2B /* RegisterStart.swift */; };
+		107A58D3284FA041003D6F2B /* RegisterCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D2284FA041003D6F2B /* RegisterCode.swift */; };
+		107A58D5284FA055003D6F2B /* RegisterName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D4284FA055003D6F2B /* RegisterName.swift */; };
+		107A58D7284FA05E003D6F2B /* RegisterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D6284FA05E003D6F2B /* RegisterGender.swift */; };
+		107A58D9284FA08B003D6F2B /* RegisterAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D8284FA08B003D6F2B /* RegisterAge.swift */; };
+		107A58DF284FA0A3003D6F2B /* RegisterAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */; };
+		107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58E2284FA4E5003D6F2B /* ColorExtension.swift */; };
+		10B80EC92851D70D008EA0DF /* GilCatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B80EC82851D70D008EA0DF /* GilCatPicker.swift */; };
+		10CFA9AF28503560003DBF63 /* GilCatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9AE28503560003DBF63 /* GilCatTextField.swift */; };
+		10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9B028504144003DBF63 /* GilCatTitle.swift */; };
+		10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F486252855F290005A7ED6 /* VisibleExtension.swift */; };
 		5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */; };
 		5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59D285191F3002F6A75 /* BarColorNavigation.swift */; };
-		58790F6828558F3C00B20552 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 58790F6728558F3C00B20552 /* PartialSheet */; };
 		58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6B28558FD800B20552 /* NoteProfileView.swift */; };
 		58790F6E28558FE300B20552 /* NoteFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6D28558FE300B20552 /* NoteFoodView.swift */; };
 		58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6F28558FEE00B20552 /* NoteWaterView.swift */; };
 		58A2002B28520B5500C656DF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002A28520B5500C656DF /* LoginView.swift */; };
 		58A2002D28520B6F00C656DF /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002C28520B6F00C656DF /* NoteView.swift */; };
+		BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179F82852CC7100992BC5 /* GilCatImages.swift */; };
+		BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */; };
+		BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */; };
+		BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A022852DAEE00992BC5 /* RegisterFinish.swift */; };
+		BC517A0A2853769D00992BC5 /* GilCatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A092853769D00992BC5 /* GilCatInfo.swift */; };
+		BC517A0D2853780B00992BC5 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A0C2853780B00992BC5 /* TagView.swift */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
@@ -38,6 +56,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		107A58D0284F98BE003D6F2B /* RegisterStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStart.swift; sourceTree = "<group>"; };
+		107A58D2284FA041003D6F2B /* RegisterCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCode.swift; sourceTree = "<group>"; };
+		107A58D4284FA055003D6F2B /* RegisterName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterName.swift; sourceTree = "<group>"; };
+		107A58D6284FA05E003D6F2B /* RegisterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGender.swift; sourceTree = "<group>"; };
+		107A58D8284FA08B003D6F2B /* RegisterAge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAge.swift; sourceTree = "<group>"; };
+		107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAvatar.swift; sourceTree = "<group>"; };
+		107A58E2284FA4E5003D6F2B /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		10B80EC82851D70D008EA0DF /* GilCatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatPicker.swift; sourceTree = "<group>"; };
+		10CFA9AE28503560003DBF63 /* GilCatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTextField.swift; sourceTree = "<group>"; };
+		10CFA9B028504144003DBF63 /* GilCatTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTitle.swift; sourceTree = "<group>"; };
+		10F486252855F290005A7ED6 /* VisibleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleExtension.swift; sourceTree = "<group>"; };
 		5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextField.swift; sourceTree = "<group>"; };
 		5800E59D285191F3002F6A75 /* BarColorNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarColorNavigation.swift; sourceTree = "<group>"; };
 		58790F6B28558FD800B20552 /* NoteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteProfileView.swift; sourceTree = "<group>"; };
@@ -45,6 +74,12 @@
 		58790F6F28558FEE00B20552 /* NoteWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWaterView.swift; sourceTree = "<group>"; };
 		58A2002A28520B5500C656DF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		58A2002C28520B6F00C656DF /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		BC5179F82852CC7100992BC5 /* GilCatImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatImages.swift; sourceTree = "<group>"; };
+		BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDescription.swift; sourceTree = "<group>"; };
+		BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMainButton.swift; sourceTree = "<group>"; };
+		BC517A022852DAEE00992BC5 /* RegisterFinish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFinish.swift; sourceTree = "<group>"; };
+		BC517A092853769D00992BC5 /* GilCatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatInfo.swift; sourceTree = "<group>"; };
+		BC517A0C2853780B00992BC5 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1DEE322849B795000268C7 /* GilCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatApp.swift; sourceTree = "<group>"; };
 		EF1DEE362849B796000268C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,7 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58790F6828558F3C00B20552 /* PartialSheet in Frameworks */,
+				106598C52856DD7200F44728 /* ConfettiSwiftUI in Frameworks */,
+				106598C22856DD2C00F44728 /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +114,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		107A58CF284F98A0003D6F2B /* Registers */ = {
+			isa = PBXGroup;
+			children = (
+				107A58E4284FAB10003D6F2B /* registerViews */,
+			);
+			path = Registers;
+			sourceTree = "<group>";
+		};
+		107A58E4284FAB10003D6F2B /* registerViews */ = {
+			isa = PBXGroup;
+			children = (
+				107A58D0284F98BE003D6F2B /* RegisterStart.swift */,
+				107A58D2284FA041003D6F2B /* RegisterCode.swift */,
+				107A58D4284FA055003D6F2B /* RegisterName.swift */,
+				107A58D6284FA05E003D6F2B /* RegisterGender.swift */,
+				107A58D8284FA08B003D6F2B /* RegisterAge.swift */,
+				107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */,
+				BC517A022852DAEE00992BC5 /* RegisterFinish.swift */,
+			);
+			path = registerViews;
+			sourceTree = "<group>";
+		};
 		58A2002828520B2000C656DF /* Note */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +161,14 @@
 				5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */,
 			);
 			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		BC517A0B285377E900992BC5 /* Note_Dophi */ = {
+			isa = PBXGroup;
+			children = (
+				BC517A0C2853780B00992BC5 /* TagView.swift */,
+			);
+			path = Note_Dophi;
 			sourceTree = "<group>";
 		};
 		EF1DEE262849B795000268C7 = {
@@ -154,6 +220,8 @@
 		EFA7B92D2849EA09006671EF /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				BC517A0B285377E900992BC5 /* Note_Dophi */,
+				107A58CF284F98A0003D6F2B /* Registers */,
 				EFA7B93C2849EBD6006671EF /* Home */,
 				58A2002828520B2000C656DF /* Note */,
 				58A2002928520B2900C656DF /* Login */,
@@ -176,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				EFA7B9372849EB5C006671EF /* TestExtension.swift */,
+				107A58E2284FA4E5003D6F2B /* ColorExtension.swift */,
+				10F486252855F290005A7ED6 /* VisibleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -184,6 +254,13 @@
 			isa = PBXGroup;
 			children = (
 				EFA7B9352849EB22006671EF /* ComponentsTestView.swift */,
+				10CFA9AE28503560003DBF63 /* GilCatTextField.swift */,
+				10CFA9B028504144003DBF63 /* GilCatTitle.swift */,
+				10B80EC82851D70D008EA0DF /* GilCatPicker.swift */,
+				BC5179F82852CC7100992BC5 /* GilCatImages.swift */,
+				BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */,
+				BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */,
+				BC517A092853769D00992BC5 /* GilCatInfo.swift */,
 				5800E59D285191F3002F6A75 /* BarColorNavigation.swift */,
 			);
 			path = Components;
@@ -249,7 +326,8 @@
 			);
 			name = GilCat;
 			packageProductDependencies = (
-				58790F6728558F3C00B20552 /* PartialSheet */,
+				106598C12856DD2C00F44728 /* PartialSheet */,
+				106598C42856DD7200F44728 /* ConfettiSwiftUI */,
 			);
 			productName = GilCat;
 			productReference = EF1DEE2F2849B795000268C7 /* GilCat.app */;
@@ -302,7 +380,10 @@
 			);
 			mainGroup = EF1DEE262849B795000268C7;
 			packageReferences = (
+				BC517A042852E84D00992BC5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				106598C02856DD2C00F44728 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				106598C32856DD7200F44728 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = EF1DEE302849B795000268C7 /* Products */;
 			projectDirPath = "";
@@ -361,11 +442,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */,
+				107A58D9284FA08B003D6F2B /* RegisterAge.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
+				BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */,
+				BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */,
+				107A58DF284FA0A3003D6F2B /* RegisterAvatar.swift in Sources */,
+				107A58D3284FA041003D6F2B /* RegisterCode.swift in Sources */,
+				10CFA9AF28503560003DBF63 /* GilCatTextField.swift in Sources */,
+				BC517A0D2853780B00992BC5 /* TagView.swift in Sources */,
+				BC517A0A2853769D00992BC5 /* GilCatInfo.swift in Sources */,
+				BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */,
 				5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */,
 				58A2002B28520B5500C656DF /* LoginView.swift in Sources */,
 				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
+				10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
+				107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */,
+				EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */,
+				107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */,
+				10B80EC92851D70D008EA0DF /* GilCatPicker.swift in Sources */,
 				58790F6E28558FE300B20552 /* NoteFoodView.swift in Sources */,
 				58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */,
 				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
@@ -373,6 +468,10 @@
 				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,
 				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
+				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
+				BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */,
+				107A58D5284FA055003D6F2B /* RegisterName.swift in Sources */,
+				107A58D7284FA05E003D6F2B /* RegisterGender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +616,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GilCat/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -547,6 +647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GilCat/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -636,6 +737,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		106598C02856DD2C00F44728 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		106598C32856DD7200F44728 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
@@ -644,13 +761,26 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		BC517A042852E84D00992BC5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		58790F6728558F3C00B20552 /* PartialSheet */ = {
+		106598C12856DD2C00F44728 /* PartialSheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */;
 			productName = PartialSheet;
+		};
+		106598C42856DD7200F44728 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC517A042852E84D00992BC5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

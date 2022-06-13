@@ -1,17 +1,12 @@
-//
-//  GilCatApp.swift
-//  GilCat
-//
-//  Created by Woody on 2022/06/03.
-//
-
 import SwiftUI
 
 @main
 struct GilCatApp: App {
+    var catInfo: GilCatInfoList = GilCatInfoList()
+    
     var body: some Scene {
         WindowGroup {
-            TestHomeView()
+            RegisterStart().environmentObject(catInfo)
         }
     }
 }
