@@ -15,6 +15,7 @@
 		58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6F28558FEE00B20552 /* NoteWaterView.swift */; };
 		58A2002B28520B5500C656DF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002A28520B5500C656DF /* LoginView.swift */; };
 		58A2002D28520B6F00C656DF /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002C28520B6F00C656DF /* NoteView.swift */; };
+		58B21B0A2856CC2C00205AE5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B21B092856CC2C00205AE5 /* Colors.xcassets */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		58790F6F28558FEE00B20552 /* NoteWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWaterView.swift; sourceTree = "<group>"; };
 		58A2002A28520B5500C656DF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		58A2002C28520B6F00C656DF /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		58B21B092856CC2C00205AE5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1DEE322849B795000268C7 /* GilCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatApp.swift; sourceTree = "<group>"; };
 		EF1DEE362849B796000268C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				EF1DEE362849B796000268C7 /* Assets.xcassets */,
+				58B21B092856CC2C00205AE5 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */,
+				58B21B0A2856CC2C00205AE5 /* Colors.xcassets in Resources */,
 				EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */,
 				EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */,
 			);

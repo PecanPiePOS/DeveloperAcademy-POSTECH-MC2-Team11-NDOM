@@ -16,7 +16,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Background")
+                Color("BackGroundColor")
                     .edgesIgnoringSafeArea(.all
                     )
                 VStack(alignment: .leading) {
@@ -53,7 +53,7 @@ struct LoginView: View {
                         Rectangle()
                             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
                             .cornerRadius(20)
-                            .foregroundColor(Color("Button"))
+                            .foregroundColor(Color("ButtonColor"))
                             .overlay {
                                 Text("다음")
                                     .font(.title3)

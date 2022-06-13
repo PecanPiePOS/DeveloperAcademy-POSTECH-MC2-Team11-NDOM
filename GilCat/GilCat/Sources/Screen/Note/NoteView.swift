@@ -26,7 +26,7 @@ struct NoteView: View {
     var body: some View {
         
         ZStack {
-            Color("Background")
+            Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
             
             ScrollView(.vertical, showsIndicators: false) {
@@ -36,7 +36,7 @@ struct NoteView: View {
                             .resizable()
                             .scaledToFit()
                             .padding()
-                            .background(Color("DarkPanel"))
+                            .background(Color("PickerColor"))
                             .frame(width: 120, height: 120)
                             .clipShape(RoundedRectangle(cornerRadius: 43, style: .continuous))
                             .padding(.top, 10)
@@ -58,10 +58,8 @@ struct NoteView: View {
                         
                         // MARK: 프로필 자세히 보기
                         RoundedRectangle(cornerRadius: 36, style: .continuous)
-                            .foregroundColor(Color("Button"))
+                            .foregroundColor(Color("ButtonColor"))
                             .frame(width: 180, height: 44, alignment: .center)
-                            .shadow(color: Color("Morphic3").opacity(0.8), radius: 5, x: 5, y: 5)
-                            .shadow(color: Color("Morphic1").opacity(0.9), radius: 5, x: -5, y: -5)
                             .overlay {
                                 Text("프로필 자세히 보기")
                                     .font(.system(size: 15, weight: .heavy))
@@ -71,7 +69,7 @@ struct NoteView: View {
                                 checkProfile.toggle()
                             }
                             .partialSheet(isPresented: $checkProfile,
-                                          iPhoneStyle: PSIphoneStyle(background: .solid(Color("Background")),
+                                          iPhoneStyle: PSIphoneStyle(background: .solid(Color("BackGroundColor")),
                                                                      handleBarStyle: .none,
                                                                      cover: .enabled(Color.black.opacity(0.5)),
                                                                      cornerRadius: 24)) {
@@ -84,9 +82,7 @@ struct NoteView: View {
                             NavigationLink(destination: NoteFoodView()) {
                                 RoundedRectangle(cornerRadius: 40, style: .continuous)
                                     .frame(width: 160, height: 230)
-                                    .foregroundColor(Color("DarkPanel").opacity(0.9))
-                                    .shadow(color: Color("Morphic2").opacity(0.8), radius: 5, x: 5, y: 5)
-                                    .shadow(color: Color("Morphic1").opacity(0.6), radius: 5, x: -5, y: -5)
+                                    .foregroundColor(Color("PickerColor").opacity(0.9))
                                     .overlay {
                                         VStack {
                                         
@@ -105,7 +101,7 @@ struct NoteView: View {
                                             
                                             Text("12:30")
                                                 .font(.system(size: 32, weight: .heavy))
-                                                .foregroundColor(Color("Button"))
+                                                .foregroundColor(Color("ButtonColor"))
                                             
                                             Spacer()
                                             
@@ -122,9 +118,7 @@ struct NoteView: View {
                             NavigationLink(destination: NoteWaterView()) {
                                 RoundedRectangle(cornerRadius: 40, style: .continuous)
                                     .frame(width: 160, height: 230)
-                                    .foregroundColor(Color("DarkPanel").opacity(0.9))
-                                    .shadow(color: Color("Morphic2").opacity(0.8), radius: 5, x: 5, y: 5)
-                                    .shadow(color: Color("Morphic1").opacity(0.6), radius: 5, x: -5, y: -5)
+                                    .foregroundColor(Color("PickerColor").opacity(0.9))
                                     .overlay {
                                         VStack {
                                         
@@ -143,7 +137,7 @@ struct NoteView: View {
                                             
                                             Text("19:30")
                                                 .font(.system(size: 32, weight: .heavy))
-                                                .foregroundColor(Color("Button"))
+                                                .foregroundColor(Color("ButtonColor"))
                                             
                                             Spacer()
                                             
@@ -162,9 +156,7 @@ struct NoteView: View {
                         // MARK: 츄르 몇개?
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                             .frame(width: 340, height: 85)
-                            .foregroundColor(Color("DarkPanel").opacity(0.9))
-                            .shadow(color: Color("Morphic2").opacity(0.8), radius: 5, x: 5, y: 5)
-                            .shadow(color: Color("Morphic1").opacity(0.6), radius: 5, x: -5, y: -5)
+                            .foregroundColor(Color("PickerColor").opacity(0.9))
                             .overlay {
                                 HStack {
                                     Text("츄르 몇개?")
@@ -257,7 +249,7 @@ struct NoteView: View {
                                         .font(.system(size: 14, weight: .bold))
                                         .foregroundColor(.white)
                                         .padding()
-                                        .background(Color("Background").opacity(0.5))
+                                        .background(Color("BackGroundColor").opacity(0.5))
                                         .cornerRadius(24)
                                     
                                     Spacer()
@@ -267,10 +259,8 @@ struct NoteView: View {
                             Spacer().frame(height: 24)
                         }
                         .frame(width: 340)
-                        .background(Color("DarkPanel").opacity(0.8))
+                        .background(Color("PickerColor").opacity(0.8))
                         .cornerRadius(30)
-                        .shadow(color: Color("Morphic2").opacity(0.8), radius: 4, x: 4, y: 4)
-                        .shadow(color: Color("Morphic1").opacity(0.6), radius: 4, x: -4, y: -4)
                         .padding(.bottom, 20)
                         
                         // MARK: 개인 메모장 섹션
@@ -304,7 +294,7 @@ struct NoteView: View {
                                     VStack(alignment: .leading) {
                                         Text("2022.6.3")
                                             .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(Color("Button"))
+                                            .foregroundColor(Color("ButtonColor"))
                                         Text("15:46")
                                             .font(.system(size: 16, weight: .medium))
                                             .foregroundColor(.gray)
@@ -316,9 +306,7 @@ struct NoteView: View {
                                             .lineLimit(3)
                                     }
                                     .frame(width: 340, height: 180)
-                                    .background(Color("DarkPanel").opacity(0.8))
-                                    .shadow(color: Color("Morphic2").opacity(0.8), radius: 4, x: 4, y: 4)
-                                    .shadow(color: Color("Morphic1").opacity(0.6), radius: 4, x: -4, y: -4)
+                                    .background(Color("PickerColor").opacity(0.8))
                                     .cornerRadius(30)
                                     .padding(.horizontal, 10)
                                 }
