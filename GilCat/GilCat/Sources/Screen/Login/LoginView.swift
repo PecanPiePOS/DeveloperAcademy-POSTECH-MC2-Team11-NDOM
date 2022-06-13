@@ -42,18 +42,18 @@ struct LoginView: View {
                         Text("중복된 이름입니다.")
                             .font(.system(size: 13, weight: .light))
                             .foregroundColor(.red.opacity(0.7))
-                            .padding(.horizontal, 60)
+                            .padding(.horizontal, 50)
                     } else if !checkNetwork {
                         Text("네트워크를 확인해 주세요.")
                             .font(.system(size: 13, weight: .light))
                             .foregroundColor(.red.opacity(0.7))
-                            .padding(.horizontal, 60)
+                            .padding(.horizontal, 50)
                     } else {
                         Text("닉네임은 2~8글자로 적어주세요.")
                         .font(.system(size: 13, weight: .light))
                         .foregroundColor((nickName.count > 8) ? .red : .green)
                         .opacity(0.8)
-                        .padding(.horizontal, 60)
+                        .padding(.horizontal, 50)
                     }
                         
                     Spacer()
