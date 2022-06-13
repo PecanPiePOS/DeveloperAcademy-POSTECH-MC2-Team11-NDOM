@@ -14,10 +14,13 @@ struct RegisterAge: View {
     @State var isFirstClick = true
     @FocusState var isFocused: Int?
     @EnvironmentObject var catInfo: GilCatInfoList
+    @Environment(\.presentationMode) var presentation
+    
+    init(){Theme.navigationBarColors(background: .systemFill, titleColor: .white)}
     
     var body: some View {
         ZStack {
-        Color.backgroundColor.ignoresSafeArea()
+            Color.backgroundColor.ignoresSafeArea(.all)
         
             VStack {
                 HStack {
@@ -68,7 +71,20 @@ struct RegisterAge: View {
                     .padding()
                 }
             }
-            .navigationBarTitle("나이", displayMode: .inline)
+            .navigationTitle("나이")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationViewStyle(.stack)
+                    // MARK: 툴바 수정
+                    .toolbar {
+                        ToolbarItem(placement: .navigation) {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .onTapGesture {
+                                    self.presentation.wrappedValue.dismiss()
+                                }
+                        }
+                    }
             .focused($isFocused, equals: 1)
             .onAppear {
                 // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기

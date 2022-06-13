@@ -7,64 +7,83 @@ struct RegisterAvatar: View {
     @State var selectedCatColor = GilCatColor.gray
     @State var selectedImageIndex = 0
     @EnvironmentObject var catInfo: GilCatInfoList
+    @Environment(\.presentationMode) var presentation
     let viewFirstChoice: String = "외형"
     let viewSecondChoice: String = "색"
     
     init() {
         UIScrollView.appearance().bounces = false
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
     
     var body: some View {
-        VStack {
-            // 제목
-            HStack {
-                GilCatTitle(titleText: "캐릭터").padding([.top, .leading])
+        ZStack {
+            Color.backgroundColor.edgesIgnoringSafeArea(.all)
+
+            VStack {
+                // 제목
+                HStack {
+                    GilCatTitle(titleText: "캐릭터").padding([.top, .leading])
+                    Spacer()
+                }
+                // 커스텀한 아바타
+                Image(selectedCatColor.group[selectedImageIndex])
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 130, height: 130)
+                    .padding()
+                    .background(Color.profileBackgroundColor)
+                    .cornerRadius(50)
+                    .frame(maxWidth: .infinity)
+                // 색과 외형 중 고를 수 있는 피커
+                GilCatPicker(isClick: $viewChoice, firstSelect: viewFirstChoice, secondSelect: viewSecondChoice)
+                    .padding(.vertical)
+                // 피커에 따라 보여지는 커스텀 칸
+                if viewChoice == .first {
+                    getBodySelectView()
+                } else {
+                    getColorSelectView()
+                }
                 Spacer()
-            }
-            // 커스텀한 아바타
-            Image(selectedCatColor.group[selectedImageIndex])
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 130, height: 130)
-                .padding()
-                .background(Color.profileBackgroundColor)
-                .cornerRadius(50)
-                .frame(maxWidth: .infinity)
-            // 색과 외형 중 고를 수 있는 피커
-            GilCatPicker(isClick: $viewChoice, firstSelect: viewFirstChoice, secondSelect: viewSecondChoice)
-                .padding(.vertical)
-            // 피커에 따라 보여지는 커스텀 칸
-            if viewChoice == .first {
-                getBodySelectView()
-            } else {
-                getColorSelectView()
-            }
-            Spacer()
-            // 메인 버튼
-            NavigationLink(destination: RegisterFinish(), isActive: $isLinkActive) {
-                Button {
-                    // 커스텀해서 선택된 이미지 정보 저장하기
-                    catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor = selectedCatColor
-                    catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex = selectedImageIndex
-                    isLinkActive = true
-                } label: {
-                    GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                // 메인 버튼
+                NavigationLink(destination: RegisterFinish(), isActive: $isLinkActive) {
+                    Button {
+                        // 커스텀해서 선택된 이미지 정보 저장하기
+                        catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor = selectedCatColor
+                        catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex = selectedImageIndex
+                        isLinkActive = true
+                    } label: {
+                        GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                    }
+                    .padding()
                 }
-                .padding()
             }
+            .background(Color.backgroundColor)
+            .navigationTitle("아바타")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationViewStyle(.stack)
+                    // MARK: 툴바 수정
+                    .toolbar {
+                        ToolbarItem(placement: .navigation) {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .onTapGesture {
+                                    self.presentation.wrappedValue.dismiss()
+                                }
+                        }
+                    }
+            .onAppear {
+                // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
+                if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
+                    if catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor != nil {
+                        selectedCatColor = catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor!
+                    }
+                    if catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex != nil {
+                        selectedImageIndex = catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex!
+                    }
+                }
         }
-        .background(Color.backgroundColor)
-        .navigationBarTitle("아바타", displayMode: .inline)
-        .onAppear {
-            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
-                if catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor != nil {
-                    selectedCatColor = catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor!
-                }
-                if catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex != nil {
-                    selectedImageIndex = catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex!
-                }
-            }
         }
     }
     

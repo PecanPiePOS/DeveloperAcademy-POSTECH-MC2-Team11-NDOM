@@ -3,6 +3,7 @@ import SwiftUI
 struct RegisterGender: View {
     @State var isLinkActive = false
     @EnvironmentObject var catInfo: GilCatInfoList
+    @Environment(\.presentationMode) var presentation
     @State var genderChoice: GilCatPicker.Choice = .first
     @State var TNRChoice: GilCatPicker.Choice = .first
     @State var isFirstClick : Bool = true
@@ -12,9 +13,12 @@ struct RegisterGender: View {
     let TNRFirstChoice = "⭕️"
     let TNRSecondChoice = "❌"
     
+    init(){Theme.navigationBarColors(background: .systemFill, titleColor: .white)}
+    
     var body: some View {
         ZStack {
-            Color.backgroundColor.ignoresSafeArea()
+            Color.backgroundColor.ignoresSafeArea(.all)
+            
             VStack {
                 // 성별 피커
                 HStack {
@@ -60,7 +64,20 @@ struct RegisterGender: View {
                 }
             }
         }
-        .navigationBarTitle("성별 및 중성화", displayMode: .inline)
+        .navigationTitle("성별 및 중성화")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationViewStyle(.stack)
+                // MARK: 툴바 수정
+                .toolbar {
+                    ToolbarItem(placement: .navigation) {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.white)
+                            .onTapGesture {
+                                self.presentation.wrappedValue.dismiss()
+                            }
+                    }
+                }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
             if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
