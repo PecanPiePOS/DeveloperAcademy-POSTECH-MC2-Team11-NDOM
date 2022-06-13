@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		042322BF2856D6BD001F1217 /* catPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042322BE2856D6BD001F1217 /* catPopup.swift */; };
-		04F077442851809D00339172 /* button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F077432851809D00339172 /* button.swift */; };
-		04F0774628518C0300339172 /* diaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774528518C0300339172 /* diaryView.swift */; };
-		04F0774828518C7E00339172 /* codeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774728518C7E00339172 /* codeView.swift */; };
+		042322BF2856D6BD001F1217 /* CatPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042322BE2856D6BD001F1217 /* CatPopup.swift */; };
+		04F0774628518C0300339172 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774528518C0300339172 /* DiaryView.swift */; };
+		04F0774828518C7E00339172 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774728518C7E00339172 /* CodeView.swift */; };
 		106598C22856DD2C00F44728 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C12856DD2C00F44728 /* PartialSheet */; };
 		106598C52856DD7200F44728 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C42856DD7200F44728 /* ConfettiSwiftUI */; };
 		107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D0284F98BE003D6F2B /* RegisterStart.swift */; };
@@ -32,6 +31,8 @@
 		58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6F28558FEE00B20552 /* NoteWaterView.swift */; };
 		58A2002B28520B5500C656DF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002A28520B5500C656DF /* LoginView.swift */; };
 		58A2002D28520B6F00C656DF /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002C28520B6F00C656DF /* NoteView.swift */; };
+		58B21B102856ED3D00205AE5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B21B0F2856ED3D00205AE5 /* Colors.xcassets */; };
+		58B21B132856FFF900205AE5 /* CatSelectPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B122856FFF900205AE5 /* CatSelectPopUpView.swift */; };
 		BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179F82852CC7100992BC5 /* GilCatImages.swift */; };
 		BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */; };
 		BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */; };
@@ -43,7 +44,6 @@
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
-		EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B93A2849EBB9006671EF /* ColorPallete.swift */; };
 		EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9422849EC48006671EF /* TestSupportView.swift */; };
 		EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9442849EC54006671EF /* TestHomeView.swift */; };
 		EFA7B969284B23EC006671EF /* GilCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B968284B23EC006671EF /* GilCatTests.swift */; };
@@ -60,10 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		042322BE2856D6BD001F1217 /* catPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catPopup.swift; sourceTree = "<group>"; };
-		04F077432851809D00339172 /* button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = button.swift; sourceTree = "<group>"; };
-		04F0774528518C0300339172 /* diaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryView.swift; sourceTree = "<group>"; };
-		04F0774728518C7E00339172 /* codeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codeView.swift; sourceTree = "<group>"; };
+		042322BE2856D6BD001F1217 /* CatPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPopup.swift; sourceTree = "<group>"; };
+		04F0774528518C0300339172 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		04F0774728518C7E00339172 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		107A58D0284F98BE003D6F2B /* RegisterStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStart.swift; sourceTree = "<group>"; };
 		107A58D2284FA041003D6F2B /* RegisterCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCode.swift; sourceTree = "<group>"; };
 		107A58D4284FA055003D6F2B /* RegisterName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterName.swift; sourceTree = "<group>"; };
@@ -82,6 +81,8 @@
 		58790F6F28558FEE00B20552 /* NoteWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWaterView.swift; sourceTree = "<group>"; };
 		58A2002A28520B5500C656DF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		58A2002C28520B6F00C656DF /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		58B21B0F2856ED3D00205AE5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		58B21B122856FFF900205AE5 /* CatSelectPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSelectPopUpView.swift; sourceTree = "<group>"; };
 		BC5179F82852CC7100992BC5 /* GilCatImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatImages.swift; sourceTree = "<group>"; };
 		BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDescription.swift; sourceTree = "<group>"; };
 		BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMainButton.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
-		EFA7B93A2849EBB9006671EF /* ColorPallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
 		EFA7B9422849EC48006671EF /* TestSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupportView.swift; sourceTree = "<group>"; };
 		EFA7B9442849EC54006671EF /* TestHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeView.swift; sourceTree = "<group>"; };
 		EFA7B966284B23EC006671EF /* GilCatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GilCatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +171,17 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
+		58B21B112856FFA700205AE5 /* MainPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				04F0774528518C0300339172 /* DiaryView.swift */,
+				042322BE2856D6BD001F1217 /* CatPopup.swift */,
+				04F0774728518C7E00339172 /* CodeView.swift */,
+				58B21B122856FFF900205AE5 /* CatSelectPopUpView.swift */,
+			);
+			path = MainPopUp;
+			sourceTree = "<group>";
+		};
 		BC517A0B285377E900992BC5 /* Note_Dophi */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,9 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				EF1DEE322849B795000268C7 /* GilCatApp.swift */,
-				04F0774528518C0300339172 /* diaryView.swift */,
-				042322BE2856D6BD001F1217 /* catPopup.swift */,
-				04F0774728518C7E00339172 /* codeView.swift */,
 				EFA7B9322849EAB7006671EF /* Sources */,
 				EFA7B92C2849E9EA006671EF /* Resources */,
 				EF1DEE382849B796000268C7 /* Preview Content */,
@@ -224,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				EF1DEE362849B796000268C7 /* Assets.xcassets */,
+				58B21B0F2856ED3D00205AE5 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -231,6 +240,7 @@
 		EFA7B92D2849EA09006671EF /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				58B21B112856FFA700205AE5 /* MainPopUp */,
 				BC517A0B285377E900992BC5 /* Note_Dophi */,
 				107A58CF284F98A0003D6F2B /* Registers */,
 				EFA7B93C2849EBD6006671EF /* Home */,
@@ -265,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				EFA7B9352849EB22006671EF /* ComponentsTestView.swift */,
-				04F077432851809D00339172 /* button.swift */,
 				10CFA9AE28503560003DBF63 /* GilCatTextField.swift */,
 				10CFA9B028504144003DBF63 /* GilCatTitle.swift */,
 				10B80EC82851D70D008EA0DF /* GilCatPicker.swift */,
@@ -290,7 +299,6 @@
 		EFA7B9392849EB6E006671EF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				EFA7B93A2849EBB9006671EF /* ColorPallete.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -413,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */,
+				58B21B102856ED3D00205AE5 /* Colors.xcassets in Resources */,
 				10FA62992856E8BC00DEAD4A /* Assets.xcassets in Resources */,
 				EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */,
 			);
@@ -456,11 +465,11 @@
 				EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */,
 				107A58D9284FA08B003D6F2B /* RegisterAge.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
-				04F0774828518C7E00339172 /* codeView.swift in Sources */,
-				042322BF2856D6BD001F1217 /* catPopup.swift in Sources */,
-				04F077442851809D00339172 /* button.swift in Sources */,
+				04F0774828518C7E00339172 /* CodeView.swift in Sources */,
+				042322BF2856D6BD001F1217 /* CatPopup.swift in Sources */,
 				BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */,
 				BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */,
+				58B21B132856FFF900205AE5 /* CatSelectPopUpView.swift in Sources */,
 				107A58DF284FA0A3003D6F2B /* RegisterAvatar.swift in Sources */,
 				107A58D3284FA041003D6F2B /* RegisterCode.swift in Sources */,
 				10CFA9AF28503560003DBF63 /* GilCatTextField.swift in Sources */,
@@ -473,17 +482,15 @@
 				10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
 				107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */,
-				EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */,
 				107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */,
 				10B80EC92851D70D008EA0DF /* GilCatPicker.swift in Sources */,
 				58790F6E28558FE300B20552 /* NoteFoodView.swift in Sources */,
 				58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */,
 				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
-				EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */,
 				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,
 				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
-				04F0774628518C0300339172 /* diaryView.swift in Sources */,
+				04F0774628518C0300339172 /* DiaryView.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
 				BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */,
 				107A58D5284FA055003D6F2B /* RegisterName.swift in Sources */,
