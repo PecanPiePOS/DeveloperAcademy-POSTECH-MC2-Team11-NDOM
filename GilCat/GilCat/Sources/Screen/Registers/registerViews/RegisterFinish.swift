@@ -10,13 +10,17 @@ import ConfettiSwiftUI
 
 struct RegisterFinish: View {
     @State var isLinkActive = false
+    @Binding var buildNavigationStack: Bool
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     @EnvironmentObject var catInfo: GilCatInfoList
     @Environment(\.presentationMode) var presentation
     
-    init(){Theme.navigationBarColors(background: .systemFill, titleColor: .white)}
+    init(_ buildNavigationStack: Binding<Bool>) {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._buildNavigationStack = buildNavigationStack
+    }
     
     var body: some View {
         ZStack {
@@ -54,16 +58,14 @@ struct RegisterFinish: View {
                 }
                 Spacer()
                 // 메인 버튼
-                NavigationLink(destination: TagView(), isActive: $isLinkActive) {
-                    Button {
-                        // Todo: 완성된 고양이 정보 객체를 서버에 보내기
-                        catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer = true
-                        isLinkActive = true
-                    } label: {
-                        GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
-                    }
-                    .padding()
+                Button {
+                    // Todo: 완성된 고양이 정보 객체를 서버에 보내기
+                    catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer = true
+                    buildNavigationStack = false
+                } label: {
+                    GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
                 }
+                .padding()
             }
             .background(Color.backgroundColor)
             .navigationTitle("등록 완료")
@@ -143,6 +145,6 @@ struct RegisterFinish: View {
 
 struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterFinish().environmentObject(GilCatInfoList().self)
+        RegisterFinish(.constant(false)).environmentObject(GilCatInfoList().self)
     }
 }

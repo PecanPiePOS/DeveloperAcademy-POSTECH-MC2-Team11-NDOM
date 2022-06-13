@@ -10,13 +10,17 @@ struct RegisterAge: View {
     @State var inputAge = ""
     @State var inputType = ""
     @State var isLinkActive = false
+    @Binding var buildNavigationStack: Bool
     @State var isShowingType = false
     @State var isFirstClick = true
     @FocusState var isFocused: Int?
     @EnvironmentObject var catInfo: GilCatInfoList
     @Environment(\.presentationMode) var presentation
     
-    init(){Theme.navigationBarColors(background: .systemFill, titleColor: .white)}
+    init(_ buildNavigationStack: Binding<Bool>) {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._buildNavigationStack = buildNavigationStack
+    }
     
     var body: some View {
         ZStack {
@@ -42,7 +46,7 @@ struct RegisterAge: View {
                 }
                 Spacer()
                 
-                NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterAvatar($buildNavigationStack), isActive: $isLinkActive) {
                     HStack {
                         Button {
                             if isFirstClick == false {
@@ -70,6 +74,7 @@ struct RegisterAge: View {
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
             .navigationTitle("나이")
                     .navigationBarTitleDisplayMode(.inline)
@@ -106,6 +111,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge().environmentObject(GilCatInfoList().self)
+        RegisterAge(.constant(false)).environmentObject(GilCatInfoList().self)
     }
 }

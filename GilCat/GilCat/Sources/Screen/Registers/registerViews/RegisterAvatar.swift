@@ -4,6 +4,7 @@ struct RegisterAvatar: View {
     let gridSpace: CGFloat = 20
     @State var viewChoice: GilCatPicker.Choice = .first
     @State var isLinkActive = false
+    @Binding var buildNavigationStack: Bool
     @State var selectedCatColor = GilCatColor.gray
     @State var selectedImageIndex = 0
     @EnvironmentObject var catInfo: GilCatInfoList
@@ -11,9 +12,10 @@ struct RegisterAvatar: View {
     let viewFirstChoice: String = "외형"
     let viewSecondChoice: String = "색"
     
-    init() {
+    init(_ buildNavigationStack: Binding<Bool>) {
         UIScrollView.appearance().bounces = false
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._buildNavigationStack = buildNavigationStack
     }
     
     var body: some View {
@@ -46,7 +48,7 @@ struct RegisterAvatar: View {
                 }
                 Spacer()
                 // 메인 버튼
-                NavigationLink(destination: RegisterFinish(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterFinish($buildNavigationStack), isActive: $isLinkActive) {
                     Button {
                         // 커스텀해서 선택된 이미지 정보 저장하기
                         catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor = selectedCatColor
@@ -57,6 +59,7 @@ struct RegisterAvatar: View {
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
             .background(Color.backgroundColor)
             .navigationTitle("아바타")
@@ -152,6 +155,6 @@ struct RegisterAvatar: View {
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAvatar().environmentObject(GilCatInfoList().self)
+        RegisterAvatar(.constant(false)).environmentObject(GilCatInfoList().self)
     }
 }

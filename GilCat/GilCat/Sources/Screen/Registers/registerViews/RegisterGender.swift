@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RegisterGender: View {
     @State var isLinkActive = false
+    @Binding var buildNavigationStack: Bool
     @EnvironmentObject var catInfo: GilCatInfoList
     @Environment(\.presentationMode) var presentation
     @State var genderChoice: GilCatPicker.Choice = .first
@@ -13,7 +14,10 @@ struct RegisterGender: View {
     let TNRFirstChoice = "⭕️"
     let TNRSecondChoice = "❌"
     
-    init(){Theme.navigationBarColors(background: .systemFill, titleColor: .white)}
+    init(_ buildNavigationStack: Binding<Bool>) {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._buildNavigationStack = buildNavigationStack
+    }
     
     var body: some View {
         ZStack {
@@ -35,7 +39,7 @@ struct RegisterGender: View {
                     GilCatPicker(isClick: $TNRChoice, firstSelect: TNRFirstChoice, secondSelect: TNRSecondChoice).transition(.opacity)
                 }
                 Spacer()
-                NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterAge($buildNavigationStack), isActive: $isLinkActive) {
                     Button {
                         if isFirstClick {
                             withAnimation {
@@ -62,6 +66,7 @@ struct RegisterGender: View {
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
         }
         .navigationTitle("성별 및 중성화")
@@ -101,6 +106,6 @@ struct RegisterGender: View {
 }
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender().environmentObject(GilCatInfoList().self)
+        RegisterGender(.constant(false)).environmentObject(GilCatInfoList().self)
     }
 }
