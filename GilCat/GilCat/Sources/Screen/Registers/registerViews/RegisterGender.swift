@@ -7,8 +7,8 @@ struct RegisterGender: View {
     @Environment(\.presentationMode) var presentation
     @State var genderChoice: GilCatPicker.Choice = .first
     @State var TNRChoice: GilCatPicker.Choice = .first
-    @State var isFirstClick : Bool = true
-    @State var isShowingTNRPick : Bool = false
+    @State var isFirstClick: Bool = true
+    @State var isShowingTNRPick: Bool = false
     let genderFirstChoice = "수컷"
     let genderSecondChoice = "암컷"
     let TNRFirstChoice = "⭕️"
