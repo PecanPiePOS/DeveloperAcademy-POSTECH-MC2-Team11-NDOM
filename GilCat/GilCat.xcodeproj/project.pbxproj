@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042322BF2856D6BD001F1217 /* catPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042322BE2856D6BD001F1217 /* catPopup.swift */; };
+		04B8CF2328503E710092D2BC /* CatSelect_Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8CF2228503E710092D2BC /* CatSelect_Popup.swift */; };
+		04F077442851809D00339172 /* button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F077432851809D00339172 /* button.swift */; };
+		04F0774628518C0300339172 /* diaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774528518C0300339172 /* diaryView.swift */; };
+		04F0774828518C7E00339172 /* codeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774728518C7E00339172 /* codeView.swift */; };
 		106598C22856DD2C00F44728 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C12856DD2C00F44728 /* PartialSheet */; };
 		106598C52856DD7200F44728 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C42856DD7200F44728 /* ConfettiSwiftUI */; };
 		107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D0284F98BE003D6F2B /* RegisterStart.swift */; };
@@ -56,6 +61,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042322BE2856D6BD001F1217 /* catPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catPopup.swift; sourceTree = "<group>"; };
+		04B8CF2228503E710092D2BC /* CatSelect_Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSelect_Popup.swift; sourceTree = "<group>"; };
+		04F077432851809D00339172 /* button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = button.swift; sourceTree = "<group>"; };
+		04F0774528518C0300339172 /* diaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diaryView.swift; sourceTree = "<group>"; };
+		04F0774728518C7E00339172 /* codeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codeView.swift; sourceTree = "<group>"; };
 		107A58D0284F98BE003D6F2B /* RegisterStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStart.swift; sourceTree = "<group>"; };
 		107A58D2284FA041003D6F2B /* RegisterCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCode.swift; sourceTree = "<group>"; };
 		107A58D4284FA055003D6F2B /* RegisterName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterName.swift; sourceTree = "<group>"; };
@@ -194,6 +204,10 @@
 			isa = PBXGroup;
 			children = (
 				EF1DEE322849B795000268C7 /* GilCatApp.swift */,
+				04B8CF2228503E710092D2BC /* CatSelect_Popup.swift */,
+				04F0774528518C0300339172 /* diaryView.swift */,
+				042322BE2856D6BD001F1217 /* catPopup.swift */,
+				04F0774728518C7E00339172 /* codeView.swift */,
 				EFA7B9322849EAB7006671EF /* Sources */,
 				EFA7B92C2849E9EA006671EF /* Resources */,
 				EF1DEE382849B796000268C7 /* Preview Content */,
@@ -254,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				EFA7B9352849EB22006671EF /* ComponentsTestView.swift */,
+				04F077432851809D00339172 /* button.swift */,
 				10CFA9AE28503560003DBF63 /* GilCatTextField.swift */,
 				10CFA9B028504144003DBF63 /* GilCatTitle.swift */,
 				10B80EC82851D70D008EA0DF /* GilCatPicker.swift */,
@@ -441,9 +456,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B8CF2328503E710092D2BC /* CatSelect_Popup.swift in Sources */,
 				EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */,
 				107A58D9284FA08B003D6F2B /* RegisterAge.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
+				04F0774828518C7E00339172 /* codeView.swift in Sources */,
+				042322BF2856D6BD001F1217 /* catPopup.swift in Sources */,
+				04F077442851809D00339172 /* button.swift in Sources */,
 				BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */,
 				BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */,
 				107A58DF284FA0A3003D6F2B /* RegisterAvatar.swift in Sources */,
@@ -468,6 +487,7 @@
 				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,
 				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
+				04F0774628518C0300339172 /* diaryView.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
 				BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */,
 				107A58D5284FA055003D6F2B /* RegisterName.swift in Sources */,
