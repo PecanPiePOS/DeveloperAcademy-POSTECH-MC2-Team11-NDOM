@@ -12,12 +12,12 @@
 		107A58D5284FA055003D6F2B /* RegisterName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D4284FA055003D6F2B /* RegisterName.swift */; };
 		107A58D7284FA05E003D6F2B /* RegisterGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D6284FA05E003D6F2B /* RegisterGender.swift */; };
 		107A58D9284FA08B003D6F2B /* RegisterAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58D8284FA08B003D6F2B /* RegisterAge.swift */; };
-		107A58DB284FA094003D6F2B /* RegisterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58DA284FA094003D6F2B /* RegisterType.swift */; };
 		107A58DF284FA0A3003D6F2B /* RegisterAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */; };
 		107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107A58E2284FA4E5003D6F2B /* ColorExtension.swift */; };
 		10B80EC92851D70D008EA0DF /* GilCatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B80EC82851D70D008EA0DF /* GilCatPicker.swift */; };
 		10CFA9AF28503560003DBF63 /* GilCatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9AE28503560003DBF63 /* GilCatTextField.swift */; };
 		10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9B028504144003DBF63 /* GilCatTitle.swift */; };
+		10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F486252855F290005A7ED6 /* VisibleExtension.swift */; };
 		BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179F82852CC7100992BC5 /* GilCatImages.swift */; };
 		BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */; };
 		BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */; };
@@ -53,12 +53,12 @@
 		107A58D4284FA055003D6F2B /* RegisterName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterName.swift; sourceTree = "<group>"; };
 		107A58D6284FA05E003D6F2B /* RegisterGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGender.swift; sourceTree = "<group>"; };
 		107A58D8284FA08B003D6F2B /* RegisterAge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAge.swift; sourceTree = "<group>"; };
-		107A58DA284FA094003D6F2B /* RegisterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterType.swift; sourceTree = "<group>"; };
 		107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAvatar.swift; sourceTree = "<group>"; };
 		107A58E2284FA4E5003D6F2B /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		10B80EC82851D70D008EA0DF /* GilCatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatPicker.swift; sourceTree = "<group>"; };
 		10CFA9AE28503560003DBF63 /* GilCatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTextField.swift; sourceTree = "<group>"; };
 		10CFA9B028504144003DBF63 /* GilCatTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTitle.swift; sourceTree = "<group>"; };
+		10F486252855F290005A7ED6 /* VisibleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleExtension.swift; sourceTree = "<group>"; };
 		BC5179F82852CC7100992BC5 /* GilCatImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatImages.swift; sourceTree = "<group>"; };
 		BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDescription.swift; sourceTree = "<group>"; };
 		BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMainButton.swift; sourceTree = "<group>"; };
@@ -114,7 +114,6 @@
 				107A58D4284FA055003D6F2B /* RegisterName.swift */,
 				107A58D6284FA05E003D6F2B /* RegisterGender.swift */,
 				107A58D8284FA08B003D6F2B /* RegisterAge.swift */,
-				107A58DA284FA094003D6F2B /* RegisterType.swift */,
 				107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */,
 				BC517A022852DAEE00992BC5 /* RegisterFinish.swift */,
 			);
@@ -200,6 +199,7 @@
 			children = (
 				EFA7B9372849EB5C006671EF /* TestExtension.swift */,
 				107A58E2284FA4E5003D6F2B /* ColorExtension.swift */,
+				10F486252855F290005A7ED6 /* VisibleExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -402,6 +402,7 @@
 				BC517A0A2853769D00992BC5 /* GilCatInfo.swift in Sources */,
 				BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */,
 				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
+				10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
 				107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */,
 				EFA7B93B2849EBB9006671EF /* ColorPallete.swift in Sources */,
@@ -410,7 +411,6 @@
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
 				BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */,
-				107A58DB284FA094003D6F2B /* RegisterType.swift in Sources */,
 				107A58D5284FA055003D6F2B /* RegisterName.swift in Sources */,
 				107A58D7284FA05E003D6F2B /* RegisterGender.swift in Sources */,
 			);
@@ -557,6 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GilCat/Preview Content\"";
+				DEVELOPMENT_TEAM = 5N6FVFS939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -587,6 +588,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GilCat/Preview Content\"";
+				DEVELOPMENT_TEAM = 5N6FVFS939;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

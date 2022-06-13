@@ -14,7 +14,7 @@ struct GilCatTextField: View {
                 Spacer()
                 }
             }
-            TextField("", text: $inputText).padding()
+            TextField("", text: $inputText).foregroundColor(.white).padding()
         }
     }
 

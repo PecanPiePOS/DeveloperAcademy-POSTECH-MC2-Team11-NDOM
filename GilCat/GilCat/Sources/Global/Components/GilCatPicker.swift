@@ -29,10 +29,8 @@ struct GilCatPicker: View {
                     isClick.toggle()
                         if selected == secondSelect {
                             self.selected = firstSelect
-                            print("\(selected)")
                         } else {
                             self.selected = secondSelect
-                            print("\(selected)")
                         }
                     }
                 }
