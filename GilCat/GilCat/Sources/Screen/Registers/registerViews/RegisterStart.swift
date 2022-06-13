@@ -32,7 +32,10 @@ struct RegisterStart: View {
                     Button {
                         isLinkActive = true
                         // 고양이 정보를 저장하는 새로운 객체 생성
-                        catInfo.infoList.append(GilCatInfo())
+                        // 등록하다가 뒤로 가기로 다시 왔다면 객체 생성을 하지 않고 기존 객체를 씀
+                        if catInfo.infoList.isEmpty || catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
+                            catInfo.infoList.append(GilCatInfo())
+                        }
                     } label: {
                         GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
                     }

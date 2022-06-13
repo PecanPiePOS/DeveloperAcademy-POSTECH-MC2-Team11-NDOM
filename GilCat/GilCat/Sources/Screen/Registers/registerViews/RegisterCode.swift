@@ -66,7 +66,7 @@ struct RegisterCode: View {
         }
         .navigationBarTitle("코드", displayMode: .inline)
         .background(Color.backgroundColor)
-        .alert("코드를 모두 입력해주세요", isPresented: $isAlertActice) {
+        .alert("코드를 모두 입력하거나 건너뛰기를 눌러주세요", isPresented: $isAlertActice) {
             Button("확인") {}
         }
         .onAppear {

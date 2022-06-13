@@ -71,6 +71,10 @@ struct RegisterAge: View {
             .navigationBarTitle("나이", displayMode: .inline)
             .focused($isFocused, equals: 1)
             .onAppear {
+                // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
+                if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer &&  catInfo.infoList[catInfo.infoList.endIndex-1].age != nil {
+                    inputText = catInfo.infoList[catInfo.infoList.endIndex-1].age!
+                }
                 // 화면이 나타나고 0.5초 뒤에 자동으로 입력칸에 포커스 되도록 하기
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         isFocused = 1
