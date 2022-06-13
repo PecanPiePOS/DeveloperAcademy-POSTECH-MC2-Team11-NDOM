@@ -9,7 +9,7 @@ import Combine
 
 // 고양이 정보 객체에 대한 리스트
 class GilCatInfoList: ObservableObject {
-    var infoList = [GilCatInfo]()
+    var infoList = [GilCatInfo.init(name: "김연호", age: "25", gender: "남자", neutralized: "x", type: "상남자", avatarColor: .emerald, avatarBodyIndex: 2, isUploadedToServer: true)]
 }
 
 // 고양이 정보 객체

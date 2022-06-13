@@ -9,25 +9,34 @@ import SwiftUI
 
 struct LoginView: View {
     
+    enum FocusField: Hashable {
+        case field
+    }
+    
     @State private var nickName = ""
     @State private var checkName = false
     @State private var checkNetwork = true
+    @FocusState private var focusField: FocusField?
     
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Background")
+                Color("BackGroundColor")
                     .edgesIgnoringSafeArea(.all
                     )
                 VStack(alignment: .leading) {
-                    Spacer()
-                    
                     TextField("", text: $nickName)
+                        .focused($focusField, equals: .field)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                self.focusField = .field }
+                        }
                         .modifier(PlaceholderStyle(showPlaceHolder: nickName.isEmpty, placeholder: "원하는 닉네임을 정해주세요!"))
                         .foregroundColor(Color.white)
                         .font(.system(size: 22, weight: .heavy))
                         .disableAutocorrection(true)
                         .padding(.horizontal, 40)
+                        .padding(.top, 40)
                     
                     if checkNetwork && checkName {
                         Text("중복된 이름입니다.")
@@ -53,7 +62,7 @@ struct LoginView: View {
                         Rectangle()
                             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
                             .cornerRadius(20)
-                            .foregroundColor(Color("Button"))
+                            .foregroundColor(!checkNetwork || checkName || nickName.count > 8 || nickName.count < 2 ? .gray : Color("ButtonColor"))
                             .overlay {
                                 Text("다음")
                                     .font(.title3)
@@ -65,8 +74,10 @@ struct LoginView: View {
                     }
                     .disabled(!checkNetwork || checkName || nickName.count > 8 || nickName.count < 2)
                 }
-                .navigationBarHidden(true)
+                .navigationBarHidden(false)
             }
+            .navigationTitle("닉네임 등록")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
