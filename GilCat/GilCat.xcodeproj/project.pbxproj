@@ -42,6 +42,7 @@
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
 		EF97BE3128579C8F00D1B37E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE3028579C8F00D1B37E /* API.swift */; };
+		EF97BE3428579D1300D1B37E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = EF97BE3328579D1300D1B37E /* Moya */; };
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
@@ -111,6 +112,7 @@
 			files = (
 				106598C52856DD7200F44728 /* ConfettiSwiftUI in Frameworks */,
 				106598C22856DD2C00F44728 /* PartialSheet in Frameworks */,
+				EF97BE3428579D1300D1B37E /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +361,7 @@
 			packageProductDependencies = (
 				106598C12856DD2C00F44728 /* PartialSheet */,
 				106598C42856DD7200F44728 /* ConfettiSwiftUI */,
+				EF97BE3328579D1300D1B37E /* Moya */,
 			);
 			productName = GilCat;
 			productReference = EF1DEE2F2849B795000268C7 /* GilCat.app */;
@@ -413,6 +416,7 @@
 			packageReferences = (
 				BC517A042852E84D00992BC5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				EF97BE3228579D1300D1B37E /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = EF1DEE302849B795000268C7 /* Products */;
 			projectDirPath = "";
@@ -786,6 +790,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		EF97BE3228579D1300D1B37E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -798,6 +810,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BC517A042852E84D00992BC5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
+		};
+		EF97BE3328579D1300D1B37E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF97BE3228579D1300D1B37E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
