@@ -13,7 +13,6 @@ struct RegisterAvatar: View {
     let viewSecondChoice: String = "색"
     
     init(_ buildNavigationStack: Binding<Bool>) {
-        UIScrollView.appearance().bounces = false
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
         self._buildNavigationStack = buildNavigationStack
     }
@@ -108,20 +107,26 @@ struct RegisterAvatar: View {
     
     // 몸체 선택하는 창 나오게 하기
     func getBodySelectView() -> some View {
-        return ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: gridSpace) {
-                ForEach(0..<selectedCatColor.group.count/2, id: \.self) { index in
-                    VStack(spacing: gridSpace) {
-                        getImageView(2*index)
-                        getImageView(2*index+1)
+        return ZStack {
+            Rectangle()
+                .padding()
+                .frame(height: 250)
+                .foregroundColor(Color.pickerColor)
+                .background(Color.pickerColor)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: gridSpace) {
+                    ForEach(0..<selectedCatColor.group.count/2, id: \.self) { index in
+                        VStack(spacing: gridSpace) {
+                            getImageView(2*index)
+                            getImageView(2*index+1)
+                        }
                     }
                 }
+                .padding()
+                .frame(height: 250)
+                .background(Color.pickerColor)
             }
-            .padding()
-            .frame(height: 250)
-            .background(Color.pickerColor)
         }
-        
     }
     
     // 색깔을 선택할 때 반복되는 도형에 대한 뷰를 반환
