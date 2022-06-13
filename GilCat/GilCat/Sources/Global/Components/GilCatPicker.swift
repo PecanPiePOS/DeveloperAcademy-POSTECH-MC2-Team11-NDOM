@@ -1,10 +1,3 @@
-//
-//  CustomPicker.swift
-//  GilCat
-//
-//  Created by 김연호 on 2022/06/09.
-//
-
 import SwiftUI
 
 // 앱에 색깔에 맞춰서 두가지 선택지가 있는 피커 뷰
