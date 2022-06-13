@@ -402,8 +402,6 @@
 			packageReferences = (
 				BC517A042852E84D00992BC5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				58790F6628558F3C00B20552 /* XCRemoteSwiftPackageReference "PartialSheet" */,
-				106598C02856DD2C00F44728 /* XCRemoteSwiftPackageReference "PartialSheet" */,
-				106598C32856DD7200F44728 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = EF1DEE302849B795000268C7 /* Products */;
 			projectDirPath = "";
