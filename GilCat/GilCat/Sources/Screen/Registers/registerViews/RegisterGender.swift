@@ -5,10 +5,12 @@ struct RegisterGender: View {
     @EnvironmentObject var catInfo: GilCatInfoList
     @State var genderChoice: GilCatPicker.Choice = .first
     @State var TNRChoice: GilCatPicker.Choice = .first
-    let genderFirstChoice = "암컷"
-    let genderSecondChoice = "수컷"
-    let TNRFirstChoice = "❌"
-    let TNRSecondChoice = "⭕️"
+    @State var isFirstClick : Bool = true
+    @State var isShowingTNRPick : Bool = false
+    let genderFirstChoice = "수컷"
+    let genderSecondChoice = "암컷"
+    let TNRFirstChoice = "⭕️"
+    let TNRSecondChoice = "❌"
     
     var body: some View {
         ZStack {
@@ -21,27 +23,36 @@ struct RegisterGender: View {
                 }
                 GilCatPicker(isClick: $genderChoice, firstSelect: genderFirstChoice, secondSelect: genderSecondChoice)
                 // 중성화 여부 피커
-                HStack {
-                    GilCatTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
-                    Spacer()
+                if isShowingTNRPick {
+                    HStack {
+                        GilCatTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
+                        Spacer()
+                    }.transition(.opacity)
+                    GilCatPicker(isClick: $TNRChoice, firstSelect: TNRFirstChoice, secondSelect: TNRSecondChoice).transition(.opacity)
                 }
-                GilCatPicker(isClick: $TNRChoice, firstSelect: TNRFirstChoice, secondSelect: TNRSecondChoice)
-                
                 Spacer()
                 NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
                     Button {
-                        // 어떤게 클릭됐는지에 따라 값 줘야함
-                        if genderChoice == .first {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
+                        if isFirstClick {
+                            withAnimation {
+                                isShowingTNRPick.toggle()
+                                isFirstClick = false
+                            }
                         } else {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
+                                // 어떤게 클릭됐는지에 따라 값 줘야함
+                                if genderChoice == .first {
+                                    catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
+                                } else {
+                                    catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
+                                }
+                                if TNRChoice == .first {
+                                    catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRFirstChoice
+                                } else {
+                                    catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRSecondChoice
+                                }
+                                    isLinkActive = true
+                            
                         }
-                        if TNRChoice == .first {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRFirstChoice
-                        } else {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRSecondChoice
-                        }
-                        isLinkActive = true
                     } label: {
                         GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
                     }
@@ -76,17 +87,3 @@ struct RegisterGender_Previews: PreviewProvider {
         RegisterGender().environmentObject(GilCatInfoList().self)
     }
 }
-
-// ZStack {
-//    Rectangle().frame(width: 200, height: 50).cornerRadius(20).foregroundColor(.white).offset(x: isClick ? 100 : -100).onTapGesture {
-//        //하얀색과 배경이 같이 클릭될 시 안 움직이게 하는 방법
-//    }
-//    HStack {
-//        Text(male).offset(x: -70).foregroundColor(isClick ? .white : .buttonColor)
-//        Text(female).offset(x: 70).foregroundColor(isClick ? .buttonColor : .white)
-//    }//클릭시 좌표값에 따라 도형이 안움직이게 해야함
-// }.frame(width: 350, height: 50).background(Color.pickerColor).cornerRadius(20).onTapGesture {
-//        withAnimation {
-//        isClick.toggle()
-//        }
-//    }
