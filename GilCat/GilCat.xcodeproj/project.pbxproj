@@ -20,6 +20,7 @@
 		10CFA9AF28503560003DBF63 /* GilCatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9AE28503560003DBF63 /* GilCatTextField.swift */; };
 		10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFA9B028504144003DBF63 /* GilCatTitle.swift */; };
 		10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F486252855F290005A7ED6 /* VisibleExtension.swift */; };
+		10FA62992856E8BC00DEAD4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */; };
 		5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800E59D285191F3002F6A75 /* BarColorNavigation.swift */; };
 		58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58790F6B28558FD800B20552 /* NoteProfileView.swift */; };
@@ -34,7 +35,6 @@
 		BC517A0A2853769D00992BC5 /* GilCatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A092853769D00992BC5 /* GilCatInfo.swift */; };
 		BC517A0D2853780B00992BC5 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A0C2853780B00992BC5 /* TagView.swift */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
-		EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE362849B796000268C7 /* Assets.xcassets */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
@@ -401,8 +401,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */,
+				10FA62992856E8BC00DEAD4A /* Assets.xcassets in Resources */,
 				EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */,
-				EF1DEE372849B796000268C7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

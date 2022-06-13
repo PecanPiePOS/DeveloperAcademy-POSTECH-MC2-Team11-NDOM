@@ -73,7 +73,7 @@ struct RegisterGender: View {
 }
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender()
+        RegisterGender().environmentObject(GilCatInfoList().self)
     }
 }
 

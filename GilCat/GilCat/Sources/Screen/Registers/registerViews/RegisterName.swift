@@ -54,6 +54,6 @@ struct RegisterName: View {
 }
 struct RegisterName_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterName()
+        RegisterName().environmentObject(GilCatInfoList().self)
     }
 }

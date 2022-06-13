@@ -133,6 +133,6 @@ struct RegisterAvatar: View {
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAvatar()
+        RegisterAvatar().environmentObject(GilCatInfoList().self)
     }
 }

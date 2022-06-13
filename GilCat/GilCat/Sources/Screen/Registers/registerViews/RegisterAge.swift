@@ -35,7 +35,7 @@ struct RegisterAge: View {
                         }
                         
                         GilCatTextField(inputText: $inputType, placeHolder: "\(catInfo.infoList[catInfo.infoList.endIndex-1].name!)의 종을 아신다면 알려주세요. ").padding([.leading, .bottom]).focused($isFocused, equals: 2)
-                    }.transition(.slide)
+                    }.transition(.opacity)
                 }
                 Spacer()
                 
@@ -90,6 +90,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge()
+        RegisterAge().environmentObject(GilCatInfoList().self)
     }
 }

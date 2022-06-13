@@ -123,6 +123,6 @@ struct RegisterFinish: View {
 
 struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterFinish()
+        RegisterFinish().environmentObject(GilCatInfoList().self)
     }
 }
