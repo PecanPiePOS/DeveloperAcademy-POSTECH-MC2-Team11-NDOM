@@ -19,5 +19,14 @@ struct GilCatInfo {
     var gender: String?
     var neutralized: String?
     var type: String?
-    var imageName: String?
+    var avatarColor: GilCatColor?
+    var avatarBodyIndex: Int?
+    var imageName: String? {
+        guard let color = avatarColor,
+              let body = avatarBodyIndex else {
+            return nil
+        }
+        return color.group[body]
+    }
+    var isUploadedToServer: Bool = false
 }

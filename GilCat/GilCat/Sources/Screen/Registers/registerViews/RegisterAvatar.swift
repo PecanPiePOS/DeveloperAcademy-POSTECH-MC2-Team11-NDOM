@@ -2,11 +2,13 @@ import SwiftUI
 
 struct RegisterAvatar: View {
     let gridSpace: CGFloat = 20
+    @State var viewChoice: GilCatPicker.Choice = .first
     @State var isLinkActive = false
     @State var selectedCatColor = GilCatColor.gray
     @State var selectedImageIndex = 0
-    @State var selectedView: String = "외형"
     @EnvironmentObject var catInfo: GilCatInfoList
+    let viewFirstChoice: String = "외형"
+    let viewSecondChoice: String = "색"
     
     init() {
         UIScrollView.appearance().bounces = false
@@ -29,10 +31,10 @@ struct RegisterAvatar: View {
                 .cornerRadius(50)
                 .frame(maxWidth: .infinity)
             // 색과 외형 중 고를 수 있는 피커
-            GilCatPicker(firstSelect: "색", secondSelect: "외형", selected: $selectedView)
+            GilCatPicker(isClick: $viewChoice, firstSelect: viewFirstChoice, secondSelect: viewSecondChoice)
                 .padding(.vertical)
             // 피커에 따라 보여지는 커스텀 칸
-            if selectedView == "외형"{
+            if viewChoice == .first {
                 getBodySelectView()
             } else {
                 getColorSelectView()
@@ -41,8 +43,9 @@ struct RegisterAvatar: View {
             // 메인 버튼
             NavigationLink(destination: RegisterFinish(), isActive: $isLinkActive) {
                 Button {
-                    // 커스텀해서 선택된 이미지 이름 저장하기
-                    catInfo.infoList[catInfo.infoList.endIndex-1].imageName = selectedCatColor.group[selectedImageIndex]
+                    // 커스텀해서 선택된 이미지 정보 저장하기
+                    catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor = selectedCatColor
+                    catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex = selectedImageIndex
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
@@ -52,6 +55,17 @@ struct RegisterAvatar: View {
         }
         .background(Color.backgroundColor)
         .navigationBarTitle("아바타", displayMode: .inline)
+        .onAppear {
+            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
+            if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
+                if catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor != nil {
+                    selectedCatColor = catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor!
+                }
+                if catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex != nil {
+                    selectedImageIndex = catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex!
+                }
+            }
+        }
     }
     
     // 몸체를 선택할 때 반복되는 이미지에 대한 뷰를 반환
