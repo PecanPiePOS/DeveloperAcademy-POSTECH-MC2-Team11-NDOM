@@ -31,6 +31,7 @@ struct RegisterGender: View {
                 }
                 GilCatPicker(isClick: $genderChoice, firstSelect: genderFirstChoice, secondSelect: genderSecondChoice)
                 // 중성화 여부 피커
+                // 다음 버튼을 처음 누르고 난 뒤 페이드인 효과로 중성화 피커 나오게 함
                 if isShowingTNRPick {
                     HStack {
                         GilCatTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
@@ -40,7 +41,7 @@ struct RegisterGender: View {
                 }
                 Spacer()
                 NavigationLink(destination: RegisterAge($buildNavigationStack), isActive: $isLinkActive) {
-                    Button {
+                    Button {//버튼을 처음 눌렀다면 isShowingTNRPick을 true 에서 false 로 토글 해주고 isFirstClick값도 변경
                         if isFirstClick {
                             withAnimation {
                                 isShowingTNRPick.toggle()

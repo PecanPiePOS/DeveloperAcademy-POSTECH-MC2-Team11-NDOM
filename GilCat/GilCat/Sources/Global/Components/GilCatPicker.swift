@@ -26,7 +26,6 @@ struct GilCatPicker: View {
                         } else {
                             isClick = .first
                         }
-                        print(isClick)
                     }
                 }
         }
