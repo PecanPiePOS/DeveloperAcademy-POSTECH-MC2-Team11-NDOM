@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RegisterGender: View {
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo: GilCatInfoList
+    @EnvironmentObject var catInfo: GilCatDataManager
     @State var genderChoice: GilCatPicker.Choice = .first
     @State var TNRChoice: GilCatPicker.Choice = .first
     let genderFirstChoice = "암컷"
@@ -31,16 +31,16 @@ struct RegisterGender: View {
                 NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
                     Button {
                         // 어떤게 클릭됐는지에 따라 값 줘야함
-                        if genderChoice == .first {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
-                        } else {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
-                        }
-                        if TNRChoice == .first {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRFirstChoice
-                        } else {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRSecondChoice
-                        }
+//                        if genderChoice == .first {
+//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
+//                        } else {
+//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
+//                        }
+//                        if TNRChoice == .first {
+//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRFirstChoice
+//                        } else {
+//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRSecondChoice
+//                        }
                         isLinkActive = true
                     } label: {
                         GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
@@ -52,20 +52,20 @@ struct RegisterGender: View {
         .navigationBarTitle("성별 및 중성화", displayMode: .inline)
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
-                if catInfo.infoList[catInfo.infoList.endIndex-1].gender != nil {
-                    if genderFirstChoice == catInfo.infoList[catInfo.infoList.endIndex-1].gender! {
-                        genderChoice = .first
-                    } else {
-                        genderChoice = .second
-                    }
+            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender != nil {
+//                    if genderFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender {
+//                        genderChoice = .first
+//                    } else {
+//                        genderChoice = .second
+//                    }
                 }
-                if catInfo.infoList[catInfo.infoList.endIndex-1].neutralized != nil {
-                    if TNRFirstChoice == catInfo.infoList[catInfo.infoList.endIndex-1].neutralized! {
-                        TNRChoice = .first
-                    } else {
-                        TNRChoice = .second
-                    }
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized != nil {
+//                    if TNRFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized {
+//                        TNRChoice = .first
+//                    } else {
+//                        TNRChoice = .second
+//                    }
                 }
             }
         }
@@ -73,7 +73,7 @@ struct RegisterGender: View {
 }
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender().environmentObject(GilCatInfoList().self)
+        RegisterGender().environmentObject(GilCatDataManager().self)
     }
 }
 

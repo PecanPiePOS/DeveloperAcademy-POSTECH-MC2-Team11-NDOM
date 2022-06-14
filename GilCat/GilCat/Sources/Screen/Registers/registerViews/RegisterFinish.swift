@@ -25,7 +25,7 @@ struct RegisterFinish: View {
                     .frame(width: 130, height: 130)
                     .background(.white)
                     .blur(radius: 50.0)
-                Image(catInfo.infoList[catInfo.infoList.endIndex-1].imageName!)
+                Image(catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].imageName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 130, height: 130)
@@ -51,7 +51,7 @@ struct RegisterFinish: View {
             NavigationLink(destination: TagView(), isActive: $isLinkActive) {
                 Button {
                     // Todo: 완성된 고양이 정보 객체를 서버에 보내기
-                    catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer = true
+                    catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer = true
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
@@ -82,22 +82,13 @@ struct RegisterFinish: View {
         case 0:
             content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
         case 1:
-            content =
-            if let gender = catInfo.infoList[catInfo.infoList.endIndex-1].gender {
-                content = gender
-            }
+            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? "수컷" : "암컷"
         case 2:
-            if let neutralized = catInfo.infoList[catInfo.infoList.endIndex-1].neutralized {
-                content = neutralized
-            }
+            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? "중성화" : "안함"
         case 3:
-            if let age = catInfo.infoList[catInfo.infoList.endIndex-1].age {
-                content = age
-            }
+            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age
         case 4:
-            if let type = catInfo.infoList[catInfo.infoList.endIndex-1].type {
-                content = type
-            }
+            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type
         default:
             content = "-"
         }
@@ -122,6 +113,6 @@ struct RegisterFinish: View {
 
 struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterFinish().environmentObject(GilCatInfoList().self)
+        RegisterFinish().environmentObject(GilCatDataManager().self)
     }
 }

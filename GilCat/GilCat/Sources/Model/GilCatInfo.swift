@@ -10,11 +10,11 @@ import Foundation
 
 // MARK: 한 마리 고양이 정보 객체
 struct GilCatInfo {
-    var name: String                                // 이름
-    var age: String                                 // 나이
+    var name: String                = ""            // 이름
+    var age: String                 = ""            // 나이
     var gender: GilCatGender        = .male         // 성별
     var neutralized: Bool           = true          // 중성화 여부
-    var type: String                                // 종
+    var type: String                = ""            // 종
     var avatarColor: GilCatColor    = .gray         // 아바타 색깔
     var avatarBodyIndex: Int        = 0             // 아바타 몸
     var imageName: String {                         // 아바타 이미지
@@ -26,7 +26,6 @@ struct GilCatInfo {
     var snackCount: Int             = 0
     var healthTagInfo: [String]     = []
     var memoInfo: [MemoInfo]        = []
-    
 }
 
 // MARK: 먹이 정보

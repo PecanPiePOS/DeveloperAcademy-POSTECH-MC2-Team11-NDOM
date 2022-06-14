@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegisterStart: View {
     @State var isLinkActive = false
-    @EnvironmentObject var catInfo: GilCatInfoList
+    @EnvironmentObject var catInfo: GilCatDataManager
     var body: some View {
         // Todo: 현재는 네비게이션뷰로 다른 뷰들을 연결했지만 괜찮은 애니메이션 전환 요소를 찾으면 바꿀 예정입니다.
         NavigationView {
@@ -33,8 +33,9 @@ struct RegisterStart: View {
                         isLinkActive = true
                         // 고양이 정보를 저장하는 새로운 객체 생성
                         // 등록하다가 뒤로 가기로 다시 왔다면 객체 생성을 하지 않고 기존 객체를 씀
-                        if catInfo.infoList.isEmpty || catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
-                            catInfo.infoList.append(GilCatInfo())
+                        if catInfo.gilCatInfos.isEmpty || catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
+                            let newCat = GilCatInfo()
+                            catInfo.gilCatInfos.append(newCat)
                         }
                     } label: {
                         GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)

@@ -5,7 +5,7 @@ struct RegisterName: View {
     @State var isLinkActive = false
     @State var isAlertActive = false
     @FocusState var isFocused: Bool?
-    @EnvironmentObject var catInfo: GilCatInfoList
+    @EnvironmentObject var catInfo: GilCatDataManager
     
     var body: some View {
         ZStack {
@@ -25,7 +25,7 @@ struct RegisterName: View {
                         if inputText.isEmpty {
                             isAlertActive = true
                         } else {
-                            catInfo.infoList[catInfo.infoList.endIndex-1].name = inputText
+                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name = inputText
                             isLinkActive = true
                         }
                     } label: {
@@ -42,8 +42,8 @@ struct RegisterName: View {
         }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer &&  catInfo.infoList[catInfo.infoList.endIndex-1].name != nil {
-                inputText = catInfo.infoList[catInfo.infoList.endIndex-1].name!
+            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer &&  catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name != nil {
+                inputText = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
             }
             // 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -54,6 +54,6 @@ struct RegisterName: View {
 }
 struct RegisterName_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterName().environmentObject(GilCatInfoList().self)
+        RegisterName().environmentObject(GilCatDataManager().self)
     }
 }
