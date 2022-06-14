@@ -10,14 +10,22 @@ struct RegisterAge: View {
     @State var inputAge = ""
     @State var inputType = ""
     @State var isLinkActive = false
+    @Binding var buildNavigationStack: Bool
     @State var isShowingType = false
     @State var isFirstClick = true
+    @State var isFieldEmpty = true
     @FocusState var isFocused: Int?
     @EnvironmentObject var catInfo: GilCatInfoList
+    @Environment(\.presentationMode) var presentation
+    
+    init(_ buildNavigationStack: Binding<Bool>) {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._buildNavigationStack = buildNavigationStack
+    }
     
     var body: some View {
         ZStack {
-        Color.backgroundColor.ignoresSafeArea()
+            Color.backgroundColor.ignoresSafeArea(.all)
         
             VStack {
                 HStack {
@@ -26,6 +34,7 @@ struct RegisterAge: View {
                 }
                 
                 GilCatTextField(inputText: $inputAge, placeHolder: "\(catInfo.infoList[catInfo.infoList.endIndex-1].name!)은(는) 몇 살인가요?").padding([.leading, .bottom])
+                    .keyboardType(.numberPad)
                 
                 if isShowingType {
                     VStack {
@@ -39,36 +48,62 @@ struct RegisterAge: View {
                 }
                 Spacer()
                 
-                NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterAvatar($buildNavigationStack), isActive: $isLinkActive) {
                     HStack {
-                        Button {
-                            if isFirstClick == false {
-                                catInfo.infoList[catInfo.infoList.endIndex-1].age = inputAge
-                            }
-                            isLinkActive = true
-                        } label: {
-                            GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
-                        }
+                        
                         Button {
                             if isFirstClick {
                                 withAnimation {
                                     isShowingType.toggle()
                                 }
+                            }else if inputType.isEmpty {//나이값만 입력하고 건너뛰기를 할 경우 나이값은 서버로 보내줘야 함
+                                catInfo.infoList[catInfo.infoList.endIndex-1].age = inputAge
+                                isLinkActive = true
+                            }
+                            isFirstClick = false
+                            isFocused = 2
+                            } label: {
+                                GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                            }
+                        
+                        Button {
+                            if isFirstClick {
+                                withAnimation {
+                                    isShowingType.toggle()
+                                }
+                                
                                 isFirstClick = false
                                 isFocused = 2
-                            } else {
+                            }else if inputAge.isEmpty {//나이 입력안하고 종값만 입력했을때
+                                catInfo.infoList[catInfo.infoList.endIndex-1].type = inputType
+                                isLinkActive = true
+                            }else {
                                 catInfo.infoList[catInfo.infoList.endIndex-1].age = inputAge
                                 catInfo.infoList[catInfo.infoList.endIndex-1].type = inputType
                                 isLinkActive = true
                             }
                         } label: {
                             GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
-                        }
+                        }.frame(maxWidth: .infinity)
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
-            .navigationBarTitle("나이", displayMode: .inline)
+            .navigationTitle("나이 & 종")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationViewStyle(.stack)
+                    // MARK: 툴바 수정
+                    .toolbar {
+                        ToolbarItem(placement: .navigation) {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .onTapGesture {
+                                    self.presentation.wrappedValue.dismiss()
+                                }
+                        }
+                    }
             .focused($isFocused, equals: 1)
             .onAppear {
                 // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
@@ -90,6 +125,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge().environmentObject(GilCatInfoList().self)
+        RegisterAge(.constant(false)).environmentObject(GilCatInfoList().self)
     }
 }
