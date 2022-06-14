@@ -26,5 +26,13 @@ class HomeViewController: UIViewController {
         
         testImageView.frame.origin = CGPoint(x: 128.3333282470703,
                                             y: 483.0)
+        let catTouchGesture = UITapGestureRecognizer(target: self, action: #selector(catImageButtonTapped(sender:)))
+        testImageView.isUserInteractionEnabled = true
+        testImageView.addGestureRecognizer(catTouchGesture)
     }
+    
+    @objc private func catImageButtonTapped(sender: UITapGestureRecognizer) {
+        print(sender.location(in: view))
+    }
+    
 }
