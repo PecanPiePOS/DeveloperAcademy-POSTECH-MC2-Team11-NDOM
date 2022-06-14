@@ -54,6 +54,8 @@
 		EF97BE472858194300D1B37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE462858194300D1B37E /* AuthService.swift */; };
 		EF97BE4F285837F300D1B37E /* GilCatDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */; };
 		EF97BE5228585ECB00D1B37E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE5128585ECB00D1B37E /* Home.swift */; };
+		EF97BE542858646500D1B37E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE532858646500D1B37E /* HomeViewController.swift */; };
+		EF97BE562858647400D1B37E /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF97BE552858647400D1B37E /* HomeViewController.storyboard */; };
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
@@ -118,6 +120,8 @@
 		EF97BE462858194300D1B37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDataManager.swift; sourceTree = "<group>"; };
 		EF97BE5128585ECB00D1B37E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		EF97BE532858646500D1B37E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EF97BE552858647400D1B37E /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
@@ -393,6 +397,8 @@
 			children = (
 				EFA7B93F2849EC2C006671EF /* SupportViews */,
 				EF97BE5128585ECB00D1B37E /* Home.swift */,
+				EF97BE532858646500D1B37E /* HomeViewController.swift */,
+				EF97BE552858647400D1B37E /* HomeViewController.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF97BE562858647400D1B37E /* HomeViewController.storyboard in Resources */,
 				EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */,
 				58B21B102856ED3D00205AE5 /* Colors.xcassets in Resources */,
 				10FA62992856E8BC00DEAD4A /* Assets.xcassets in Resources */,
@@ -552,6 +559,7 @@
 				04F0774828518C7E00339172 /* CodeView.swift in Sources */,
 				042322BF2856D6BD001F1217 /* CatPopup.swift in Sources */,
 				BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */,
+				EF97BE542858646500D1B37E /* HomeViewController.swift in Sources */,
 				BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */,
 				EF97BE472858194300D1B37E /* AuthService.swift in Sources */,
 				58B21B132856FFF900205AE5 /* CatSelectPopUpView.swift in Sources */,
