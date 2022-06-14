@@ -8,13 +8,9 @@
 import Foundation
 import Moya
 
-enum API {
-    case mock
-}
-
 extension TargetType {
     var baseURL: URL {
-        URL(string: "https://ebad3845-c82e-4c17-8284-107365ea3e67.mock.pstmn.io")!
+        URL(string: "https://ebad3845-c82e-4c17-8284-107365ea3e67.mock.pstmn.io/api")!
     }
     
     var headers: [String: String]? {
