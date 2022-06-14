@@ -57,13 +57,11 @@ struct RegisterAvatar: View {
         .navigationBarTitle("아바타", displayMode: .inline)
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor != nil {
-                    selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
-                }
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex != nil {
-                    selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
-                }
+            if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor != nil {
+                selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
+            }
+            if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex != nil {
+                selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
             }
         }
         .background(Color.backgroundColor)
@@ -83,13 +81,11 @@ struct RegisterAvatar: View {
         }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor != nil {
-                    selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
-                }
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex != nil {
-                    selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
-                }
+            if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor != nil {
+                selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
+            }
+            if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex != nil {
+                selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
             }
         }
     }

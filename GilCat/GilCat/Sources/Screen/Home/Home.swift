@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct Home: View {
+    
+    @ObservedObject var viewModel: HomeViewModel
+    
     var body: some View {
-        HomeContainer()
+        HomeContainer(viewModel: viewModel)
             .ignoresSafeArea()
     }
 }
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        Home(viewModel: HomeViewModel())
     }
 }

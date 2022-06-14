@@ -5,18 +5,22 @@
 //  Created by Woody on 2022/06/14.
 //
 
+import SwiftUI
 import UIKit
 
 class HomeViewController: UIViewController {
-    let imageSize: CGSize = CGSize(width: 4000, height: 2250)
-    let catSize: CGSize = CGSize(width: 70, height: 70)
 
     @IBOutlet weak var contentView: UIView!
+    
+    var viewModel: HomeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let testImage = UIImage(named: "cat_brown_1")
+        let cat = viewModel?.catLists[0]
+        let catSize = cat!.gilCatMapInformation.mapInformation.size.size
+        
+        let testImage = UIImage(named: cat!.imageName)
         let testImageView = UIImageView(image: testImage)
         
         contentView.addSubview(testImageView)
@@ -26,13 +30,14 @@ class HomeViewController: UIViewController {
         
         testImageView.frame.origin = CGPoint(x: 128.3333282470703,
                                             y: 483.0)
-        let catTouchGesture = UITapGestureRecognizer(target: self, action: #selector(catImageButtonTapped(sender:)))
+        let catTouchGesture = UITapGestureRecognizer(target: self, action: #selector(catImageButtonTapped))
         testImageView.isUserInteractionEnabled = true
         testImageView.addGestureRecognizer(catTouchGesture)
     }
     
-    @objc private func catImageButtonTapped(sender: UITapGestureRecognizer) {
-        print(sender.location(in: view))
+    @objc private func catImageButtonTapped() {
+        viewModel?.catImageButtonTapped()
+        print("catImageButtonTapped")
     }
     
 }

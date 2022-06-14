@@ -40,16 +40,16 @@ struct RegisterGender: View {
                 NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
                     Button {
                         // 어떤게 클릭됐는지에 따라 값 줘야함
-//                        if genderChoice == .first {
-//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
-//                        } else {
-//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
-//                        }
-//                        if TNRChoice == .first {
-//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRFirstChoice
-//                        } else {
-//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRSecondChoice
-//                        }
+                        //                        if genderChoice == .first {
+                        //                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
+                        //                        } else {
+                        //                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
+                        //                        }
+                        //                        if TNRChoice == .first {
+                        //                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRFirstChoice
+                        //                        } else {
+                        //                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRSecondChoice
+                        //                        }
                         isLinkActive = true
                     } label: {
                         GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
@@ -60,36 +60,34 @@ struct RegisterGender: View {
             }
         }
         .navigationTitle("성별 및 중성화")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(true)
-                .navigationViewStyle(.stack)
-                // MARK: 툴바 수정
-                .toolbar {
-                    ToolbarItem(placement: .navigation) {
-                        Image(systemName: "chevron.backward")
-                            .foregroundColor(.white)
-                            .onTapGesture {
-//                                self.presentation.wrappedValue.dismiss()
-                            }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationViewStyle(.stack)
+        // MARK: 툴바 수정
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        //                                self.presentation.wrappedValue.dismiss()
                     }
-                }
+            }
+        }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender != nil {
-//                    if genderFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender {
-//                        genderChoice = .first
-//                    } else {
-//                        genderChoice = .second
-//                    }
-                }
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized != nil {
-//                    if TNRFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized {
-//                        TNRChoice = .first
-//                    } else {
-//                        TNRChoice = .second
-//                    }
-                }
+            if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender != nil {
+                //                    if genderFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender {
+                //                        genderChoice = .first
+                //                    } else {
+                //                        genderChoice = .second
+                //                    }
+            }
+            if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized != nil {
+                //                    if TNRFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized {
+                //                        TNRChoice = .first
+                //                    } else {
+                //                        TNRChoice = .second
+                //                    }
             }
         }
     }

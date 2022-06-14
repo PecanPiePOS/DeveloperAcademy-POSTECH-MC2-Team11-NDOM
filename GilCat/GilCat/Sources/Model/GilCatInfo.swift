@@ -20,12 +20,12 @@ struct GilCatInfo {
     var imageName: String {                         // 아바타 이미지
         return avatarColor.group[avatarBodyIndex]
     }
-    var isUploadedToServer: Bool    = false
     var dietInfo: DietInfo          = .initCat
     var waterInfo: WaterInfo        = .initCat
     var snackCount: Int             = 0
     var healthTagInfo: [String]     = []
     var memoInfo: [MemoInfo]        = []
+    var gilCatMapInformation: GilCatMapCase = .none
 }
 
 // MARK: 먹이 정보

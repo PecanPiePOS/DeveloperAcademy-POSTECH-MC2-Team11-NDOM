@@ -91,10 +91,10 @@ struct RegisterAge: View {
             .focused($isFocused, equals: 1)
             .onAppear {
                 // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-                if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer &&  catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age != nil {
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age != nil {
                     inputAge = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age
                 }
-                if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer &&  catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type != nil {
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type != nil {
                     inputType = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type
                 }
 
