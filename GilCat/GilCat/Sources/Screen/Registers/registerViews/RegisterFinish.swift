@@ -14,45 +14,51 @@ struct RegisterFinish: View {
     @State var effectCounter: Int = 3
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     @EnvironmentObject var catInfo: GilCatDataManager
+    @Environment(\.presentationMode) var presentation
+    
+    init() {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+    }
     
     var body: some View {
-        VStack {
-            // 제목
-            GilCatTitle(titleText: "축하드려요🎉")
-            // 커스텀한 아바타 + 약간 빛나는 느낌의 효과
-            ZStack {
-                Rectangle()
-                    .frame(width: 130, height: 130)
-                    .background(.white)
-                    .blur(radius: 50.0)
-                Image(catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 130, height: 130)
-                    .padding()
-                    .background(Color.profileBackgroundColor)
-                    .cornerRadius(50)
-                    .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        // 이미지를 클릭하면 폭죽효과 더 볼 수 있음
-                        effectCounter -= 1
-                    }
-            }.padding(30)
-            // 입력했던 정보들
-            VStack(spacing: 15) {
-                getDescribeView(title: "이름", index: 0)
-                getDescribeView(title: "성별", index: 1)
-                getDescribeView(title: "중성화", index: 2)
-                getDescribeView(title: "나이", index: 3)
-                getDescribeView(title: "종", index: 4)
-            }
-            Spacer()
-            // 메인 버튼
-            NavigationLink(destination: TagView(), isActive: $isLinkActive) {
+        ZStack {
+            Color.backgroundColor.edgesIgnoringSafeArea(.all)
+
+            VStack {
+                // 제목
+                GilCatTitle(titleText: "축하드려요🎉")
+                // 커스텀한 아바타 + 약간 빛나는 느낌의 효과
+                ZStack {
+                    Rectangle()
+                        .frame(width: 130, height: 130)
+                        .background(.white)
+                        .blur(radius: 50.0)
+                    Image(catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 130, height: 130)
+                        .padding()
+                        .background(Color.profileBackgroundColor)
+                        .cornerRadius(50)
+                        .frame(maxWidth: .infinity)
+                        .onTapGesture {
+                            // 이미지를 클릭하면 폭죽효과 더 볼 수 있음
+                            effectCounter -= 1
+                        }
+                }.padding(30)
+                // 입력했던 정보들
+                VStack(spacing: 15) {
+                    getDescribeView(title: "이름", index: 0)
+                    getDescribeView(title: "성별", index: 1)
+                    getDescribeView(title: "중성화", index: 2)
+                    getDescribeView(title: "나이", index: 3)
+                    getDescribeView(title: "종", index: 4)
+                }
+                Spacer()
+                // 메인 버튼
                 Button {
                     // Todo: 완성된 고양이 정보 객체를 서버에 보내기
                     catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer = true
-                    isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
                 }
@@ -69,7 +75,7 @@ struct RegisterFinish: View {
                             Image(systemName: "chevron.backward")
                                 .foregroundColor(.white)
                                 .onTapGesture {
-//                                    self.presentation.wrappedValue.dismiss()
+                                    self.presentation.wrappedValue.dismiss()
                                 }
                         }
                     }
@@ -89,7 +95,7 @@ struct RegisterFinish: View {
     // 린트.. 고치려 노력은 해봤지만 방법을 모르겠습니다....
     // 각각의 고양이 정보 뷰 반환하기
     func getDescribeView(title: String, index: Int) -> some View {
-        var content = "-"
+        var content: String
         // 고양이 정보 중 어떤 것인지 구분하기
         switch index {
         case 0:
@@ -97,13 +103,13 @@ struct RegisterFinish: View {
         case 1:
             content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? "수컷" : "암컷"
         case 2:
-            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? "중성화" : "안함"
+            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? "⭕️" : "❌"
         case 3:
             content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age
         case 4:
             content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type
         default:
-            content = "-"
+            content = ""
         }
         // 비어있으면 짝대기로 하기
         if content.isEmpty {

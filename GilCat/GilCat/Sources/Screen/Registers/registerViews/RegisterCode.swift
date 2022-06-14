@@ -13,6 +13,7 @@ struct RegisterCode: View {
     @State var isLinkActive = false
     @State var isAlertActice = false
     @State var codeInput = ""
+    @Environment(\.presentationMode) var presentation
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -74,7 +75,6 @@ struct RegisterCode: View {
                     }
                     .padding()
                 }
-                .isDetailLink(false)
             }
             .navigationTitle("공유코드")
             .navigationBarTitleDisplayMode(.inline)
@@ -86,7 +86,7 @@ struct RegisterCode: View {
                     Image(systemName: "chevron.backward")
                         .foregroundColor(.white)
                         .onTapGesture {
-//                            self.presentation.wrappedValue.dismiss()
+                            self.presentation.wrappedValue.dismiss()
                         }
                 }
             }
