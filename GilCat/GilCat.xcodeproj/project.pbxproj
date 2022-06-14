@@ -333,13 +333,6 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		EF97BE5C2858836000D1B37E /* CatSize */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CatSize;
-			sourceTree = "<group>";
-		};
 		EFA7B92C2849E9EA006671EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,7 +416,6 @@
 		EFA7B93C2849EBD6006671EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EF97BE5C2858836000D1B37E /* CatSize */,
 				EFA7B93F2849EC2C006671EF /* SupportViews */,
 				EF97BE5128585ECB00D1B37E /* Home.swift */,
 				EF97BE5A28587B0600D1B37E /* HomeViewModel.swift */,

@@ -13,43 +13,39 @@ struct Dummy: Identifiable {
     var isClicked: Bool
 }
 
-struct DummyMain: View {
-    
-    @State var isPopup: Bool = false
-    @State var dummyData: [Dummy] = [
-        Dummy(label: "Navi", isClicked: true),
-        Dummy(label: "Nero", isClicked: false)
-    ]
-    
-    @State var gilCatData: [GilCatInfo] = [
-        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: ["간땡이부음","눈이예쁨"], memoInfo: [MemoInfo(time: "6월6일", content: "안녕")])
-    ]
-    
-    var body: some View {
-        ZStack {
-            VStack {
-                Button {
-                    isPopup.toggle()
-                }label: {Text(gilCatData[0].name)}
-                
-            }
-            
-            ForEach(0..<gilCatData.count, id: \.self) { index in
-                
-                if isPopup {
-                    Button {
-                        isPopup.toggle()
-                    }label: {
-                        Rectangle()
-                            .foregroundColor(.clear)
-                    }
-                    .overlay(CatSelectPopup(isPopup: $isPopup, gilCatData: $gilCatData))
-                    .transition(AnyTransition.opacity.animation(.easeInOut))
-                }
-            }
-        }
-    }
-}
+//struct DummyMain: View {
+//
+//    @State var isPopup: Bool = false
+//    @State var dummyData: [Dummy] = [
+//        Dummy(label: "Navi", isClicked: true),
+//        Dummy(label: "Nero", isClicked: false)
+//    ]
+//
+//    var body: some View {
+//        ZStack {
+//            VStack {
+//                Button {
+//                    isPopup.toggle()
+//                }label: {Text(gilCatData[0].name)}
+//
+//            }
+//
+//            ForEach(0..<gilCatData.count, id: \.self) { index in
+//
+//                if isPopup {
+//                    Button {
+//                        isPopup.toggle()
+//                    }label: {
+//                        Rectangle()
+//                            .foregroundColor(.clear)
+//                    }
+//                    .overlay(CatSelectPopup(isPopup: $isPopup, gilCatData: $gilCatData))
+//                    .transition(AnyTransition.opacity.animation(.easeInOut))
+//                }
+//            }
+//        }
+//    }
+//}
 
 struct CatSelectPopup: View {
     @State var isInviting = false
@@ -144,6 +140,6 @@ struct CatSelectPopup: View {
 
 struct CatSelectPopup_Previews: PreviewProvider {
     static var previews: some View {
-        DummyMain()
+        CatSelectPopup(isPopup: .constant(false), gilCatData: .constant([]))
     }
 }

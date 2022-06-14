@@ -5,7 +5,7 @@
 //  Created by Woody on 2022/06/14.
 //
 
-import Foundation
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
     @Published var catLists: [GilCatInfo] = [
@@ -23,7 +23,7 @@ class HomeViewModel: ObservableObject {
                    memoInfo: [],
                    gilCatMapInformation: .seventh)
     ]
-    @Published var selectedIndex: Int = 0
+    @Published var selectedIndex: Int = -1
     
     func catImageButtonTapped() {
         

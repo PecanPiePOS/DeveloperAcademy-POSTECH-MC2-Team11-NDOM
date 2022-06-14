@@ -10,10 +10,16 @@ import SwiftUI
 struct Home: View {
     
     @ObservedObject var viewModel: HomeViewModel
-    
+    @State var isPopup: Bool = false
     var body: some View {
-        HomeContainer(viewModel: viewModel)
-            .ignoresSafeArea()
+        ZStack {
+            HomeContainer(viewModel: viewModel)
+                .ignoresSafeArea()
+            if viewModel.selectedIndex != -1 {
+                CatSelectPopup(isPopup: $isPopup,
+                               gilCatData: $viewModel.catLists)
+            }
+        }
     }
 }
 
