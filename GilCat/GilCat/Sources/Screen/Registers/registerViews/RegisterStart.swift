@@ -10,6 +10,12 @@ import SwiftUI
 struct RegisterStart: View {
     @State var isLinkActive = false
     @EnvironmentObject var catInfo: GilCatDataManager
+    @Environment(\.presentationMode) var presentation
+
+    init() {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+    }
+    
     var body: some View {
         // Todo: 현재는 네비게이션뷰로 다른 뷰들을 연결했지만 괜찮은 애니메이션 전환 요소를 찾으면 바꿀 예정입니다.
         NavigationView {
@@ -28,27 +34,20 @@ struct RegisterStart: View {
                     }
                     .padding()
                     Spacer()
-                }
-                // 목차
-                VStack(alignment: .leading) {
-                    getProcessContentView(order: 1, text: "공유 코드가 있다면 알려주세요!")
-                    getProcessContentView(order: 2, text: "길냥이 프로필을 적어주세요!")
-                    getProcessContentView(order: 3, text: "나만의 길냥이를 만들어주세요!")
-                }
-                .padding()
-                Spacer()
-                // 메인 버튼
-                NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
-//                    Button( {
-//                        isLinkActive = true
-//                        // 고양이 정보를 저장하는 새로운 객체 생성
-//                        // 등록하다가 뒤로 가기로 다시 왔다면 객체 생성을 하지 않고 기존 객체를 씀
-//                        if catInfo.gilCatInfos.isEmpty || catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-//                            let newCat = GilCatInfo()
-//                            catInfo.gilCatInfos.append(newCat)
-//                        }
-//                        .padding()
-//                    }
+                    // 메인 버튼
+                    NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
+                        Button {
+                            isLinkActive = true
+                            // 고양이 정보를 저장하는 새로운 객체 생성
+                            // 등록하다가 뒤로 가기로 다시 왔다면 객체 생성을 하지 않고 기존 객체를 씀
+                            if catInfo.gilCatInfos.isEmpty || catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
+                                catInfo.gilCatInfos.append(GilCatInfo())
+                            }
+                        } label: {
+                            GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
+                        }
+                        .padding()
+                    }
                 }
                 .background(Color.backgroundColor)
             .navigationTitle("목차")
@@ -61,7 +60,7 @@ struct RegisterStart: View {
                     Image(systemName: "chevron.backward")
                         .foregroundColor(.white)
                         .onTapGesture {
-//                            self.presentation.wrappedValue.dismiss()
+                            self.presentation.wrappedValue.dismiss()
                         }
                 }
             }
