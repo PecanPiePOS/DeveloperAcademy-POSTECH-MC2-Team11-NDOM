@@ -21,11 +21,39 @@ class HomeViewModel: ObservableObject {
                    snackCount: 0,
                    healthTagInfo: [],
                    memoInfo: [],
-                   gilCatMapInformation: .seventh)
+                   gilCatMapInformation: .seventh),
+        GilCatInfo(name: "우도",
+                   age: "1",
+                   gender: .male,
+                   neutralized: true,
+                   type: "페르시안",
+                   avatarColor: .emerald,
+                   avatarBodyIndex: 3,
+                   dietInfo: DietInfo.initCat,
+                   waterInfo: WaterInfo.initCat,
+                   snackCount: 0,
+                   healthTagInfo: [],
+                   memoInfo: [],
+                   gilCatMapInformation: .first),
+        GilCatInfo(name: "디피",
+                   age: "3",
+                   gender: .male,
+                   neutralized: true,
+                   type: "페르시안",
+                   avatarColor: .navy,
+                   avatarBodyIndex: 2,
+                   dietInfo: DietInfo.initCat,
+                   waterInfo: WaterInfo.initCat,
+                   snackCount: 0,
+                   healthTagInfo: [],
+                   memoInfo: [],
+                   gilCatMapInformation: .second)
     ]
-    @Published var selectedIndex: Int = -1
+    @Published var selectedCat: GilCatInfo = .empty
+    @Published var isPopup: Bool = false
     
-    func catImageButtonTapped() {
-        
+    func catImageButtonTapped(_ index: Int) {
+        isPopup = true
+        selectedCat = catLists[index]
     }
 }

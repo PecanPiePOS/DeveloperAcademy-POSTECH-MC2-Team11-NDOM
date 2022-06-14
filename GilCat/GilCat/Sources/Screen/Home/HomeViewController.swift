@@ -9,35 +9,66 @@ import SwiftUI
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     var viewModel: HomeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let cat = viewModel?.catLists[0]
-        let catSize = cat!.gilCatMapInformation.mapInformation.size.size
-        
-        let testImage = UIImage(named: cat!.imageName)
-        let testImageView = UIImageView(image: testImage)
-        
-        contentView.addSubview(testImageView)
-        testImageView.contentMode = .scaleAspectFit
-        testImageView.frame.size = CGSize(width: catSize.width,
-                                          height: catSize.height)
-        
-        testImageView.frame.origin = CGPoint(x: 128.3333282470703,
-                                            y: 483.0)
-        let catTouchGesture = UITapGestureRecognizer(target: self, action: #selector(catImageButtonTapped))
-        testImageView.isUserInteractionEnabled = true
-        testImageView.addGestureRecognizer(catTouchGesture)
+        setupScrollView()
+        initializeCats()
     }
     
-    @objc private func catImageButtonTapped() {
-        viewModel?.catImageButtonTapped()
-        print("catImageButtonTapped")
+    private func setupScrollView() {
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1
+        scrollView.maximumZoomScale = 2
+        scrollView.contentInsetAdjustmentBehavior = .never
+    }
+    private func initializeCats() {
+        guard let viewModel = viewModel else { return }
+        viewModel.catLists.enumerated().forEach {
+            print("고양이 추가")
+            locateCatToScreen($0.element, $0.offset)
+        }
     }
     
+    private func locateCatToScreen(_ catInfo: GilCatInfo, _ index: Int ) {
+        let catSize = catInfo.gilCatMapInformation.mapInformation.size.size
+        let catLocation = catInfo.gilCatMapInformation.mapInformation.location
+        
+        let catImage = UIImage(named: catInfo.imageName)
+        let catImageView = UIImageView(image: catImage)
+        contentView.addSubview(catImageView)
+        
+        catImageView.tag = index
+        catImageView.contentMode = .scaleAspectFit
+        catImageView.frame.size = CGSize(width: catSize.width,
+                                         height: catSize.height)
+        catImageView.frame.origin = CGPoint(x: catLocation.xPercent,
+                                            y: catLocation.yPercent)
+        
+        let catTouchGesture = UITapGestureRecognizer(target: self,
+                                                     action: #selector(catImageButtonTapped))
+        catImageView.isUserInteractionEnabled = true
+        catImageView.addGestureRecognizer(catTouchGesture)
+    }
+    
+    @objc private func catImageButtonTapped(gesture: UITapGestureRecognizer) {
+        guard let viewTagIndex = gesture.view?.tag else { return }
+        
+        viewModel?.catImageButtonTapped(viewTagIndex)
+    }
+    
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return contentView
+    }
 }
