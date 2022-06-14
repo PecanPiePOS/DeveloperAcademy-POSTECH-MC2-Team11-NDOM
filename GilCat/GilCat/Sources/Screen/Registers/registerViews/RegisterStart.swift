@@ -40,7 +40,7 @@ struct RegisterStart: View {
                             isLinkActive = true
                             // 고양이 정보를 저장하는 새로운 객체 생성
                             // 등록하다가 뒤로 가기로 다시 왔다면 객체 생성을 하지 않고 기존 객체를 씀
-                            if catInfo.gilCatInfos.isEmpty || catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
+                            if catInfo.gilCatInfos.isEmpty {
                                 catInfo.gilCatInfos.append(GilCatInfo())
                             }
                         } label: {

@@ -74,10 +74,8 @@ struct RegisterAvatar: View {
                     }
             .onAppear {
                 // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-                if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                    selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
-                    selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
-                }
+                selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
+                selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
             }
         }
     }

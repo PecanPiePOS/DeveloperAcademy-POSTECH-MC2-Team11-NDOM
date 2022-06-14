@@ -62,7 +62,7 @@ struct RegisterCode: View {
                             GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                         }
                         Button {
-                            // Todo: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
+                            // TODO: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
                             // 코드가 다 입력이 안됐다면, 팝업 창 보여주기
                             if codeInput.count != 6 {
                                 isAlertActice = true

@@ -57,8 +57,7 @@ struct RegisterFinish: View {
                 Spacer()
                 // 메인 버튼
                 Button {
-                    // Todo: 완성된 고양이 정보 객체를 서버에 보내기
-                    catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer = true
+                    // TODO: 완성된 고양이 정보 객체를 서버에 보내기
                 } label: {
                     GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
                 }

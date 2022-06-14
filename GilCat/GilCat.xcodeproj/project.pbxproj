@@ -54,6 +54,14 @@
 		EF97BE472858194300D1B37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE462858194300D1B37E /* AuthService.swift */; };
 		EF97BE4F285837F300D1B37E /* GilCatDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */; };
 		EF97BE5228585ECB00D1B37E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE5128585ECB00D1B37E /* Home.swift */; };
+		EF97BE542858646500D1B37E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE532858646500D1B37E /* HomeViewController.swift */; };
+		EF97BE562858647400D1B37E /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF97BE552858647400D1B37E /* HomeViewController.storyboard */; };
+		EF97BE58285865FA00D1B37E /* HomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE57285865FA00D1B37E /* HomeContainer.swift */; };
+		EF97BE5B28587B0600D1B37E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE5A28587B0600D1B37E /* HomeViewModel.swift */; };
+		EF97BE60285883FA00D1B37E /* GilCatLocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE5F285883FA00D1B37E /* GilCatLocationInformation.swift */; };
+		EF97BE622858841800D1B37E /* GilCatSizeInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE612858841800D1B37E /* GilCatSizeInformation.swift */; };
+		EF97BE642858846700D1B37E /* GilCatMapInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE632858846700D1B37E /* GilCatMapInformation.swift */; };
+		EF97BE6628589CF200D1B37E /* GilCatMapCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE6528589CF200D1B37E /* GilCatMapCount.swift */; };
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
@@ -118,6 +126,14 @@
 		EF97BE462858194300D1B37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDataManager.swift; sourceTree = "<group>"; };
 		EF97BE5128585ECB00D1B37E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		EF97BE532858646500D1B37E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EF97BE552858647400D1B37E /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		EF97BE57285865FA00D1B37E /* HomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainer.swift; sourceTree = "<group>"; };
+		EF97BE5A28587B0600D1B37E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EF97BE5F285883FA00D1B37E /* GilCatLocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatLocationInformation.swift; sourceTree = "<group>"; };
+		EF97BE612858841800D1B37E /* GilCatSizeInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatSizeInformation.swift; sourceTree = "<group>"; };
+		EF97BE632858846700D1B37E /* GilCatMapInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMapInformation.swift; sourceTree = "<group>"; };
+		EF97BE6528589CF200D1B37E /* GilCatMapCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMapCount.swift; sourceTree = "<group>"; };
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
@@ -296,6 +312,10 @@
 			isa = PBXGroup;
 			children = (
 				BC517A092853769D00992BC5 /* GilCatInfo.swift */,
+				EF97BE5F285883FA00D1B37E /* GilCatLocationInformation.swift */,
+				EF97BE632858846700D1B37E /* GilCatMapInformation.swift */,
+				EF97BE6528589CF200D1B37E /* GilCatMapCount.swift */,
+				EF97BE612858841800D1B37E /* GilCatSizeInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +326,13 @@
 				EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		EF97BE5C2858836000D1B37E /* CatSize */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CatSize;
 			sourceTree = "<group>";
 		};
 		EFA7B92C2849E9EA006671EF /* Resources */ = {
@@ -391,8 +418,13 @@
 		EFA7B93C2849EBD6006671EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EF97BE5C2858836000D1B37E /* CatSize */,
 				EFA7B93F2849EC2C006671EF /* SupportViews */,
 				EF97BE5128585ECB00D1B37E /* Home.swift */,
+				EF97BE5A28587B0600D1B37E /* HomeViewModel.swift */,
+				EF97BE57285865FA00D1B37E /* HomeContainer.swift */,
+				EF97BE532858646500D1B37E /* HomeViewController.swift */,
+				EF97BE552858647400D1B37E /* HomeViewController.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -505,6 +537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF97BE562858647400D1B37E /* HomeViewController.storyboard in Resources */,
 				EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */,
 				58B21B102856ED3D00205AE5 /* Colors.xcassets in Resources */,
 				10FA62992856E8BC00DEAD4A /* Assets.xcassets in Resources */,
@@ -552,6 +585,7 @@
 				04F0774828518C7E00339172 /* CodeView.swift in Sources */,
 				042322BF2856D6BD001F1217 /* CatPopup.swift in Sources */,
 				BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */,
+				EF97BE542858646500D1B37E /* HomeViewController.swift in Sources */,
 				BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */,
 				EF97BE472858194300D1B37E /* AuthService.swift in Sources */,
 				58B21B132856FFF900205AE5 /* CatSelectPopUpView.swift in Sources */,
@@ -573,20 +607,26 @@
 				107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */,
 				107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */,
 				EF97BE3E285811A400D1B37E /* EnCodable+.swift in Sources */,
+				EF97BE642858846700D1B37E /* GilCatMapInformation.swift in Sources */,
 				10B80EC92851D70D008EA0DF /* GilCatPicker.swift in Sources */,
+				EF97BE60285883FA00D1B37E /* GilCatLocationInformation.swift in Sources */,
 				58790F6E28558FE300B20552 /* NoteFoodView.swift in Sources */,
 				58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */,
 				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
 				EF97BE412858151B00D1B37E /* NetworkProvider.swift in Sources */,
+				EF97BE58285865FA00D1B37E /* HomeContainer.swift in Sources */,
 				EF97BE4F285837F300D1B37E /* GilCatDataManager.swift in Sources */,
 				58B21B1728570C7800205AE5 /* NoteFoodEditView.swift in Sources */,
 				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,
 				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
 				EF97BE37285808EA00D1B37E /* UsersAPI.swift in Sources */,
+				EF97BE6628589CF200D1B37E /* GilCatMapCount.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
 				58B21B192857189800205AE5 /* PickerSizeExtension.swift in Sources */,
 				04F0774628518C0300339172 /* DiaryView.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
+				EF97BE622858841800D1B37E /* GilCatSizeInformation.swift in Sources */,
+				EF97BE5B28587B0600D1B37E /* HomeViewModel.swift in Sources */,
 				BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */,
 				107A58D5284FA055003D6F2B /* RegisterName.swift in Sources */,
 				EF97BE3128579C8F00D1B37E /* API.swift in Sources */,

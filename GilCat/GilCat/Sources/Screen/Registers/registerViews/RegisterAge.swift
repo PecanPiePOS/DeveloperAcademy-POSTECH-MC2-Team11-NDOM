@@ -26,7 +26,10 @@ struct RegisterAge: View {
                     Spacer()
                 }
                 
-                GilCatTextField(inputText: $inputAge, placeHolder: "\(catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name)은(는) 몇 살인가요?").padding([.leading, .bottom])
+                GilCatTextField(inputText: $inputAge,
+                                placeHolder: "\(catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name)은(는) 몇 살인가요?")
+                .padding([.leading, .bottom])
+                .keyboardType(.numberPad)
                 
                 if isShowingType {
                     VStack {
@@ -98,12 +101,8 @@ struct RegisterAge: View {
             .focused($isFocused, equals: 1)
             .onAppear {
                 // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-                if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                    inputAge = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age
-                }
-                if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                    inputType = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type
-                }
+                inputAge = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age
+                inputType = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type
                 
                 // 화면이 나타나고 0.5초 뒤에 자동으로 입력칸에 포커스 되도록 하기
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

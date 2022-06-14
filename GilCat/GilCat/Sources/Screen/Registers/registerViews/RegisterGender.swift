@@ -58,7 +58,7 @@ struct RegisterGender: View {
                             } else {
                                 catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = false
                             }
-                                isLinkActive = true
+                            isLinkActive = true
                         }
                     } label: {
                         GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
@@ -68,34 +68,34 @@ struct RegisterGender: View {
             }
         }
         .navigationTitle("성별 및 중성화")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(true)
-                .navigationViewStyle(.stack)
-                // MARK: 툴바 수정
-                .toolbar {
-                    ToolbarItem(placement: .navigation) {
-                        Image(systemName: "chevron.backward")
-                            .foregroundColor(.white)
-                            .onTapGesture {
-                                self.presentation.wrappedValue.dismiss()
-                            }
-                    }
-                }
-        .onAppear {
-            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                if genderFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? genderFirstChoice : genderSecondChoice) {
-                        genderChoice = .first
-                    } else {
-                        genderChoice = .second
-                    }
-                
-                if TNRFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? TNRFirstChoice : TNRSecondChoice)  {
-                        TNRChoice = .first
-                    } else {
-                        TNRChoice = .second
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationViewStyle(.stack)
+        // MARK: 툴바 수정
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        self.presentation.wrappedValue.dismiss()
                     }
             }
+        }
+        
+        .onAppear {
+            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
+            if genderFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? genderFirstChoice : genderSecondChoice) {
+                genderChoice = .first
+            } else {
+                genderChoice = .second
+            }
+            
+            if TNRFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? TNRFirstChoice : TNRSecondChoice)  {
+                TNRChoice = .first
+            } else {
+                TNRChoice = .second
+            }
+            
         }
     }
 }

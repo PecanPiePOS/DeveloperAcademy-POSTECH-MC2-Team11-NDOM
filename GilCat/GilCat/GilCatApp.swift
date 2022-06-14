@@ -2,11 +2,13 @@ import SwiftUI
 
 @main
 struct GilCatApp: App {
-    var catInfo: GilCatDataManager = GilCatDataManager()
+
+    @StateObject var viewModel: HomeViewModel = HomeViewModel()
     
     var body: some Scene {
         WindowGroup {
-            RegisterStart().environmentObject(GilCatDataManager())
+            RegisterStart()
+                .environmentObject(GilCatDataManager())
         }
     }
 }

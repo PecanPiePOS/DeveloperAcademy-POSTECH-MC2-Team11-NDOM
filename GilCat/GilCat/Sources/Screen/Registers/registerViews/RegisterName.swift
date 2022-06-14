@@ -56,9 +56,7 @@ struct RegisterName: View {
         }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                inputText = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
-            }
+            inputText = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
             // 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     isFocused = true
