@@ -3,6 +3,7 @@ import SwiftUI
 struct RegisterGender: View {
     @State var isLinkActive = false
     @EnvironmentObject var catInfo: GilCatDataManager
+    @Environment(\.presentationMode) var presentation
     @State var genderChoice: GilCatPicker.Choice = .first
     @State var TNRChoice: GilCatPicker.Choice = .first
     @State var isFirstClick: Bool = true
@@ -40,23 +41,30 @@ struct RegisterGender: View {
                 NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
                     Button {
                         // 어떤게 클릭됐는지에 따라 값 줘야함
-//                        if genderChoice == .first {
-//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
-//                        } else {
-//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
-//                        }
-//                        if TNRChoice == .first {
-//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRFirstChoice
-//                        } else {
-//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRSecondChoice
-//                        }
-                        isLinkActive = true
+                        if isFirstClick {
+                            withAnimation {
+                                isShowingTNRPick.toggle()
+                            }
+                            isFirstClick.toggle()
+                        }
+                        else {
+                            if genderChoice == .first {
+                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender = .male
+                            } else {
+                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender = .female
+                            }
+                            if TNRChoice == .first {
+                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = true
+                            } else {
+                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = false
+                            }
+                                isLinkActive = true
+                        }
                     } label: {
                         GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
                     }
                     .padding()
                 }
-                .isDetailLink(false)
             }
         }
         .navigationTitle("성별 및 중성화")
@@ -69,27 +77,24 @@ struct RegisterGender: View {
                         Image(systemName: "chevron.backward")
                             .foregroundColor(.white)
                             .onTapGesture {
-//                                self.presentation.wrappedValue.dismiss()
+                                self.presentation.wrappedValue.dismiss()
                             }
                     }
                 }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
             if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender != nil {
-//                    if genderFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender {
-//                        genderChoice = .first
-//                    } else {
-//                        genderChoice = .second
-//                    }
-                }
-                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized != nil {
-//                    if TNRFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized {
-//                        TNRChoice = .first
-//                    } else {
-//                        TNRChoice = .second
-//                    }
-                }
+                if genderFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? genderFirstChoice : genderSecondChoice) {
+                        genderChoice = .first
+                    } else {
+                        genderChoice = .second
+                    }
+                
+                if TNRFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? TNRFirstChoice : TNRSecondChoice)  {
+                        TNRChoice = .first
+                    } else {
+                        TNRChoice = .second
+                    }
             }
         }
     }
