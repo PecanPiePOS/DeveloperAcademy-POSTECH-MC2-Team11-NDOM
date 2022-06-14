@@ -48,6 +48,7 @@
 		EF97BE3E285811A400D1B37E /* EnCodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE3D285811A400D1B37E /* EnCodable+.swift */; };
 		EF97BE412858151B00D1B37E /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE402858151B00D1B37E /* NetworkProvider.swift */; };
 		EF97BE432858157300D1B37E /* NetworkLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE422858157300D1B37E /* NetworkLogging.swift */; };
+		EF97BE472858194300D1B37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE462858194300D1B37E /* AuthService.swift */; };
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
@@ -106,6 +107,7 @@
 		EF97BE3D285811A400D1B37E /* EnCodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnCodable+.swift"; sourceTree = "<group>"; };
 		EF97BE402858151B00D1B37E /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EF97BE422858157300D1B37E /* NetworkLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogging.swift; sourceTree = "<group>"; };
+		EF97BE462858194300D1B37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				EF97BE3928580E2100D1B37E /* AuthAPI.swift */,
+				EF97BE462858194300D1B37E /* AuthService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				042322BF2856D6BD001F1217 /* CatPopup.swift in Sources */,
 				BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */,
 				BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */,
+				EF97BE472858194300D1B37E /* AuthService.swift in Sources */,
 				58B21B132856FFF900205AE5 /* CatSelectPopUpView.swift in Sources */,
 				107A58DF284FA0A3003D6F2B /* RegisterAvatar.swift in Sources */,
 				107A58D3284FA041003D6F2B /* RegisterCode.swift in Sources */,
