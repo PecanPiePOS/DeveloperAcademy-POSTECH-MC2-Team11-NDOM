@@ -13,133 +13,114 @@ struct Dummy: Identifiable {
     var isClicked: Bool
 }
 
-//struct DummyMain: View {
-//
-//    @State var isPopup: Bool = false
-//    @State var dummyData: [Dummy] = [
-//        Dummy(label: "Navi", isClicked: true),
-//        Dummy(label: "Nero", isClicked: false)
-//    ]
-//
-//    var body: some View {
-//        ZStack {
-//            VStack {
-//                Button {
-//                    isPopup.toggle()
-//                }label: {Text(gilCatData[0].name)}
-//
-//            }
-//
-//            ForEach(0..<gilCatData.count, id: \.self) { index in
-//
-//                if isPopup {
-//                    Button {
-//                        isPopup.toggle()
-//                    }label: {
-//                        Rectangle()
-//                            .foregroundColor(.clear)
-//                    }
-//                    .overlay(CatSelectPopup(isPopup: $isPopup, gilCatData: $gilCatData))
-//                    .transition(AnyTransition.opacity.animation(.easeInOut))
-//                }
-//            }
-//        }
-//    }
-//}
-
 struct CatSelectPopup: View {
+    static let cardWidth: CGFloat = 352
+    static let cardHeight: CGFloat = 303
+    
     @State var isInviting = false
     @State var inviteCode = "123456"
     @State var openNote: Bool = false
     @State var openCode: Bool = false
     
-
-    var index: Int = 0
     @Binding var isPopup: Bool
-    @Binding var gilCatData: [GilCatInfo]
+    @Binding var cat: GilCatInfo
     
-    private func custumRect (width: CGFloat, height: CGFloat, cornerRadius: CGFloat, color: Color) -> some View{
+    @ViewBuilder
+    private func custumRadiusRect (
+        width: CGFloat,
+        height: CGFloat,
+        cornerRadius: CGFloat,
+        color: Color
+    ) -> some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .frame(width: width, height: height)
             .foregroundColor(color)
     }
     
     var body: some View {
-        
-        ZStack {
-            custumRect(width: 352, height: 303, cornerRadius: 30, color: Color.mainBlue)
-                .padding(.bottom, 20)
-                .padding(.top, 521)
-            
-            HStack {
-                custumRect(width: 90, height: 90, cornerRadius: 20, color: Color.white)
-                    .padding(.leading, 55)
-                
-                Text(gilCatData[index].name)
-                    .foregroundColor(Color.white)
-                    .padding(.leading, 30)
-                    .font(.system(size: 30, weight: .heavy))
-                
-                Spacer()
-                
-                Button {
-                    isPopup.toggle()
-                } label: {
-                Image(systemName: "xmark.app.fill")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(Color.white)
+        VStack {
+            Spacer()
+            ZStack {
+                VStack {
+                    HStack(alignment: .center, spacing: 26) {
+                        Color.white
+                            .frame(width: 80, height: 80, alignment: .center)
+                            .cornerRadius(19)
+                        Text(cat.name)
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 30, weight: .heavy))
+                        Spacer()
+                        
+                        VStack {
+                            Button {
+                                isPopup = false
+                            } label: {
+                                Image(systemName: "xmark.app.fill")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(.bottom, 50)
+                        }
+                    }
+                    .frame(width: 281, height: 70, alignment: .center)
+                    .padding([.leading, .trailing], 30)
+                    .padding([.top], 30)
+                    .padding(.bottom, 20)
+                    
+                    VStack(alignment: .center, spacing: 16) {
+                        Button {
+                            // 기록장으로 가는 기능을 여기에
+                            openNote.toggle()
+                        } label: {
+                            Color.mainOrange
+                                .frame(width: 281, height: 60)
+                                .cornerRadius(20)
+                                .overlay(Text("기록장")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20, weight: .heavy)))
+                        }
+                        .fullScreenCover(isPresented: $openNote) {
+                            NoteView(gilCatSpecific: $cat)
+                        }
+                        
+                        HStack(alignment: .center, spacing: 16) {
+                            Button {
+                                // 초대하기 기능
+                                self.isInviting = true
+                            } label: {
+                                Color.mainBlack
+                                    .frame(width: 130, height: 60, alignment: .center)
+                                    .cornerRadius(20)
+                                    .overlay(isInviting ? Text(inviteCode).foregroundColor(.mainOrange) : Text("초대하기").foregroundColor(.white).font(.system(size: 20, weight: .heavy)))
+                            }
+                            Button {
+                                // 합치기 기능
+                                openCode.toggle()
+                            } label: {
+                                Color.mainBlack
+                                    .frame(width: 130, height: 60, alignment: .center)
+                                    .cornerRadius(20)
+                                    .overlay(Text("합치기").foregroundColor(.white).font(.system(size: 20, weight: .heavy)))
+                            }
+                            .fullScreenCover(isPresented: $openCode) {
+                                CodeView()
+                            }
+                        }
+                        
+                    }
+                    .padding(.bottom, 20)
                 }
-                .padding(.trailing, 60)
             }
-            .padding(.bottom, 210)
-            .padding(.top, 544)
-            VStack {
-                Button {
-                    // 기록장으로 가는 기능을 여기에
-                    openNote.toggle()
-                } label: {
-                    custumRect(width: 281, height: 60, cornerRadius: 20, color: Color.mainOrange)
-                        .overlay(Text("기록장")
-                            .foregroundColor(.white)
-                            .font(.system(size: 20, weight: .heavy)))
-                }.fullScreenCover(isPresented: $openNote) {
-                    NoteView(gilCatSpecific: $gilCatData[index])
-                }
-                .padding(.bottom, 15)
-                
-                HStack {
-                    Button {
-                        // 초대하기 기능
-                        self.isInviting = true
-                    } label: {
-                        custumRect(width: 130, height: 60, cornerRadius: 20, color: Color.mainBlack)
-                            .overlay(isInviting ? Text(inviteCode).foregroundColor(.mainOrange) : Text("초대하기")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20, weight: .heavy)))
-                    }.padding(.leading, 55)
-                    Spacer()
-                    Button {
-                        // 합치기 기능
-                        openCode.toggle()
-                    } label: {
-                        custumRect(width: 130, height: 60, cornerRadius: 20, color: Color.mainBlack)
-                            .overlay(Text("합치기")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20, weight: .heavy)))
-                    }
-                    .fullScreenCover(isPresented: $openCode) {
-                        CodeView()
-                    }
-                    .padding(.trailing, 55)
-                }
-            }.padding(.top, 600)
-        }.padding(.bottom, 45)
+            .background(Color.mainBlue)
+            .cornerRadius(30)
+            .padding([.leading, .trailing], 16)
+        }
     }
 }
 
 struct CatSelectPopup_Previews: PreviewProvider {
     static var previews: some View {
-        CatSelectPopup(isPopup: .constant(false), gilCatData: .constant([]))
+        CatSelectPopup(isPopup: .constant(true), cat: .constant(GilCatInfo.empty))
     }
 }
