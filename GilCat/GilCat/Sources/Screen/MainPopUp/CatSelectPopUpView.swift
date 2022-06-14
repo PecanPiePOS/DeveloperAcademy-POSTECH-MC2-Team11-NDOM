@@ -13,7 +13,7 @@ struct Dummy: Identifiable {
     var isClicked: Bool
 }
 
-struct DummyBG: View {
+struct DummyMain: View {
     
     @State var isPopup: Bool = false
     @State var dummyData: [Dummy] = [
@@ -21,8 +21,8 @@ struct DummyBG: View {
         Dummy(label: "Nero", isClicked: false)
     ]
     
-    @State var GilCatData: [GilCatInfo] = [
-        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: [], memoInfo: [])
+    @State var gilCatData: [GilCatInfo] = [
+        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: ["간땡이부음","눈이예쁨"], memoInfo: [MemoInfo(time: "6월6일", content: "안녕")])
     ]
     
     var body: some View {
@@ -30,11 +30,11 @@ struct DummyBG: View {
             VStack {
                 Button {
                     isPopup.toggle()
-                }label: {Text(GilCatData[0].name)}
+                }label: {Text(gilCatData[0].name)}
                 
             }
             
-            ForEach(0..<GilCatData.count, id: \.self) { index in
+            ForEach(0..<gilCatData.count, id: \.self) { index in
                 
                 if isPopup {
                     Button {
@@ -43,7 +43,7 @@ struct DummyBG: View {
                         Rectangle()
                             .foregroundColor(.clear)
                     }
-                    .overlay(CatSelectPopup(index: index, isPopup: $isPopup, GilCatData: $GilCatData))
+                    .overlay(CatSelectPopup(isPopup: $isPopup, gilCatData: $gilCatData))
                     .transition(AnyTransition.opacity.animation(.easeInOut))
                 }
             }
@@ -57,9 +57,10 @@ struct CatSelectPopup: View {
     @State var openNote: Bool = false
     @State var openCode: Bool = false
     
-    var index: Int
+
+    var index: Int = 0
     @Binding var isPopup: Bool
-    @Binding var GilCatData: [GilCatInfo]
+    @Binding var gilCatData: [GilCatInfo]
     
     private func custumRect (width: CGFloat, height: CGFloat, cornerRadius: CGFloat, color: Color) -> some View{
         RoundedRectangle(cornerRadius: cornerRadius)
@@ -78,7 +79,7 @@ struct CatSelectPopup: View {
                 custumRect(width: 90, height: 90, cornerRadius: 20, color: Color.white)
                     .padding(.leading, 55)
                 
-                Text(GilCatData[index].name)
+                Text(gilCatData[index].name)
                     .foregroundColor(Color.white)
                     .padding(.leading, 30)
                     .font(.system(size: 30, weight: .heavy))
@@ -107,7 +108,7 @@ struct CatSelectPopup: View {
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .heavy)))
                 }.fullScreenCover(isPresented: $openNote) {
-                    NoteView()
+                    NoteView(gilCatSpecific: $gilCatData[index])
                 }
                 .padding(.bottom, 15)
                 
@@ -143,6 +144,6 @@ struct CatSelectPopup: View {
 
 struct CatSelectPopup_Previews: PreviewProvider {
     static var previews: some View {
-        DummyBG()
+        DummyMain()
     }
 }

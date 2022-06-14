@@ -64,7 +64,7 @@ struct LoginView: View {
                         
                     Spacer()
                     
-                    NavigationLink(destination: NoteView()) {
+                    NavigationLink(destination: DummyMain()) {
                         Rectangle()
                             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
                             .cornerRadius(20)
