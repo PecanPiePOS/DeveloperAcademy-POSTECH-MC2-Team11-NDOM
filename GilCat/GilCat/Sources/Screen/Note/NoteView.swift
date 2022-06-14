@@ -166,16 +166,13 @@ struct NoteView: View {
                                     Spacer()
                                     
                                     ZStack {
-                                        
                                         if stickNumber == 0 {
                                             Text("터치하면 추가됩니다.\n자정에 갱신됩니다.")
                                                 .font(.system(size: 16, weight: .light))
                                                 .foregroundColor(.white)
                                                 .opacity(0.8)
                                                 .padding(.horizontal, 10)
-                                                .onTapGesture {
-                                                    stickNumber += 1
-                                                }
+                                                
                                         } else if 0 < stickNumber && stickNumber < 6 {
                                             HStack(spacing: 5) {
                                                 ForEach(0...stickNumber-1, id: \.self) { _ in
@@ -185,9 +182,7 @@ struct NoteView: View {
                                                         .frame(width: 30, height: 60)
                                                 }
                                             }
-                                            .onTapGesture {
-                                                stickNumber += 1
-                                            }
+                                            
                                         } else {
                                             HStack {
                                                 Spacer()
@@ -202,14 +197,15 @@ struct NoteView: View {
                                                     .font(.system(size: 14, weight: .heavy))
                                                     .foregroundColor(.orange)
                                             }
-                                            .onTapGesture {
-                                                stickNumber += 1
-                                            }
                                             .padding()
                                         }
                                     }
                                 }
+                                
                                 .padding()
+                            }
+                            .onTapGesture {
+                                stickNumber += 1
                             }
                             .padding(.bottom, 20)
                         
@@ -313,6 +309,7 @@ struct NoteView: View {
                     }
             }
             .attachPartialSheetToRoot()
+
         }
         .navigationTitle("길고양이 기록장")
         .navigationBarTitleDisplayMode(.inline)
