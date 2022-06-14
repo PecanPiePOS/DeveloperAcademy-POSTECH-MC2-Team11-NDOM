@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		042322BF2856D6BD001F1217 /* CatPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042322BE2856D6BD001F1217 /* CatPopup.swift */; };
-		04F0774628518C0300339172 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774528518C0300339172 /* DiaryView.swift */; };
+		042B0CDF285828E80091D9A5 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B0CDE285828E80091D9A5 /* SwiftUIView.swift */; };
 		04F0774828518C7E00339172 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0774728518C7E00339172 /* CodeView.swift */; };
 		106598C22856DD2C00F44728 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C12856DD2C00F44728 /* PartialSheet */; };
 		106598C52856DD7200F44728 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 106598C42856DD7200F44728 /* ConfettiSwiftUI */; };
@@ -80,8 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		042322BE2856D6BD001F1217 /* CatPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPopup.swift; sourceTree = "<group>"; };
-		04F0774528518C0300339172 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
+		042B0CDE285828E80091D9A5 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		04F0774728518C7E00339172 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		107A58D0284F98BE003D6F2B /* RegisterStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStart.swift; sourceTree = "<group>"; };
 		107A58D2284FA041003D6F2B /* RegisterCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCode.swift; sourceTree = "<group>"; };
@@ -163,6 +161,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042B0CDD285828DF0091D9A5 /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+				042B0CDE285828E80091D9A5 /* SwiftUIView.swift */,
+			);
+			path = Logs;
+			sourceTree = "<group>";
+		};
 		107A58CF284F98A0003D6F2B /* Registers */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,8 +222,6 @@
 		58B21B112856FFA700205AE5 /* MainPopUp */ = {
 			isa = PBXGroup;
 			children = (
-				04F0774528518C0300339172 /* DiaryView.swift */,
-				042322BE2856D6BD001F1217 /* CatPopup.swift */,
 				04F0774728518C7E00339172 /* CodeView.swift */,
 				58B21B122856FFF900205AE5 /* CatSelectPopUpView.swift */,
 			);
@@ -274,6 +278,7 @@
 		EF97BE2F28579C7800D1B37E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				042B0CDD285828DF0091D9A5 /* Logs */,
 				EF97BE3F285812A400D1B37E /* Users */,
 				EF97BE3828580E1400D1B37E /* Auth */,
 				EF97BE35285808AB00D1B37E /* Base */,
@@ -581,9 +586,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				107A58D9284FA08B003D6F2B /* RegisterAge.swift in Sources */,
+				042B0CDF285828E80091D9A5 /* SwiftUIView.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
 				04F0774828518C7E00339172 /* CodeView.swift in Sources */,
-				042322BF2856D6BD001F1217 /* CatPopup.swift in Sources */,
 				BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */,
 				EF97BE542858646500D1B37E /* HomeViewController.swift in Sources */,
 				BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */,
@@ -623,7 +628,6 @@
 				EF97BE6628589CF200D1B37E /* GilCatMapCount.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
 				58B21B192857189800205AE5 /* PickerSizeExtension.swift in Sources */,
-				04F0774628518C0300339172 /* DiaryView.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
 				EF97BE622858841800D1B37E /* GilCatSizeInformation.swift in Sources */,
 				EF97BE5B28587B0600D1B37E /* HomeViewModel.swift in Sources */,

@@ -13,41 +13,37 @@ struct Dummy: Identifiable {
     var isClicked: Bool
 }
 
-struct DummyBG: View {
-    @State var isSelected = true
-    @State var catName = "Navi"
-    @State var isInviting = false
-    @State var inviteCode = "123456"
-    @State var openDiary: Bool = false
-    @State var openCode: Bool = false
+struct DummyMain: View {
     
+    @State var isPopup: Bool = false
     @State var dummyData: [Dummy] = [
         Dummy(label: "Navi", isClicked: true),
         Dummy(label: "Nero", isClicked: false)
+    ]
+    
+    @State var gilCatData: [GilCatInfo] = [
+        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: ["간땡이부음","눈이예쁨"], memoInfo: [MemoInfo(time: "6월6일", content: "안녕")])
     ]
     
     var body: some View {
         ZStack {
             VStack {
                 Button {
-                    dummyData[0].isClicked.toggle()
-                }label: {Text(dummyData[0].label)}
+                    isPopup.toggle()
+                }label: {Text(gilCatData[0].name)}
                 
-                Button {
-                    dummyData[1].isClicked.toggle()
-                }label: {Text(dummyData[1].label)}
             }
             
-            ForEach(0..<dummyData.count, id: \.self) { index in
+            ForEach(0..<gilCatData.count, id: \.self) { index in
                 
-                if dummyData[index].isClicked {
+                if isPopup {
                     Button {
-                        dummyData[index].isClicked.toggle()
+                        isPopup.toggle()
                     }label: {
                         Rectangle()
                             .foregroundColor(.clear)
                     }
-                    .overlay(CatSelectPopup(dummyData: $dummyData, index: index))
+                    .overlay(CatSelectPopup(isPopup: $isPopup, gilCatData: $gilCatData))
                     .transition(AnyTransition.opacity.animation(.easeInOut))
                 }
             }
@@ -56,31 +52,34 @@ struct DummyBG: View {
 }
 
 struct CatSelectPopup: View {
-    @State var isSelected = true
     @State var isInviting = false
     @State var inviteCode = "123456"
-    @State var openDiary: Bool = false
+    @State var openNote: Bool = false
     @State var openCode: Bool = false
     
-    @Binding var dummyData: [Dummy]
-    var index: Int
+
+    var index: Int = 0
+    @Binding var isPopup: Bool
+    @Binding var gilCatData: [GilCatInfo]
+    
+    private func custumRect (width: CGFloat, height: CGFloat, cornerRadius: CGFloat, color: Color) -> some View{
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .frame(width: width, height: height)
+            .foregroundColor(color)
+    }
     
     var body: some View {
         
         ZStack {
-            RoundedRectangle(cornerRadius: 30)
-                .frame(width: 352, height: 303)
+            custumRect(width: 352, height: 303, cornerRadius: 30, color: Color.mainBlue)
                 .padding(.bottom, 20)
                 .padding(.top, 521)
-                .foregroundColor(.mainBlue)
             
             HStack {
-                RoundedRectangle(cornerRadius: 30)
-                    .frame(width: 90, height: 90)
-                    .foregroundColor(Color.white)
+                custumRect(width: 90, height: 90, cornerRadius: 20, color: Color.white)
                     .padding(.leading, 55)
                 
-                Text(dummyData[index].label)
+                Text(gilCatData[index].name)
                     .foregroundColor(Color.white)
                     .padding(.leading, 30)
                     .font(.system(size: 30, weight: .heavy))
@@ -88,7 +87,7 @@ struct CatSelectPopup: View {
                 Spacer()
                 
                 Button {
-                    dummyData[index].isClicked.toggle()
+                    isPopup.toggle()
                 } label: {
                 Image(systemName: "xmark.app.fill")
                     .resizable()
@@ -102,17 +101,14 @@ struct CatSelectPopup: View {
             VStack {
                 Button {
                     // 기록장으로 가는 기능을 여기에
-                    openDiary.toggle()
+                    openNote.toggle()
                 } label: {
-                    Rectangle()
-                        .foregroundColor(.mainOrange)
-                        .frame(width: 281, height: 60)
-                        .cornerRadius(20)
+                    custumRect(width: 281, height: 60, cornerRadius: 20, color: Color.mainOrange)
                         .overlay(Text("기록장")
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .heavy)))
-                }.fullScreenCover(isPresented: $openDiary) {
-                    DiaryView()
+                }.fullScreenCover(isPresented: $openNote) {
+                    NoteView(gilCatSpecific: $gilCatData[index])
                 }
                 .padding(.bottom, 15)
                 
@@ -121,10 +117,7 @@ struct CatSelectPopup: View {
                         // 초대하기 기능
                         self.isInviting = true
                     } label: {
-                        Rectangle()
-                            .foregroundColor(.mainBlack)
-                            .frame(width: 130, height: 60)
-                            .cornerRadius(20)
+                        custumRect(width: 130, height: 60, cornerRadius: 20, color: Color.mainBlack)
                             .overlay(isInviting ? Text(inviteCode).foregroundColor(.mainOrange) : Text("초대하기")
                                 .foregroundColor(.white)
                                 .font(.system(size: 20, weight: .heavy)))
@@ -134,10 +127,7 @@ struct CatSelectPopup: View {
                         // 합치기 기능
                         openCode.toggle()
                     } label: {
-                        Rectangle()
-                            .foregroundColor(.mainBlack)
-                            .frame(width: 130, height: 60)
-                            .cornerRadius(20)
+                        custumRect(width: 130, height: 60, cornerRadius: 20, color: Color.mainBlack)
                             .overlay(Text("합치기")
                                 .foregroundColor(.white)
                                 .font(.system(size: 20, weight: .heavy)))
@@ -154,6 +144,6 @@ struct CatSelectPopup: View {
 
 struct CatSelectPopup_Previews: PreviewProvider {
     static var previews: some View {
-        DummyBG()
+        DummyMain()
     }
 }

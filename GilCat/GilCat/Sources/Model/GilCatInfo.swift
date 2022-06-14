@@ -46,7 +46,8 @@ struct WaterInfo {
 }
 
 // MARK: 메모 정보 
-struct MemoInfo {
+struct MemoInfo: Hashable {
+    
     var time: String
     var content: String
 }
