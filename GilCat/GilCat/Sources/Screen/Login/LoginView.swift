@@ -27,6 +27,12 @@ struct LoginView: View {
                 VStack(alignment: .leading) {
                     TextField("", text: $nickName)
                         .focused($focusField, equals: .field)
+                        .onChange(of: nickName) { _ in
+                            if nickName.count > 8 {
+                                nickName = String(nickName.prefix(8))
+                               
+                            }
+                        }
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                 self.focusField = .field }
