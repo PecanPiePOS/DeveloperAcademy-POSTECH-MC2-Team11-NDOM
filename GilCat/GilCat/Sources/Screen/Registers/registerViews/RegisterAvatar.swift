@@ -11,7 +11,7 @@ struct RegisterAvatar: View {
     let viewSecondChoice: String = "색"
     
     init() {
-        UIScrollView.appearance().bounces = false
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
     
     var body: some View {
@@ -66,6 +66,32 @@ struct RegisterAvatar: View {
                 }
             }
         }
+        .background(Color.backgroundColor)
+        .navigationTitle("아바타")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationViewStyle(.stack)
+        // MARK: 툴바 수정
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        //                                    self.presentation.wrappedValue.dismiss()
+                    }
+            }
+        }
+        .onAppear {
+            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
+            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor != nil {
+                    selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
+                }
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex != nil {
+                    selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
+                }
+            }
+        }
     }
     
     // 몸체를 선택할 때 반복되는 이미지에 대한 뷰를 반환
@@ -86,20 +112,26 @@ struct RegisterAvatar: View {
     
     // 몸체 선택하는 창 나오게 하기
     func getBodySelectView() -> some View {
-        return ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: gridSpace) {
-                ForEach(0..<selectedCatColor.group.count/2, id: \.self) { index in
-                    VStack(spacing: gridSpace) {
-                        getImageView(2*index)
-                        getImageView(2*index+1)
+        return ZStack {
+            Rectangle()
+                .padding()
+                .frame(height: 250)
+                .foregroundColor(Color.pickerColor)
+                .background(Color.pickerColor)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: gridSpace) {
+                    ForEach(0..<selectedCatColor.group.count/2, id: \.self) { index in
+                        VStack(spacing: gridSpace) {
+                            getImageView(2*index)
+                            getImageView(2*index+1)
+                        }
                     }
                 }
+                .padding()
+                .frame(height: 250)
+                .background(Color.pickerColor)
             }
-            .padding()
-            .frame(height: 250)
-            .background(Color.pickerColor)
         }
-        
     }
     
     // 색깔을 선택할 때 반복되는 도형에 대한 뷰를 반환

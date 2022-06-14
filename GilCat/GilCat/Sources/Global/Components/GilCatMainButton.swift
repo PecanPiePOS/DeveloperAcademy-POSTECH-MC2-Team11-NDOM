@@ -8,6 +8,11 @@
 import SwiftUI
 
 // 앱에서 메인 버튼으로 쓰이는 뷰
+/*
+ 사용방법 :
+    GilCatMainButton(text: 원하는 버튼 텍스트, foreground: 원하는 글자 색, background: 원하는 버튼 색)
+ */
+
 struct GilCatMainButton: View {
     @State var text: String
     @State var foreground: Color

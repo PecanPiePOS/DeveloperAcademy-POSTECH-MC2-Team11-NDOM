@@ -58,19 +58,32 @@ struct RegisterFinish: View {
                 }
                 .padding()
             }
-        }
-        .background(Color.backgroundColor)
-        .navigationBarTitle("등록 완료", displayMode: .inline)
-        // 폭죽 효과
-        .confettiCannon(counter: $effectCounter)
-        // 폭죽 효과 간격 세팅 (현재는 0.4, 0.8, 1.6초 이렇게 3번 터지게 해놨음)
-        .onReceive(timer) { _ in
-            if timerCounter > 0 && effectCounter > 0 {
-                if timerCounter != 2 {
-                    effectCounter -= 1
+            .background(Color.backgroundColor)
+            .navigationTitle("등록 완료")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationViewStyle(.stack)
+                    // MARK: 툴바 수정
+                    .toolbar {
+                        ToolbarItem(placement: .navigation) {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .onTapGesture {
+//                                    self.presentation.wrappedValue.dismiss()
+                                }
+                        }
+                    }
+            // 폭죽 효과
+            .confettiCannon(counter: $effectCounter)
+            // 폭죽 효과 간격 세팅 (현재는 0.4, 0.8, 1.6초 이렇게 3번 터지게 해놨음)
+            .onReceive(timer) { _ in
+                if timerCounter > 0 && effectCounter > 0 {
+                    if timerCounter != 2 {
+                        effectCounter -= 1
+                    }
+                    timerCounter -= 1
                 }
-                timerCounter -= 1
-            }
+        }
         }
     }
     // 린트.. 고치려 노력은 해봤지만 방법을 모르겠습니다....

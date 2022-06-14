@@ -12,12 +12,13 @@ struct RegisterAge: View {
     @State var isLinkActive = false
     @State var isShowingType = false
     @State var isFirstClick = true
+    @State var isFieldEmpty = true
     @FocusState var isFocused: Int?
     @EnvironmentObject var catInfo: GilCatDataManager
     
     var body: some View {
         ZStack {
-        Color.backgroundColor.ignoresSafeArea()
+            Color.backgroundColor.ignoresSafeArea(.all)
         
             VStack {
                 HStack {
@@ -41,19 +42,23 @@ struct RegisterAge: View {
                 
                 NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
                     HStack {
+                        
                         Button {
                             if isFirstClick == false {
                                 catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age = inputAge
                             }
-                            isLinkActive = true
-                        } label: {
-                            GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
-                        }
+                            isFirstClick = false
+                            isFocused = 2
+                            } label: {
+                                GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                            }
+                        
                         Button {
                             if isFirstClick {
                                 withAnimation {
                                     isShowingType.toggle()
                                 }
+                                
                                 isFirstClick = false
                                 isFocused = 2
                             } else {
@@ -63,12 +68,26 @@ struct RegisterAge: View {
                             }
                         } label: {
                             GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
-                        }
+                        }.frame(maxWidth: .infinity)
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
-            .navigationBarTitle("나이", displayMode: .inline)
+            .navigationTitle("나이 & 종")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationViewStyle(.stack)
+                    // MARK: 툴바 수정
+                    .toolbar {
+                        ToolbarItem(placement: .navigation) {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .onTapGesture {
+//                                    self.presentation.wrappedValue.dismiss()
+                                }
+                        }
+                    }
             .focused($isFocused, equals: 1)
             .onAppear {
                 // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기

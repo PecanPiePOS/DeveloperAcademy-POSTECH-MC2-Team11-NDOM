@@ -9,7 +9,7 @@ struct RegisterName: View {
     
     var body: some View {
         ZStack {
-            Color.backgroundColor.ignoresSafeArea()
+            Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
                 HStack {
                     GilCatTitle(titleText: "이름").padding([.top, .leading])
@@ -33,9 +33,23 @@ struct RegisterName: View {
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
         }
-        .navigationBarTitle("이름", displayMode: .inline)
+        .navigationTitle("별명")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationViewStyle(.stack)
+                // MARK: 툴바 수정
+                .toolbar {
+                    ToolbarItem(placement: .navigation) {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.white)
+                            .onTapGesture {
+//                                self.presentation.wrappedValue.dismiss()
+                            }
+                    }
+                }
         .focused($isFocused, equals: true)
         .alert("이름을 입력해주세요", isPresented: $isAlertActive) {
             Button("확인") {}

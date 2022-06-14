@@ -5,14 +5,21 @@ struct RegisterGender: View {
     @EnvironmentObject var catInfo: GilCatDataManager
     @State var genderChoice: GilCatPicker.Choice = .first
     @State var TNRChoice: GilCatPicker.Choice = .first
-    let genderFirstChoice = "암컷"
-    let genderSecondChoice = "수컷"
-    let TNRFirstChoice = "❌"
-    let TNRSecondChoice = "⭕️"
+    @State var isFirstClick: Bool = true
+    @State var isShowingTNRPick: Bool = false
+    let genderFirstChoice = "수컷"
+    let genderSecondChoice = "암컷"
+    let TNRFirstChoice = "⭕️"
+    let TNRSecondChoice = "❌"
+    
+    init() {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+    }
     
     var body: some View {
         ZStack {
-            Color.backgroundColor.ignoresSafeArea()
+            Color.backgroundColor.ignoresSafeArea(.all)
+            
             VStack {
                 // 성별 피커
                 HStack {
@@ -21,12 +28,14 @@ struct RegisterGender: View {
                 }
                 GilCatPicker(isClick: $genderChoice, firstSelect: genderFirstChoice, secondSelect: genderSecondChoice)
                 // 중성화 여부 피커
-                HStack {
-                    GilCatTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
-                    Spacer()
+                // 다음 버튼을 처음 누르고 난 뒤 페이드인 효과로 중성화 피커 나오게 함
+                if isShowingTNRPick {
+                    HStack {
+                        GilCatTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
+                        Spacer()
+                    }.transition(.opacity)
+                    GilCatPicker(isClick: $TNRChoice, firstSelect: TNRFirstChoice, secondSelect: TNRSecondChoice).transition(.opacity)
                 }
-                GilCatPicker(isClick: $TNRChoice, firstSelect: TNRFirstChoice, secondSelect: TNRSecondChoice)
-                
                 Spacer()
                 NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
                     Button {
@@ -47,9 +56,23 @@ struct RegisterGender: View {
                     }
                     .padding()
                 }
+                .isDetailLink(false)
             }
         }
-        .navigationBarTitle("성별 및 중성화", displayMode: .inline)
+        .navigationTitle("성별 및 중성화")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationViewStyle(.stack)
+                // MARK: 툴바 수정
+                .toolbar {
+                    ToolbarItem(placement: .navigation) {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.white)
+                            .onTapGesture {
+//                                self.presentation.wrappedValue.dismiss()
+                            }
+                    }
+                }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
             if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
@@ -76,17 +99,3 @@ struct RegisterGender_Previews: PreviewProvider {
         RegisterGender().environmentObject(GilCatDataManager().self)
     }
 }
-
-// ZStack {
-//    Rectangle().frame(width: 200, height: 50).cornerRadius(20).foregroundColor(.white).offset(x: isClick ? 100 : -100).onTapGesture {
-//        //하얀색과 배경이 같이 클릭될 시 안 움직이게 하는 방법
-//    }
-//    HStack {
-//        Text(male).offset(x: -70).foregroundColor(isClick ? .white : .buttonColor)
-//        Text(female).offset(x: 70).foregroundColor(isClick ? .buttonColor : .white)
-//    }//클릭시 좌표값에 따라 도형이 안움직이게 해야함
-// }.frame(width: 350, height: 50).background(Color.pickerColor).cornerRadius(20).onTapGesture {
-//        withAnimation {
-//        isClick.toggle()
-//        }
-//    }
