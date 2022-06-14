@@ -13,7 +13,7 @@ struct RegisterFinish: View {
     @State var timerCounter: Int = 4
     @State var effectCounter: Int = 3
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
-    @EnvironmentObject var catInfo: GilCatInfoList
+    @EnvironmentObject var catInfo: GilCatDataManager
     
     var body: some View {
         VStack {
@@ -80,10 +80,9 @@ struct RegisterFinish: View {
         // 고양이 정보 중 어떤 것인지 구분하기
         switch index {
         case 0:
-            if let name = catInfo.infoList[catInfo.infoList.endIndex-1].name {
-                content = name
-            }
+            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
         case 1:
+            content =
             if let gender = catInfo.infoList[catInfo.infoList.endIndex-1].gender {
                 content = gender
             }

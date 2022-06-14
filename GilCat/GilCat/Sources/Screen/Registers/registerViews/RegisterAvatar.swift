@@ -6,7 +6,7 @@ struct RegisterAvatar: View {
     @State var isLinkActive = false
     @State var selectedCatColor = GilCatColor.gray
     @State var selectedImageIndex = 0
-    @EnvironmentObject var catInfo: GilCatInfoList
+    @EnvironmentObject var catInfo: GilCatDataManager
     let viewFirstChoice: String = "외형"
     let viewSecondChoice: String = "색"
     
