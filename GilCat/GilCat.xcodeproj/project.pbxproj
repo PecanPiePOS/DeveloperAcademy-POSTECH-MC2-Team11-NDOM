@@ -53,11 +53,11 @@
 		EF97BE432858157300D1B37E /* NetworkLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE422858157300D1B37E /* NetworkLogging.swift */; };
 		EF97BE472858194300D1B37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE462858194300D1B37E /* AuthService.swift */; };
 		EF97BE4F285837F300D1B37E /* GilCatDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */; };
+		EF97BE5228585ECB00D1B37E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE5128585ECB00D1B37E /* Home.swift */; };
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
 		EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9422849EC48006671EF /* TestSupportView.swift */; };
-		EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9442849EC54006671EF /* TestHomeView.swift */; };
 		EFA7B969284B23EC006671EF /* GilCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B968284B23EC006671EF /* GilCatTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,11 +117,11 @@
 		EF97BE422858157300D1B37E /* NetworkLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogging.swift; sourceTree = "<group>"; };
 		EF97BE462858194300D1B37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDataManager.swift; sourceTree = "<group>"; };
+		EF97BE5128585ECB00D1B37E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
 		EFA7B9422849EC48006671EF /* TestSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupportView.swift; sourceTree = "<group>"; };
-		EFA7B9442849EC54006671EF /* TestHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeView.swift; sourceTree = "<group>"; };
 		EFA7B966284B23EC006671EF /* GilCatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GilCatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA7B968284B23EC006671EF /* GilCatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,10 +320,10 @@
 		EFA7B92D2849EA09006671EF /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				EFA7B93C2849EBD6006671EF /* Home */,
 				58B21B112856FFA700205AE5 /* MainPopUp */,
 				BC517A0B285377E900992BC5 /* Note_Dophi */,
 				107A58CF284F98A0003D6F2B /* Registers */,
-				EFA7B93C2849EBD6006671EF /* Home */,
 				58A2002828520B2000C656DF /* Note */,
 				58A2002928520B2900C656DF /* Login */,
 			);
@@ -392,7 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				EFA7B93F2849EC2C006671EF /* SupportViews */,
-				EFA7B9442849EC54006671EF /* TestHomeView.swift */,
+				EF97BE5128585ECB00D1B37E /* Home.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -547,7 +547,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA7B9452849EC54006671EF /* TestHomeView.swift in Sources */,
 				107A58D9284FA08B003D6F2B /* RegisterAge.swift in Sources */,
 				EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */,
 				04F0774828518C7E00339172 /* CodeView.swift in Sources */,
@@ -569,6 +568,7 @@
 				10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */,
 				58B21B1528570C4000205AE5 /* GilCatTimePicker.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
+				EF97BE5228585ECB00D1B37E /* Home.swift in Sources */,
 				EF97BE432858157300D1B37E /* NetworkLogging.swift in Sources */,
 				107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */,
 				107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */,
