@@ -12,7 +12,7 @@ struct RegisterCode: View {
     @State var isLinkActive = false
     @State var isAlertActice = false
     @State var codeInput = ["", "", "", "", "", ""]
-    @EnvironmentObject var catInfo: GilCatInfoList
+    @EnvironmentObject var catInfo: GilCatDataManager
     
     init() {
         UITextView.appearance().backgroundColor = .clear

@@ -44,8 +44,8 @@ struct RegisterAvatar: View {
             NavigationLink(destination: RegisterFinish(), isActive: $isLinkActive) {
                 Button {
                     // 커스텀해서 선택된 이미지 정보 저장하기
-                    catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor = selectedCatColor
-                    catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex = selectedImageIndex
+                    catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor = selectedCatColor
+                    catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex = selectedImageIndex
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
@@ -57,12 +57,12 @@ struct RegisterAvatar: View {
         .navigationBarTitle("아바타", displayMode: .inline)
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
-                if catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor != nil {
-                    selectedCatColor = catInfo.infoList[catInfo.infoList.endIndex-1].avatarColor!
+            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor != nil {
+                    selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
                 }
-                if catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex != nil {
-                    selectedImageIndex = catInfo.infoList[catInfo.infoList.endIndex-1].avatarBodyIndex!
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex != nil {
+                    selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
                 }
             }
         }
@@ -133,6 +133,6 @@ struct RegisterAvatar: View {
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAvatar().environmentObject(GilCatInfoList().self)
+        RegisterAvatar().environmentObject(GilCatDataManager().self)
     }
 }
