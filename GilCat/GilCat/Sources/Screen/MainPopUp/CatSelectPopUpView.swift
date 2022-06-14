@@ -65,18 +65,21 @@ struct CatSelectPopup: View {
     @Binding var dummyData: [Dummy]
     var index: Int
     
+    private func custumRect (width: CGFloat, height: CGFloat, cornerRadius: CGFloat) -> some View{
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .frame(width: width, height: height)
+    }
+    
     var body: some View {
         
         ZStack {
-            RoundedRectangle(cornerRadius: 30)
-                .frame(width: 352, height: 303)
+            custumRect(width: 352, height: 303, cornerRadius: 30)
                 .padding(.bottom, 20)
                 .padding(.top, 521)
                 .foregroundColor(.mainBlue)
             
             HStack {
-                RoundedRectangle(cornerRadius: 30)
-                    .frame(width: 90, height: 90)
+                custumRect(width: 90, height: 90, cornerRadius: 20)
                     .foregroundColor(Color.white)
                     .padding(.leading, 55)
                 
@@ -104,15 +107,13 @@ struct CatSelectPopup: View {
                     // 기록장으로 가는 기능을 여기에
                     openDiary.toggle()
                 } label: {
-                    Rectangle()
+                    custumRect(width: 281, height: 60, cornerRadius: 20)
                         .foregroundColor(.mainOrange)
-                        .frame(width: 281, height: 60)
-                        .cornerRadius(20)
                         .overlay(Text("기록장")
                             .foregroundColor(.white)
                             .font(.system(size: 20, weight: .heavy)))
                 }.fullScreenCover(isPresented: $openDiary) {
-                    DiaryView()
+                    NoteView()
                 }
                 .padding(.bottom, 15)
                 
@@ -121,10 +122,8 @@ struct CatSelectPopup: View {
                         // 초대하기 기능
                         self.isInviting = true
                     } label: {
-                        Rectangle()
+                        custumRect(width: 130, height: 60, cornerRadius: 20)
                             .foregroundColor(.mainBlack)
-                            .frame(width: 130, height: 60)
-                            .cornerRadius(20)
                             .overlay(isInviting ? Text(inviteCode).foregroundColor(.mainOrange) : Text("초대하기")
                                 .foregroundColor(.white)
                                 .font(.system(size: 20, weight: .heavy)))
@@ -134,10 +133,8 @@ struct CatSelectPopup: View {
                         // 합치기 기능
                         openCode.toggle()
                     } label: {
-                        Rectangle()
+                        custumRect(width: 130, height: 60, cornerRadius: 20)
                             .foregroundColor(.mainBlack)
-                            .frame(width: 130, height: 60)
-                            .cornerRadius(20)
                             .overlay(Text("합치기")
                                 .foregroundColor(.white)
                                 .font(.system(size: 20, weight: .heavy)))

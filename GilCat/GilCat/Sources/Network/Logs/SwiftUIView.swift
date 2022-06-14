@@ -1,20 +1,36 @@
+////
+////  UsersAPI.swift
+////  GilCat
+////
+////  Created by Woody on 2022/06/14.
+////
 //
-//  SwiftUIView.swift
-//  GilCat
+//import Moya
 //
-//  Created by Beone on 2022/06/14.
+//enum LogsAPI {
+//    case getDiet
+//    case postDiet(dietLis)
+//    case getWatering
+//    case postWatering(wateringLis)
+//    case getHelth
+//    case helth(helthTagsLis)
+//    case memo(content)
 //
-
-import SwiftUI
-
-struct SwiftUIView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIView()
-    }
-}
+//    typealias dietLis = [String]
+//    typealias wateringLis = [String]
+//    typealias helthTagsLis = [String]
+//    typealias content = String
+//}
+//
+//extension LogsAPI: TargetType {
+//    // MARK: 경로
+//    var path: String {
+//    }
+//
+//    // MARK: REST API 형식
+//    var method: Method {
+//    }
+//
+//    var task: Task {
+//    }
+//}
