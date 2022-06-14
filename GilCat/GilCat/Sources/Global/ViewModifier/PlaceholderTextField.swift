@@ -27,7 +27,7 @@ struct PlaceholderStyle: ViewModifier {
         ZStack(alignment: .leading) {
             if showPlaceHolder {
                 Text(placeholder)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, 7)
             }
             content
                 .foregroundColor(Color.white)

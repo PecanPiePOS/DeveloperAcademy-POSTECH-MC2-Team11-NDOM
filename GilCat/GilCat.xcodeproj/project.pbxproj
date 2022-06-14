@@ -33,6 +33,9 @@
 		58A2002D28520B6F00C656DF /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A2002C28520B6F00C656DF /* NoteView.swift */; };
 		58B21B102856ED3D00205AE5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B21B0F2856ED3D00205AE5 /* Colors.xcassets */; };
 		58B21B132856FFF900205AE5 /* CatSelectPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B122856FFF900205AE5 /* CatSelectPopUpView.swift */; };
+		58B21B1528570C4000205AE5 /* GilCatTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B1428570C4000205AE5 /* GilCatTimePicker.swift */; };
+		58B21B1728570C7800205AE5 /* NoteFoodEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B1628570C7800205AE5 /* NoteFoodEditView.swift */; };
+		58B21B192857189800205AE5 /* PickerSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B182857189800205AE5 /* PickerSizeExtension.swift */; };
 		BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179F82852CC7100992BC5 /* GilCatImages.swift */; };
 		BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */; };
 		BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */; };
@@ -91,6 +94,9 @@
 		58A2002C28520B6F00C656DF /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		58B21B0F2856ED3D00205AE5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		58B21B122856FFF900205AE5 /* CatSelectPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSelectPopUpView.swift; sourceTree = "<group>"; };
+		58B21B1428570C4000205AE5 /* GilCatTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTimePicker.swift; sourceTree = "<group>"; };
+		58B21B1628570C7800205AE5 /* NoteFoodEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFoodEditView.swift; sourceTree = "<group>"; };
+		58B21B182857189800205AE5 /* PickerSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSizeExtension.swift; sourceTree = "<group>"; };
 		BC5179F82852CC7100992BC5 /* GilCatImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatImages.swift; sourceTree = "<group>"; };
 		BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDescription.swift; sourceTree = "<group>"; };
 		BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMainButton.swift; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 				58790F6B28558FD800B20552 /* NoteProfileView.swift */,
 				58790F6D28558FE300B20552 /* NoteFoodView.swift */,
 				58790F6F28558FEE00B20552 /* NoteWaterView.swift */,
+				58B21B1628570C7800205AE5 /* NoteFoodEditView.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -321,6 +328,7 @@
 				107A58E2284FA4E5003D6F2B /* ColorExtension.swift */,
 				10F486252855F290005A7ED6 /* VisibleExtension.swift */,
 				EF97BE3D285811A400D1B37E /* EnCodable+.swift */,
+				58B21B182857189800205AE5 /* PickerSizeExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +345,7 @@
 				BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */,
 				BC517A092853769D00992BC5 /* GilCatInfo.swift */,
 				5800E59D285191F3002F6A75 /* BarColorNavigation.swift */,
+				58B21B1428570C4000205AE5 /* GilCatTimePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -537,6 +546,7 @@
 				EF97BE3A28580E2100D1B37E /* AuthAPI.swift in Sources */,
 				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
 				10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */,
+				58B21B1528570C4000205AE5 /* GilCatTimePicker.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
 				EF97BE432858157300D1B37E /* NetworkLogging.swift in Sources */,
 				107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */,
@@ -547,10 +557,12 @@
 				58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */,
 				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
 				EF97BE412858151B00D1B37E /* NetworkProvider.swift in Sources */,
+				58B21B1728570C7800205AE5 /* NoteFoodEditView.swift in Sources */,
 				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,
 				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
 				EF97BE37285808EA00D1B37E /* UsersAPI.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
+				58B21B192857189800205AE5 /* PickerSizeExtension.swift in Sources */,
 				04F0774628518C0300339172 /* DiaryView.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
 				BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */,
