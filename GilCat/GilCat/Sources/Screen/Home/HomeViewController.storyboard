@@ -8,28 +8,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="GilCat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="홈 화면" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lc6-FT-Sx0">
-                                <rect key="frame" x="182.5" y="437.5" width="49" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lf-E9-JPs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilb-DX-md6">
+                                        <rect key="frame" x="0.0" y="0.0" width="1593" height="896"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3st-BU-yyf">
+                                                <rect key="frame" x="0.0" y="0.0" width="1593" height="896"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ilb-DX-md6" secondAttribute="height" multiplier="16:9" id="HDb-fX-a2i"/>
+                                            <constraint firstAttribute="bottom" secondItem="3st-BU-yyf" secondAttribute="bottom" id="RrQ-wy-MDw"/>
+                                            <constraint firstItem="3st-BU-yyf" firstAttribute="leading" secondItem="ilb-DX-md6" secondAttribute="leading" id="cgp-Iw-Mv5"/>
+                                            <constraint firstItem="3st-BU-yyf" firstAttribute="top" secondItem="ilb-DX-md6" secondAttribute="top" id="eIX-7Y-BEQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="3st-BU-yyf" secondAttribute="trailing" id="tIF-NA-jlr"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ilb-DX-md6" firstAttribute="height" secondItem="5lf-E9-JPs" secondAttribute="height" id="89g-3e-KYu"/>
+                                    <constraint firstItem="ilb-DX-md6" firstAttribute="top" secondItem="5lf-E9-JPs" secondAttribute="top" id="AME-rk-LGk"/>
+                                    <constraint firstAttribute="bottom" secondItem="ilb-DX-md6" secondAttribute="bottom" id="GXQ-SK-ii2"/>
+                                    <constraint firstItem="ilb-DX-md6" firstAttribute="width" secondItem="5lf-E9-JPs" secondAttribute="width" priority="250" id="f24-cv-adu"/>
+                                    <constraint firstItem="ilb-DX-md6" firstAttribute="leading" secondItem="5lf-E9-JPs" secondAttribute="leading" id="ibd-qq-Xxe"/>
+                                    <constraint firstAttribute="trailing" secondItem="ilb-DX-md6" secondAttribute="trailing" id="xM3-Rb-kKD"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Lc6-FT-Sx0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="67J-Y0-Qkg"/>
-                            <constraint firstItem="Lc6-FT-Sx0" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Kv8-zL-LwD"/>
+                            <constraint firstItem="5lf-E9-JPs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Eue-x4-pLs"/>
+                            <constraint firstItem="5lf-E9-JPs" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="POc-xQ-JLE"/>
+                            <constraint firstAttribute="bottom" secondItem="5lf-E9-JPs" secondAttribute="bottom" id="dTA-jF-Fch"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5lf-E9-JPs" secondAttribute="trailing" id="sBf-pt-yir"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="ilb-DX-md6" id="mBR-dv-D89"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,6 +65,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="4000" height="2250"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

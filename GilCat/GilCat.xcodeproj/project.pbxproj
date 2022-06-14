@@ -56,6 +56,7 @@
 		EF97BE5228585ECB00D1B37E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE5128585ECB00D1B37E /* Home.swift */; };
 		EF97BE542858646500D1B37E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE532858646500D1B37E /* HomeViewController.swift */; };
 		EF97BE562858647400D1B37E /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF97BE552858647400D1B37E /* HomeViewController.storyboard */; };
+		EF97BE58285865FA00D1B37E /* HomeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE57285865FA00D1B37E /* HomeContainer.swift */; };
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
@@ -122,6 +123,7 @@
 		EF97BE5128585ECB00D1B37E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EF97BE532858646500D1B37E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EF97BE552858647400D1B37E /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		EF97BE57285865FA00D1B37E /* HomeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainer.swift; sourceTree = "<group>"; };
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			children = (
 				EFA7B93F2849EC2C006671EF /* SupportViews */,
 				EF97BE5128585ECB00D1B37E /* Home.swift */,
+				EF97BE57285865FA00D1B37E /* HomeContainer.swift */,
 				EF97BE532858646500D1B37E /* HomeViewController.swift */,
 				EF97BE552858647400D1B37E /* HomeViewController.storyboard */,
 			);
@@ -586,6 +589,7 @@
 				58790F7028558FEE00B20552 /* NoteWaterView.swift in Sources */,
 				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
 				EF97BE412858151B00D1B37E /* NetworkProvider.swift in Sources */,
+				EF97BE58285865FA00D1B37E /* HomeContainer.swift in Sources */,
 				EF97BE4F285837F300D1B37E /* GilCatDataManager.swift in Sources */,
 				58B21B1728570C7800205AE5 /* NoteFoodEditView.swift in Sources */,
 				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,

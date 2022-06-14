@@ -6,7 +6,7 @@ struct GilCatApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RegisterStart().environmentObject(GilCatDataManager())
+            Home()
         }
     }
 }
