@@ -35,6 +35,7 @@
 		58B21B1528570C4000205AE5 /* GilCatTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B1428570C4000205AE5 /* GilCatTimePicker.swift */; };
 		58B21B1728570C7800205AE5 /* NoteFoodEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B1628570C7800205AE5 /* NoteFoodEditView.swift */; };
 		58B21B192857189800205AE5 /* PickerSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B21B182857189800205AE5 /* PickerSizeExtension.swift */; };
+		58E7FF872858FD870070D58B /* ScrollSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7FF862858FD870070D58B /* ScrollSnap.swift */; };
 		BC5179F92852CC7100992BC5 /* GilCatImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179F82852CC7100992BC5 /* GilCatImages.swift */; };
 		BC5179FD2852CE0500992BC5 /* GilCatDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */; };
 		BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */; };
@@ -105,6 +106,7 @@
 		58B21B1428570C4000205AE5 /* GilCatTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTimePicker.swift; sourceTree = "<group>"; };
 		58B21B1628570C7800205AE5 /* NoteFoodEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFoodEditView.swift; sourceTree = "<group>"; };
 		58B21B182857189800205AE5 /* PickerSizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerSizeExtension.swift; sourceTree = "<group>"; };
+		58E7FF862858FD870070D58B /* ScrollSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSnap.swift; sourceTree = "<group>"; };
 		BC5179F82852CC7100992BC5 /* GilCatImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatImages.swift; sourceTree = "<group>"; };
 		BC5179FC2852CE0500992BC5 /* GilCatDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDescription.swift; sourceTree = "<group>"; };
 		BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMainButton.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				5800E59B2851908D002F6A75 /* PlaceholderTextField.swift */,
+				58E7FF862858FD870070D58B /* ScrollSnap.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				EF97BE432858157300D1B37E /* NetworkLogging.swift in Sources */,
 				107A58D1284F98BE003D6F2B /* RegisterStart.swift in Sources */,
 				107A58E3284FA4E5003D6F2B /* ColorExtension.swift in Sources */,
+				58E7FF872858FD870070D58B /* ScrollSnap.swift in Sources */,
 				EF97BE3E285811A400D1B37E /* EnCodable+.swift in Sources */,
 				EF97BE642858846700D1B37E /* GilCatMapInformation.swift in Sources */,
 				10B80EC92851D70D008EA0DF /* GilCatPicker.swift in Sources */,
