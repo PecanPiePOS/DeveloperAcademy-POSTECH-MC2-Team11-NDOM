@@ -2,9 +2,7 @@ import SwiftUI
 
 struct RegisterGender: View {
     @State var isLinkActive = false
-    @Binding var buildNavigationStack: Bool
-    @EnvironmentObject var catInfo: GilCatInfoList
-    @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var catInfo: GilCatDataManager
     @State var genderChoice: GilCatPicker.Choice = .first
     @State var TNRChoice: GilCatPicker.Choice = .first
     @State var isFirstClick: Bool = true
@@ -14,9 +12,8 @@ struct RegisterGender: View {
     let TNRFirstChoice = "⭕️"
     let TNRSecondChoice = "❌"
     
-    init(_ buildNavigationStack: Binding<Bool>) {
+    init() {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
-        self._buildNavigationStack = buildNavigationStack
     }
     
     var body: some View {
@@ -40,28 +37,20 @@ struct RegisterGender: View {
                     GilCatPicker(isClick: $TNRChoice, firstSelect: TNRFirstChoice, secondSelect: TNRSecondChoice).transition(.opacity)
                 }
                 Spacer()
-                NavigationLink(destination: RegisterAge($buildNavigationStack), isActive: $isLinkActive) {
-                    Button {//버튼을 처음 눌렀다면 isShowingTNRPick을 true 에서 false 로 토글 해주고 isFirstClick값도 변경
-                        if isFirstClick {
-                            withAnimation {
-                                isShowingTNRPick.toggle()
-                                isFirstClick = false
-                            }
-                        } else {
-                                // 어떤게 클릭됐는지에 따라 값 줘야함
-                                if genderChoice == .first {
-                                    catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
-                                } else {
-                                    catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
-                                }
-                                if TNRChoice == .first {
-                                    catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRFirstChoice
-                                } else {
-                                    catInfo.infoList[catInfo.infoList.endIndex-1].neutralized = TNRSecondChoice
-                                }
-                                    isLinkActive = true
-                            
-                        }
+                NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
+                    Button {
+                        // 어떤게 클릭됐는지에 따라 값 줘야함
+//                        if genderChoice == .first {
+//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderFirstChoice
+//                        } else {
+//                            catInfo.infoList[catInfo.infoList.endIndex-1].gender = genderSecondChoice
+//                        }
+//                        if TNRChoice == .first {
+//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRFirstChoice
+//                        } else {
+//                            catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = TNRSecondChoice
+//                        }
+                        isLinkActive = true
                     } label: {
                         GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
                     }
@@ -80,26 +69,26 @@ struct RegisterGender: View {
                         Image(systemName: "chevron.backward")
                             .foregroundColor(.white)
                             .onTapGesture {
-                                self.presentation.wrappedValue.dismiss()
+//                                self.presentation.wrappedValue.dismiss()
                             }
                     }
                 }
         .onAppear {
             // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if !catInfo.infoList[catInfo.infoList.endIndex-1].isUploadedToServer {
-                if catInfo.infoList[catInfo.infoList.endIndex-1].gender != nil {
-                    if genderFirstChoice == catInfo.infoList[catInfo.infoList.endIndex-1].gender! {
-                        genderChoice = .first
-                    } else {
-                        genderChoice = .second
-                    }
+            if !catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].isUploadedToServer {
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender != nil {
+//                    if genderFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender {
+//                        genderChoice = .first
+//                    } else {
+//                        genderChoice = .second
+//                    }
                 }
-                if catInfo.infoList[catInfo.infoList.endIndex-1].neutralized != nil {
-                    if TNRFirstChoice == catInfo.infoList[catInfo.infoList.endIndex-1].neutralized! {
-                        TNRChoice = .first
-                    } else {
-                        TNRChoice = .second
-                    }
+                if catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized != nil {
+//                    if TNRFirstChoice == catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized {
+//                        TNRChoice = .first
+//                    } else {
+//                        TNRChoice = .second
+//                    }
                 }
             }
         }
@@ -107,6 +96,6 @@ struct RegisterGender: View {
 }
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(.constant(false)).environmentObject(GilCatInfoList().self)
+        RegisterGender().environmentObject(GilCatDataManager().self)
     }
 }

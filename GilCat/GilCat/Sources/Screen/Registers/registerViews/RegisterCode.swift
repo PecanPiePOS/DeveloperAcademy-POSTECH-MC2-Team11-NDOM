@@ -8,17 +8,14 @@
 import SwiftUI
 
 struct RegisterCode: View {
-    @EnvironmentObject var catInfo: GilCatInfoList
+    @EnvironmentObject var catInfo: GilCatDataManager
     @FocusState var isFocused: Bool?
-    @Binding var buildNavigationStack: Bool
     @State var isLinkActive = false
     @State var isAlertActice = false
     @State var codeInput = ""
-    @Environment(\.presentationMode) var presentation
     
-    init(_ buildNavigationStack: Binding<Bool>) {
+    init() {
         UITextView.appearance().backgroundColor = .clear
-        self._buildNavigationStack = buildNavigationStack
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
     
@@ -56,7 +53,7 @@ struct RegisterCode: View {
                 .padding()
                 Spacer()
                 // 메인 버튼
-                NavigationLink(destination: RegisterName($buildNavigationStack), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
                     HStack {
                         Button {
                             isLinkActive = true
@@ -89,7 +86,7 @@ struct RegisterCode: View {
                     Image(systemName: "chevron.backward")
                         .foregroundColor(.white)
                         .onTapGesture {
-                            self.presentation.wrappedValue.dismiss()
+//                            self.presentation.wrappedValue.dismiss()
                         }
                 }
             }
@@ -126,6 +123,6 @@ struct RegisterCode: View {
 
 struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCode(.constant(false))
+        RegisterCode()
     }
 }
