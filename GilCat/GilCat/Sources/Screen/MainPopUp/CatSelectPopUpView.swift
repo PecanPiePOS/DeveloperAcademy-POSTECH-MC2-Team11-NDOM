@@ -39,13 +39,20 @@ struct CatSelectPopup: View {
     
     var body: some View {
         VStack {
-            Spacer()
+            Button {
+                withAnimation {
+                    isPopup = false
+                }
+            } label: {
+                Color.clear
+            }
             ZStack {
                 VStack {
                     HStack(alignment: .center, spacing: 26) {
-                        Color.white
-                            .frame(width: 80, height: 80, alignment: .center)
-                            .cornerRadius(19)
+                            Color.mainBlack
+                                .frame(width: 90, height: 90, alignment: .center)
+                                .cornerRadius(19)
+                        
                         Text(cat.name)
                             .foregroundColor(Color.white)
                             .font(.system(size: 30, weight: .heavy))
@@ -60,7 +67,7 @@ struct CatSelectPopup: View {
                                     .frame(width: 30, height: 30)
                                     .foregroundColor(Color.white)
                             }
-                            .padding(.bottom, 50)
+                            .padding(.bottom, 70)
                         }
                     }
                     .frame(width: 281, height: 70, alignment: .center)

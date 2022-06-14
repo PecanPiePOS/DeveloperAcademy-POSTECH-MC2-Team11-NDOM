@@ -53,7 +53,10 @@ class HomeViewModel: ObservableObject {
     @Published var isPopup: Bool = false
     
     func catImageButtonTapped(_ index: Int) {
-        isPopup = true
         selectedCat = catLists[index]
+        withAnimation {
+            isPopup = true
+        }
+        
     }
 }

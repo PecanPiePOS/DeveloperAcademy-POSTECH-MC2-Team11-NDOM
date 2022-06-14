@@ -59,11 +59,12 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func catImageButtonTapped(gesture: UITapGestureRecognizer) {
-        guard let viewTagIndex = gesture.view?.tag else { return }
+        guard let selectedView = gesture.view else { return }
+        let viewTagIndex = selectedView.tag
+        scrollView.zoom(to: selectedView.frame, animated: true)
         
         viewModel?.catImageButtonTapped(viewTagIndex)
     }
-    
 }
 
 extension HomeViewController: UIScrollViewDelegate {
