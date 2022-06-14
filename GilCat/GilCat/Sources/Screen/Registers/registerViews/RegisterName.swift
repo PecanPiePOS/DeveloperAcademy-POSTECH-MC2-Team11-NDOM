@@ -1,19 +1,22 @@
 import SwiftUI
 
 struct RegisterName: View {
-    @EnvironmentObject private var catInfo: GilCatDataManager
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-    @State private var inputText = ""
+    @Binding private var viewModel: RegisterViewModel
     @State private var isLinkActive = false
     @State private var isAlertActive = false
+    
+    init(_ viewModel: Binding<RegisterViewModel>) {
+        self._viewModel = viewModel
+    }
     
     var body: some View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
                 getTitleView("이름")
-                GilCatTextField(inputText: $inputText, placeHolder: "고양이 이름을 지어볼까요?").padding([.leading, .bottom])
+                GilCatTextField(inputText: $viewModel.name, placeHolder: "고양이 이름을 지어볼까요?").padding([.leading, .bottom])
                 Spacer()
                 getMainButtomView()
             }
@@ -37,8 +40,6 @@ struct RegisterName: View {
             Button("확인") {}
         }
         .onAppear {
-            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            inputText = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
             // 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 isFocused = true
@@ -56,13 +57,12 @@ struct RegisterName: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterGender(), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterGender($viewModel), isActive: $isLinkActive) {
             Button {
                 // 이름이 입력이 안됐다면, 팝업 창 보여주기
-                if inputText.isEmpty {
+                if viewModel.name.isEmpty {
                     isAlertActive = true
                 } else {
-                    catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name = inputText
                     isLinkActive = true
                 }
             } label: {
@@ -75,6 +75,6 @@ struct RegisterName: View {
 }
 struct RegisterName_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterName().environmentObject(GilCatDataManager().self)
+        RegisterName(.constant(RegisterViewModel()))
     }
 }

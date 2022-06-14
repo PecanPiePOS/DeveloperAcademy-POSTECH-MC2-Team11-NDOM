@@ -9,13 +9,17 @@ import SwiftUI
 import ConfettiSwiftUI
 
 struct RegisterFinish: View {
-    @EnvironmentObject private var catInfo: GilCatDataManager
     @Environment(\.presentationMode) private var presentation
+    @Binding private var viewModel: RegisterViewModel
     @State private var isLinkActive = false
     @State private var timerCounter: Int = 4
     @State private var effectCounter: Int = 3
     // 폭죽 터지는 간격
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
+    
+    init(_ viewModel: Binding<RegisterViewModel>) {
+        self._viewModel = viewModel
+    }
     
     var body: some View {
         ZStack {
@@ -62,7 +66,7 @@ struct RegisterFinish: View {
                 .frame(width: 130, height: 130)
                 .background(.white)
                 .blur(radius: 50.0)
-            Image(catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].imageName)
+            Image(viewModel.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 130, height: 130)
@@ -120,15 +124,15 @@ struct RegisterFinish: View {
         // 고양이 정보 중 어떤 것인지 구분하기
         switch index {
         case 0:
-            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
+            content = viewModel.name
         case 1:
-            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? "수컷" : "암컷"
+            content = viewModel.gender == .male ? "수컷" : "암컷"
         case 2:
-            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? "⭕️" : "❌"
+            content = viewModel.neutralized ? "⭕️" : "❌"
         case 3:
-            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age
+            content = viewModel.age
         case 4:
-            content = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type
+            content = viewModel.type
         default:
             content = ""
         }
@@ -142,6 +146,6 @@ struct RegisterFinish: View {
 
 struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterFinish().environmentObject(GilCatDataManager().self)
+        RegisterFinish(.constant(RegisterViewModel()))
     }
 }

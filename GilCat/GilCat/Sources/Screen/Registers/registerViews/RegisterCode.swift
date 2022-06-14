@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct RegisterCode: View {
-    @EnvironmentObject private var catInfo: GilCatDataManager
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
+    @Binding private var viewModel: RegisterViewModel
     @State private var isLinkActive = false
     @State private var isAlertActice = false
-    @State private var codeInput = ""
     
-    init() {
+    init(_ viewModel: Binding<RegisterViewModel>) {
         UITextView.appearance().backgroundColor = .clear
+        self._viewModel = viewModel
     }
     
     var body: some View {
@@ -76,13 +76,13 @@ struct RegisterCode: View {
     @ViewBuilder
     private func getTotalCodeInputView() -> some View {
         ZStack {
-            TextField("", text: $codeInput)
+            TextField("", text: $viewModel.code)
                 .frame(width: 0, height: 0)
                 .focused($isFocused, equals: true)
                 .keyboardType(.numberPad)
-                .onChange(of: codeInput) { _ in
-                    if codeInput.count > 6 {
-                        codeInput = String(codeInput.prefix(6))
+                .onChange(of: viewModel.code) { _ in
+                    if viewModel.code.count > 6 {
+                        viewModel.code = String(viewModel.code.prefix(6))
                     }
                 }
             HStack {
@@ -100,18 +100,18 @@ struct RegisterCode: View {
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterName($viewModel), isActive: $isLinkActive) {
                 Button {
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
-            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterName($viewModel), isActive: $isLinkActive) {
                 Button {
                     // TODO: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
                     // 코드가 다 입력이 안됐다면, 팝업 창 보여주기
-                    if codeInput.count != 6 {
+                    if viewModel.code.count != 6 {
                         isAlertActice = true
                     } else {
                         isLinkActive = true
@@ -126,8 +126,8 @@ struct RegisterCode: View {
     // 캐릭터 반환하기
     private func getChar(_ index: Int) -> String {
         var codes = ["", "", "", "", "", ""]
-        for (idx, code) in codeInput.enumerated() {
-            if codeInput.count > 6 {
+        for (idx, code) in viewModel.code.enumerated() {
+            if viewModel.code.count > 6 {
                 break
             }
             codes[idx] = String(code)
@@ -138,6 +138,6 @@ struct RegisterCode: View {
 
 struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCode()
+        RegisterCode(.constant(RegisterViewModel()))
     }
 }

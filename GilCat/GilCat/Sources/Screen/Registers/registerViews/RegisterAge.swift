@@ -7,15 +7,17 @@
 import SwiftUI
 
 struct RegisterAge: View {
-    @EnvironmentObject private var catInfo: GilCatDataManager
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Int?
-    @State private var inputAge = ""
-    @State private var inputType = ""
+    @Binding private var viewModel: RegisterViewModel
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
     private var catName: String = ""
+    
+    init(_ viewModel: Binding<RegisterViewModel>) {
+        self._viewModel = viewModel
+    }
     
     var body: some View {
         ZStack {
@@ -47,9 +49,6 @@ struct RegisterAge: View {
                 }
             }
             .onAppear {
-                // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-                inputAge = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age
-                inputType = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type
                 // 화면이 나타나고 0.5초 뒤에 자동으로 입력칸에 포커스 되도록 하기
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     isFocused = 1
@@ -68,9 +67,8 @@ struct RegisterAge: View {
     // 나이 입력 필드 뷰 반환하기
     @ViewBuilder
     private func getAgeTextField() -> some View {
-        let catName = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
-        GilCatTextField(inputText: $inputAge,
-                               placeHolder: "\(catName)은(는) 몇 살인가요?")
+        GilCatTextField(inputText: $viewModel.age,
+                        placeHolder: "\(viewModel.name)은(는) 몇 살인가요?")
                .padding([.leading, .bottom])
                .focused($isFocused, equals: 1)
                .keyboardType(.numberPad)
@@ -78,8 +76,7 @@ struct RegisterAge: View {
     // 종 입력 필드 뷰 반환하기
     @ViewBuilder
     private func getTypeTextField() -> some View {
-        let catName = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].name
-        GilCatTextField(inputText: $inputType, placeHolder: "\(catName)의 종을 아신다면 알려주세요. ")
+        GilCatTextField(inputText: $viewModel.type, placeHolder: "\(viewModel.name)의 종을 아신다면 알려주세요. ")
             .padding([.leading, .bottom])
             .focused($isFocused, equals: 2)
     }
@@ -87,7 +84,7 @@ struct RegisterAge: View {
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterAvatar($viewModel), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {
@@ -95,16 +92,14 @@ struct RegisterAge: View {
                         }
                         isFirstClick = false
                         isFocused = 2
-                    } else if inputAge.isEmpty && inputType.isEmpty {
+                    } else if viewModel.age.isEmpty && viewModel.type.isEmpty {
                         isLinkActive = true
-                    } else if isFirstClick == false {
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age = inputAge
                     }
                 } label: {
                     GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
-            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterAvatar($viewModel), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {
@@ -113,8 +108,6 @@ struct RegisterAge: View {
                         isFirstClick = false
                         isFocused = 2
                     } else {
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].age = inputAge
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].type = inputType
                         isLinkActive = true
                     }
                 } label: {
@@ -128,6 +121,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge().environmentObject(GilCatDataManager().self)
+        RegisterAge(.constant(RegisterViewModel()))
     }
 }

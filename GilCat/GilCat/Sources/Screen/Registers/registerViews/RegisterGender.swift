@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct RegisterGender: View {
-    @EnvironmentObject private var catInfo: GilCatDataManager
     @Environment(\.presentationMode) var presentation
+    @Binding private var viewModel: RegisterViewModel
     @State private var isLinkActive = false
     @State private var genderPick: GilCatPicker.Choice = .first
     @State private var neuralizedPick: GilCatPicker.Choice = .first
@@ -12,6 +12,10 @@ struct RegisterGender: View {
     private let secondChoiceOfGender = "암컷"
     private let firstChoiceOfNeuralized = "⭕️"
     private let secondChoiceOfNeuralized = "❌"
+    
+    init(_ viewModel: Binding<RegisterViewModel>) {
+        self._viewModel = viewModel
+    }
     
     var body: some View {
         ZStack {
@@ -45,13 +49,12 @@ struct RegisterGender: View {
             }
         }
         .onAppear {
-            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if firstChoiceOfGender == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? firstChoiceOfGender : secondChoiceOfGender) {
+            if viewModel.gender == .male {
                 genderPick = .first
             } else {
                 genderPick = .second
             }
-            if firstChoiceOfNeuralized == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? firstChoiceOfNeuralized : secondChoiceOfNeuralized) {
+            if viewModel.neutralized {
                 neuralizedPick = .first
             } else {
                 neuralizedPick = .second
@@ -69,7 +72,7 @@ struct RegisterGender: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterAge($viewModel), isActive: $isLinkActive) {
             Button {
                 // 어떤게 클릭됐는지에 따라 값 줘야함
                 if isFirstClick {
@@ -79,14 +82,14 @@ struct RegisterGender: View {
                     isFirstClick.toggle()
                 } else {
                     if genderPick == .first {
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender = .male
+                        viewModel.gender = .male
                     } else {
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender = .female
+                        viewModel.gender = .female
                     }
                     if neuralizedPick == .first {
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = true
+                        viewModel.neutralized = true
                     } else {
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = false
+                        viewModel.neutralized = false
                     }
                     isLinkActive = true
                 }
@@ -100,6 +103,6 @@ struct RegisterGender: View {
 
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender().environmentObject(GilCatDataManager().self)
+        RegisterGender(.constant(RegisterViewModel()))
     }
 }

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RegisterStart: View {
-    @EnvironmentObject private var catInfo: GilCatDataManager
     @Environment(\.presentationMode) private var presentation
     @State private var isLinkActive = false
+    @State private var viewModel = RegisterViewModel()
     
     init() {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
@@ -82,13 +82,9 @@ struct RegisterStart: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterCode($viewModel), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
-                // 고양이 정보를 저장하는 새로운 객체 생성
-                if catInfo.gilCatInfos.isEmpty {
-                    catInfo.gilCatInfos.append(GilCatInfo())
-                }
             } label: {
                 GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
             }
