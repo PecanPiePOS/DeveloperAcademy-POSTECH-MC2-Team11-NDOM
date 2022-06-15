@@ -17,6 +17,6 @@ class InfoToNote: ObservableObject {
     @Published var dietInfo: DietInfo          = .initCat      // 사료 정보
     @Published var waterInfo: WaterInfo        = .initCat      // 물 정보
     @Published var snackCount: Int             = 0             // 간식 개수
-    @Published var healthTagInfo: [String]     = []            // 건강 태그
+    @Published var healthTagInfo: [HealthTag]  = []            // 건강 태그
     @Published var memoInfo: [MemoInfo]        = []            // 메모 정보
 }

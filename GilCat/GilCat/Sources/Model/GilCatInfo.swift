@@ -76,6 +76,17 @@ struct MemoInfo: Hashable {
     var content: String
 }
 
+// MARK: 태그 정보
+struct HealthTag: Hashable {
+    init(_ text: String, isClicked: Bool = false) {
+        self.text = text
+        self.isClicked = isClicked
+    }
+    var id = UUID().uuidString
+    var text: String
+    var isClicked = false
+}
+
 enum Amount {
     case big
     case medium

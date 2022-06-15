@@ -218,9 +218,7 @@ struct NoteView: View {
                             
                             Spacer()
                             
-                            Button {
-                                
-                            } label: {
+                            NavigationLink(destination: HealthTagShow(tags: $catInfo.healthTagInfo)) {
                                 Image(systemName: "plus.circle")
                                     .resizable()
                                     .scaledToFit()
@@ -238,7 +236,7 @@ struct NoteView: View {
                             
                             ForEach(catInfo.healthTagInfo, id: \.self) { comps in
                                 HStack {
-                                    Text("\(comps)")
+                                    Text("\(comps.text)")
                                         .font(.system(size: 14, weight: .bold))
                                         .foregroundColor(.white)
                                         .padding()
@@ -326,4 +324,3 @@ struct NoteView: View {
         }
     }
 }
-
