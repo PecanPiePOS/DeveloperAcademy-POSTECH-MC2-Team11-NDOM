@@ -14,6 +14,7 @@ struct RegisterCode: View {
 //    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var isAlertActice = false
+    @State private var isShareCheck = false
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -46,6 +47,11 @@ struct RegisterCode: View {
             .background(Color.backgroundColor)
             .alert("코드를 모두 입력하거나 건너뛰기를 눌러주세요", isPresented: $isAlertActice) {
                 Button("확인") {}
+            }
+            .alert("길고양이 기록창이 합쳐집니다. \n 확인해주세요", isPresented: $isShareCheck) {
+                Button("합치기") {
+                    isLinkActive = true
+                }
             }
             .onAppear {
 //                 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
@@ -115,7 +121,7 @@ struct RegisterCode: View {
                     if newCat.code.count != 6 {
                         isAlertActice = true
                     } else {
-                        isLinkActive = true
+                        isShareCheck = true
                     }
                 } label: {
                     GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)

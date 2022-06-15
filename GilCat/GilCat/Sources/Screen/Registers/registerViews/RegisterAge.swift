@@ -13,6 +13,8 @@ struct RegisterAge: View {
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
+    // 나이랑 종 값 입력 다 할 경우 건너뛰기 버튼은 사라지고 다음만 남도록 하기 위한 변수
+    @State private var isInputFinish = false
     private var catName: String = ""
     
     init() {
@@ -78,27 +80,42 @@ struct RegisterAge: View {
     private func getTypeTextField() -> some View {
         GilCatTextField(inputText: $newCat.type, placeHolder: "\(newCat.name)의 종을 아신다면 알려주세요. ")
             .padding([.leading, .bottom])
+            .onChange(of: newCat.type) { _ in
+                if newCat.type.isEmpty == false {
+                    withAnimation{
+                        isInputFinish = true
+                    }
+                }
+                else {
+                    withAnimation{
+                        isInputFinish = false
+                    }
+                }
+            }
             .focused($isFocused, equals: 2)
     }
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
-                Button {
-                    if isFirstClick {
-                        withAnimation {
-                            isShowingType.toggle()
+            if !isInputFinish {
+                NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+                    Button {
+                        if isFirstClick {
+                            withAnimation {
+                                isShowingType.toggle()
+                            }
+                            isFirstClick = false
+                            isFocused = 2
+                        } else if newCat.age.isEmpty || newCat.type.isEmpty {
+                            isLinkActive = true
                         }
-                        isFirstClick = false
-                        isFocused = 2
-                    } else if newCat.age.isEmpty && newCat.type.isEmpty {
-                        isLinkActive = true
+                    } label: {
+                        GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                     }
-                } label: {
-                    GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
+            
             NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
