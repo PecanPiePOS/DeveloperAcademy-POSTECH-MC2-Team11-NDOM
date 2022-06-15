@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct RegisterStart: View {
+
     @State var isLinkActive = false
     @EnvironmentObject var catInfo: GilCatDataManager
     @Environment(\.presentationMode) var presentation
-
     
     init() {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
