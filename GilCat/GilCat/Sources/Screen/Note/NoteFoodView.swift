@@ -8,10 +8,30 @@
 import SwiftUI
 
 struct NoteFoodView: View {
-    
-    @State private var foodless = false
-    @State private var foodmid = true
-    @State private var foodfull = false
+    enum Amount {
+        case full, mid, less
+        var num: Int {
+            switch self {
+            case .full:
+                return 2
+            case .mid:
+                return 1
+            case .less:
+                return 0
+            }
+        }
+        var str: String {
+            switch self {
+            case .full:
+                return "100%"
+            case .mid:
+                return "50%"
+            case .less:
+                return "25%"
+            }
+        }
+    }
+    @State private var selected = 1
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
 
@@ -62,30 +82,9 @@ struct NoteFoodView: View {
                 GilCatTimePicker(hourEx: $catInfo.dietInfo.timeIndex)
                 
                 HStack(spacing: 15) {
-
-                    foodPercentageView(text: "25%", isClick: foodless)
-                        .onTapGesture {
-                            foodless = true
-                            foodmid = false
-                            foodfull = false
-                        }
-                        .padding()
-                    
-                    foodPercentageView(text: "50%", isClick: foodmid)
-                        .onTapGesture {
-                            foodless = false
-                            foodmid = true
-                            foodfull = false
-                        }
-                        .padding()
-                    
-                    foodPercentageView(text: "100%", isClick: foodfull)
-                        .onTapGesture {
-                            foodless = false
-                            foodmid = false
-                            foodfull = true
-                        }
-                        .padding()
+                    foodPercentageView(amount: .less)
+                    foodPercentageView(amount: .mid)
+                    foodPercentageView(amount: .full)
                 }
                 .padding()
                 
@@ -153,14 +152,14 @@ struct NoteFoodView: View {
     }
     
     @ViewBuilder
-    private func foodPercentageView(text: String, isClick: Bool) -> some View {
-        Text(text)
+    private func foodPercentageView(amount: Amount) -> some View {
+        Text(amount.str)
             .font(.system(size: 22, weight: .heavy))
             .foregroundColor(.white)
             .opacity(0.6)
             .frame(width: 70, height: 70, alignment: .center)
             .overlay {
-                if !isClick {
+                if selected != amount.num {
                     RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.gray, lineWidth: 6)
                                 .frame(width: 90, height: 90)
@@ -169,13 +168,18 @@ struct NoteFoodView: View {
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color("ButtonColor"))
                     
-                    Text(text)
+                    Text(amount.str)
                         .font(.system(size: 22, weight: .heavy))
                         .foregroundColor(.white)
                 }
             }
+            .onTapGesture {
+                withAnimation {
+                    selected = amount.num
+                }
+            }
+            .padding()
     }
-    
 }
 
 struct NoteFoodView_Previews: PreviewProvider {

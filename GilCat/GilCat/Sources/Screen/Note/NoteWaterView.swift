@@ -8,10 +8,31 @@
 import SwiftUI
 
 struct NoteWaterView: View {
+    enum Amount {
+        case full, mid, less
+        var num: Int {
+            switch self {
+            case .full:
+                return 2
+            case .mid:
+                return 1
+            case .less:
+                return 0
+            }
+        }
+        var str: String {
+            switch self {
+            case .full:
+                return "100%"
+            case .mid:
+                return "50%"
+            case .less:
+                return "25%"
+            }
+        }
+    }
     
-    @State private var waterless = false
-    @State private var watermid = true
-    @State private var waterfull = false
+    @State private var selected = 1
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var catInfo: InfoToNote
     
@@ -45,29 +66,9 @@ struct NoteWaterView: View {
                 
                 HStack(spacing: 15) {
 
-                    waterPercentageView(text: "25%", isClick: waterless)
-                        .onTapGesture {
-                            waterless = true
-                            watermid = false
-                            waterfull = false
-                        }
-                        .padding()
-                    
-                    waterPercentageView(text: "50%", isClick: watermid)
-                        .onTapGesture {
-                            waterless = false
-                            watermid = true
-                            waterfull = false
-                        }
-                        .padding()
-                    
-                    waterPercentageView(text: "100%", isClick: waterfull)
-                        .onTapGesture {
-                            waterless = false
-                            watermid = false
-                            waterfull = true
-                        }
-                        .padding()
+                    waterPercentageView(amount: .less)
+                    waterPercentageView(amount: .mid)
+                    waterPercentageView(amount: .full)
                 }
                 .padding()
                 
@@ -135,14 +136,14 @@ struct NoteWaterView: View {
     }
     
     @ViewBuilder
-    private func waterPercentageView(text: String, isClick: Bool) -> some View {
-        Text(text)
+    private func waterPercentageView(amount: Amount) -> some View {
+        Text(amount.str)
             .font(.system(size: 22, weight: .heavy))
             .foregroundColor(.white)
             .opacity(0.6)
             .frame(width: 70, height: 70, alignment: .center)
             .overlay {
-                if !isClick {
+                if selected != amount.num {
                     RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.gray, lineWidth: 6)
                                 .frame(width: 90, height: 90)
@@ -151,11 +152,17 @@ struct NoteWaterView: View {
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color("ButtonColor"))
                     
-                    Text(text)
+                    Text(amount.str)
                         .font(.system(size: 22, weight: .heavy))
                         .foregroundColor(.white)
                 }
             }
+            .onTapGesture {
+                withAnimation {
+                    selected = amount.num
+                }
+            }
+            .padding()
     }
     
 }
