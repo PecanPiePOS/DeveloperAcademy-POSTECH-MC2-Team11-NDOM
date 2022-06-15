@@ -14,8 +14,12 @@ struct Home: View {
         ZStack {
             HomeContainer(viewModel: viewModel)
                 .ignoresSafeArea()
-            if $viewModel.isPopup.wrappedValue {
-                CatSelectPopup(isPopup: $viewModel.isPopup,
+                .fullScreenCover(isPresented: $viewModel.isNewCatRegisterPopup) {
+                    RegisterStart()
+                }
+            
+            if $viewModel.isCatPopup.wrappedValue {
+                CatSelectPopup(isPopup: $viewModel.isCatPopup,
                                cat: $viewModel.selectedCat)
             }
         }
