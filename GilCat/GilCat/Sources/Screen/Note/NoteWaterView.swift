@@ -136,8 +136,7 @@ struct NoteWaterView: View {
                 Spacer()
                 
                 Button {
-                    // 1. 선택된 값 받아오기
-                    /// 서버에 시간 및
+                    // 1. 선택된 값 받아오기 서버에 시간 및
                     // 2. 빠져나가기
                     self.presentation.wrappedValue.dismiss()
                 } label: {

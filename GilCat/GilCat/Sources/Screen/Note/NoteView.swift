@@ -16,14 +16,10 @@ struct NoteView: View {
     
     @Binding var gilCatSpecific: GilCatInfo
 
-
-    
 //    @Binding var hourEx: String
     @Environment(\.presentationMode) var presentation
     @State private var stickNumber = 0
     @State private var checkProfile = false
-    
-
     
     var body: some View {
         
@@ -328,4 +324,3 @@ struct NoteView: View {
         }
     }
 }
-

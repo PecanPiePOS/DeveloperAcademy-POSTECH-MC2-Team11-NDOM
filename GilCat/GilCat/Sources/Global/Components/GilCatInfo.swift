@@ -10,7 +10,7 @@ import Combine
 // 고양이 정보 객체에 대한 리스트
 class GilCatInfoList: ObservableObject {
     var infoList = [GilCatInfo.init(name: "김연호", age: "25", gender: "남자", neutralized: "x", type: "상남자", avatarColor: .emerald, avatarBodyIndex: 2, isUploadedToServer: true)]
-    //EnvironmentObject 사용 시 PreView에 배열 index참조 오류 발생하여 default값으로 한가지 값 지정해둠
+    // EnvironmentObject 사용 시 PreView에 배열 index참조 오류 발생하여 default값으로 한가지 값 지정해둠
 }
 
 // 고양이 정보 객체
