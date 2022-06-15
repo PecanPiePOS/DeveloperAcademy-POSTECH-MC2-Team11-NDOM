@@ -40,31 +40,11 @@ struct NoteWaterView: View {
                     .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/6)
                 
                 // custom picker View
-                GilCatTimePicker()
+//                GilCatTimePicker()
                 
                 HStack(spacing: 15) {
 
-                    Text("25%")
-                        .font(.system(size: 22, weight: .heavy))
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .frame(width: 70, height: 70, alignment: .center)
-                        .overlay {
-                            if !waterless {
-                                RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.gray, lineWidth: 6)
-                                            .frame(width: 90, height: 90)
-                            } else {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .frame(width: 100, height: 100)
-                                    .foregroundColor(Color("ButtonColor"))
-                                
-                                Text("25%")
-                                    .font(.system(size: 22, weight: .heavy))
-                                    .foregroundColor(.white)
-                            }
-                        }
-
+                    yyiyiyii(text: "25%", isClick: waterless)
                         .onTapGesture {
                             waterless = true
                             watermid = false
@@ -72,26 +52,7 @@ struct NoteWaterView: View {
                         }
                         .padding()
                     
-                    Text("50%")
-                        .font(.system(size: 22, weight: .heavy))
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .frame(width: 70, height: 70, alignment: .center)
-                        .overlay {
-                            if !watermid {
-                                RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.gray, lineWidth: 6)
-                                            .frame(width: 90, height: 90)
-                            } else {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .frame(width: 100, height: 100)
-                                    .foregroundColor(Color("ButtonColor"))
-                                
-                                Text("50%")
-                                    .font(.system(size: 22, weight: .heavy))
-                                    .foregroundColor(.white)
-                            }
-                        }
+                    yyiyiyii(text: "50%", isClick: watermid)
                         .onTapGesture {
                             waterless = false
                             watermid = true
@@ -99,26 +60,7 @@ struct NoteWaterView: View {
                         }
                         .padding()
                     
-                    Text("100%")
-                        .font(.system(size: 22, weight: .heavy))
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                        .frame(width: 70, height: 70, alignment: .center)
-                        .overlay {
-                            if !waterfull {
-                                RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.gray, lineWidth: 6)
-                                            .frame(width: 90, height: 90)
-                            } else {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .frame(width: 100, height: 100)
-                                    .foregroundColor(Color("ButtonColor"))
-                                
-                                Text("100%")
-                                    .font(.system(size: 22, weight: .heavy))
-                                    .foregroundColor(.white)
-                            }
-                        }
+                    yyiyiyii(text: "100%", isClick: waterfull)
                         .onTapGesture {
                             waterless = false
                             watermid = false
@@ -189,6 +131,30 @@ struct NoteWaterView: View {
             .foregroundColor(.white)
             .opacity(0.6)
             .padding(.top, 15)
+    }
+    
+    @ViewBuilder
+    private func yyiyiyii(text: String, isClick: Bool) -> some View {
+        Text(text)
+            .font(.system(size: 22, weight: .heavy))
+            .foregroundColor(.white)
+            .opacity(0.6)
+            .frame(width: 70, height: 70, alignment: .center)
+            .overlay {
+                if !isClick {
+                    RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.gray, lineWidth: 6)
+                                .frame(width: 90, height: 90)
+                } else {
+                    RoundedRectangle(cornerRadius: 16)
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(Color("ButtonColor"))
+                    
+                    Text("100%")
+                        .font(.system(size: 22, weight: .heavy))
+                        .foregroundColor(.white)
+                }
+            }
     }
     
 }

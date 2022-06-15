@@ -60,7 +60,7 @@ struct NoteFoodView: View {
                     .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/6)
                 
                 // MARK: 커스텀 피커 뷰
-                GilCatTimePicker()
+//                GilCatTimePicker()
                 
                 HStack(spacing: 15) {
 
