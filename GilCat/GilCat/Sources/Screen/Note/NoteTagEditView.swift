@@ -18,22 +18,42 @@ struct HealthTagShow: View {
     var body: some View {
         VStack(alignment: .leading) {
             // 부가 설명
-            CustomSubTitle(text: "※ 해당되는 건강 태그를 선택해주세요. ")
+            CustomSubTitle(text: "※ 해당되는 건강 태그를 선택해주세요.")
             // 제목
-            GilCatTitle(titleText: "건강")
-            // 추가 버튼
-            Button {
-                isModalPresented = true
-            } label: {
-                Image(systemName: "plus")
-                    .padding()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(.white)
-                    .background(Color.profileBackgroundColor)
-                    .font(.system(size: 25, weight: Font.Weight.heavy))
-                    .cornerRadius(20)
-                    .padding(.leading, 4)
+            HStack(alignment: .firstTextBaseline) {
+                VStack {
+                    GilCatTitle(titleText: "건강")
+                }
+                
+                Spacer()
+                
+                // 추가 버튼
+                Button {
+                    isModalPresented = true
+                } label: {
+                    HStack {
+                        Spacer()
+                        
+                        Image(systemName: "plus")
+                            .padding()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(Color.buttonColor)
+                            .background(Color.profileBackgroundColor)
+                            .font(.system(size: 25, weight: Font.Weight.heavy))
+                            .cornerRadius(20)
+                            .padding(.leading, 4)
+                    }
+                }
             }
+            
+            Text("✓ 한번 더 누르면 활성화되어 기록장에 추가됩니다.")
+                .font(.caption)
+                .minimumScaleFactor(0.5)
+                .foregroundColor(.white)
+                .padding(.leading)
+                .padding(.top, -10)
+                .padding(.bottom)
+            
             // 태그 보여주는 칸
             ScrollView {
                 TagCloud(tags: $tags)
