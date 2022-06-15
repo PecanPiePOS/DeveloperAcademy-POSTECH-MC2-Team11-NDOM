@@ -10,12 +10,13 @@ import SwiftUI
 struct Home: View {
     
     @ObservedObject var viewModel: HomeViewModel
+    @StateObject var newCatModel: NewCatModel = NewCatModel()
     var body: some View {
         ZStack {
             HomeContainer(viewModel: viewModel)
                 .ignoresSafeArea()
                 .fullScreenCover(isPresented: $viewModel.isNewCatRegisterPopup) {
-                    RegisterStart()
+                    RegisterStart().environmentObject(newCatModel)
                 }
             
             if $viewModel.isCatPopup.wrappedValue {
