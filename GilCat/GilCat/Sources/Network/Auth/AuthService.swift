@@ -4,7 +4,7 @@
 //
 //  Created by Woody on 2022/06/14.
 //
-
+/*
 import Foundation
 
 struct AuthService {
@@ -18,7 +18,6 @@ struct AuthService {
             case .success:
                 completion(true)
             case .failure:
-                // TODO: statusCode로 에러처리해야하나? 리오랑 에러처리에 대해서 이야기해봐야함
                 completion(false)
             }
         }
@@ -30,10 +29,10 @@ struct AuthService {
             case .success:
                 completion(true)
             case .failure:
-                // TODO: statusCode로 에러처리해야하나? 리오랑 에러처리에 대해서 이야기해봐야함
                 completion(false)
             }
         }
     }
                            
 }
+*/
