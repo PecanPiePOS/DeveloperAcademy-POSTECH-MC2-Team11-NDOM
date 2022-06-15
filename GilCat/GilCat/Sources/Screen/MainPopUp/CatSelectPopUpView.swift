@@ -21,7 +21,7 @@ struct CatSelectPopup: View {
     @State var inviteCode = "123456"
     @State var openNote: Bool = false
     @State var openCode: Bool = false
-    
+
     @Binding var isPopup: Bool
     @Binding var cat: GilCatInfo
     

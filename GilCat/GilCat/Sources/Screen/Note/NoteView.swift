@@ -284,30 +284,29 @@ struct NoteView: View {
                         }
                         
                         // MARK: 개인 메모장 박스
-                        ScrollView(.horizontal, showsIndicators: true) {
-                            HStack {
-                                ForEach(memoList, id: \.self) { memo in
-                                    VStack(alignment: .leading) {
-                                        Text("2022.6.3")
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(Color("ButtonColor"))
-                                        Text("15:46")
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(.gray)
-                                        Text("\(memo)")
-                                            .frame(width: 280, height: 80)
-                                            .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.white)
-                                            .multilineTextAlignment(.leading)
-                                            .lineLimit(3)
-                                    }
-                                    .frame(width: 340, height: 180)
-                                    .background(Color("PickerColor").opacity(0.8))
-                                    .cornerRadius(30)
-                                    .padding(.horizontal, 10)
+                        HStack {
+                            ForEach(memoList, id: \.self) { memo in
+                                VStack(alignment: .leading) {
+                                    Text("2022.6.3")
+                                        .font(.system(size: 16, weight: .medium))
+                                        .foregroundColor(Color("ButtonColor"))
+                                    Text("15:46")
+                                        .font(.system(size: 16, weight: .medium))
+                                        .foregroundColor(.gray)
+                                    Text("\(memo)")
+                                        .frame(width: 280, height: 80)
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(3)
                                 }
+                                .frame(width: 340, height: 180)
+                                .background(Color("PickerColor").opacity(0.8))
+                                .cornerRadius(30)
+                                .padding(.horizontal, 10)
                             }
                         }
+                        .modifier(ScrollingHStackModifier(items: memoList.count, itemWidth: 280, itemSpacing: 30))
                     }
             }
             .attachPartialSheetToRoot()
