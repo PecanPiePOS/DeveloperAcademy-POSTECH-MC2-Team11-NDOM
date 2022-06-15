@@ -22,20 +22,15 @@ struct NoteWaterView: View {
         ZStack {
             Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
+            
             VStack {
-                Text("※ 시간을 선택해서 수정해주세요.")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.white)
-                    .opacity(0.6)
-                    .padding(.top, 15)
+                
+                infoTextView(Text: "※ 시간을 선택해서 수정해주세요.")
                 
                 Spacer()
                 
                 HStack(alignment: .lastTextBaseline, spacing: 15) {
-                    Text("물")
-                        .font(.system(size: 36, weight: .heavy))
-                        .foregroundColor(.white)
-                        .frame(width: 240, height: 100)
+                    getwaterNameView(name: "물")
                 
                 }
                 
@@ -135,25 +130,7 @@ struct NoteWaterView: View {
                 
                 Spacer()
                 
-                Button {
-                    // 1. 선택된 값 받아오기
-                    /// 서버에 시간 및
-                    // 2. 빠져나가기
-                    self.presentation.wrappedValue.dismiss()
-                } label: {
-                    Rectangle()
-                        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
-                        .cornerRadius(20)
-                        .foregroundColor(Color("ButtonColor"))
-                        .overlay {
-                            Text("등록 완료")
-                                .font(.title3)
-                                .fontWeight(.heavy)
-                                .foregroundColor(.white)
-                        }
-                        .padding(.horizontal, 30)
-                        .padding(.bottom, 10)
-                }
+                createWaterView()
                 
             }
             .navigationTitle("급식 입력")
@@ -171,6 +148,49 @@ struct NoteWaterView: View {
             }
         }
     }
+    
+    @ViewBuilder
+    private func getwaterNameView(name foodName: String) -> some View {
+        Text(foodName)
+            .font(.system(size: 36, weight: .heavy))
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .frame(width: 240, height: 100)
+    }
+    
+    @ViewBuilder
+    private func createWaterView() -> some View {
+        Button {
+            // 1. 선택된 값 받아오기
+            // Param 에 아마 서버에서 주고 받는 또는 data 연결 변수 들어갈 듯
+            // 2. 빠져나가기
+            self.presentation.wrappedValue.dismiss()
+        } label: {
+            Rectangle()
+                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
+                .cornerRadius(20)
+                .foregroundColor(Color("ButtonColor"))
+                .overlay {
+                    Text("등록 완료")
+                        .font(.title3)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                }
+                .padding(.horizontal, 30)
+                .padding(.bottom, 10)
+        }
+    }
+    
+    // 첫 안내 뷰
+    @ViewBuilder
+    private func infoTextView(Text text: String) -> some View {
+        Text(text)
+            .font(.system(size: 16, weight: .bold))
+            .foregroundColor(.white)
+            .opacity(0.6)
+            .padding(.top, 15)
+    }
+    
 }
 
 struct NoteWaterView_Previews: PreviewProvider {

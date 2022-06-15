@@ -14,17 +14,14 @@ struct NoteView: View {
     let healthList = ["피부에 문제가 있어보여요", "복부가 부었어요", "걸음걸이가 이상해보여요", "임신을 했어요", "털 상태가 좋지 못해요", "피가 나요", "토를 계속 해요"]
     let memoList = ["오늘은 달이가 다른 고양이와 싸우고 온 것 같다. 덩치도 산만한 것이 싸움도 못하나 보다. 목덜미 주변에 피가 있는데 닦아 주지를 못한다. 아직 달이와 나의 거리는 3미터 내로 좁혀지지 않는다. 상처를 치료해주지 못해 답답.", "저 저 나쁜 놈이 있다. 덩치는 달이의 반도 못하는데, 얼마나 날렵해 보이는지... 달이가 생각보다 나이가 많은가 보다. 뚜드려 맞는 장면을 봤다. 어쩐지 평소보다 사료가 더 많이 남아있더라니... 달이가 하나도 먹지 못하고 저놈시키가 몇알 뺏어먹고 말았구나..."]
     
-    @Binding var gilCatSpecific: GilCatInfo
-
-
+//    @Binding var gilCatSpecific: GilCatInfo
+    @EnvironmentObject var catInfo: InfoToNote
     
 //    @Binding var hourEx: String
     @Environment(\.presentationMode) var presentation
     @State private var stickNumber = 0
     @State private var checkProfile = false
-    
 
-    
     var body: some View {
         
         ZStack {
@@ -51,7 +48,7 @@ struct NoteView: View {
                                 .frame(width: 80, height: 80, alignment: .center)
                                 .offset(y: 14)
                                 
-                            Text(gilCatSpecific.name)
+                            Text(catInfo.name)
                                 .font(.system(size: 40, weight: .heavy))
                                 .foregroundColor(.white)
                         }
@@ -101,7 +98,7 @@ struct NoteView: View {
                                                 .scaledToFit()
                                                 .frame(width: 60, height: 60)
                                             
-                                            Text(gilCatSpecific.dietInfo.time)
+                                            Text(catInfo.dietInfo.time)
                                                 .font(.system(size: 32, weight: .heavy))
                                                 .foregroundColor(Color("ButtonColor"))
                                             
@@ -135,7 +132,7 @@ struct NoteView: View {
                                                 .scaledToFit()
                                                 .frame(width: 60, height: 60)
                                             
-                                            Text(gilCatSpecific.waterInfo.time)
+                                            Text(catInfo.waterInfo.time)
                                                 .font(.system(size: 32, weight: .heavy))
                                                 .foregroundColor(Color("ButtonColor"))
                                             
@@ -168,16 +165,16 @@ struct NoteView: View {
                                     Spacer()
                                     
                                     ZStack {
-                                        if gilCatSpecific.snackCount == 0 {
+                                        if catInfo.snackCount == 0 {
                                             Text("터치하면 추가됩니다.\n자정에 갱신됩니다.")
                                                 .font(.system(size: 16, weight: .light))
                                                 .foregroundColor(.white)
                                                 .opacity(0.8)
                                                 .padding(.horizontal, 10)
                                                 
-                                        } else if 0 < gilCatSpecific.snackCount && gilCatSpecific.snackCount < 6 {
+                                        } else if 0 < catInfo.snackCount && catInfo.snackCount < 6 {
                                             HStack(spacing: 5) {
-                                                ForEach(0...gilCatSpecific.snackCount-1, id: \.self) { _ in
+                                                ForEach(0...catInfo.snackCount-1, id: \.self) { _ in
                                                     Image("stick")
                                                         .resizable()
                                                         .scaledToFit()
@@ -189,7 +186,7 @@ struct NoteView: View {
                                             HStack {
                                                 Spacer()
                                                 
-                                                Text("\(gilCatSpecific.snackCount)개")
+                                                Text("\(catInfo.snackCount)개")
                                                     .font(.system(size: 24, weight: .heavy))
                                                     .foregroundColor(.red)
                                                 
@@ -207,7 +204,7 @@ struct NoteView: View {
                                 .padding()
                             }
                             .onTapGesture {
-                                gilCatSpecific.snackCount += 1
+                                catInfo.snackCount += 1
                             }
                             .padding(.bottom, 20)
                         
@@ -239,7 +236,7 @@ struct NoteView: View {
                         VStack {
                             Spacer().frame(height: 24)
                             
-                            ForEach(gilCatSpecific.healthTagInfo, id: \.self) { comps in
+                            ForEach(catInfo.healthTagInfo, id: \.self) { comps in
                                 HStack {
                                     Text("\(comps)")
                                         .font(.system(size: 14, weight: .bold))

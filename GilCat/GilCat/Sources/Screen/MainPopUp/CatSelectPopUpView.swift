@@ -37,6 +37,8 @@ struct CatSelectPopup: View {
             .foregroundColor(color)
     }
     
+    @StateObject var selectedCat: InfoToNote = InfoToNote()
+    
     var body: some View {
         VStack {
             Button {
@@ -88,7 +90,7 @@ struct CatSelectPopup: View {
                                     .font(.system(size: 20, weight: .heavy)))
                         }
                         .fullScreenCover(isPresented: $openNote) {
-                            NoteView(gilCatSpecific: $cat)
+                            NoteView().environmentObject(selectedCat)
                         }
                         
                         HStack(alignment: .center, spacing: 16) {
