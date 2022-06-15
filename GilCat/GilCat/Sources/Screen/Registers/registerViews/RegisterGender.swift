@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct RegisterGender: View {
+    @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) var presentation
-    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var genderPick: GilCatPicker.Choice = .first
     @State private var neuralizedPick: GilCatPicker.Choice = .first
@@ -13,8 +13,8 @@ struct RegisterGender: View {
     private let firstChoiceOfNeuralized = "⭕️"
     private let secondChoiceOfNeuralized = "❌"
     
-    init(_ newCat: Binding<NewCatModel>) {
-        self._newCat = newCat
+    init() {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
     
     var body: some View {
@@ -72,7 +72,7 @@ struct RegisterGender: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterAge($newCat), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
             Button {
                 // 어떤게 클릭됐는지에 따라 값 줘야함
                 if isFirstClick {
@@ -103,6 +103,6 @@ struct RegisterGender: View {
 
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(.constant(NewCatModel()))
+        RegisterGender().environmentObject(NewCatModel())
     }
 }
