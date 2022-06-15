@@ -1,16 +1,16 @@
 import SwiftUI
 
 struct RegisterAvatar: View {
+    @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
-    @Binding private var newCat: NewCatModel
     @State private var viewChoice: GilCatPicker.Choice = .first
     @State private var isLinkActive = false
     private let gridSpace: CGFloat = 20
     private let viewFirstChoice: String = "외형"
     private let viewSecondChoice: String = "색"
     
-    init(_ newCat: Binding<NewCatModel>) {
-        self._newCat = newCat
+    init() {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
     
     var body: some View {
@@ -138,7 +138,7 @@ struct RegisterAvatar: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterFinish($newCat), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterFinish(), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
             } label: {
@@ -151,6 +151,6 @@ struct RegisterAvatar: View {
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(.constant(NewCatModel()))
+        RegisterGender().environmentObject(NewCatModel())
     }
 }

@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct RegisterCode: View {
+    @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-    @Binding private var newCat: NewCatModel
+//    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var isAlertActice = false
     
-    init(_ newCat: Binding<NewCatModel>) {
+    init() {
         UITextView.appearance().backgroundColor = .clear
-        self._newCat = newCat
     }
     
     var body: some View {
@@ -48,7 +48,7 @@ struct RegisterCode: View {
                 Button("확인") {}
             }
             .onAppear {
-                // 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
+//                 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     isFocused = true
                 }
@@ -101,14 +101,14 @@ struct RegisterCode: View {
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterName($newCat), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
                 Button {
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
-            NavigationLink(destination: RegisterName($newCat), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
                 Button {
                     // TODO: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
                     // 코드가 다 입력이 안됐다면, 팝업 창 보여주기
@@ -139,6 +139,6 @@ struct RegisterCode: View {
 
 struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCode(.constant(NewCatModel()))
+        RegisterCode().environmentObject(NewCatModel())
     }
 }

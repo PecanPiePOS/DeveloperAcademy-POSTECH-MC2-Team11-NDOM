@@ -50,16 +50,18 @@ class HomeViewModel: ObservableObject {
                    gilCatMapInformation: .second)
     ]
     @Published var selectedCat: GilCatInfo = .empty
-    @Published var isPopup: Bool = false
+    @Published var isCatPopup: Bool = false
+    @Published var isNewCatRegisterPopup: Bool = false
     
     func catImageButtonTapped(_ index: Int) {
         selectedCat = catLists[index]
         withAnimation {
-            isPopup = true
+            isCatPopup = true
         }
     }
     
     func boxImageButtonTapped() {
-        
+        print("boxImageButtonTapped")
+        isNewCatRegisterPopup = true
     }
 }

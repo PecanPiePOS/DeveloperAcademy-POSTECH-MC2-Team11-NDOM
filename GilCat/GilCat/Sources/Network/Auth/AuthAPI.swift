@@ -4,11 +4,11 @@
 //
 //  Created by Woody on 2022/06/14.
 //
-
+/*
 import Moya
 
 enum AuthAPI {
-    case verifyInvitationCode(UserCode) // TODO: 어디에 쓰이는 API?
+    case verifyInvitationCode(UserCode)
     case authLogin(UserCode)
     
     typealias UserCode = String
@@ -35,3 +35,4 @@ extension AuthAPI: TargetType {
         }
     }
 }
+*/

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RegisterStart: View {
+    @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @State private var isLinkActive = false
-    @State private var newCat = NewCatModel()
     
     init() {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
@@ -82,7 +82,7 @@ struct RegisterStart: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterCode($newCat), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
             } label: {
@@ -95,6 +95,6 @@ struct RegisterStart: View {
 
 struct RegisterStart_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterStart()
+        RegisterStart().environmentObject(NewCatModel())
     }
 }
