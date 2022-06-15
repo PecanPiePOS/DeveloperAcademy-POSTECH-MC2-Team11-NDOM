@@ -14,7 +14,7 @@ struct NoteFoodEditView: View {
     }
     
     @Environment(\.presentationMode) var presentation
-    @State private var foodChange = ""
+    @EnvironmentObject var catInfo: InfoToNote
     @FocusState private var focusField: FocusField1?
     
     init() {
@@ -33,7 +33,7 @@ struct NoteFoodEditView: View {
 
                 infoNameView()
                 
-                foodTextFieldView(text: foodChange)
+                foodTextFieldView(text: catInfo.dietInfo.name)
                 
                 Spacer()
                 
@@ -57,7 +57,7 @@ struct NoteFoodEditView: View {
     
     @ViewBuilder
     private func foodTextFieldView(text foodChange: String) -> some View {
-        TextField("", text: $foodChange)
+        TextField("", text: $catInfo.dietInfo.name)
             .focused($focusField, equals: .field)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
