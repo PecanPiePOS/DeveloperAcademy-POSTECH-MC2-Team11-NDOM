@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NoteProfileView: View {
-    @State private var checkTNR = false
+    @EnvironmentObject var catInfo: InfoToNote
     
     var body: some View {
         ZStack {
@@ -17,14 +17,14 @@ struct NoteProfileView: View {
             VStack(alignment: .leading, spacing: 15) {
                 Spacer()
                 HStack(spacing: 20) {
-                    getCatNameView(Text: "나비이")
+                    getCatNameView(Text: catInfo.name)
                     
-                    getTNRInfoView(TNR: checkTNR)
+                    getTNRInfoView(TNR: catInfo.neutralized)
                     
                 }
-                textProfileView(Text: "3짤")
-                textProfileView(Text: "남컷")
-                textProfileView(Text: "코숏")
+                textProfileView(Text: catInfo.age)
+                textProfileView(Text: catInfo.gender == .male ? "수컷" : "암컷")
+                textProfileView(Text: catInfo.type)
             }
             .padding(.top, 30)
         }
@@ -64,5 +64,6 @@ struct NoteProfileView: View {
 struct NoteProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NoteProfileView()
+            .environmentObject(InfoToNote())
     }
 }

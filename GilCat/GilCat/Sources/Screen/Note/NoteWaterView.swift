@@ -13,7 +13,8 @@ struct NoteWaterView: View {
     @State private var watermid = true
     @State private var waterfull = false
     @Environment(\.presentationMode) var presentation
-
+    @EnvironmentObject var catInfo: InfoToNote
+    
     init() {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
@@ -40,11 +41,11 @@ struct NoteWaterView: View {
                     .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/6)
                 
                 // custom picker View
-//                GilCatTimePicker()
+                GilCatTimePicker(hourEx: $catInfo.waterInfo.timeIndex)
                 
                 HStack(spacing: 15) {
 
-                    yyiyiyii(text: "25%", isClick: waterless)
+                    waterPercentageView(text: "25%", isClick: waterless)
                         .onTapGesture {
                             waterless = true
                             watermid = false
@@ -52,7 +53,7 @@ struct NoteWaterView: View {
                         }
                         .padding()
                     
-                    yyiyiyii(text: "50%", isClick: watermid)
+                    waterPercentageView(text: "50%", isClick: watermid)
                         .onTapGesture {
                             waterless = false
                             watermid = true
@@ -60,7 +61,7 @@ struct NoteWaterView: View {
                         }
                         .padding()
                     
-                    yyiyiyii(text: "100%", isClick: waterfull)
+                    waterPercentageView(text: "100%", isClick: waterfull)
                         .onTapGesture {
                             waterless = false
                             watermid = false
@@ -134,7 +135,7 @@ struct NoteWaterView: View {
     }
     
     @ViewBuilder
-    private func yyiyiyii(text: String, isClick: Bool) -> some View {
+    private func waterPercentageView(text: String, isClick: Bool) -> some View {
         Text(text)
             .font(.system(size: 22, weight: .heavy))
             .foregroundColor(.white)
@@ -150,7 +151,7 @@ struct NoteWaterView: View {
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color("ButtonColor"))
                     
-                    Text("100%")
+                    Text(text)
                         .font(.system(size: 22, weight: .heavy))
                         .foregroundColor(.white)
                 }
@@ -161,6 +162,6 @@ struct NoteWaterView: View {
 
 struct NoteWaterView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteWaterView()
+        NoteWaterView().environmentObject(InfoToNote())
     }
 }

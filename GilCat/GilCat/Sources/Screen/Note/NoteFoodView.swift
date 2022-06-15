@@ -63,65 +63,29 @@ struct NoteFoodView: View {
                 
                 HStack(spacing: 15) {
 
-                    foodPercentageView(percent: 25, halfquater: true, half: false, full: false, choice: foodless)
+                    foodPercentageView(text: "25%", isClick: foodless)
+                        .onTapGesture {
+                            foodless = true
+                            foodmid = false
+                            foodfull = false
+                        }
+                        .padding()
                     
-                    foodPercentageView(percent: 50, halfquater: false, half: true, full: false, choice: foodmid)
+                    foodPercentageView(text: "50%", isClick: foodmid)
+                        .onTapGesture {
+                            foodless = false
+                            foodmid = true
+                            foodfull = false
+                        }
+                        .padding()
                     
-                    foodPercentageView(percent: 100, halfquater: false, half: false, full: true, choice: foodfull)
-                    
-//                    Text("50%")
-//                        .font(.system(size: 22, weight: .heavy))
-//                        .foregroundColor(.white)
-//                        .opacity(0.6)
-//                        .frame(width: 70, height: 70, alignment: .center)
-//                        .overlay {
-//                            if !foodmid {
-//                                RoundedRectangle(cornerRadius: 16)
-//                                            .stroke(Color.gray, lineWidth: 6)
-//                                            .frame(width: 90, height: 90)
-//                            } else {
-//                                RoundedRectangle(cornerRadius: 16)
-//                                    .frame(width: 100, height: 100)
-//                                    .foregroundColor(Color("ButtonColor"))
-//
-//                                Text("50%")
-//                                    .font(.system(size: 22, weight: .heavy))
-//                                    .foregroundColor(.white)
-//                            }
-//                        }
-//                        .onTapGesture {
-//                            foodless = false
-//                            foodmid = true
-//                            foodfull = false
-//                        }
-//                        .padding()
-//
-//                    Text("100%")
-//                        .font(.system(size: 22, weight: .heavy))
-//                        .foregroundColor(.white)
-//                        .opacity(0.6)
-//                        .frame(width: 70, height: 70, alignment: .center)
-//                        .overlay {
-//                            if !foodfull {
-//                                RoundedRectangle(cornerRadius: 16)
-//                                            .stroke(Color.gray, lineWidth: 6)
-//                                            .frame(width: 90, height: 90)
-//                            } else {
-//                                RoundedRectangle(cornerRadius: 16)
-//                                    .frame(width: 100, height: 100)
-//                                    .foregroundColor(Color("ButtonColor"))
-//
-//                                Text("100%")
-//                                    .font(.system(size: 22, weight: .heavy))
-//                                    .foregroundColor(.white)
-//                            }
-//                        }
-//                        .onTapGesture {
-//                            foodless = false
-//                            foodmid = false
-//                            foodfull = true
-//                        }
-//                        .padding()
+                    foodPercentageView(text: "100%", isClick: foodfull)
+                        .onTapGesture {
+                            foodless = false
+                            foodmid = false
+                            foodfull = true
+                        }
+                        .padding()
                 }
                 .padding()
                 
@@ -156,39 +120,6 @@ struct NoteFoodView: View {
     }
     
     @ViewBuilder
-    private func foodPercentageView(percent text: Int, halfquater  foodless: Bool, half foodmid: Bool, full foodfull: Bool, choice: Bool ) -> some View {
-        
-        Text("\(text)%")
-            .font(.system(size: 22, weight: .heavy))
-            .foregroundColor(.white)
-            .opacity(0.6)
-            .frame(width: 70, height: 70, alignment: .center)
-            .overlay {
-                if !foodless {
-                    RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.gray, lineWidth: 6)
-                                .frame(width: 90, height: 90)
-                } else {
-                    RoundedRectangle(cornerRadius: 16)
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(Color("ButtonColor"))
-                    
-                    Text("\(text)%")
-                        .font(.system(size: 22, weight: .heavy))
-                        .foregroundColor(.white)
-                }
-            }
-
-            .onTapGesture {
-                self.foodless = foodless
-                self.foodmid = foodmid
-                self.foodfull = foodfull
-                print(foodless, foodmid, foodmid)
-            }
-            .padding()
-    }
-
-    @ViewBuilder
     private func createFoodView() -> some View {
         Button {
             // 1. 선택된 값 받아오기
@@ -221,10 +152,35 @@ struct NoteFoodView: View {
             .padding(.top, 15)
     }
     
+    @ViewBuilder
+    private func foodPercentageView(text: String, isClick: Bool) -> some View {
+        Text(text)
+            .font(.system(size: 22, weight: .heavy))
+            .foregroundColor(.white)
+            .opacity(0.6)
+            .frame(width: 70, height: 70, alignment: .center)
+            .overlay {
+                if !isClick {
+                    RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.gray, lineWidth: 6)
+                                .frame(width: 90, height: 90)
+                } else {
+                    RoundedRectangle(cornerRadius: 16)
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(Color("ButtonColor"))
+                    
+                    Text(text)
+                        .font(.system(size: 22, weight: .heavy))
+                        .foregroundColor(.white)
+                }
+            }
+    }
+    
 }
 
 struct NoteFoodView_Previews: PreviewProvider {
     static var previews: some View {
         NoteFoodView()
+            .environmentObject(InfoToNote())
     }
 }
