@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct RegisterName: View {
+    @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var isAlertActive = false
     
-    init(_ newCat: Binding<NewCatModel>) {
-        self._newCat = newCat
+    init() {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
     
     var body: some View {
@@ -57,7 +57,7 @@ struct RegisterName: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterGender($newCat), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterGender(), isActive: $isLinkActive) {
             Button {
                 // 이름이 입력이 안됐다면, 팝업 창 보여주기
                 if newCat.name.isEmpty {
@@ -75,6 +75,6 @@ struct RegisterName: View {
 }
 struct RegisterName_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterName(.constant(NewCatModel()))
+        RegisterName().environmentObject(NewCatModel())
     }
 }

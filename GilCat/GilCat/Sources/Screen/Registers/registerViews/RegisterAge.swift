@@ -7,16 +7,16 @@
 import SwiftUI
 
 struct RegisterAge: View {
+    @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Int?
-    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
     private var catName: String = ""
     
-    init(_ newCat: Binding<NewCatModel>) {
-        self._newCat = newCat
+    init() {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
     
     var body: some View {
@@ -84,7 +84,7 @@ struct RegisterAge: View {
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterAvatar($newCat), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {
@@ -99,7 +99,7 @@ struct RegisterAge: View {
                     GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
-            NavigationLink(destination: RegisterAvatar($newCat), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {
@@ -121,6 +121,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge(.constant(NewCatModel()))
+        RegisterAge().environmentObject(NewCatModel())
     }
 }
