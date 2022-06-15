@@ -235,17 +235,19 @@ struct NoteView: View {
                             Spacer().frame(height: 24)
                             
                             ForEach(catInfo.healthTagInfo, id: \.self) { comps in
-                                HStack {
-                                    Text("\(comps.text)")
-                                        .font(.system(size: 14, weight: .bold))
-                                        .foregroundColor(.white)
-                                        .padding()
-                                        .background(Color("BackGroundColor").opacity(0.5))
-                                        .cornerRadius(24)
-                                    
-                                    Spacer()
+                                if comps.isClicked {
+                                    HStack {
+                                        Text("\(comps.text)")
+                                            .font(.system(size: 14, weight: .bold))
+                                            .foregroundColor(.white)
+                                            .padding()
+                                            .background(Color("BackGroundColor").opacity(0.5))
+                                            .cornerRadius(24)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal, 16)
                                 }
-                                .padding(.horizontal, 16)
                             }
                             Spacer().frame(height: 24)
                         }
@@ -301,7 +303,7 @@ struct NoteView: View {
                                 .padding(.horizontal, 10)
                             }
                         }
-                        .modifier(ScrollingHStackModifier(items: memoList.count, itemWidth: 280, itemSpacing: 30))
+                        .modifier(ScrollingHStackModifier(items: memoList.count, itemWidth: 280, itemSpacing: 88))
                     }
                 }
                 .attachPartialSheetToRoot()

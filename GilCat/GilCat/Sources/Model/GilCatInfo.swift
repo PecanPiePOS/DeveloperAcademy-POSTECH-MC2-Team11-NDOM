@@ -27,7 +27,6 @@ struct GilCatInfo {
     var memoInfo: [MemoInfo]        = []
     var gilCatMapInformation: GilCatMapCase = .none
     
-    
 }
 
 extension GilCatInfo {
