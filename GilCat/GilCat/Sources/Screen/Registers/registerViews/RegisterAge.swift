@@ -115,7 +115,7 @@ struct RegisterAge: View {
                     }
                 }
             }
-            
+
             NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
