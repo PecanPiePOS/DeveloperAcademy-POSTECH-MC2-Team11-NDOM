@@ -58,6 +58,8 @@ struct NoteProfileView: View {
         Text(text)
             .bold()
             .font(.title3)
+            .foregroundColor(.white)
+            .opacity(0.9)
     }
 }
 
