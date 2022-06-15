@@ -11,13 +11,14 @@ struct RegisterCode: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-//    @Binding private var newCat: NewCatModel
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     @State private var isAlertActice = false
     @State private var isShareCheck = false
     
-    init() {
+    init(popToRoot: Binding<Bool>) {
         UITextView.appearance().backgroundColor = .clear
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -113,14 +114,15 @@ struct RegisterCode: View {
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterName(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
                 Button {
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
-            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
+            .isDetailLink(false)
+            NavigationLink(destination: RegisterName(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
                 Button {
                     // TODO: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
                     // 코드가 다 입력이 안됐다면, 팝업 창 보여주기
@@ -133,6 +135,7 @@ struct RegisterCode: View {
                     GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
                 }
             }
+            .isDetailLink(false)
         }
         .padding()
     }
@@ -151,6 +154,6 @@ struct RegisterCode: View {
 
 struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCode().environmentObject(NewCatModel())
+        RegisterCode(popToRoot: .constant(false)).environmentObject(NewCatModel())
     }
 }

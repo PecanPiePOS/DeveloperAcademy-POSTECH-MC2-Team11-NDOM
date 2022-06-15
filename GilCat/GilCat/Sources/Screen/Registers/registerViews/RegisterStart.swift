@@ -10,7 +10,6 @@ import SwiftUI
 struct RegisterStart: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
-//    @Environment(\.dismiss) private var dismiss
     @State private var isLinkActive = false
     
     init() {
@@ -39,6 +38,11 @@ struct RegisterStart: View {
                             .onTapGesture {
                                 self.presentation.wrappedValue.dismiss()
                             }
+                    }
+                }
+                .onChange(of: isLinkActive) { _ in
+                    if !isLinkActive {
+                        presentation.wrappedValue.dismiss()
                     }
                 }
             }
@@ -83,15 +87,15 @@ struct RegisterStart: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterCode(popToRoot: $isLinkActive), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
-//                dismiss()
             } label: {
                 GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
             }
             .padding()
         }
+        .isDetailLink(false)
     }
 }
 

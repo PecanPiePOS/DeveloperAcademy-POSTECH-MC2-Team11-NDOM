@@ -10,6 +10,7 @@ struct RegisterAge: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Int?
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
@@ -17,8 +18,9 @@ struct RegisterAge: View {
     @State private var isInputFinish = false
     private var catName: String = ""
     
-    init() {
+    init(popToRoot: Binding<Bool>) {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -92,7 +94,7 @@ struct RegisterAge: View {
     private func getMainButtomView() -> some View {
         HStack {
             if !isInputFinish {
-                NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+                NavigationLink(destination: RegisterAvatar(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
                     Button {
                         if isFirstClick {
                             withAnimation {
@@ -107,9 +109,10 @@ struct RegisterAge: View {
                         GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                     }
                 }
+                .isDetailLink(false)
             }
 
-            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterAvatar(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {
@@ -124,6 +127,7 @@ struct RegisterAge: View {
                     GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
                 }.frame(maxWidth: .infinity)
             }
+            .isDetailLink(false)
         }
         .padding()
     }
@@ -131,6 +135,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge().environmentObject(NewCatModel())
+        RegisterAge(popToRoot: .constant(false)).environmentObject(NewCatModel())
     }
 }
