@@ -64,8 +64,9 @@ struct RegisterCode: View {
         }
     }
     // 각각의 코드 입력 칸 뷰 한개 반환하기
+    @ViewBuilder
     private func getCodeInputView(index: Int) -> some View {
-        return Text(getChar(index))
+        Text(getChar(index))
             .frame(width: 50, height: 65)
             .background(Color.pickerColor)
             .cornerRadius(20)

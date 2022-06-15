@@ -102,11 +102,11 @@ struct RegisterFinish: View {
         .padding()
     }
     // 각각의 고양이 정보 뷰 반환하기
-    
+    @ViewBuilder
     private func getDescribeView(title: String, index: Int) -> some View {
         let content = getInfoText(title, index)
         // 뷰 반환하기
-        return HStack {
+        HStack {
             Text(title)
                 .foregroundColor(.white)
                 .opacity(0.7)
