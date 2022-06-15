@@ -241,7 +241,7 @@ struct NoteView: View {
                                             .font(.system(size: 14, weight: .bold))
                                             .foregroundColor(.white)
                                             .padding()
-                                            .background(Color("BackGroundColor").opacity(0.5))
+                                            .background(Color("ButtonColor").opacity(0.8))
                                             .cornerRadius(24)
                                         
                                         Spacer()
@@ -252,7 +252,7 @@ struct NoteView: View {
                             Spacer().frame(height: 24)
                         }
                         .frame(width: 340)
-                        .background(Color("PickerColor").opacity(0.8))
+                        .background(Color("PickerColor").opacity(0.9))
                         .cornerRadius(30)
                         .padding(.bottom, 20)
                         
