@@ -19,4 +19,15 @@ class NewCatModel: ObservableObject {
     var imageName: String {                   // 아바타 이미지
         return avatarColor.group[avatarBodyIndex]
     }
+    
+    func initcat() {
+        self.name = ""
+        self.age = ""
+        self.code = ""
+        self.gender = .male
+        self.neutralized = true
+        self.type = ""
+        self.avatarColor = .gray
+        self.avatarBodyIndex = 0
+    }
 }

@@ -96,6 +96,7 @@ struct RegisterFinish: View {
     private func getMainButtomView() -> some View {
         Button {
             // TODO: 완성된 고양이 정보 객체를 서버에 보내기
+            newCat.initcat()
         } label: {
             GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
         }
