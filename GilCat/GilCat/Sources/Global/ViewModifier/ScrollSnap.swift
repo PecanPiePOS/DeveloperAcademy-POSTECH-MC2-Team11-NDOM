@@ -43,7 +43,7 @@ struct ScrollingHStackModifier: ViewModifier {
         let screenWidth = UIScreen.main.bounds.width
         
         // Set Initial Offset to first Item
-        let initialOffset = (contentWidth/2.0) - (screenWidth/2.0) + ((screenWidth - itemWidth) / 2.0)
+        let initialOffset = (contentWidth/2.0) - (screenWidth/2.0) + ((screenWidth - itemWidth))
         
         self._scrollOffset = State(initialValue: initialOffset)
         self._dragOffset = State(initialValue: 0)
