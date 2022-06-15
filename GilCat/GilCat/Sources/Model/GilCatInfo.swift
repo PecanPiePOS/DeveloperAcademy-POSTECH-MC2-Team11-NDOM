@@ -49,18 +49,24 @@ extension GilCatInfo {
 // MARK: 먹이 정보
 struct DietInfo {
     var name: String
-    var time: String
+    var timeIndex: Int
+    var time: String {
+        GilCatTimePicker.testTime[timeIndex]
+    }
     var amount: Amount
     
-    static let initCat: DietInfo = DietInfo(name: "-", time: "-", amount: .medium)
+    static let initCat: DietInfo = DietInfo(name: "-", timeIndex: 28, amount: .medium)
 }
 
 // MARK: 물 정보
 struct WaterInfo {
-    var time: String
+    var timeIndex: Int
+    var time: String {
+        GilCatTimePicker.testTime[timeIndex]
+    }
     var amount: Amount
     
-    static let initCat: WaterInfo = WaterInfo(time: "-", amount: .medium)
+    static let initCat: WaterInfo = WaterInfo(timeIndex: 28, amount: .medium)
 }
 
 // MARK: 메모 정보 
