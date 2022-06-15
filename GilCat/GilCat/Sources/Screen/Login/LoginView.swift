@@ -26,7 +26,7 @@ struct LoginView: View {
                     )
                 VStack(alignment: .leading) {
                     // MARK: 닉네임 받기
-                    nicknameTextFieldView(name: nickName, isFocused: focusField)
+                    nicknameTextFieldView(name: nickName)
                     
                     // MARK: 조건에 따른 안내문
                     checkValidNicknameView(network: checkNetwork, duplicate: checkName, name: nickName)
@@ -47,7 +47,7 @@ struct LoginView: View {
     }
     
     @ViewBuilder
-    private func nicknameTextFieldView(name nickName: String, isFocused focusfield: FocusField) -> some View {
+    private func nicknameTextFieldView(name nickName: String) -> some View {
         TextField("", text: $nickName)
             .focused($focusField, equals: .field)
             .onChange(of: nickName) { _ in

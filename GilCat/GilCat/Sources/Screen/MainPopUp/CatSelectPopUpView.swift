@@ -22,7 +22,7 @@ struct DummyMain: View {
     ]
     
     @State var gilCatData: [GilCatInfo] = [
-        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: ["간땡이부음","눈이예쁨"], memoInfo: [MemoInfo(time: "6월6일", content: "안녕")])
+//        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: ["간땡이부음","눈이예쁨"], memoInfo: [MemoInfo(time: "6월6일", content: "안녕")])
     ]
     
     var body: some View {
@@ -56,13 +56,11 @@ struct CatSelectPopup: View {
     @State var inviteCode = "123456"
     @State var openNote: Bool = false
     @State var openCode: Bool = false
-    
-
     var index: Int = 0
     @Binding var isPopup: Bool
     @Binding var gilCatData: [GilCatInfo]
     
-    private func custumRect (width: CGFloat, height: CGFloat, cornerRadius: CGFloat, color: Color) -> some View{
+    private func custumRect (width: CGFloat, height: CGFloat, cornerRadius: CGFloat, color: Color) -> some View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .frame(width: width, height: height)
             .foregroundColor(color)
