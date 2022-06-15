@@ -81,15 +81,8 @@ struct RegisterAge: View {
         GilCatTextField(inputText: $newCat.type, placeHolder: "\(newCat.name)의 종을 아신다면 알려주세요. ")
             .padding([.leading, .bottom])
             .onChange(of: newCat.type) { _ in
-                if newCat.type.isEmpty == false {
-                    withAnimation{
-                        isInputFinish = true
-                    }
-                }
-                else {
-                    withAnimation{
-                        isInputFinish = false
-                    }
+                withAnimation {
+                    isInputFinish = newCat.type.isEmpty ? false : true
                 }
             }
             .focused($isFocused, equals: 2)

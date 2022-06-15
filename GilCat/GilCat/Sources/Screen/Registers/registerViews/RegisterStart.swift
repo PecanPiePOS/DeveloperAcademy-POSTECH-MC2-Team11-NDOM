@@ -10,6 +10,7 @@ import SwiftUI
 struct RegisterStart: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
+//    @Environment(\.dismiss) private var dismiss
     @State private var isLinkActive = false
     
     init() {
@@ -85,6 +86,7 @@ struct RegisterStart: View {
         NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
+//                dismiss()
             } label: {
                 GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
             }

@@ -11,6 +11,7 @@ import ConfettiSwiftUI
 struct RegisterFinish: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
+    @Environment(\.dismiss) private var dismiss
     @State private var isLinkActive = false
     @State private var timerCounter: Int = 4
     @State private var effectCounter: Int = 3
@@ -97,6 +98,7 @@ struct RegisterFinish: View {
         Button {
             // TODO: 완성된 고양이 정보 객체를 서버에 보내기
             newCat.initcat()
+            dismiss()
         } label: {
             GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
         }

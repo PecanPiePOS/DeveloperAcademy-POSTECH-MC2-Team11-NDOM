@@ -48,10 +48,15 @@ struct RegisterCode: View {
             .alert("코드를 모두 입력하거나 건너뛰기를 눌러주세요", isPresented: $isAlertActice) {
                 Button("확인") {}
             }
-            .alert("길고양이 기록창이 합쳐집니다. \n 확인해주세요", isPresented: $isShareCheck) {
-                Button("합치기") {
+            .alert(isPresented: $isShareCheck) {
+                let alertFirstButton = Alert.Button.default(Text("합치기")) {
                     isLinkActive = true
                 }
+                let alertSecondButton = Alert.Button.destructive(Text("취소")) { }
+
+                return Alert(title: Text("주의!"),
+                             message: Text("길고양이 기록장이 합쳐집니다."),
+                             primaryButton: alertFirstButton, secondaryButton: alertSecondButton)
             }
             .onAppear {
 //                 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
