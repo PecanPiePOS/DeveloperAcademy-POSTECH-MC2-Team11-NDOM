@@ -12,6 +12,7 @@ struct RegisterStart: View {
     @EnvironmentObject var catInfo: GilCatDataManager
     @Environment(\.presentationMode) var presentation
 
+    
     init() {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
     }
