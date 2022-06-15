@@ -3,12 +3,12 @@ import SwiftUI
 struct RegisterName: View {
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-    @Binding private var viewModel: RegisterViewModel
+    @Binding private var newCat: RegisterViewModel
     @State private var isLinkActive = false
     @State private var isAlertActive = false
     
     init(_ viewModel: Binding<RegisterViewModel>) {
-        self._viewModel = viewModel
+        self._newCat = viewModel
     }
     
     var body: some View {
@@ -16,7 +16,7 @@ struct RegisterName: View {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
                 getTitleView("이름")
-                GilCatTextField(inputText: $viewModel.name, placeHolder: "고양이 이름을 지어볼까요?").padding([.leading, .bottom])
+                GilCatTextField(inputText: $newCat.name, placeHolder: "고양이 이름을 지어볼까요?").padding([.leading, .bottom])
                 Spacer()
                 getMainButtomView()
             }
@@ -57,10 +57,10 @@ struct RegisterName: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterGender($viewModel), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterGender($newCat), isActive: $isLinkActive) {
             Button {
                 // 이름이 입력이 안됐다면, 팝업 창 보여주기
-                if viewModel.name.isEmpty {
+                if newCat.name.isEmpty {
                     isAlertActive = true
                 } else {
                     isLinkActive = true

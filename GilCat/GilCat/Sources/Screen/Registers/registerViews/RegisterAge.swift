@@ -9,14 +9,14 @@ import SwiftUI
 struct RegisterAge: View {
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Int?
-    @Binding private var viewModel: RegisterViewModel
+    @Binding private var newCat: RegisterViewModel
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
     private var catName: String = ""
     
     init(_ viewModel: Binding<RegisterViewModel>) {
-        self._viewModel = viewModel
+        self._newCat = viewModel
     }
     
     var body: some View {
@@ -67,8 +67,8 @@ struct RegisterAge: View {
     // 나이 입력 필드 뷰 반환하기
     @ViewBuilder
     private func getAgeTextField() -> some View {
-        GilCatTextField(inputText: $viewModel.age,
-                        placeHolder: "\(viewModel.name)은(는) 몇 살인가요?")
+        GilCatTextField(inputText: $newCat.age,
+                        placeHolder: "\(newCat.name)은(는) 몇 살인가요?")
                .padding([.leading, .bottom])
                .focused($isFocused, equals: 1)
                .keyboardType(.numberPad)
@@ -76,7 +76,7 @@ struct RegisterAge: View {
     // 종 입력 필드 뷰 반환하기
     @ViewBuilder
     private func getTypeTextField() -> some View {
-        GilCatTextField(inputText: $viewModel.type, placeHolder: "\(viewModel.name)의 종을 아신다면 알려주세요. ")
+        GilCatTextField(inputText: $newCat.type, placeHolder: "\(newCat.name)의 종을 아신다면 알려주세요. ")
             .padding([.leading, .bottom])
             .focused($isFocused, equals: 2)
     }
@@ -84,7 +84,7 @@ struct RegisterAge: View {
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterAvatar($viewModel), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterAvatar($newCat), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {
@@ -92,14 +92,14 @@ struct RegisterAge: View {
                         }
                         isFirstClick = false
                         isFocused = 2
-                    } else if viewModel.age.isEmpty && viewModel.type.isEmpty {
+                    } else if newCat.age.isEmpty && newCat.type.isEmpty {
                         isLinkActive = true
                     }
                 } label: {
                     GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
-            NavigationLink(destination: RegisterAvatar($viewModel), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterAvatar($newCat), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RegisterAvatar: View {
     @Environment(\.presentationMode) private var presentation
-    @Binding private var viewModel: RegisterViewModel
+    @Binding private var newCat: RegisterViewModel
     @State private var viewChoice: GilCatPicker.Choice = .first
     @State private var isLinkActive = false
     private let gridSpace: CGFloat = 20
@@ -10,7 +10,7 @@ struct RegisterAvatar: View {
     private let viewSecondChoice: String = "색"
     
     init(_ viewModel: Binding<RegisterViewModel>) {
-        self._viewModel = viewModel
+        self._newCat = viewModel
     }
     
     var body: some View {
@@ -58,7 +58,7 @@ struct RegisterAvatar: View {
     // 아바타 뷰 반환하기
     @ViewBuilder
     private func getAvatar() -> some View {
-        Image(viewModel.avatarColor.group[viewModel.avatarBodyIndex])
+        Image(newCat.avatarColor.group[newCat.avatarBodyIndex])
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 130, height: 130)
@@ -70,17 +70,17 @@ struct RegisterAvatar: View {
     // 몸체를 선택할 때 반복되는 이미지에 대한 뷰를 반환하기
     @ViewBuilder
     private func getImageView(_ index: Int) -> some View {
-        Image(viewModel.avatarColor.group[index])
+        Image(newCat.avatarColor.group[index])
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 60, height: 60)
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 30)
-                    .stroke(viewModel.avatarBodyIndex == index ? Color.buttonColor : Color.profileBackgroundColor, lineWidth: 4)
+                    .stroke(newCat.avatarBodyIndex == index ? Color.buttonColor : Color.profileBackgroundColor, lineWidth: 4)
             )
             .onTapGesture {
-                viewModel.avatarBodyIndex = index
+                newCat.avatarBodyIndex = index
             }
     }
     // 몸체 선택하는 창 뷰 나오게 하기
@@ -94,7 +94,7 @@ struct RegisterAvatar: View {
                 .background(Color.pickerColor)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: gridSpace) {
-                    ForEach(0..<viewModel.avatarColor.group.count/2, id: \.self) { index in
+                    ForEach(0..<newCat.avatarColor.group.count/2, id: \.self) { index in
                         VStack(spacing: gridSpace) {
                             getImageView(2*index)
                             getImageView(2*index+1)
@@ -114,7 +114,7 @@ struct RegisterAvatar: View {
             .fill(catColor.color)
             .frame(width: 50, height: 50)
             .onTapGesture {
-                viewModel.avatarColor = catColor
+                newCat.avatarColor = catColor
             }
         
     }
@@ -138,7 +138,7 @@ struct RegisterAvatar: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterFinish($viewModel), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterFinish($newCat), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
             } label: {

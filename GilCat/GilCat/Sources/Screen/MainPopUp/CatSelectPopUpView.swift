@@ -22,7 +22,7 @@ struct DummyMain: View {
     ]
     
     @State var gilCatData: [GilCatInfo] = [
-        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: ["간땡이부음","눈이예쁨"], memoInfo: [MemoInfo(time: "6월6일", content: "안녕")])
+//        GilCatInfo(name: "Navi", age: "2", gender: .male, neutralized: true, type: "치즈", avatarColor: .gray, avatarBodyIndex: 1, isUploadedToServer: false, dietInfo: .initCat, waterInfo: .initCat, snackCount: 1, healthTagInfo: ["간땡이부음","눈이예쁨"], memoInfo: [MemoInfo(time: "6월6일", content: "안녕")])
     ]
     
     var body: some View {

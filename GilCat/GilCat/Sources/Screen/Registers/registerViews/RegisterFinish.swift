@@ -10,7 +10,7 @@ import ConfettiSwiftUI
 
 struct RegisterFinish: View {
     @Environment(\.presentationMode) private var presentation
-    @Binding private var viewModel: RegisterViewModel
+    @Binding private var newCat: RegisterViewModel
     @State private var isLinkActive = false
     @State private var timerCounter: Int = 4
     @State private var effectCounter: Int = 3
@@ -18,7 +18,7 @@ struct RegisterFinish: View {
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     
     init(_ viewModel: Binding<RegisterViewModel>) {
-        self._viewModel = viewModel
+        self._newCat = viewModel
     }
     
     var body: some View {
@@ -66,7 +66,7 @@ struct RegisterFinish: View {
                 .frame(width: 130, height: 130)
                 .background(.white)
                 .blur(radius: 50.0)
-            Image(viewModel.imageName)
+            Image(newCat.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 130, height: 130)
@@ -124,15 +124,15 @@ struct RegisterFinish: View {
         // 고양이 정보 중 어떤 것인지 구분하기
         switch index {
         case 0:
-            content = viewModel.name
+            content = newCat.name
         case 1:
-            content = viewModel.gender == .male ? "수컷" : "암컷"
+            content = newCat.gender == .male ? "수컷" : "암컷"
         case 2:
-            content = viewModel.neutralized ? "⭕️" : "❌"
+            content = newCat.neutralized ? "⭕️" : "❌"
         case 3:
-            content = viewModel.age
+            content = newCat.age
         case 4:
-            content = viewModel.type
+            content = newCat.type
         default:
             content = ""
         }
