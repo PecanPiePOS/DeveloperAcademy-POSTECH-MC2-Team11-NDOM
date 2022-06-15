@@ -64,7 +64,7 @@ struct LoginView: View {
                         
                     Spacer()
                     
-                    NavigationLink(destination: DummyMain()) {
+                    NavigationLink(destination: Home(viewModel: HomeViewModel())) {
                         Rectangle()
                             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
                             .cornerRadius(20)

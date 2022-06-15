@@ -64,7 +64,6 @@
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
-		EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9422849EC48006671EF /* TestSupportView.swift */; };
 		EFA7B969284B23EC006671EF /* GilCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B968284B23EC006671EF /* GilCatTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,7 +134,6 @@
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
-		EFA7B9422849EC48006671EF /* TestSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupportView.swift; sourceTree = "<group>"; };
 		EFA7B966284B23EC006671EF /* GilCatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GilCatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA7B968284B23EC006671EF /* GilCatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -268,6 +266,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EF2443C9285904B500CFC16E /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF97BE57285865FA00D1B37E /* HomeContainer.swift */,
+				EF97BE532858646500D1B37E /* HomeViewController.swift */,
+				EF97BE552858647400D1B37E /* HomeViewController.storyboard */,
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
 		EF97BE2F28579C7800D1B37E /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,13 +332,6 @@
 				EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		EF97BE5C2858836000D1B37E /* CatSize */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CatSize;
 			sourceTree = "<group>";
 		};
 		EFA7B92C2849E9EA006671EF /* Resources */ = {
@@ -415,23 +416,11 @@
 		EFA7B93C2849EBD6006671EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EF97BE5C2858836000D1B37E /* CatSize */,
-				EFA7B93F2849EC2C006671EF /* SupportViews */,
+				EF2443C9285904B500CFC16E /* Supporting Views */,
 				EF97BE5128585ECB00D1B37E /* Home.swift */,
 				EF97BE5A28587B0600D1B37E /* HomeViewModel.swift */,
-				EF97BE57285865FA00D1B37E /* HomeContainer.swift */,
-				EF97BE532858646500D1B37E /* HomeViewController.swift */,
-				EF97BE552858647400D1B37E /* HomeViewController.storyboard */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		EFA7B93F2849EC2C006671EF /* SupportViews */ = {
-			isa = PBXGroup;
-			children = (
-				EFA7B9422849EC48006671EF /* TestSupportView.swift */,
-			);
-			path = SupportViews;
 			sourceTree = "<group>";
 		};
 		EFA7B967284B23EC006671EF /* GilCatTests */ = {
@@ -594,7 +583,6 @@
 				5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */,
 				58A2002B28520B5500C656DF /* LoginView.swift in Sources */,
 				EF97BE3A28580E2100D1B37E /* AuthAPI.swift in Sources */,
-				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
 				10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */,
 				58B21B1528570C4000205AE5 /* GilCatTimePicker.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
