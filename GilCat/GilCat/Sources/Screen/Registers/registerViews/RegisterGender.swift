@@ -1,70 +1,37 @@
 import SwiftUI
 
 struct RegisterGender: View {
-    @State var isLinkActive = false
-    @EnvironmentObject var catInfo: GilCatDataManager
     @Environment(\.presentationMode) var presentation
-    @State var genderChoice: GilCatPicker.Choice = .first
-    @State var TNRChoice: GilCatPicker.Choice = .first
-    @State var isFirstClick: Bool = true
-    @State var isShowingTNRPick: Bool = false
-    let genderFirstChoice = "수컷"
-    let genderSecondChoice = "암컷"
-    let TNRFirstChoice = "⭕️"
-    let TNRSecondChoice = "❌"
+    @Binding private var newCat: NewCatModel
+    @State private var isLinkActive = false
+    @State private var genderPick: GilCatPicker.Choice = .first
+    @State private var neuralizedPick: GilCatPicker.Choice = .first
+    @State private var isFirstClick: Bool = true
+    @State private var isNeuralizedShowing: Bool = false
+    private let firstChoiceOfGender = "수컷"
+    private let secondChoiceOfGender = "암컷"
+    private let firstChoiceOfNeuralized = "⭕️"
+    private let secondChoiceOfNeuralized = "❌"
     
-    init() {
-        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+    init(_ newCat: Binding<NewCatModel>) {
+        self._newCat = newCat
     }
     
     var body: some View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea(.all)
-            
             VStack {
-                // 성별 피커
-                HStack {
-                    GilCatTitle(titleText: "성별").padding([.top, .leading])
-                    Spacer()
-                }
-                GilCatPicker(isClick: $genderChoice, firstSelect: genderFirstChoice, secondSelect: genderSecondChoice)
-                // 중성화 여부 피커
+                getTitleView("성별")
+                GilCatPicker(isClick: $genderPick, firstSelect: firstChoiceOfGender, secondSelect: secondChoiceOfGender)
                 // 다음 버튼을 처음 누르고 난 뒤 페이드인 효과로 중성화 피커 나오게 함
-                if isShowingTNRPick {
-                    HStack {
-                        GilCatTitle(titleText: "중성화 여부").padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0))
-                        Spacer()
+                if isNeuralizedShowing {
+                    VStack {
+                        getTitleView("중성화 여부")
+                        GilCatPicker(isClick: $neuralizedPick, firstSelect: firstChoiceOfNeuralized, secondSelect: secondChoiceOfNeuralized)
                     }.transition(.opacity)
-                    GilCatPicker(isClick: $TNRChoice, firstSelect: TNRFirstChoice, secondSelect: TNRSecondChoice).transition(.opacity)
                 }
                 Spacer()
-                NavigationLink(destination: RegisterAge(), isActive: $isLinkActive) {
-                    Button {
-                        // 어떤게 클릭됐는지에 따라 값 줘야함
-                        if isFirstClick {
-                            withAnimation {
-                                isShowingTNRPick.toggle()
-                            }
-                            isFirstClick.toggle()
-                        }
-                        else {
-                            if genderChoice == .first {
-                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender = .male
-                            } else {
-                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender = .female
-                            }
-                            if TNRChoice == .first {
-                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = true
-                            } else {
-                                catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized = false
-                            }
-                            isLinkActive = true
-                        }
-                    } label: {
-                        GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
-                    }
-                    .padding()
-                }
+                getMainButtomView()
             }
         }
         .navigationTitle("성별 및 중성화")
@@ -81,26 +48,61 @@ struct RegisterGender: View {
                     }
             }
         }
-        
         .onAppear {
-            // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-            if genderFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].gender == .male ? genderFirstChoice : genderSecondChoice) {
-                genderChoice = .first
+            if newCat.gender == .male {
+                genderPick = .first
             } else {
-                genderChoice = .second
+                genderPick = .second
             }
-            
-            if TNRFirstChoice == (catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].neutralized ? TNRFirstChoice : TNRSecondChoice)  {
-                TNRChoice = .first
+            if newCat.neutralized {
+                neuralizedPick = .first
             } else {
-                TNRChoice = .second
+                neuralizedPick = .second
             }
-            
+        }
+    }
+    // 제목 뷰 반환하기
+    @ViewBuilder
+    private func getTitleView(_ text: String) -> some View {
+        HStack {
+            GilCatTitle(titleText: text).padding([.top, .leading])
+            Spacer()
+        }
+    }
+    // 메인 버튼 뷰 반환하기
+    @ViewBuilder
+    private func getMainButtomView() -> some View {
+        NavigationLink(destination: RegisterAge($newCat), isActive: $isLinkActive) {
+            Button {
+                // 어떤게 클릭됐는지에 따라 값 줘야함
+                if isFirstClick {
+                    withAnimation {
+                        isNeuralizedShowing.toggle()
+                    }
+                    isFirstClick.toggle()
+                } else {
+                    if genderPick == .first {
+                        newCat.gender = .male
+                    } else {
+                        newCat.gender = .female
+                    }
+                    if neuralizedPick == .first {
+                        newCat.neutralized = true
+                    } else {
+                        newCat.neutralized = false
+                    }
+                    isLinkActive = true
+                }
+            } label: {
+                GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+            }
+            .padding()
         }
     }
 }
+
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender().environmentObject(GilCatDataManager().self)
+        RegisterGender(.constant(NewCatModel()))
     }
 }

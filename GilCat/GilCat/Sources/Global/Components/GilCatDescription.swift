@@ -16,6 +16,7 @@ struct CustomSubTitle: View {
         return Text(text)
             .foregroundColor(Color.white)
             .font(.system(size: 15, weight: Font.Weight.heavy))
+            .padding()
     }
 }
 

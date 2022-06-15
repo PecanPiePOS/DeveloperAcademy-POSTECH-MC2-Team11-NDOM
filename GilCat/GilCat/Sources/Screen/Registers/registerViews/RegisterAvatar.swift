@@ -1,104 +1,92 @@
 import SwiftUI
 
 struct RegisterAvatar: View {
-    let gridSpace: CGFloat = 20
-    @State var viewChoice: GilCatPicker.Choice = .first
-    @State var isLinkActive = false
-    @State var selectedCatColor = GilCatColor.gray
-    @State var selectedImageIndex = 0
-    @EnvironmentObject var catInfo: GilCatDataManager
-    @Environment(\.presentationMode) var presentation
-    let viewFirstChoice: String = "외형"
-    let viewSecondChoice: String = "색"
+    @Environment(\.presentationMode) private var presentation
+    @Binding private var newCat: NewCatModel
+    @State private var viewChoice: GilCatPicker.Choice = .first
+    @State private var isLinkActive = false
+    private let gridSpace: CGFloat = 20
+    private let viewFirstChoice: String = "외형"
+    private let viewSecondChoice: String = "색"
     
-    init() {
-        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+    init(_ newCat: Binding<NewCatModel>) {
+        self._newCat = newCat
     }
     
     var body: some View {
         ZStack {
             Color.backgroundColor.edgesIgnoringSafeArea(.all)
-
             VStack {
-                // 제목
-                HStack {
-                    GilCatTitle(titleText: "캐릭터").padding([.top, .leading])
-                    Spacer()
-                }
-                // 커스텀한 아바타
-                Image(selectedCatColor.group[selectedImageIndex])
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 130, height: 130)
-                    .padding()
-                    .background(Color.profileBackgroundColor)
-                    .cornerRadius(50)
-                    .frame(maxWidth: .infinity)
-                // 색과 외형 중 고를 수 있는 피커
+                getTitleView("캐릭터")
+                getAvatar()
                 GilCatPicker(isClick: $viewChoice, firstSelect: viewFirstChoice, secondSelect: viewSecondChoice)
                     .padding(.vertical)
-                // 피커에 따라 보여지는 커스텀 칸
-                if viewChoice == .first {
+                // 피커 선택에 따라 보여지는 커스텀 칸
+                switch viewChoice {
+                case .first:
                     getBodySelectView()
-                } else {
+                case .second:
                     getColorSelectView()
                 }
                 Spacer()
-                // 메인 버튼
-                NavigationLink(destination: RegisterFinish(), isActive: $isLinkActive) {
-                    Button {
-                        // 커스텀해서 선택된 이미지 정보 저장하기
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor = selectedCatColor
-                        catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex = selectedImageIndex
-                        isLinkActive = true
-                    } label: {
-                        GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
-                    }
-                    .padding()
-                }
+                getMainButtomView()
             }
-            .background(Color.backgroundColor)
             .navigationTitle("아바타")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarBackButtonHidden(true)
-                    .navigationViewStyle(.stack)
-                    // MARK: 툴바 수정
-                    .toolbar {
-                        ToolbarItem(placement: .navigation) {
-                            Image(systemName: "chevron.backward")
-                                .foregroundColor(.white)
-                                .onTapGesture {
-                                    self.presentation.wrappedValue.dismiss()
-                                }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationViewStyle(.stack)
+            // MARK: 툴바 수정
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            self.presentation.wrappedValue.dismiss()
                         }
-                    }
-            .onAppear {
-                // 뒤로가기로 돌아왔다면 기존에 입력했던 정보를 받아오기
-                selectedCatColor = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarColor
-                selectedImageIndex = catInfo.gilCatInfos[catInfo.gilCatInfos.endIndex-1].avatarBodyIndex
+                }
             }
         }
     }
-    
-    // 몸체를 선택할 때 반복되는 이미지에 대한 뷰를 반환
-    func getImageView(_ index: Int) -> some View {
-        return Image(selectedCatColor.group[index])
+    // 제목 뷰 반환하기
+    @ViewBuilder
+    private func getTitleView(_ text: String) -> some View {
+        HStack {
+            GilCatTitle(titleText: text).padding([.top, .leading])
+            Spacer()
+        }
+    }
+    // 아바타 뷰 반환하기
+    @ViewBuilder
+    private func getAvatar() -> some View {
+        Image(newCat.avatarColor.group[newCat.avatarBodyIndex])
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 130, height: 130)
+            .padding()
+            .background(Color.profileBackgroundColor)
+            .cornerRadius(50)
+            .frame(maxWidth: .infinity)
+    }
+    // 몸체를 선택할 때 반복되는 이미지에 대한 뷰를 반환하기
+    @ViewBuilder
+    private func getImageView(_ index: Int) -> some View {
+        Image(newCat.avatarColor.group[index])
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 60, height: 60)
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 30)
-                    .stroke(selectedImageIndex == index ? Color.buttonColor : Color.profileBackgroundColor, lineWidth: 4)
+                    .stroke(newCat.avatarBodyIndex == index ? Color.buttonColor : Color.profileBackgroundColor, lineWidth: 4)
             )
             .onTapGesture {
-                selectedImageIndex = index
+                newCat.avatarBodyIndex = index
             }
     }
-    
-    // 몸체 선택하는 창 나오게 하기
-    func getBodySelectView() -> some View {
-        return ZStack {
+    // 몸체 선택하는 창 뷰 나오게 하기
+    @ViewBuilder
+    private func getBodySelectView() -> some View {
+        ZStack {
             Rectangle()
                 .padding()
                 .frame(height: 250)
@@ -106,7 +94,7 @@ struct RegisterAvatar: View {
                 .background(Color.pickerColor)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: gridSpace) {
-                    ForEach(0..<selectedCatColor.group.count/2, id: \.self) { index in
+                    ForEach(0..<newCat.avatarColor.group.count/2, id: \.self) { index in
                         VStack(spacing: gridSpace) {
                             getImageView(2*index)
                             getImageView(2*index+1)
@@ -119,21 +107,21 @@ struct RegisterAvatar: View {
             }
         }
     }
-    
     // 색깔을 선택할 때 반복되는 도형에 대한 뷰를 반환
-    func getColorView(_ catColor: GilCatColor) -> some View {
-        return Circle()
+    @ViewBuilder
+    private func getColorView(_ catColor: GilCatColor) -> some View {
+        Circle()
             .fill(catColor.color)
             .frame(width: 50, height: 50)
             .onTapGesture {
-                selectedCatColor = catColor
+                newCat.avatarColor = catColor
             }
-            
+        
     }
-    
     // 색깔 선택하는 창 나오게 하기
-    func getColorSelectView() -> some View {
-        return HStack(spacing: gridSpace) {
+    @ViewBuilder
+    private func getColorSelectView() -> some View {
+        HStack(spacing: gridSpace) {
             ForEach(0..<GilCatColor.allCases.count/3, id: \.self) { index in
                 VStack(spacing: gridSpace) {
                     getColorView(GilCatColor.allCases[3*index])
@@ -147,10 +135,22 @@ struct RegisterAvatar: View {
         .frame(height: 250)
         .background(Color.pickerColor)
     }
+    // 메인 버튼 뷰 반환하기
+    @ViewBuilder
+    private func getMainButtomView() -> some View {
+        NavigationLink(destination: RegisterFinish($newCat), isActive: $isLinkActive) {
+            Button {
+                isLinkActive = true
+            } label: {
+                GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+            }
+            .padding()
+        }
+    }
 }
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAvatar().environmentObject(GilCatDataManager().self)
+        RegisterGender(.constant(NewCatModel()))
     }
 }
