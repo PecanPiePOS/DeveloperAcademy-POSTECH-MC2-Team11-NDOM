@@ -21,7 +21,7 @@ class HomeViewModel: ObservableObject {
                    snackCount: 0,
                    healthTagInfo: [],
                    memoInfo: [],
-                   gilCatMapInformation: .seventh),
+                   gilCatMapInformation: .first),
         GilCatInfo(name: "우도",
                    age: "1",
                    gender: .male,
@@ -34,7 +34,7 @@ class HomeViewModel: ObservableObject {
                    snackCount: 0,
                    healthTagInfo: [],
                    memoInfo: [],
-                   gilCatMapInformation: .first),
+                   gilCatMapInformation: .third),
         GilCatInfo(name: "디피",
                    age: "3",
                    gender: .male,
@@ -57,6 +57,9 @@ class HomeViewModel: ObservableObject {
         withAnimation {
             isPopup = true
         }
+    }
+    
+    func boxImageButtonTapped() {
         
     }
 }

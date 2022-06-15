@@ -13,22 +13,46 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    
+    private let boxImageView: UIImageView = {
+        let image = UIImage(named: "boxWithCat")
+        let imageView = UIImageView(image: image)
+        return imageView
+    }()
     var viewModel: HomeViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupBoxImageView() // 가장 먼저 실행되야하는 함수
         setupScrollView()
         initializeCats()
     }
     
+    private func setupBoxImageView() {
+        contentView.addSubview(boxImageView)
+        boxImageView.contentMode = .scaleAspectFit
+        boxImageView.frame.size = CGSize(width: GilCatMapInformation.box.size.size.width,
+                                         height: GilCatMapInformation.box.size.size.height)
+        boxImageView.frame.origin = CGPoint(x: GilCatMapInformation.box.location.xPercent,
+                                            y: GilCatMapInformation.box.location.yPercent)
+        
+        let touchGesture = UIGestureRecognizer(target: self, action: #selector(boxImageViewTapped))
+        boxImageView.isUserInteractionEnabled = true
+        boxImageView.addGestureRecognizer(touchGesture)
+    }
+    
     private func setupScrollView() {
+        scrollView.scrollRectToVisible(.init(x: GilCatMapInformation.box.location.xPercent,
+                                             y: GilCatMapInformation.box.location.yPercent,
+                                             width: GilCatMapInformation.box.size.size.width,
+                                             height: GilCatMapInformation.box.size.size.height),
+                                       animated: false)
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 2
         scrollView.contentInsetAdjustmentBehavior = .never
     }
+    
     private func initializeCats() {
         guard let viewModel = viewModel else { return }
         viewModel.catLists.enumerated().forEach {
@@ -64,6 +88,10 @@ class HomeViewController: UIViewController {
         scrollView.zoom(to: selectedView.frame, animated: true)
         
         viewModel?.catImageButtonTapped(viewTagIndex)
+    }
+    
+    @objc private func boxImageViewTapped() {
+//        viewModel?
     }
 }
 

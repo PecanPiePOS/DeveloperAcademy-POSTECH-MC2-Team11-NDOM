@@ -18,9 +18,6 @@ struct GilCatMapInformation {
         GilCatMapInformation(size: .medium,
                              location: GilCatLocationInformation(xPercent: 297.6666615804036,
                                                                  yPercent: 447.6666564941406)),
-        GilCatMapInformation(size: .medium,
-                             location: GilCatLocationInformation(xPercent: 782.6666564941406,
-                                                                 yPercent: 475.0)),
         GilCatMapInformation(size: .small,
                              location: GilCatLocationInformation(xPercent: 529.999994913737,
                                                                  yPercent: 488.6666564941406)),
@@ -37,5 +34,9 @@ struct GilCatMapInformation {
                              location: GilCatLocationInformation(xPercent: 796.0, yPercent: 129.0))
     
     ]
+    
+    static let box: GilCatMapInformation = GilCatMapInformation(size: .big,
+                                                                location: GilCatLocationInformation(xPercent: 782.6666564941406,
+                                                                                                    yPercent: 475.0))
 
 }
