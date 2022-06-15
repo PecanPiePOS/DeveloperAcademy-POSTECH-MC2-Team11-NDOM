@@ -28,7 +28,6 @@ struct NoteFoodEditView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                // MARK:
                 infoTextView(Text: "※ 사료 이름과 시간을 선택해서 수정해주세요.")
 
                 infoNameView()

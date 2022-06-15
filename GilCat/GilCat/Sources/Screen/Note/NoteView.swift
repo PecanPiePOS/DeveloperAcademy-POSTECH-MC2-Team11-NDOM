@@ -81,6 +81,7 @@ struct NoteView: View {
         }
     }
 
+    // 정리
     @ViewBuilder
     private func getSnapCountView() -> some View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)
