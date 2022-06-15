@@ -8,31 +8,6 @@
 import SwiftUI
 
 struct NoteWaterView: View {
-    enum Amount {
-        case full, mid, less
-        var num: Int {
-            switch self {
-            case .full:
-                return 2
-            case .mid:
-                return 1
-            case .less:
-                return 0
-            }
-        }
-        var str: String {
-            switch self {
-            case .full:
-                return "100%"
-            case .mid:
-                return "50%"
-            case .less:
-                return "25%"
-            }
-        }
-    }
-    
-    @State private var selected = 1
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var catInfo: InfoToNote
     
@@ -143,7 +118,7 @@ struct NoteWaterView: View {
             .opacity(0.6)
             .frame(width: 70, height: 70, alignment: .center)
             .overlay {
-                if selected != amount.num {
+                if amount != catInfo.waterInfo.amount {
                     RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.gray, lineWidth: 6)
                                 .frame(width: 90, height: 90)
@@ -159,7 +134,7 @@ struct NoteWaterView: View {
             }
             .onTapGesture {
                 withAnimation {
-                    selected = amount.num
+                    catInfo.waterInfo.amount = amount
                 }
             }
             .padding()

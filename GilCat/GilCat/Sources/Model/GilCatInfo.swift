@@ -54,7 +54,7 @@ struct DietInfo {
     }
     var amount: Amount
     
-    static let initCat: DietInfo = DietInfo(name: "-", timeIndex: 28, amount: .medium)
+    static let initCat: DietInfo = DietInfo(name: "-", timeIndex: 28, amount: .mid)
 }
 
 // MARK: 물 정보
@@ -65,7 +65,7 @@ struct WaterInfo {
     }
     var amount: Amount
     
-    static let initCat: WaterInfo = WaterInfo(timeIndex: 28, amount: .medium)
+    static let initCat: WaterInfo = WaterInfo(timeIndex: 28, amount: .mid)
 }
 
 // MARK: 메모 정보 
@@ -87,9 +87,20 @@ struct HealthTag: Hashable {
 }
 
 enum Amount {
-    case big
-    case medium
-    case small
+    case full
+    case mid
+    case less
+
+    var str: String {
+        switch self {
+        case .full:
+            return "100%"
+        case .mid:
+            return "50%"
+        case .less:
+            return "25%"
+        }
+    }
 }
 
 enum GilCatGender: String {

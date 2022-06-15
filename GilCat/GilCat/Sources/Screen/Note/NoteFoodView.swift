@@ -8,30 +8,6 @@
 import SwiftUI
 
 struct NoteFoodView: View {
-    enum Amount {
-        case full, mid, less
-        var num: Int {
-            switch self {
-            case .full:
-                return 2
-            case .mid:
-                return 1
-            case .less:
-                return 0
-            }
-        }
-        var str: String {
-            switch self {
-            case .full:
-                return "100%"
-            case .mid:
-                return "50%"
-            case .less:
-                return "25%"
-            }
-        }
-    }
-    @State private var selected = 1
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
 
@@ -159,7 +135,7 @@ struct NoteFoodView: View {
             .opacity(0.6)
             .frame(width: 70, height: 70, alignment: .center)
             .overlay {
-                if selected != amount.num {
+                if catInfo.dietInfo.amount != amount {
                     RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.gray, lineWidth: 6)
                                 .frame(width: 90, height: 90)
@@ -175,7 +151,7 @@ struct NoteFoodView: View {
             }
             .onTapGesture {
                 withAnimation {
-                    selected = amount.num
+                    catInfo.dietInfo.amount = amount
                 }
             }
             .padding()
