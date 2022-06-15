@@ -11,17 +11,25 @@ struct Home: View {
     
     @ObservedObject var viewModel: HomeViewModel
     @StateObject var newCatModel: NewCatModel = NewCatModel()
+    @State var registerIsActive: Bool = false
     var body: some View {
-        ZStack {
-            HomeContainer(viewModel: viewModel)
-                .ignoresSafeArea()
-                .fullScreenCover(isPresented: $viewModel.isNewCatRegisterPopup) {
-                    RegisterStart().environmentObject(newCatModel)
+        VStack {
+            Button {
+                registerIsActive = true
+            } label: {
+                Text("ajflajsfiajfhoaihfaoifhao")
+            }
+            ZStack {
+                HomeContainer(viewModel: viewModel)
+                    .ignoresSafeArea()
+                    .fullScreenCover(isPresented: $registerIsActive) {
+                        RegisterStart(popToRoot: $registerIsActive).environmentObject(newCatModel)
+                    }
+                
+                if $viewModel.isCatPopup.wrappedValue {
+                    CatSelectPopup(isPopup: $viewModel.isCatPopup,
+                                   cat: $viewModel.selectedCat)
                 }
-            
-            if $viewModel.isCatPopup.wrappedValue {
-                CatSelectPopup(isPopup: $viewModel.isCatPopup,
-                               cat: $viewModel.selectedCat)
             }
         }
     }
