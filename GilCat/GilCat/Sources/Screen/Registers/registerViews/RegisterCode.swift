@@ -48,7 +48,7 @@ struct RegisterCode: View {
                 Button("확인") {}
             }
             .onAppear {
-                // 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
+//                 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     isFocused = true
                 }
