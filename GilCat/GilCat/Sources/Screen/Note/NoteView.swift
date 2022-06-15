@@ -14,21 +14,21 @@ struct NoteView: View {
     let healthList = ["피부에 문제가 있어보여요", "복부가 부었어요", "걸음걸이가 이상해보여요", "임신을 했어요", "털 상태가 좋지 못해요", "피가 나요", "토를 계속 해요"]
     let memoList = ["오늘은 달이가 다른 고양이와 싸우고 온 것 같다. 덩치도 산만한 것이 싸움도 못하나 보다. 목덜미 주변에 피가 있는데 닦아 주지를 못한다. 아직 달이와 나의 거리는 3미터 내로 좁혀지지 않는다. 상처를 치료해주지 못해 답답.", "저 저 나쁜 놈이 있다. 덩치는 달이의 반도 못하는데, 얼마나 날렵해 보이는지... 달이가 생각보다 나이가 많은가 보다. 뚜드려 맞는 장면을 봤다. 어쩐지 평소보다 사료가 더 많이 남아있더라니... 달이가 하나도 먹지 못하고 저놈시키가 몇알 뺏어먹고 말았구나..."]
     
-//    @Binding var gilCatSpecific: GilCatInfo
+    //    @Binding var gilCatSpecific: GilCatInfo
     @EnvironmentObject var catInfo: InfoToNote
     
-//    @Binding var hourEx: String
+    //    @Binding var hourEx: String
     @Environment(\.presentationMode) var presentation
     @State private var stickNumber = 0
     @State private var checkProfile = false
-
+    
     var body: some View {
-        
-        ZStack {
-            Color("BackGroundColor")
-                .edgesIgnoringSafeArea(.all)
-            
-            ScrollView(.vertical, showsIndicators: false) {
+        NavigationView {
+            ZStack {
+                Color("BackGroundColor")
+                    .edgesIgnoringSafeArea(.all)
+                
+                ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack {
                         // MARK: 프로필 사진
                         Image("cat_gray_3")
@@ -39,7 +39,7 @@ struct NoteView: View {
                             .frame(width: 120, height: 120)
                             .clipShape(RoundedRectangle(cornerRadius: 43, style: .continuous))
                             .padding(.top, 10)
-
+                        
                         // MARK: 이름
                         ZStack {
                             Image("twoLetter")
@@ -47,7 +47,7 @@ struct NoteView: View {
                                 .scaledToFit()
                                 .frame(width: 80, height: 80, alignment: .center)
                                 .offset(y: 14)
-                                
+                            
                             Text(catInfo.name)
                                 .font(.system(size: 40, weight: .heavy))
                                 .foregroundColor(.white)
@@ -74,7 +74,7 @@ struct NoteView: View {
                                                                      cornerRadius: 24)) {
                                 NoteProfileView()
                             }
-                            .padding(.bottom, 30)
+                                                                     .padding(.bottom, 30)
                         
                         // MARK: 마지막 급식급수
                         HStack(spacing: 24) {
@@ -84,7 +84,7 @@ struct NoteView: View {
                                     .foregroundColor(Color("PickerColor").opacity(0.9))
                                     .overlay {
                                         VStack {
-                                        
+                                            
                                             Spacer()
                                             
                                             Text("마지막 급식")
@@ -92,7 +92,7 @@ struct NoteView: View {
                                                 .font(.system(size: 20, weight: .bold))
                                                 .offset(y: 10)
                                                 .padding()
-                                                
+                                            
                                             Image("foodBowl")
                                                 .resizable()
                                                 .scaledToFit()
@@ -110,7 +110,7 @@ struct NoteView: View {
                                                 .padding()
                                                 .padding(.bottom, 5)
                                         }
-                                }
+                                    }
                             }
                             NavigationLink(destination: NoteWaterView()) {
                                 RoundedRectangle(cornerRadius: 40, style: .continuous)
@@ -118,7 +118,7 @@ struct NoteView: View {
                                     .foregroundColor(Color("PickerColor").opacity(0.9))
                                     .overlay {
                                         VStack {
-                                        
+                                            
                                             Spacer()
                                             
                                             Text("마지막 급수")
@@ -126,7 +126,7 @@ struct NoteView: View {
                                                 .font(.system(size: 20, weight: .bold))
                                                 .offset(y: 10)
                                                 .padding()
-                                                
+                                            
                                             Image("waterBowl")
                                                 .resizable()
                                                 .scaledToFit()
@@ -143,9 +143,9 @@ struct NoteView: View {
                                                 .foregroundColor(.gray)
                                                 .padding()
                                                 .padding(.bottom, 5)
-
+                                            
                                         }
-                                }
+                                    }
                             }
                         }
                         .padding()
@@ -171,7 +171,7 @@ struct NoteView: View {
                                                 .foregroundColor(.white)
                                                 .opacity(0.8)
                                                 .padding(.horizontal, 10)
-                                                
+                                            
                                         } else if 0 < catInfo.snackCount && catInfo.snackCount < 6 {
                                             HStack(spacing: 5) {
                                                 ForEach(0...catInfo.snackCount-1, id: \.self) { _ in
@@ -305,22 +305,23 @@ struct NoteView: View {
                         }
                         .modifier(ScrollingHStackModifier(items: memoList.count, itemWidth: 280, itemSpacing: 30))
                     }
+                }
+                .attachPartialSheetToRoot()
+                
             }
-            .attachPartialSheetToRoot()
-
-        }
-        .navigationTitle("길고양이 기록장")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .navigationViewStyle(.stack)
-        // MARK: 툴바 수정
-        .toolbar {
-            ToolbarItem(placement: .navigation) {
-                Image(systemName: "chevron.backward")
-                    .foregroundColor(.white)
-                    .onTapGesture {
-                        self.presentation.wrappedValue.dismiss()
-                    }
+            .navigationTitle("길고양이 기록장")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationViewStyle(.stack)
+            // MARK: 툴바 수정
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            self.presentation.wrappedValue.dismiss()
+                        }
+                }
             }
         }
     }

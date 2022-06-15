@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NoteFoodView: View {
     
-    @State var foodName = "알모네이쳐"
     @State private var foodless = false
     @State private var foodmid = true
     @State private var foodfull = false
@@ -33,7 +32,7 @@ struct NoteFoodView: View {
                 ZStack {
                     
                     // MARK: 사료 이름 받아오기
-                    getfoodNameView(name: foodName)
+                    getfoodNameView(name: catInfo.dietInfo.name)
 
                     Spacer()
                     
