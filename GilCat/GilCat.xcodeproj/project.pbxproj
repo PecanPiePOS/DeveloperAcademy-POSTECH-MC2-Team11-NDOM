@@ -41,7 +41,7 @@
 		BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */; };
 		BC517A032852DAEE00992BC5 /* RegisterFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A022852DAEE00992BC5 /* RegisterFinish.swift */; };
 		BC517A0A2853769D00992BC5 /* GilCatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A092853769D00992BC5 /* GilCatInfo.swift */; };
-		BC517A0D2853780B00992BC5 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC517A0C2853780B00992BC5 /* TagView.swift */; };
+		BCC605CD2858C6A9004FD48F /* NewCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC605CC2858C6A9004FD48F /* NewCatModel.swift */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
 		EF97BE3128579C8F00D1B37E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE3028579C8F00D1B37E /* API.swift */; };
@@ -65,7 +65,6 @@
 		EFA7B92B2849E8AA006671EF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = EFA7B92A2849E8AA006671EF /* .swiftlint.yml */; };
 		EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9352849EB22006671EF /* ComponentsTestView.swift */; };
 		EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9372849EB5C006671EF /* TestExtension.swift */; };
-		EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B9422849EC48006671EF /* TestSupportView.swift */; };
 		EFA7B969284B23EC006671EF /* GilCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7B968284B23EC006671EF /* GilCatTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +111,7 @@
 		BC5179FE2852CE2500992BC5 /* GilCatMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatMainButton.swift; sourceTree = "<group>"; };
 		BC517A022852DAEE00992BC5 /* RegisterFinish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFinish.swift; sourceTree = "<group>"; };
 		BC517A092853769D00992BC5 /* GilCatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatInfo.swift; sourceTree = "<group>"; };
-		BC517A0C2853780B00992BC5 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		BCC605CC2858C6A9004FD48F /* NewCatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCatModel.swift; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1DEE322849B795000268C7 /* GilCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatApp.swift; sourceTree = "<group>"; };
 		EF1DEE362849B796000268C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,7 +136,6 @@
 		EFA7B92A2849E8AA006671EF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		EFA7B9352849EB22006671EF /* ComponentsTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTestView.swift; sourceTree = "<group>"; };
 		EFA7B9372849EB5C006671EF /* TestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtension.swift; sourceTree = "<group>"; };
-		EFA7B9422849EC48006671EF /* TestSupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupportView.swift; sourceTree = "<group>"; };
 		EFA7B966284B23EC006671EF /* GilCatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GilCatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA7B968284B23EC006671EF /* GilCatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +187,7 @@
 				107A58D8284FA08B003D6F2B /* RegisterAge.swift */,
 				107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */,
 				BC517A022852DAEE00992BC5 /* RegisterFinish.swift */,
+				BCC605CC2858C6A9004FD48F /* NewCatModel.swift */,
 			);
 			path = registerViews;
 			sourceTree = "<group>";
@@ -231,14 +230,6 @@
 			path = MainPopUp;
 			sourceTree = "<group>";
 		};
-		BC517A0B285377E900992BC5 /* Note_Dophi */ = {
-			isa = PBXGroup;
-			children = (
-				BC517A0C2853780B00992BC5 /* TagView.swift */,
-			);
-			path = Note_Dophi;
-			sourceTree = "<group>";
-		};
 		EF1DEE262849B795000268C7 = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +267,16 @@
 				EF1DEE392849B796000268C7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EF2443C9285904B500CFC16E /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF97BE57285865FA00D1B37E /* HomeContainer.swift */,
+				EF97BE532858646500D1B37E /* HomeViewController.swift */,
+				EF97BE552858647400D1B37E /* HomeViewController.storyboard */,
+			);
+			path = "Supporting Views";
 			sourceTree = "<group>";
 		};
 		EF97BE2F28579C7800D1B37E /* Network */ = {
@@ -336,13 +337,6 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		EF97BE5C2858836000D1B37E /* CatSize */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CatSize;
-			sourceTree = "<group>";
-		};
 		EFA7B92C2849E9EA006671EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,7 +351,6 @@
 			children = (
 				EFA7B93C2849EBD6006671EF /* Home */,
 				58B21B112856FFA700205AE5 /* MainPopUp */,
-				BC517A0B285377E900992BC5 /* Note_Dophi */,
 				107A58CF284F98A0003D6F2B /* Registers */,
 				58A2002828520B2000C656DF /* Note */,
 				58A2002928520B2900C656DF /* Login */,
@@ -426,23 +419,11 @@
 		EFA7B93C2849EBD6006671EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EF97BE5C2858836000D1B37E /* CatSize */,
-				EFA7B93F2849EC2C006671EF /* SupportViews */,
+				EF2443C9285904B500CFC16E /* Supporting Views */,
 				EF97BE5128585ECB00D1B37E /* Home.swift */,
 				EF97BE5A28587B0600D1B37E /* HomeViewModel.swift */,
-				EF97BE57285865FA00D1B37E /* HomeContainer.swift */,
-				EF97BE532858646500D1B37E /* HomeViewController.swift */,
-				EF97BE552858647400D1B37E /* HomeViewController.storyboard */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		EFA7B93F2849EC2C006671EF /* SupportViews */ = {
-			isa = PBXGroup;
-			children = (
-				EFA7B9422849EC48006671EF /* TestSupportView.swift */,
-			);
-			path = SupportViews;
 			sourceTree = "<group>";
 		};
 		EFA7B967284B23EC006671EF /* GilCatTests */ = {
@@ -600,13 +581,11 @@
 				107A58DF284FA0A3003D6F2B /* RegisterAvatar.swift in Sources */,
 				107A58D3284FA041003D6F2B /* RegisterCode.swift in Sources */,
 				10CFA9AF28503560003DBF63 /* GilCatTextField.swift in Sources */,
-				BC517A0D2853780B00992BC5 /* TagView.swift in Sources */,
 				BC517A0A2853769D00992BC5 /* GilCatInfo.swift in Sources */,
 				BC5179FF2852CE2500992BC5 /* GilCatMainButton.swift in Sources */,
 				5800E59C2851908D002F6A75 /* PlaceholderTextField.swift in Sources */,
 				58A2002B28520B5500C656DF /* LoginView.swift in Sources */,
 				EF97BE3A28580E2100D1B37E /* AuthAPI.swift in Sources */,
-				EFA7B9432849EC48006671EF /* TestSupportView.swift in Sources */,
 				10F486262855F290005A7ED6 /* VisibleExtension.swift in Sources */,
 				58B21B1528570C4000205AE5 /* GilCatTimePicker.swift in Sources */,
 				EFA7B9362849EB22006671EF /* ComponentsTestView.swift in Sources */,
@@ -632,6 +611,7 @@
 				EF97BE6628589CF200D1B37E /* GilCatMapCount.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
 				58B21B192857189800205AE5 /* PickerSizeExtension.swift in Sources */,
+				BCC605CD2858C6A9004FD48F /* NewCatModel.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
 				EF97BE622858841800D1B37E /* GilCatSizeInformation.swift in Sources */,
 				EF97BE5B28587B0600D1B37E /* HomeViewModel.swift in Sources */,

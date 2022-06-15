@@ -26,6 +26,24 @@ struct GilCatInfo {
     var healthTagInfo: [String]     = []
     var memoInfo: [MemoInfo]        = []
     var gilCatMapInformation: GilCatMapCase = .none
+    
+    
+}
+
+extension GilCatInfo {
+    static let empty = GilCatInfo(name: "",
+                                  age: "",
+                                  gender: .male,
+                                  neutralized: true,
+                                  type: "",
+                                  avatarColor: .gold,
+                                  avatarBodyIndex: 4,
+                                  dietInfo: DietInfo.initCat,
+                                  waterInfo: WaterInfo.initCat,
+                                  snackCount: 0,
+                                  healthTagInfo: [],
+                                  memoInfo: [],
+                                  gilCatMapInformation: .seventh)
 }
 
 // MARK: 먹이 정보

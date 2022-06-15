@@ -10,15 +10,21 @@ import SwiftUI
 struct Home: View {
     
     @ObservedObject var viewModel: HomeViewModel
-    
     var body: some View {
-        HomeContainer(viewModel: viewModel)
-            .ignoresSafeArea()
+        ZStack {
+            HomeContainer(viewModel: viewModel)
+                .ignoresSafeArea()
+            if $viewModel.isPopup.wrappedValue {
+                CatSelectPopup(isPopup: $viewModel.isPopup,
+                               cat: $viewModel.selectedCat)
+            }
+        }
     }
 }
-
+/*
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home(viewModel: HomeViewModel())
     }
 }
+*/

@@ -33,7 +33,7 @@ struct LoginView: View {
                         
                     Spacer()
                     
-                    NavigationLink(destination: DummyMain()) {
+                    NavigationLink(destination: Home(viewModel: HomeViewModel())) {
                         // MARK: 조건 맞는지 확인하고 넘어가는 버튼
                         createNicknameButtonView()
                     }
