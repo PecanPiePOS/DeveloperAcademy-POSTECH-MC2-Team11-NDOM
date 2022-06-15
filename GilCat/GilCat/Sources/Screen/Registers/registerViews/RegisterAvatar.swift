@@ -2,15 +2,15 @@ import SwiftUI
 
 struct RegisterAvatar: View {
     @Environment(\.presentationMode) private var presentation
-    @Binding private var newCat: RegisterViewModel
+    @Binding private var newCat: NewCatModel
     @State private var viewChoice: GilCatPicker.Choice = .first
     @State private var isLinkActive = false
     private let gridSpace: CGFloat = 20
     private let viewFirstChoice: String = "외형"
     private let viewSecondChoice: String = "색"
     
-    init(_ viewModel: Binding<RegisterViewModel>) {
-        self._newCat = viewModel
+    init(_ newCat: Binding<NewCatModel>) {
+        self._newCat = newCat
     }
     
     var body: some View {
@@ -151,6 +151,6 @@ struct RegisterAvatar: View {
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(.constant(RegisterViewModel()))
+        RegisterGender(.constant(NewCatModel()))
     }
 }

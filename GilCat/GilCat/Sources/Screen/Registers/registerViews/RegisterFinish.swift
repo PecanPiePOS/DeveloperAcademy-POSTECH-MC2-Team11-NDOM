@@ -10,15 +10,15 @@ import ConfettiSwiftUI
 
 struct RegisterFinish: View {
     @Environment(\.presentationMode) private var presentation
-    @Binding private var newCat: RegisterViewModel
+    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var timerCounter: Int = 4
     @State private var effectCounter: Int = 3
     // 폭죽 터지는 간격
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     
-    init(_ viewModel: Binding<RegisterViewModel>) {
-        self._newCat = viewModel
+    init(_ newCat: Binding<NewCatModel>) {
+        self._newCat = newCat
     }
     
     var body: some View {
@@ -146,6 +146,6 @@ struct RegisterFinish: View {
 
 struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterFinish(.constant(RegisterViewModel()))
+        RegisterFinish(.constant(NewCatModel()))
     }
 }

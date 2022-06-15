@@ -9,14 +9,14 @@ import SwiftUI
 struct RegisterAge: View {
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Int?
-    @Binding private var newCat: RegisterViewModel
+    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
     private var catName: String = ""
     
-    init(_ viewModel: Binding<RegisterViewModel>) {
-        self._newCat = viewModel
+    init(_ newCat: Binding<NewCatModel>) {
+        self._newCat = newCat
     }
     
     var body: some View {
@@ -121,6 +121,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge(.constant(RegisterViewModel()))
+        RegisterAge(.constant(NewCatModel()))
     }
 }

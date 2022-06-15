@@ -3,12 +3,12 @@ import SwiftUI
 struct RegisterName: View {
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-    @Binding private var newCat: RegisterViewModel
+    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var isAlertActive = false
     
-    init(_ viewModel: Binding<RegisterViewModel>) {
-        self._newCat = viewModel
+    init(_ newCat: Binding<NewCatModel>) {
+        self._newCat = newCat
     }
     
     var body: some View {
@@ -75,6 +75,6 @@ struct RegisterName: View {
 }
 struct RegisterName_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterName(.constant(RegisterViewModel()))
+        RegisterName(.constant(NewCatModel()))
     }
 }

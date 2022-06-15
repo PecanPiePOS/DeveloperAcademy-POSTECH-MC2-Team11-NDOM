@@ -10,7 +10,7 @@ import SwiftUI
 struct RegisterStart: View {
     @Environment(\.presentationMode) private var presentation
     @State private var isLinkActive = false
-    @State private var newCat = RegisterViewModel()
+    @State private var newCat = NewCatModel()
     
     init() {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)

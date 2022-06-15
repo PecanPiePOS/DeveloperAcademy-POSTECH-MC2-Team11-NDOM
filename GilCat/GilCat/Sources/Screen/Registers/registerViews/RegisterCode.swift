@@ -10,13 +10,13 @@ import SwiftUI
 struct RegisterCode: View {
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-    @Binding private var newCat: RegisterViewModel
+    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var isAlertActice = false
     
-    init(_ viewModel: Binding<RegisterViewModel>) {
+    init(_ newCat: Binding<NewCatModel>) {
         UITextView.appearance().backgroundColor = .clear
-        self._newCat = viewModel
+        self._newCat = newCat
     }
     
     var body: some View {
@@ -139,6 +139,6 @@ struct RegisterCode: View {
 
 struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCode(.constant(RegisterViewModel()))
+        RegisterCode(.constant(NewCatModel()))
     }
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RegisterGender: View {
     @Environment(\.presentationMode) var presentation
-    @Binding private var newCat: RegisterViewModel
+    @Binding private var newCat: NewCatModel
     @State private var isLinkActive = false
     @State private var genderPick: GilCatPicker.Choice = .first
     @State private var neuralizedPick: GilCatPicker.Choice = .first
@@ -13,8 +13,8 @@ struct RegisterGender: View {
     private let firstChoiceOfNeuralized = "⭕️"
     private let secondChoiceOfNeuralized = "❌"
     
-    init(_ viewModel: Binding<RegisterViewModel>) {
-        self._newCat = viewModel
+    init(_ newCat: Binding<NewCatModel>) {
+        self._newCat = newCat
     }
     
     var body: some View {
@@ -103,6 +103,6 @@ struct RegisterGender: View {
 
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(.constant(RegisterViewModel()))
+        RegisterGender(.constant(NewCatModel()))
     }
 }

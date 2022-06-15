@@ -5,7 +5,7 @@
 //  Created by 김동락 on 2022/06/14.
 //
 
-struct RegisterViewModel {
+struct NewCatModel {
     var name: String                = ""            // 이름
     var age: String                 = ""            // 나이
     var code: String                = ""            // 공유 코드
