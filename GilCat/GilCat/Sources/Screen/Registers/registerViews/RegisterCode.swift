@@ -49,11 +49,12 @@ struct RegisterCode: View {
                 Button("확인") {}
             }
             .alert(isPresented: $isShareCheck) {
-                let alertFirstButton = Alert.Button.default(Text("합치기")) {
+                let alertFirstButton = Alert.Button.destructive(Text("취소")) { }
+                
+                let alertSecondButton = Alert.Button.default(Text("합치기")) {
                     isLinkActive = true
                 }
-                let alertSecondButton = Alert.Button.destructive(Text("취소")) { }
-
+                
                 return Alert(title: Text("주의!"),
                              message: Text("길고양이 기록장이 합쳐집니다."),
                              primaryButton: alertFirstButton, secondaryButton: alertSecondButton)
