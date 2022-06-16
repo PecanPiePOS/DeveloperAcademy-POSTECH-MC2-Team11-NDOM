@@ -59,6 +59,7 @@ struct NoteView: View {
                 ToolbarItem(placement: .navigation) {
                     Image(systemName: "xmark")
                         .frame(width: 50, height: 40, alignment: .leading)
+                        .contentShape(Rectangle())
                         .foregroundColor(.white)
                         .onTapGesture {
                             self.presentation.wrappedValue.dismiss()
