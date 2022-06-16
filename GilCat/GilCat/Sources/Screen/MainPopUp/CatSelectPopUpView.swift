@@ -7,10 +7,16 @@
 
 import SwiftUI
 
-struct Dummy: Identifiable {
-    var id = UUID()
-    var label: String
-    var isClicked: Bool
+@ViewBuilder
+private func getCatImage(Image catImage: String) -> some View {
+    Image(catImage)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .padding()
+        .frame(width: 90, height: 90, alignment: .center)
+        .background(Color("PickerColor"))
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .padding(.top, 10)
 }
 
 struct CatSelectPopup: View {
@@ -25,17 +31,6 @@ struct CatSelectPopup: View {
     @Binding var isPopup: Bool
     @Binding var cat: GilCatInfo
     
-    @ViewBuilder
-    private func custumRadiusRect (
-        width: CGFloat,
-        height: CGFloat,
-        cornerRadius: CGFloat,
-        color: Color
-    ) -> some View {
-        RoundedRectangle(cornerRadius: cornerRadius)
-            .frame(width: width, height: height)
-            .foregroundColor(color)
-    }
     
     @StateObject var selectedCat: InfoToNote = InfoToNote()
     
@@ -51,14 +46,14 @@ struct CatSelectPopup: View {
             ZStack {
                 VStack {
                     HStack(alignment: .center, spacing: 26) {
-                            Color.mainBlack
-                                .frame(width: 90, height: 90, alignment: .center)
-                                .cornerRadius(19)
-                        
+                        getCatImage(Image: cat.imageName)
                         Text(cat.name)
+                            .frame(width: 115, height: 40, alignment: .center)
+                            .padding(.top, 10)
                             .foregroundColor(Color.white)
                             .font(.system(size: 30, weight: .heavy))
-                        Spacer()
+                            .minimumScaleFactor(0.2)
+//                        Spacer()
                         
                         VStack {
                             Button {
@@ -66,10 +61,10 @@ struct CatSelectPopup: View {
                             } label: {
                                 Image(systemName: "xmark.app.fill")
                                     .resizable()
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 25, height: 25)
                                     .foregroundColor(Color.white)
                             }
-                            .padding(.bottom, 70)
+                            Spacer()
                         }
                     }
                     .frame(width: 281, height: 70, alignment: .center)
@@ -77,9 +72,11 @@ struct CatSelectPopup: View {
                     .padding([.top], 30)
                     .padding(.bottom, 20)
                     
+                    
+                    
                     VStack(alignment: .center, spacing: 16) {
                         Button {
-                            // 기록장으로 가는 기능을 여기에
+                            // MARK: 기록장으로 가는 기능을 여기에
                             openNote.toggle()
                         } label: {
                             Color.mainOrange
@@ -95,7 +92,7 @@ struct CatSelectPopup: View {
                         
                         HStack(alignment: .center, spacing: 16) {
                             Button {
-                                // 초대하기 기능
+                                // MARK: 초대하기 기능
                                 self.isInviting = true
                             } label: {
                                 Color.mainBlack
@@ -104,7 +101,7 @@ struct CatSelectPopup: View {
                                     .overlay(isInviting ? Text(inviteCode).foregroundColor(.mainOrange) : Text("초대하기").foregroundColor(.white).font(.system(size: 20, weight: .heavy)))
                             }
                             Button {
-                                // 합치기 기능
+                                // MARK: 합치기 기능
                                 openCode.toggle()
                             } label: {
                                 Color.mainBlack
@@ -112,8 +109,10 @@ struct CatSelectPopup: View {
                                     .cornerRadius(20)
                                     .overlay(Text("합치기").foregroundColor(.white).font(.system(size: 20, weight: .heavy)))
                             }
-                            .fullScreenCover(isPresented: $openCode) {
-                                CodeView()
+                            .alert("준비중입니다", isPresented: $openCode) {
+                                Button("확인") {}
+//                            .fullScreenCover(isPresented: $openCode) {
+//                                MergeCat(openCode: $openCode)
                             }
                         }
                         
