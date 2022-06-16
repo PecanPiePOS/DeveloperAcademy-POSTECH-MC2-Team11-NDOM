@@ -40,6 +40,11 @@ struct RegisterStart: View {
                             }
                     }
                 }
+                .onChange(of: isLinkActive) { _ in
+                    if !isLinkActive {
+                        presentation.wrappedValue.dismiss()
+                    }
+                }
             }
         }
     }
@@ -82,7 +87,7 @@ struct RegisterStart: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterCode(), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterCode(popToRoot: $isLinkActive), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
             } label: {
@@ -90,6 +95,7 @@ struct RegisterStart: View {
             }
             .padding()
         }
+        .isDetailLink(false)
     }
 }
 

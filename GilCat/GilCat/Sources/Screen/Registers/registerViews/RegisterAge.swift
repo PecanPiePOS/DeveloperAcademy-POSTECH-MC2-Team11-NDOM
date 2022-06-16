@@ -10,13 +10,17 @@ struct RegisterAge: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Int?
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
+    // 나이랑 종 값 입력 다 할 경우 건너뛰기 버튼은 사라지고 다음만 남도록 하기 위한 변수
+    @State private var isInputFinish = false
     private var catName: String = ""
     
-    init() {
+    init(popToRoot: Binding<Bool>) {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -78,28 +82,37 @@ struct RegisterAge: View {
     private func getTypeTextField() -> some View {
         GilCatTextField(inputText: $newCat.type, placeHolder: "\(newCat.name)의 종을 아신다면 알려주세요. ")
             .padding([.leading, .bottom])
+            .onChange(of: newCat.type) { _ in
+                withAnimation {
+                    isInputFinish = newCat.type.isEmpty ? false : true
+                }
+            }
             .focused($isFocused, equals: 2)
     }
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
-                Button {
-                    if isFirstClick {
-                        withAnimation {
-                            isShowingType.toggle()
+            if !isInputFinish {
+                NavigationLink(destination: RegisterAvatar(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
+                    Button {
+                        if isFirstClick {
+                            withAnimation {
+                                isShowingType.toggle()
+                            }
+                            isFirstClick = false
+                            isFocused = 2
+                        } else if newCat.age.isEmpty || newCat.type.isEmpty {
+                            isLinkActive = true
                         }
-                        isFirstClick = false
-                        isFocused = 2
-                    } else if newCat.age.isEmpty && newCat.type.isEmpty {
-                        isLinkActive = true
+                    } label: {
+                        GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                     }
-                } label: {
-                    GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
+                .isDetailLink(false)
             }
-            NavigationLink(destination: RegisterAvatar(), isActive: $isLinkActive) {
+
+            NavigationLink(destination: RegisterAvatar(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
                 Button {
                     if isFirstClick {
                         withAnimation {
@@ -114,6 +127,7 @@ struct RegisterAge: View {
                     GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
                 }.frame(maxWidth: .infinity)
             }
+            .isDetailLink(false)
         }
         .padding()
     }
@@ -121,6 +135,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge().environmentObject(NewCatModel())
+        RegisterAge(popToRoot: .constant(false)).environmentObject(NewCatModel())
     }
 }

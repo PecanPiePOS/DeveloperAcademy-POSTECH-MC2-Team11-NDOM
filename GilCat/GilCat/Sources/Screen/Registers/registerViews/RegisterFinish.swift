@@ -11,14 +11,16 @@ import ConfettiSwiftUI
 struct RegisterFinish: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     @State private var timerCounter: Int = 4
     @State private var effectCounter: Int = 3
     // 폭죽 터지는 간격
     let timer = Timer.publish(every: 0.4, on: .main, in: .common).autoconnect()
     
-    init() {
+    init(popToRoot: Binding<Bool>) {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -96,6 +98,8 @@ struct RegisterFinish: View {
     private func getMainButtomView() -> some View {
         Button {
             // TODO: 완성된 고양이 정보 객체를 서버에 보내기
+            isActiveForPopToRoot = false
+            newCat.initcat()
         } label: {
             GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
         }
@@ -146,6 +150,6 @@ struct RegisterFinish: View {
 
 struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterFinish().environmentObject(NewCatModel())
+        RegisterFinish(popToRoot: .constant(false)).environmentObject(NewCatModel())
     }
 }

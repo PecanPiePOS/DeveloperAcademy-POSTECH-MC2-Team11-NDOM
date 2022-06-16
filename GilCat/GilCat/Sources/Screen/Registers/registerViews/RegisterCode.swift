@@ -11,12 +11,14 @@ struct RegisterCode: View {
     @EnvironmentObject var newCat: NewCatModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
-//    @Binding private var newCat: NewCatModel
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     @State private var isAlertActice = false
+    @State private var isShareCheck = false
     
-    init() {
+    init(popToRoot: Binding<Bool>) {
         UITextView.appearance().backgroundColor = .clear
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -46,6 +48,17 @@ struct RegisterCode: View {
             .background(Color.backgroundColor)
             .alert("코드를 모두 입력하거나 건너뛰기를 눌러주세요", isPresented: $isAlertActice) {
                 Button("확인") {}
+            }
+            .alert(isPresented: $isShareCheck) {
+                let alertFirstButton = Alert.Button.destructive(Text("취소")) { }
+                
+                let alertSecondButton = Alert.Button.default(Text("합치기")) {
+                    isLinkActive = true
+                }
+                
+                return Alert(title: Text("주의!"),
+                             message: Text("길고양이 기록장이 합쳐집니다."),
+                             primaryButton: alertFirstButton, secondaryButton: alertSecondButton)
             }
             .onAppear {
 //                 화면이 나타나고 0.5초 뒤에 자동으로 공유코드 첫번째 입력칸에 포커스 되도록 하기
@@ -101,26 +114,28 @@ struct RegisterCode: View {
     @ViewBuilder
     private func getMainButtomView() -> some View {
         HStack {
-            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
+            NavigationLink(destination: RegisterName(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
                 Button {
                     isLinkActive = true
                 } label: {
                     GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
                 }
             }
-            NavigationLink(destination: RegisterName(), isActive: $isLinkActive) {
+            .isDetailLink(false)
+            NavigationLink(destination: RegisterName(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
                 Button {
                     // TODO: 코드에 따라 서버에서 다른 고양이 룸 정보 받아오기
                     // 코드가 다 입력이 안됐다면, 팝업 창 보여주기
                     if newCat.code.count != 6 {
                         isAlertActice = true
                     } else {
-                        isLinkActive = true
+                        isShareCheck = true
                     }
                 } label: {
                     GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
                 }
             }
+            .isDetailLink(false)
         }
         .padding()
     }
@@ -139,6 +154,6 @@ struct RegisterCode: View {
 
 struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCode().environmentObject(NewCatModel())
+        RegisterCode(popToRoot: .constant(false)).environmentObject(NewCatModel())
     }
 }
