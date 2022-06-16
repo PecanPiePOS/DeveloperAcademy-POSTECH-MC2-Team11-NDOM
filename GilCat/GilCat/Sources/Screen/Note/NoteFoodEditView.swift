@@ -116,7 +116,7 @@ struct NoteFoodEditView: View {
                 Text("마지막 사료 :")
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(.white)
-                    .opacity(0.6)
+                    .opacity(0.9)
                     .padding(.leading, 10)
                 
                 Text("캐츠랑 리브레")
