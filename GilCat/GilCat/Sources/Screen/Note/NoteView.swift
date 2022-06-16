@@ -73,6 +73,7 @@ struct NoteView: View {
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Image(systemName: "xmark")
+                        .frame(width: 50, height: 40, alignment: .leading)
                         .foregroundColor(.white)
                         .onTapGesture {
                             self.presentation.wrappedValue.dismiss()
@@ -276,33 +277,38 @@ struct NoteView: View {
     
     @ViewBuilder
     private func foodWaterPanelView(text textPanel: String, Image image: String, time timetext: String ) -> some View {
-        NavigationLink(destination: NoteFoodView()) {
-            RoundedRectangle(cornerRadius: 40, style: .continuous)
-                .frame(width: 160, height: 230)
-                .foregroundColor(Color("PickerColor").opacity(0.9))
-                .overlay {
-                    VStack {
-                        Spacer()
-                        Text(textPanel)
-                            .foregroundColor(.white)
-                            .font(.system(size: 20, weight: .bold))
-                            .offset(y: 10)
-                            .padding()
-                        Image(image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60)
-                        Text(timetext)
-                            .font(.system(size: 32, weight: .heavy))
-                            .foregroundColor(Color("ButtonColor"))
-                        Spacer()
-                        Text("눌러서 갱신")
-                            .font(.system(size: 14, weight: .light))
-                            .foregroundColor(.gray)
-                            .padding()
-                            .padding(.bottom, 5)
-                    }
+        RoundedRectangle(cornerRadius: 40, style: .continuous)
+            .frame(width: 160, height: 230)
+            .foregroundColor(Color("PickerColor").opacity(0.9))
+            .overlay {
+                VStack {
+                    Spacer()
+                    Text(textPanel)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20, weight: .bold))
+                        .offset(y: 10)
+                        .padding()
+                    Image(image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                    Text(timetext)
+                        .font(.system(size: 32, weight: .heavy))
+                        .foregroundColor(Color("ButtonColor"))
+                    Spacer()
+                    Text("눌러서 갱신")
+                        .font(.system(size: 14, weight: .light))
+                        .foregroundColor(.gray)
+                        .padding()
+                        .padding(.bottom, 5)
                 }
-        }
+            }
+    }
+}
+
+struct NoteView_Previews: PreviewProvider {
+    static var previews: some View {
+        NoteView()
+            .environmentObject(InfoToNote())
     }
 }
