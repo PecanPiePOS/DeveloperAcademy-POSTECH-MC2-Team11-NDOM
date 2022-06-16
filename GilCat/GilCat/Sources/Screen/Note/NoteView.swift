@@ -74,12 +74,10 @@ struct NoteView: View {
                     Image(systemName: "chevron.backward")
                         .frame(width: 50, height: 40, alignment: .leading)
                         .foregroundColor(.white)
-//                        .padding()
                         .onTapGesture {
                             self.presentation.wrappedValue.dismiss()
                         }
                 }
-                
             }
         }
     }

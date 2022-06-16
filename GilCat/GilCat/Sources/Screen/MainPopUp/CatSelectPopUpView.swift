@@ -31,7 +31,6 @@ struct CatSelectPopup: View {
     @Binding var isPopup: Bool
     @Binding var cat: GilCatInfo
     
-    
     @StateObject var selectedCat: InfoToNote = InfoToNote()
     
     var body: some View {
@@ -71,8 +70,6 @@ struct CatSelectPopup: View {
                     .padding([.leading, .trailing], 30)
                     .padding([.top], 30)
                     .padding(.bottom, 20)
-                    
-                    
                     
                     VStack(alignment: .center, spacing: 16) {
                         Button {
