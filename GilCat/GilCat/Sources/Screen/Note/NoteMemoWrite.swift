@@ -17,7 +17,7 @@ struct NoteMemoWrite: View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
-                GilCatTextField(inputText: $inputText, placeHolder: "원하는 메모를 작성해보세요!", textLimit: 140).padding([.leading, .bottom])
+                GilCatTextField(inputText: $inputText, placeHolder: "원하는 메모를 작성해보세요!", textLimit: 54).padding([.leading, .bottom])
                 Spacer()
                 getTextLimit()
                 getMainButtom()
@@ -75,7 +75,7 @@ struct NoteMemoWrite: View {
     // 글자 수 제한과 지금까지 얼마나 쳤는지 보여주는 뷰 반환하기
     @ViewBuilder
     private func getTextLimit() -> some View {
-        Text("\(inputText.count)/140")
+        Text("\(inputText.count)/54")
             .foregroundColor(.white)
             .font(.system(size: 20, weight: .bold))
     }
