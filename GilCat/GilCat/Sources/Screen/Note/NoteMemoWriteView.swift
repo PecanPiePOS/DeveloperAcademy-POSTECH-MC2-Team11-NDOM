@@ -68,7 +68,7 @@ struct NoteMemoWriteView: View {
             catInfo.memoInfo.append(MemoInfo(date: currentDate, time: currentTime, content: inputText))
             presentation.wrappedValue.dismiss()
         } label: {
-            GilCatMainButton(text: "작성 완료", foreground: Color.white, background: .buttonColor)
+            GilCatMainButton(text: "작성 완료", foreground: Color.white, background: .constant(.buttonColor))
         }
         .padding()
     }

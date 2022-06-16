@@ -63,7 +63,7 @@ struct HealthTagShow: View {
             Button {
                 presentation.wrappedValue.dismiss()
             } label: {
-                GilCatMainButton(text: "등록 완료", foreground: .white, background: .buttonColor)
+                GilCatMainButton(text: "등록 완료", foreground: .white, background: .constant(.buttonColor))
             }
 
         }
@@ -102,7 +102,7 @@ struct WriteTagView: View {
                 newTagText = ""
                 isModalPresented = false
             } label: {
-                GilCatMainButton(text: "태그 추가", foreground: .white, background: .buttonColor)
+                GilCatMainButton(text: "태그 추가", foreground: .white, background: .constant(.buttonColor))
             }
         }
         .padding()

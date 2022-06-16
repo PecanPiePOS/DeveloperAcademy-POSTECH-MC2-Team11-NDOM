@@ -14,6 +14,7 @@ struct RegisterAge: View {
     @State private var isLinkActive = false
     @State private var isShowingType = false
     @State private var isFirstClick = true
+    @State private var buttonColor : Color = .gray
     // 나이랑 종 값 입력 다 할 경우 건너뛰기 버튼은 사라지고 다음만 남도록 하기 위한 변수
     @State private var isInputFinish = false
     private var catName: String = ""
@@ -72,10 +73,15 @@ struct RegisterAge: View {
     @ViewBuilder
     private func getAgeTextField() -> some View {
         GilCatTextField(inputText: $newCat.age,
-                        placeHolder: "\(newCat.name)은(는) 몇 살인가요?", textLimit: 8)
+                        placeHolder: "\(newCat.name)은(는) 몇 살인가요?", textLimit: 2)
                .padding([.leading, .bottom])
                .focused($isFocused, equals: 1)
                .keyboardType(.numberPad)
+               .onChange(of: newCat.age) { _ in
+                   withAnimation {
+                       buttonColor = newCat.age.isEmpty ? Color.gray : Color.buttonColor
+                   }
+               }
     }
     // 종 입력 필드 뷰 반환하기
     @ViewBuilder
@@ -84,6 +90,7 @@ struct RegisterAge: View {
             .padding([.leading, .bottom])
             .onChange(of: newCat.type) { _ in
                 withAnimation {
+                    buttonColor = newCat.type.isEmpty ? Color.gray : Color.buttonColor
                     isInputFinish = newCat.type.isEmpty ? false : true
                 }
             }
@@ -106,7 +113,7 @@ struct RegisterAge: View {
                             isLinkActive = true
                         }
                     } label: {
-                        GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                        GilCatMainButton(text: "건너뛰기", foreground: .white, background: .constant(.pickerColor))
                     }
                 }
                 .isDetailLink(false)
@@ -124,10 +131,11 @@ struct RegisterAge: View {
                         isLinkActive = true
                     }
                 } label: {
-                    GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                    GilCatMainButton(text: "다음", foreground: .white, background: $buttonColor)
                 }.frame(maxWidth: .infinity)
             }
             .isDetailLink(false)
+            .disabled(newCat.age.isEmpty && newCat.type.isEmpty)
         }
         .padding()
     }

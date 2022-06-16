@@ -98,6 +98,9 @@ struct RegisterCode: View {
                     if newCat.code.count > 6 {
                         newCat.code = String(newCat.code.prefix(6))
                     }
+                    if newCat.code.count == 6{
+                        
+                    }
                 }
             HStack {
                 getCodeInputView(index: 0)
@@ -118,7 +121,7 @@ struct RegisterCode: View {
                 Button {
                     isLinkActive = true
                 } label: {
-                    GilCatMainButton(text: "건너뛰기", foreground: .white, background: .pickerColor)
+                    GilCatMainButton(text: "건너뛰기", foreground: .white, background: .constant(.pickerColor))
                 }
             }
             .isDetailLink(false)
@@ -132,7 +135,7 @@ struct RegisterCode: View {
                         isShareCheck = true
                     }
                 } label: {
-                    GilCatMainButton(text: "다음", foreground: .white, background: .buttonColor)
+                    GilCatMainButton(text: "다음", foreground: .white, background: .constant(.buttonColor))
                 }
             }
             .isDetailLink(false)
