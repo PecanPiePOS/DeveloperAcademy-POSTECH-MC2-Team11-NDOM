@@ -23,16 +23,9 @@ struct NoteView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack {
-                        // MARK: 프로필 사진
                         getCatImage(Image: catInfo.imageName)
-                        
-                        // MARK: 이름
                         GilCatTitle(titleText: catInfo.name)
-                        
-                        // MARK: 프로필 자세히 보기
                         getProfileView()
-                        
-                        // MARK: 마지막 급식급수
                         HStack(spacing: 24) {
                             NavigationLink(destination: NoteFoodView()) {
                                 foodWaterPanelView(text: "마지막 급식", Image: "foodBowl", time: catInfo.dietInfo.time)
@@ -42,23 +35,15 @@ struct NoteView: View {
                             }
                         }
                         .padding()
-                        
-                        // MARK: 츄르 몇개?
                         getSnapCountView()
-                        
                         // MARK: 건강 상태
                         VStack {
-                            // MARK: 건강상태 섹션
                             sectionHealthView()
-                            // MARK: 건강상태 박스
                             healthBoxView()
                         }
-                        
                         // MARK: 메모 박스
                         VStack {
-                            // MARK: 개인 메모장 섹션
                             sectionMemoView()
-                            // MARK: 개인 메모장 박스
                             memoBoxView()
                         }
                     }
@@ -90,7 +75,7 @@ struct NoteView: View {
         }
     }
 
-    // 정리
+    // MARK: 츄르 카운트
     @ViewBuilder
     private func getSnapCountView() -> some View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)
@@ -143,6 +128,7 @@ struct NoteView: View {
             .padding(.bottom, 20)
     }
     
+    // MARK: 프로필 사진
     @ViewBuilder
     private func getCatImage(Image catImage: String) -> some View {
         Image(catImage)
@@ -155,6 +141,7 @@ struct NoteView: View {
             .padding(.top, 10)
     }
     
+    // MARK: 프로필 자세히 보기
     @ViewBuilder
     private func getProfileView() -> some View {
         RoundedRectangle(cornerRadius: 36, style: .continuous)
@@ -178,6 +165,7 @@ struct NoteView: View {
             .padding(.bottom, 20)
     }
     
+    // MARK: 건강 태그 섹션
     @ViewBuilder
     private func sectionHealthView() -> some View {
         HStack {
@@ -200,6 +188,7 @@ struct NoteView: View {
         }
     }
     
+    // MARK: 개인 메모장 섹션
     @ViewBuilder
     private func sectionMemoView() -> some View {
         HStack {
@@ -224,6 +213,7 @@ struct NoteView: View {
         }
     }
     
+    // MARK: 건강상태 박스
     @ViewBuilder
     private func healthBoxView() -> some View {
         if activatedHealthTagInfo.isEmpty {
@@ -241,6 +231,7 @@ struct NoteView: View {
         }
     }
     
+    // MARK: 개인 메모장 박스
     @ViewBuilder
     private func memoBoxView() -> some View {
         if catInfo.memoInfo.isEmpty {
@@ -275,6 +266,8 @@ struct NoteView: View {
         }
     }
     
+    
+    // MARK: 마지막 급식급수
     @ViewBuilder
     private func foodWaterPanelView(text textPanel: String, Image image: String, time timetext: String ) -> some View {
         RoundedRectangle(cornerRadius: 40, style: .continuous)

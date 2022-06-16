@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NoteWaterView: View {
+    
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var catInfo: InfoToNote
     
@@ -19,36 +20,25 @@ struct NoteWaterView: View {
         ZStack {
             Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
-            
             VStack {
-                
                 infoTextView(Text: "※ 시간을 선택해서 수정해주세요.")
-                
                 Spacer()
-                
                 HStack(alignment: .lastTextBaseline, spacing: 15) {
                     getwaterNameView(name: "물")
-                
                 }
-                
                 Image("waterBowl")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/6)
-                
                 // custom picker View
                 GilCatTimePicker(hourEx: $catInfo.waterInfo.timeIndex)
-                
                 HStack(spacing: 15) {
-
                     waterPercentageView(amount: .less)
                     waterPercentageView(amount: .mid)
                     waterPercentageView(amount: .full)
                 }
                 .padding()
-                
                 Spacer()
-                
                 createWaterView()
                 
             }
@@ -68,6 +58,7 @@ struct NoteWaterView: View {
         }
     }
     
+    // MARK: 물 텍스트
     @ViewBuilder
     private func getwaterNameView(name foodName: String) -> some View {
         Text(foodName)
@@ -77,12 +68,10 @@ struct NoteWaterView: View {
             .frame(width: 260, height: 100)
     }
     
+    // MARK: 빠져나가기
     @ViewBuilder
     private func createWaterView() -> some View {
         Button {
-            // 1. 선택된 값 받아오기
-            // Param 에 아마 서버에서 주고 받는 또는 data 연결 변수 들어갈 듯
-            // 2. 빠져나가기
             self.presentation.wrappedValue.dismiss()
         } label: {
             Rectangle()
@@ -100,7 +89,7 @@ struct NoteWaterView: View {
         }
     }
     
-    // 첫 안내 뷰
+    // MARK: 첫 안내 뷰
     @ViewBuilder
     private func infoTextView(Text text: String) -> some View {
         Text(text)
@@ -110,6 +99,7 @@ struct NoteWaterView: View {
             .padding(.top, 15)
     }
     
+    // MARK: 급수량 선택
     @ViewBuilder
     private func waterPercentageView(amount: Amount) -> some View {
         Text(amount.str)
@@ -126,7 +116,6 @@ struct NoteWaterView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color("ButtonColor"))
-                    
                     Text(amount.str)
                         .font(.system(size: 22, weight: .heavy))
                         .foregroundColor(.white)
@@ -139,7 +128,6 @@ struct NoteWaterView: View {
             }
             .padding()
     }
-    
 }
 
 struct NoteWaterView_Previews: PreviewProvider {

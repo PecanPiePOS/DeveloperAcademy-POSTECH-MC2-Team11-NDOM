@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NoteFoodView: View {
+    
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
 
@@ -20,22 +21,14 @@ struct NoteFoodView: View {
             Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                // MARK: 사용자에게 알릴 기본 정보
                 infoTextView(Text: "※ 사료 이름과 시간을 선택해서 수정해주세요.")
-                
                 Spacer()
-                
                 ZStack {
-                    
-                    // MARK: 사료 이름 받아오기
                     getfoodNameView(name: catInfo.dietInfo.name)
-
                     Spacer()
-                    
                     HStack {
                         Spacer()
                             .frame(width: 300)
-                        
                         // MARK: 수정 뷰로 넘어가기
                         NavigationLink(destination: NoteFoodEditView()) {
                             Image(systemName: "square.and.pencil")
@@ -48,25 +41,19 @@ struct NoteFoodView: View {
                         }
                     }
                 }
-                
                 Image("foodBowl")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width/4, height: UIScreen.main.bounds.width/6)
-                
                 // MARK: 커스텀 피커 뷰
                 GilCatTimePicker(hourEx: $catInfo.dietInfo.timeIndex)
-
                 HStack(spacing: 15) {
                     foodPercentageView(amount: .less)
                     foodPercentageView(amount: .mid)
                     foodPercentageView(amount: .full)
                 }
-                
                 Spacer()
-                
                 createFoodView()
-                
             }
             .navigationTitle("급식 입력")
             .navigationViewStyle(.stack)
@@ -83,7 +70,8 @@ struct NoteFoodView: View {
             }
         }
     }
-        
+    
+    // MARK: 사료 이름 받아오기
     @ViewBuilder
     private func getfoodNameView(name tenName: String) -> some View {
         
@@ -112,12 +100,10 @@ struct NoteFoodView: View {
         }
     }
     
+    // MARK: 빠져나가기
     @ViewBuilder
     private func createFoodView() -> some View {
         Button {
-            // 1. 선택된 값 받아오기
-            // Param 에 아마 서버에서 주고 받는 또는 data 연결 변수 들어갈 듯
-            // 2. 빠져나가기
             self.presentation.wrappedValue.dismiss()
         } label: {
             Rectangle()
@@ -135,7 +121,7 @@ struct NoteFoodView: View {
         }
     }
     
-    // 첫 안내 뷰
+    // MARK: 첫 안내 뷰
     @ViewBuilder
     private func infoTextView(Text text: String) -> some View {
         Text(text)
@@ -145,6 +131,7 @@ struct NoteFoodView: View {
             .padding(.top, 15)
     }
     
+    // MARK: 급식량 선택
     @ViewBuilder
     private func foodPercentageView(amount: Amount) -> some View {
         Text(amount.str)
