@@ -46,6 +46,7 @@ struct RegisterGender: View {
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 Image(systemName: "chevron.backward")
+                    .frame(width: 50, height: 40, alignment: .leading)
                     .foregroundColor(.white)
                     .onTapGesture {
                         self.presentation.wrappedValue.dismiss()

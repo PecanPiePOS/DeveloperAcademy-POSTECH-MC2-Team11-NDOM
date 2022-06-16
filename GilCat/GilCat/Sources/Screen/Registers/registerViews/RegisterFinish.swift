@@ -39,6 +39,7 @@ struct RegisterFinish: View {
             .navigationViewStyle(.stack)
             .onTapGesture {
                 self.presentation.wrappedValue.dismiss()
+
             }
             
             // 폭죽 효과
