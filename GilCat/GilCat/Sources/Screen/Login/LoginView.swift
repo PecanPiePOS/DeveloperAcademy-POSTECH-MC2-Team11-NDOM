@@ -25,16 +25,10 @@ struct LoginView: View {
                     .edgesIgnoringSafeArea(.all
                     )
                 VStack(alignment: .leading) {
-                    // MARK: 닉네임 받기
                     nicknameTextFieldView(name: nickName)
-                    
-                    // MARK: 조건에 따른 안내문
                     checkValidNicknameView(network: checkNetwork, duplicate: checkName, name: nickName)
-                        
                     Spacer()
-                    
                     NavigationLink(destination: Home(viewModel: HomeViewModel())) {
-                        // MARK: 조건 맞는지 확인하고 넘어가는 버튼
                         createNicknameButtonView()
                     }
                     .disabled(!checkNetwork || checkName || nickName.count > 8 || nickName.count < 2)
@@ -46,6 +40,7 @@ struct LoginView: View {
         }
     }
     
+    // MARK: 닉네임 받기
     @ViewBuilder
     private func nicknameTextFieldView(name nickName: String) -> some View {
         TextField("", text: $nickName)
@@ -53,7 +48,6 @@ struct LoginView: View {
             .onChange(of: nickName) { _ in
                 if nickName.count > 8 {
                     self.nickName = String(nickName.prefix(8))
-                    // nickName -> self.nickName 으로 바뀜
                 }
             }
             .onAppear {
@@ -68,7 +62,7 @@ struct LoginView: View {
             .padding(.top, 40)
     }
     
-    // MARK: 조건이 걸린 "다음" 버튼
+    // MARK: 조건 맞는지 확인하고 넘어가는 버튼
     @ViewBuilder
     private func createNicknameButtonView() -> some View {
         Rectangle()
@@ -106,7 +100,6 @@ struct LoginView: View {
             .padding(.horizontal, 50)
         }
     }
-    
 }
 
 struct LoginView_Previews: PreviewProvider {
