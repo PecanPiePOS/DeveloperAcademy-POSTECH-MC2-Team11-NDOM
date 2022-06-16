@@ -34,7 +34,7 @@ struct NoteFoodView: View {
                     
                     HStack {
                         Spacer()
-                            .frame(width: 250)
+                            .frame(width: 300)
                         
                         // MARK: 수정 뷰로 넘어가기
                         NavigationLink(destination: NoteFoodEditView()) {
@@ -42,7 +42,7 @@ struct NoteFoodView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .font(.largeTitle.weight(.heavy))
-                                .frame(width: 24, height: 24)
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(.teal)
                                 .opacity(0.7)
                         }
@@ -56,13 +56,12 @@ struct NoteFoodView: View {
                 
                 // MARK: 커스텀 피커 뷰
                 GilCatTimePicker(hourEx: $catInfo.dietInfo.timeIndex)
-                
+
                 HStack(spacing: 15) {
                     foodPercentageView(amount: .less)
                     foodPercentageView(amount: .mid)
                     foodPercentageView(amount: .full)
                 }
-                .padding()
                 
                 Spacer()
                 
@@ -86,12 +85,31 @@ struct NoteFoodView: View {
     }
         
     @ViewBuilder
-    private func getfoodNameView(name foodName: String) -> some View {
-        Text(foodName)
-            .font(.system(size: 36, weight: .heavy))
-            .foregroundColor(.white)
-            .multilineTextAlignment(.center)
-            .frame(width: 240, height: 100)
+    private func getfoodNameView(name tenName: String) -> some View {
+        
+        if catInfo.dietInfo.name.count <= 10 {
+            Text(tenName.prefix(10))
+                .font(.system(size: 28, weight: .heavy))
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .frame(width: 260, height: 100)
+                .padding(.bottom, -5)
+        } else if catInfo.dietInfo.name.count > 10 {
+            VStack {
+                Text(tenName.prefix(10))
+                    .font(.system(size: 28, weight: .heavy))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 260, height: 50)
+                    .padding(.bottom, -25)
+                Text((tenName.suffix(tenName.count - 10)))
+                    .font(.system(size: 28, weight: .heavy))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 260, height: 50)
+            }
+            
+        }
     }
     
     @ViewBuilder

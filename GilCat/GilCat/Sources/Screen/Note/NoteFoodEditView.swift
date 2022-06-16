@@ -32,7 +32,9 @@ struct NoteFoodEditView: View {
 
                 infoNameView()
                 
-                foodTextFieldView(text: catInfo.dietInfo.name)
+                foodTextFieldView()
+                
+                lastFoodView()
                 
                 Spacer()
                 
@@ -55,14 +57,20 @@ struct NoteFoodEditView: View {
     }
     
     @ViewBuilder
-    private func foodTextFieldView(text foodChange: String) -> some View {
+    private func foodTextFieldView() -> some View {
         TextField("", text: $catInfo.dietInfo.name)
             .focused($focusField, equals: .field)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.focusField = .field }
             }
-            .modifier(PlaceholderStyle(showPlaceHolder: foodChange.isEmpty, placeholder: "오늘 준 사료를 입력해 주세요!"))
+            .onChange(of: catInfo.dietInfo.name) { _ in
+                if catInfo.dietInfo.name.count > 15 {
+                    self.catInfo.dietInfo.name = String(catInfo.dietInfo.name.prefix(15))
+                    // nickName -> self.nickName 으로 바뀜
+                }
+            }
+            .modifier(PlaceholderStyle(showPlaceHolder: catInfo.dietInfo.name.isEmpty, placeholder: "오늘 준 사료를 입력해 주세요!"))
             .foregroundColor(Color.white.opacity(0.7))
             .font(.system(size: 20, weight: .medium))
             .disableAutocorrection(true)
@@ -103,17 +111,41 @@ struct NoteFoodEditView: View {
     }
     
     @ViewBuilder
+    private func lastFoodView() -> some View {
+            HStack {
+                Text("마지막 사료 :")
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.white)
+                    .opacity(0.6)
+                    .padding(.leading, 10)
+                
+                Text("캐츠랑 리브레")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.white)
+                    .frame(height: 1)
+                    .padding()
+                    .background(Color.mint)
+                    .cornerRadius(30)
+                
+                Spacer()
+                
+            }
+            .padding(.leading, 40)
+            .padding(.top, 20)
+    }
+    
+    @ViewBuilder
     private func putFoodButtonView() -> some View {
         Button {
             // 1. 선택된 값 받아오기
-            // Param 에 아마 서버에서 주고 받는 또는 data 연결 변수 들어갈 듯
+//            saveDiet()
             // 2. 빠져나가기
             self.presentation.wrappedValue.dismiss()
         } label: {
             Rectangle()
                 .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
                 .cornerRadius(20)
-                .foregroundColor(Color("ButtonColor"))
+                .foregroundColor(catInfo.dietInfo.name.count < 3 ? Color.gray : Color("ButtonColor"))
                 .overlay {
                     Text("등록 완료")
                         .font(.title3)
@@ -123,11 +155,13 @@ struct NoteFoodEditView: View {
                 .padding(.horizontal, 30)
                 .padding(.bottom, 10)
         }
+        .disabled(catInfo.dietInfo.name.count < 3)
     }
 }
 
 struct NoteFoodEditView_Previews: PreviewProvider {
     static var previews: some View {
         NoteFoodEditView()
+            .environmentObject(InfoToNote())
     }
 }
