@@ -26,6 +26,7 @@ struct GilCatInfo {
     var healthTagInfo: [String]     = []
     var memoInfo: [MemoInfo]        = []
     var gilCatMapInformation: GilCatMapCase = .none
+
 }
 
 extension GilCatInfo {
@@ -47,31 +48,59 @@ extension GilCatInfo {
 // MARK: 먹이 정보
 struct DietInfo {
     var name: String
-    var time: String
+    var timeIndex: Int
+    var time: String {
+        GilCatTimePicker.testTime[timeIndex]
+    }
     var amount: Amount
     
-    static let initCat: DietInfo = DietInfo(name: "-", time: "-", amount: .medium)
+    static let initCat: DietInfo = DietInfo(name: "-", timeIndex: 28, amount: .mid)
 }
 
 // MARK: 물 정보
 struct WaterInfo {
-    var time: String
+    var timeIndex: Int
+    var time: String {
+        GilCatTimePicker.testTime[timeIndex]
+    }
     var amount: Amount
     
-    static let initCat: WaterInfo = WaterInfo(time: "-", amount: .medium)
+    static let initCat: WaterInfo = WaterInfo(timeIndex: 28, amount: .mid)
 }
 
 // MARK: 메모 정보 
 struct MemoInfo: Hashable {
-    
+    var date: String
     var time: String
     var content: String
 }
 
+// MARK: 태그 정보
+struct HealthTag: Hashable {
+    init(_ text: String, isClicked: Bool = false) {
+        self.text = text
+        self.isClicked = isClicked
+    }
+    var id = UUID().uuidString
+    var text: String
+    var isClicked = false
+}
+
 enum Amount {
-    case big
-    case medium
-    case small
+    case full
+    case mid
+    case less
+
+    var str: String {
+        switch self {
+        case .full:
+            return "100%"
+        case .mid:
+            return "50%"
+        case .less:
+            return "25%"
+        }
+    }
 }
 
 enum GilCatGender: String {

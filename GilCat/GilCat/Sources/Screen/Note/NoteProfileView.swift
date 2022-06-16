@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NoteProfileView: View {
-    @State private var checkTNR = false
+    @EnvironmentObject var catInfo: InfoToNote
     
     var body: some View {
         ZStack {
@@ -17,40 +17,55 @@ struct NoteProfileView: View {
             VStack(alignment: .leading, spacing: 15) {
                 Spacer()
                 HStack(spacing: 20) {
-                    Text("나비")
-                        .font(.system(size: 30, weight: .heavy))
-                        .foregroundColor(.white)
+                    getCatNameView(Text: catInfo.name)
                     
-                    RoundedRectangle(cornerRadius: 21)
-                        .frame(width: 74, height: 40)
-                        .foregroundColor(checkTNR ? Color(.red) : Color("ButtonColor") )
-                        .overlay {
-                            Text(checkTNR ? "중성화X" : "중성화")
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.white)
-                        }
-                        .onTapGesture {
-                            checkTNR.toggle()
-                        }
+                    getTNRInfoView(TNR: catInfo.neutralized)
+                    
                 }
-                Text("3살!!")
-                .bold()
-                .foregroundColor(.red)
-                Text("수컷!!")
-                .bold()
-                .foregroundColor(.red)
-                Text("코리안숏헤어")
-                .bold()
-                .foregroundColor(.red)
+                textProfileView(Text: catInfo.age)
+                textProfileView(Text: catInfo.gender == .male ? "수컷" : "암컷")
+                textProfileView(Text: catInfo.type)
             }
             .padding(.top, 30)
         }
         .frame(width: .infinity, height: 160)
+    }
+    
+    // MARK: 고양이 이름 표시
+    @ViewBuilder
+    private func getCatNameView(Text text: String) -> some View {
+        Text(text)
+            .font(.system(size: 30, weight: .heavy))
+            .foregroundColor(.white)
+    }
+    
+    // MARK: TNR 정보 표시
+    @ViewBuilder
+    private func getTNRInfoView(TNR checkTNR: Bool) -> some View {
+        RoundedRectangle(cornerRadius: 21)
+            .frame(width: 74, height: 40)
+            .foregroundColor(checkTNR ? Color(.red) : Color("ButtonColor") )
+            .overlay {
+                Text(checkTNR ? "중성화X" : "중성화")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.white)
+            }
+    }
+    
+    // MARK: 프로필 상세 내용
+    @ViewBuilder
+    private func textProfileView(Text text: String) -> some View {
+        Text(text)
+            .bold()
+            .font(.title3)
+            .foregroundColor(.white)
+            .opacity(0.9)
     }
 }
 
 struct NoteProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NoteProfileView()
+            .environmentObject(InfoToNote())
     }
 }
