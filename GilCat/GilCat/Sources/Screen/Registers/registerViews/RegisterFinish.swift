@@ -37,9 +37,9 @@ struct RegisterFinish: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .navigationViewStyle(.stack)
+
             .onTapGesture {
                 self.presentation.wrappedValue.dismiss()
-
             }
             
             // 폭죽 효과
