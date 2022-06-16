@@ -35,9 +35,7 @@ struct RegisterStart: View {
                 // MARK: 툴바 수정
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
-                        Image(systemName: "chevron.backward")
-                            .frame(width: 50, height: 40, alignment: .leading)
-                            .contentShape(Rectangle())
+                        Image(systemName: "xmark")
                             .foregroundColor(.white)
                             .onTapGesture {
                                 self.presentation.wrappedValue.dismiss()
@@ -90,7 +88,7 @@ struct RegisterStart: View {
             Button {
                 isLinkActive = true
             } label: {
-                GilCatMainButton(text: "시작하기", foreground: Color.white, background: .buttonColor)
+                GilCatMainButton(text: "시작하기", foreground: Color.white, background: .constant(.buttonColor))
             }
             .padding()
         }

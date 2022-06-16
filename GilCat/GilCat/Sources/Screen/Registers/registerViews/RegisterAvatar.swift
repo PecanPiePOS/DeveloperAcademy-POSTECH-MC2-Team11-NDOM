@@ -117,6 +117,10 @@ struct RegisterAvatar: View {
         Circle()
             .fill(catColor.color)
             .frame(width: 50, height: 50)
+            .overlay(
+                Circle()
+                    .stroke(newCat.avatarColor == catColor ? Color.buttonColor : Color.profileBackgroundColor, lineWidth: 4)
+            ) //색깔 선택시 구분 선 보이게 함
             .onTapGesture {
                 newCat.avatarColor = catColor
             }
@@ -146,7 +150,7 @@ struct RegisterAvatar: View {
             Button {
                 isLinkActive = true
             } label: {
-                GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                GilCatMainButton(text: "다음", foreground: Color.white, background: .constant(.buttonColor))
             }
             .padding()
         }
