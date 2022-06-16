@@ -72,6 +72,7 @@ struct NoteView: View {
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Image(systemName: "chevron.backward")
+                        .frame(width: 50, height: 40, alignment: .leading)
                         .foregroundColor(.white)
                         .onTapGesture {
                             self.presentation.wrappedValue.dismiss()
@@ -307,5 +308,12 @@ struct NoteView: View {
                     }
                 }
         }
+    }
+}
+
+struct NoteView_Previews: PreviewProvider {
+    static var previews: some View {
+        NoteView()
+            .environmentObject(InfoToNote())
     }
 }
