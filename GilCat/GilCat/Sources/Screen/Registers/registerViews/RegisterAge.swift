@@ -72,7 +72,7 @@ struct RegisterAge: View {
     @ViewBuilder
     private func getAgeTextField() -> some View {
         GilCatTextField(inputText: $newCat.age,
-                        placeHolder: "\(newCat.name)은(는) 몇 살인가요?")
+                        placeHolder: "\(newCat.name)은(는) 몇 살인가요?", textLimit: 8)
                .padding([.leading, .bottom])
                .focused($isFocused, equals: 1)
                .keyboardType(.numberPad)
@@ -80,7 +80,7 @@ struct RegisterAge: View {
     // 종 입력 필드 뷰 반환하기
     @ViewBuilder
     private func getTypeTextField() -> some View {
-        GilCatTextField(inputText: $newCat.type, placeHolder: "\(newCat.name)의 종을 아신다면 알려주세요. ")
+        GilCatTextField(inputText: $newCat.type, placeHolder: "\(newCat.name)의 종을 아신다면 알려주세요. ", textLimit: 8)
             .padding([.leading, .bottom])
             .onChange(of: newCat.type) { _ in
                 withAnimation {

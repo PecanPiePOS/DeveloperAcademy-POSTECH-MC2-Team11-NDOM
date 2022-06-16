@@ -94,7 +94,7 @@ struct WriteTagView: View {
                         .font(.system(size: 20, weight: Font.Weight.heavy))
                 }
             }
-            GilCatTextField(inputText: $newTagText, placeHolder: "태그를 추가하세요.")
+            GilCatTextField(inputText: $newTagText, placeHolder: "태그를 추가하세요.", textLimit: 8)
                 .focused($isModalFocused, equals: true)
             Spacer()
             Button {
