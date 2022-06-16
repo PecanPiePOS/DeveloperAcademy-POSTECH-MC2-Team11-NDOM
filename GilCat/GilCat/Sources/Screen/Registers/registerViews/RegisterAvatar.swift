@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RegisterAvatar: View {
-    @EnvironmentObject var newCat: NewCatModel
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) private var presentation
     @Binding private var isActiveForPopToRoot: Bool
     @State private var viewChoice: GilCatPicker.Choice = .first
@@ -154,6 +154,6 @@ struct RegisterAvatar: View {
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(popToRoot: .constant(false)).environmentObject(NewCatModel())
+        RegisterGender(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }

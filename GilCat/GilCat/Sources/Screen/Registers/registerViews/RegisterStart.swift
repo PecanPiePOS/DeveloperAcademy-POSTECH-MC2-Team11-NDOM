@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct RegisterStart: View {
-    @EnvironmentObject var newCat: NewCatModel
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) private var presentation
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     
-    init() {
+    init(popToRoot: Binding<Bool>) {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -38,11 +40,6 @@ struct RegisterStart: View {
                             .onTapGesture {
                                 self.presentation.wrappedValue.dismiss()
                             }
-                    }
-                }
-                .onChange(of: isLinkActive) { _ in
-                    if !isLinkActive {
-                        presentation.wrappedValue.dismiss()
                     }
                 }
             }
@@ -87,7 +84,7 @@ struct RegisterStart: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterCode(popToRoot: $isLinkActive), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterCode(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
             } label: {
@@ -101,6 +98,6 @@ struct RegisterStart: View {
 
 struct RegisterStart_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterStart().environmentObject(NewCatModel())
+        RegisterStart(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }

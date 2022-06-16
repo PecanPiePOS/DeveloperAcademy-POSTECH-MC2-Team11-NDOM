@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct RegisterAge: View {
-    @EnvironmentObject var newCat: NewCatModel
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Int?
     @Binding private var isActiveForPopToRoot: Bool
@@ -135,6 +135,6 @@ struct RegisterAge: View {
 
 struct RegisterAge_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterAge(popToRoot: .constant(false)).environmentObject(NewCatModel())
+        RegisterAge(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RegisterGender: View {
-    @EnvironmentObject var newCat: NewCatModel
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) var presentation
     @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
@@ -29,7 +29,9 @@ struct RegisterGender: View {
                 if isNeuralizedShowing {
                     VStack {
                         getTitleView("중성화 여부")
-                        GilCatPicker(isClick: $neuralizedPick, firstSelect: firstChoiceOfNeuralized, secondSelect: secondChoiceOfNeuralized)
+                        GilCatPicker(isClick: $neuralizedPick,
+                                     firstSelect: firstChoiceOfNeuralized,
+                                     secondSelect: secondChoiceOfNeuralized)
                     }.transition(.opacity)
                 }
                 Spacer()
@@ -106,6 +108,6 @@ struct RegisterGender: View {
 
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(popToRoot: .constant(false)).environmentObject(NewCatModel())
+        RegisterGender(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }

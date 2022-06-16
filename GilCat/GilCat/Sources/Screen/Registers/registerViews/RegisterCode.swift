@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterCode: View {
-    @EnvironmentObject var newCat: NewCatModel
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) private var presentation
     @FocusState private var isFocused: Bool?
     @Binding private var isActiveForPopToRoot: Bool
@@ -154,6 +154,6 @@ struct RegisterCode: View {
 
 struct RegisterCode_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterCode(popToRoot: .constant(false)).environmentObject(NewCatModel())
+        RegisterCode(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }
