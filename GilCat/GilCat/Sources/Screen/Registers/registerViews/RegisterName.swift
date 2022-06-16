@@ -18,7 +18,7 @@ struct RegisterName: View {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
                 getTitleView("이름")
-                GilCatTextField(inputText: $newCat.name, placeHolder: "고양이 이름을 지어볼까요?").padding([.leading, .bottom])
+                GilCatTextField(inputText: $newCat.name, placeHolder: "고양이 이름을 지어볼까요?", textLimit: 8).padding([.leading, .bottom])
                 Spacer()
                 getMainButtomView()
             }

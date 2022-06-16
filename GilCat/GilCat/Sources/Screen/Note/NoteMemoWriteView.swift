@@ -17,7 +17,7 @@ struct NoteMemoWriteView: View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
-                GilCatTextField(inputText: $inputText, placeHolder: "원하는 메모를 작성해보세요!").padding([.leading, .bottom])
+                GilCatTextField(inputText: $inputText, placeHolder: "원하는 메모를 작성해보세요!", textLimit: 8).padding([.leading, .bottom])
                 Spacer()
                 getTextLimitView()
                 getMainButtomView()
