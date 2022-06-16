@@ -13,6 +13,7 @@ struct NoteView: View {
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
     @State private var checkProfile = false
+    @State private var activatedHealthTagInfo = [HealthTag]()
     
     var body: some View {
         NavigationView {
@@ -71,12 +72,19 @@ struct NoteView: View {
             // MARK: 툴바 수정
             .toolbar {
                 ToolbarItem(placement: .navigation) {
-                    Image(systemName: "chevron.backward")
+                    Image(systemName: "xmark")
                         .frame(width: 50, height: 40, alignment: .leading)
                         .foregroundColor(.white)
                         .onTapGesture {
                             self.presentation.wrappedValue.dismiss()
                         }
+                }
+            }
+            .onAppear {
+                // 활성화된 태그만 골라내기
+                activatedHealthTagInfo.removeAll()
+                for tag in catInfo.healthTagInfo where tag.isClicked {
+                    activatedHealthTagInfo.append(tag)
                 }
             }
         }
@@ -218,33 +226,29 @@ struct NoteView: View {
     
     @ViewBuilder
     private func healthBoxView() -> some View {
-        VStack {
-            Spacer().frame(height: 24)
-            ForEach(catInfo.healthTagInfo, id: \.self) { comps in
-                if comps.isClicked {
-                    HStack {
-                        Text("\(comps.text)")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color("ButtonColor").opacity(0.8))
-                            .cornerRadius(24)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 16)
-                }
-            }
-            Spacer().frame(height: 24)
+        if activatedHealthTagInfo.isEmpty {
+            Rectangle()
+                .frame(width: 340, height: 50)
+                .foregroundColor(Color.pickerColor)
+                .cornerRadius(30)
+        } else {
+            TagArea(tags: $activatedHealthTagInfo, type: .forDisplay)
+                .padding()
+                .frame(width: 340)
+                .background(Color("PickerColor").opacity(0.9))
+                .cornerRadius(30)
+                .padding(.bottom, 20)
         }
-        .frame(width: 340)
-        .background(Color("PickerColor").opacity(0.9))
-        .cornerRadius(30)
-        .padding(.bottom, 20)
     }
     
     @ViewBuilder
     private func memoBoxView() -> some View {
-        ZStack {
+        if catInfo.memoInfo.isEmpty {
+            Rectangle()
+                .frame(width: 340, height: 50)
+                .foregroundColor(Color.pickerColor)
+                .cornerRadius(30)
+        } else {
             HStack {
                 ForEach(catInfo.memoInfo, id: \.self) { memo in
                     VStack(alignment: .leading) {
@@ -267,14 +271,7 @@ struct NoteView: View {
                     .padding(.horizontal, 10)
                 }
             }
-            .modifier(ScrollingHStackModifier(items: catInfo.memoInfo.count + 1, itemWidth: 280, itemSpacing: 88))
-            
-            if catInfo.memoInfo.isEmpty {
-                Rectangle()
-                    .frame(width: 340, height: 50)
-                    .background(Color.pickerColor.opacity(0.9))
-                    .cornerRadius(30)
-            }
+            .modifier(ScrollingHStackModifier(items: catInfo.memoInfo.count, itemWidth: 280, itemSpacing: 88))
         }
     }
     

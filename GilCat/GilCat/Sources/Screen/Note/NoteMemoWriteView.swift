@@ -30,7 +30,7 @@ struct NoteMemoWriteView: View {
         // MARK: 툴바 수정
         .toolbar {
             ToolbarItem(placement: .navigation) {
-                Image(systemName: "xmark")
+                Image(systemName: "chevron.backward")
                     .foregroundColor(.white)
                     .onTapGesture {
                         self.presentation.wrappedValue.dismiss()
