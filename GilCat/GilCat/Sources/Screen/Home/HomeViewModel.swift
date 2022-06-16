@@ -11,7 +11,7 @@ class HomeViewModel: ObservableObject {
     @Published var newCatRegisterViewModel: NewCatRegisterViewModel = NewCatRegisterViewModel()
     
     @Published var catLists: [GilCatInfo] = [
-        GilCatInfo(name: "나비 Dophie",
+        GilCatInfo(name: "제갈현우프로젝트",
                    age: "2",
                    gender: .male,
                    neutralized: true,

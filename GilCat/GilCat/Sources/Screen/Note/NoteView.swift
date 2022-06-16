@@ -13,6 +13,7 @@ struct NoteView: View {
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
     @State private var checkProfile = false
+    @State private var activatedHealthTagInfo = [HealthTag]()
     
     var body: some View {
         NavigationView {
@@ -22,16 +23,9 @@ struct NoteView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack {
-                        // MARK: 프로필 사진
                         getCatImage(Image: catInfo.imageName)
-                        
-                        // MARK: 이름
                         GilCatTitle(titleText: catInfo.name)
-                        
-                        // MARK: 프로필 자세히 보기
                         getProfileView()
-                        
-                        // MARK: 마지막 급식급수
                         HStack(spacing: 24) {
                             NavigationLink(destination: NoteFoodView()) {
                                 foodWaterPanelView(text: "마지막 급식", Image: "foodBowl", time: catInfo.dietInfo.time)
@@ -41,23 +35,15 @@ struct NoteView: View {
                             }
                         }
                         .padding()
-                        
-                        // MARK: 츄르 몇개?
                         getSnapCountView()
-                        
                         // MARK: 건강 상태
                         VStack {
-                            // MARK: 건강상태 섹션
                             sectionHealthView()
-                            // MARK: 건강상태 박스
                             healthBoxView()
                         }
-                        
                         // MARK: 메모 박스
                         VStack {
-                            // MARK: 개인 메모장 섹션
                             sectionMemoView()
-                            // MARK: 개인 메모장 박스
                             memoBoxView()
                         }
                     }
@@ -71,17 +57,25 @@ struct NoteView: View {
             // MARK: 툴바 수정
             .toolbar {
                 ToolbarItem(placement: .navigation) {
-                    Image(systemName: "chevron.backward")
+                    Image(systemName: "xmark")
+                        .frame(width: 50, height: 40, alignment: .leading)
                         .foregroundColor(.white)
                         .onTapGesture {
                             self.presentation.wrappedValue.dismiss()
                         }
                 }
             }
+            .onAppear {
+                // 활성화된 태그만 골라내기
+                activatedHealthTagInfo.removeAll()
+                for tag in catInfo.healthTagInfo where tag.isClicked {
+                    activatedHealthTagInfo.append(tag)
+                }
+            }
         }
     }
 
-    // 정리
+    // MARK: 츄르 카운트
     @ViewBuilder
     private func getSnapCountView() -> some View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)
@@ -134,6 +128,7 @@ struct NoteView: View {
             .padding(.bottom, 20)
     }
     
+    // MARK: 프로필 사진
     @ViewBuilder
     private func getCatImage(Image catImage: String) -> some View {
         Image(catImage)
@@ -146,6 +141,7 @@ struct NoteView: View {
             .padding(.top, 10)
     }
     
+    // MARK: 프로필 자세히 보기
     @ViewBuilder
     private func getProfileView() -> some View {
         RoundedRectangle(cornerRadius: 36, style: .continuous)
@@ -169,6 +165,7 @@ struct NoteView: View {
             .padding(.bottom, 20)
     }
     
+    // MARK: 건강 태그 섹션
     @ViewBuilder
     private func sectionHealthView() -> some View {
         HStack {
@@ -191,6 +188,7 @@ struct NoteView: View {
         }
     }
     
+    // MARK: 개인 메모장 섹션
     @ViewBuilder
     private func sectionMemoView() -> some View {
         HStack {
@@ -215,35 +213,33 @@ struct NoteView: View {
         }
     }
     
+    // MARK: 건강상태 박스
     @ViewBuilder
     private func healthBoxView() -> some View {
-        VStack {
-            Spacer().frame(height: 24)
-            ForEach(catInfo.healthTagInfo, id: \.self) { comps in
-                if comps.isClicked {
-                    HStack {
-                        Text("\(comps.text)")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color("ButtonColor").opacity(0.8))
-                            .cornerRadius(24)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 16)
-                }
-            }
-            Spacer().frame(height: 24)
+        if activatedHealthTagInfo.isEmpty {
+            Rectangle()
+                .frame(width: 340, height: 50)
+                .foregroundColor(Color.pickerColor)
+                .cornerRadius(30)
+        } else {
+            TagArea(tags: $activatedHealthTagInfo, type: .forDisplay)
+                .padding()
+                .frame(width: 340)
+                .background(Color("PickerColor").opacity(0.9))
+                .cornerRadius(30)
+                .padding(.bottom, 20)
         }
-        .frame(width: 340)
-        .background(Color("PickerColor").opacity(0.9))
-        .cornerRadius(30)
-        .padding(.bottom, 20)
     }
     
+    // MARK: 개인 메모장 박스
     @ViewBuilder
     private func memoBoxView() -> some View {
-        ZStack {
+        if catInfo.memoInfo.isEmpty {
+            Rectangle()
+                .frame(width: 340, height: 50)
+                .foregroundColor(Color.pickerColor)
+                .cornerRadius(30)
+        } else {
             HStack {
                 ForEach(catInfo.memoInfo, id: \.self) { memo in
                     VStack(alignment: .leading) {
@@ -266,46 +262,46 @@ struct NoteView: View {
                     .padding(.horizontal, 10)
                 }
             }
-            .modifier(ScrollingHStackModifier(items: catInfo.memoInfo.count + 1, itemWidth: 280, itemSpacing: 88))
-            
-            if catInfo.memoInfo.isEmpty {
-                Rectangle()
-                    .frame(width: 340, height: 50)
-                    .background(Color.pickerColor.opacity(0.9))
-                    .cornerRadius(30)
-            }
+            .modifier(ScrollingHStackModifier(items: catInfo.memoInfo.count, itemWidth: 280, itemSpacing: 88))
         }
     }
     
+    
+    // MARK: 마지막 급식급수
     @ViewBuilder
     private func foodWaterPanelView(text textPanel: String, Image image: String, time timetext: String ) -> some View {
-        NavigationLink(destination: NoteWaterView()) {
-            RoundedRectangle(cornerRadius: 40, style: .continuous)
-                .frame(width: 160, height: 230)
-                .foregroundColor(Color("PickerColor").opacity(0.9))
-                .overlay {
-                    VStack {
-                        Spacer()
-                        Text(textPanel)
-                            .foregroundColor(.white)
-                            .font(.system(size: 20, weight: .bold))
-                            .offset(y: 10)
-                            .padding()
-                        Image(image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60)
-                        Text(timetext)
-                            .font(.system(size: 32, weight: .heavy))
-                            .foregroundColor(Color("ButtonColor"))
-                        Spacer()
-                        Text("눌러서 갱신")
-                            .font(.system(size: 14, weight: .light))
-                            .foregroundColor(.gray)
-                            .padding()
-                            .padding(.bottom, 5)
-                    }
+        RoundedRectangle(cornerRadius: 40, style: .continuous)
+            .frame(width: 160, height: 230)
+            .foregroundColor(Color("PickerColor").opacity(0.9))
+            .overlay {
+                VStack {
+                    Spacer()
+                    Text(textPanel)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20, weight: .bold))
+                        .offset(y: 10)
+                        .padding()
+                    Image(image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                    Text(timetext)
+                        .font(.system(size: 32, weight: .heavy))
+                        .foregroundColor(Color("ButtonColor"))
+                    Spacer()
+                    Text("눌러서 갱신")
+                        .font(.system(size: 14, weight: .light))
+                        .foregroundColor(.gray)
+                        .padding()
+                        .padding(.bottom, 5)
                 }
-        }
+            }
+    }
+}
+
+struct NoteView_Previews: PreviewProvider {
+    static var previews: some View {
+        NoteView()
+            .environmentObject(InfoToNote())
     }
 }
