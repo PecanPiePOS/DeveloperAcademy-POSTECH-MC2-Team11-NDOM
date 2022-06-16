@@ -52,7 +52,7 @@ struct NoteWaterView: View {
                 createWaterView()
                 
             }
-            .navigationTitle("급식 입력")
+            .navigationTitle("급수 입력")
             .navigationViewStyle(.stack)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
@@ -71,10 +71,10 @@ struct NoteWaterView: View {
     @ViewBuilder
     private func getwaterNameView(name foodName: String) -> some View {
         Text(foodName)
-            .font(.system(size: 36, weight: .heavy))
+            .font(.system(size: 30, weight: .heavy))
             .foregroundColor(.white)
             .multilineTextAlignment(.center)
-            .frame(width: 240, height: 100)
+            .frame(width: 260, height: 100)
     }
     
     @ViewBuilder
