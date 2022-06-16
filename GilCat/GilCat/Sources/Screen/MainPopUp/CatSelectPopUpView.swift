@@ -76,7 +76,7 @@ struct CatSelectPopup: View {
                     
                     VStack(alignment: .center, spacing: 16) {
                         Button {
-                            // MARK: 기록장으로 가는 기능을 여기에
+// MARK: 기록장으로 가는 기능을 여기에
                             openNote.toggle()
                         } label: {
                             Color.mainOrange
@@ -92,7 +92,7 @@ struct CatSelectPopup: View {
                         
                         HStack(alignment: .center, spacing: 16) {
                             Button {
-                                // MARK: 초대하기 기능
+// MARK: 초대하기 기능
                                 self.isInviting = true
                             } label: {
                                 Color.mainBlack
@@ -101,7 +101,7 @@ struct CatSelectPopup: View {
                                     .overlay(isInviting ? Text(inviteCode).foregroundColor(.mainOrange) : Text("초대하기").foregroundColor(.white).font(.system(size: 20, weight: .heavy)))
                             }
                             Button {
-                                // MARK: 합치기 기능
+// MARK: 합치기 기능
                                 openCode.toggle()
                             } label: {
                                 Color.mainBlack
