@@ -309,10 +309,3 @@ struct NoteView: View {
         }
     }
 }
-
-struct NoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        NoteView()
-            .environmentObject(InfoToNote())
-    }
-}

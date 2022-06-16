@@ -45,6 +45,7 @@
 		BCC605CD2858C6A9004FD48F /* NewCatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC605CC2858C6A9004FD48F /* NewCatModel.swift */; };
 		BCC605D32859AF78004FD48F /* NoteTagEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC605D22859AF78004FD48F /* NoteTagEditView.swift */; };
 		BCC605D52859C466004FD48F /* NoteMemoWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC605D42859C466004FD48F /* NoteMemoWriteView.swift */; };
+		BCC605CD2858C6A9004FD48F /* NewCatRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC605CC2858C6A9004FD48F /* NewCatRegisterViewModel.swift */; };
 		EF1DEE332849B795000268C7 /* GilCatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1DEE322849B795000268C7 /* GilCatApp.swift */; };
 		EF1DEE3A2849B796000268C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1DEE392849B796000268C7 /* Preview Assets.xcassets */; };
 		EF97BE3128579C8F00D1B37E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE3028579C8F00D1B37E /* API.swift */; };
@@ -55,7 +56,6 @@
 		EF97BE412858151B00D1B37E /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE402858151B00D1B37E /* NetworkProvider.swift */; };
 		EF97BE432858157300D1B37E /* NetworkLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE422858157300D1B37E /* NetworkLogging.swift */; };
 		EF97BE472858194300D1B37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE462858194300D1B37E /* AuthService.swift */; };
-		EF97BE4F285837F300D1B37E /* GilCatDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */; };
 		EF97BE5228585ECB00D1B37E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE5128585ECB00D1B37E /* Home.swift */; };
 		EF97BE542858646500D1B37E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF97BE532858646500D1B37E /* HomeViewController.swift */; };
 		EF97BE562858647400D1B37E /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF97BE552858647400D1B37E /* HomeViewController.storyboard */; };
@@ -118,6 +118,7 @@
 		BCC605CC2858C6A9004FD48F /* NewCatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCatModel.swift; sourceTree = "<group>"; };
 		BCC605D22859AF78004FD48F /* NoteTagEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTagEditView.swift; sourceTree = "<group>"; };
 		BCC605D42859C466004FD48F /* NoteMemoWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMemoWriteView.swift; sourceTree = "<group>"; };
+		BCC605CC2858C6A9004FD48F /* NewCatRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCatRegisterViewModel.swift; sourceTree = "<group>"; };
 		EF1DEE2F2849B795000268C7 /* GilCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GilCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1DEE322849B795000268C7 /* GilCatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatApp.swift; sourceTree = "<group>"; };
 		EF1DEE362849B796000268C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		EF97BE402858151B00D1B37E /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EF97BE422858157300D1B37E /* NetworkLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogging.swift; sourceTree = "<group>"; };
 		EF97BE462858194300D1B37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GilCatDataManager.swift; sourceTree = "<group>"; };
 		EF97BE5128585ECB00D1B37E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EF97BE532858646500D1B37E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EF97BE552858647400D1B37E /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				107A58D8284FA08B003D6F2B /* RegisterAge.swift */,
 				107A58DE284FA0A3003D6F2B /* RegisterAvatar.swift */,
 				BC517A022852DAEE00992BC5 /* RegisterFinish.swift */,
-				BCC605CC2858C6A9004FD48F /* NewCatModel.swift */,
+				BCC605CC2858C6A9004FD48F /* NewCatRegisterViewModel.swift */,
 			);
 			path = registerViews;
 			sourceTree = "<group>";
@@ -346,14 +346,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		EF97BE502858383B00D1B37E /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				EF97BE4E285837F300D1B37E /* GilCatDataManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		EFA7B92C2849E9EA006671EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,7 +411,6 @@
 				EF97BE2F28579C7800D1B37E /* Network */,
 				EFA7B92E2849EA8B006671EF /* Global */,
 				EF97BE4D285832ED00D1B37E /* Model */,
-				EF97BE502858383B00D1B37E /* Manager */,
 				EFA7B92D2849EA09006671EF /* Screen */,
 			);
 			path = Sources;
@@ -622,7 +613,6 @@
 				58A2002D28520B6F00C656DF /* NoteView.swift in Sources */,
 				EF97BE412858151B00D1B37E /* NetworkProvider.swift in Sources */,
 				EF97BE58285865FA00D1B37E /* HomeContainer.swift in Sources */,
-				EF97BE4F285837F300D1B37E /* GilCatDataManager.swift in Sources */,
 				58B21B1728570C7800205AE5 /* NoteFoodEditView.swift in Sources */,
 				58790F6C28558FD800B20552 /* NoteProfileView.swift in Sources */,
 				5800E59E285191F3002F6A75 /* BarColorNavigation.swift in Sources */,
@@ -630,7 +620,7 @@
 				EF97BE6628589CF200D1B37E /* GilCatMapCount.swift in Sources */,
 				EFA7B9382849EB5C006671EF /* TestExtension.swift in Sources */,
 				58B21B192857189800205AE5 /* PickerSizeExtension.swift in Sources */,
-				BCC605CD2858C6A9004FD48F /* NewCatModel.swift in Sources */,
+				BCC605CD2858C6A9004FD48F /* NewCatRegisterViewModel.swift in Sources */,
 				10CFA9B128504144003DBF63 /* GilCatTitle.swift in Sources */,
 				EF97BE622858841800D1B37E /* GilCatSizeInformation.swift in Sources */,
 				EF97BE5B28587B0600D1B37E /* HomeViewModel.swift in Sources */,
@@ -783,7 +773,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GilCat/Preview Content\"";
-				DEVELOPMENT_TEAM = 5N6FVFS939;
+				DEVELOPMENT_TEAM = TZVHD77BLL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GilCat/Info.plist;
@@ -815,7 +805,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GilCat/Preview Content\"";
-				DEVELOPMENT_TEAM = 5N6FVFS939;
+				DEVELOPMENT_TEAM = TZVHD77BLL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GilCat/Info.plist;

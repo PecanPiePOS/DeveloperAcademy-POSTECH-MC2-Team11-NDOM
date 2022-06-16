@@ -26,7 +26,7 @@ struct GilCatInfo {
     var healthTagInfo: [String]     = []
     var memoInfo: [MemoInfo]        = []
     var gilCatMapInformation: GilCatMapCase = .none
-    
+
 }
 
 extension GilCatInfo {

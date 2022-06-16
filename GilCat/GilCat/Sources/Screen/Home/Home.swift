@@ -10,15 +10,22 @@ import SwiftUI
 struct Home: View {
     
     @ObservedObject var viewModel: HomeViewModel
+    
     var body: some View {
-        ZStack {
-            HomeContainer(viewModel: viewModel)
-                .ignoresSafeArea()
-            if $viewModel.isPopup.wrappedValue {
-                CatSelectPopup(isPopup: $viewModel.isPopup,
-                               cat: $viewModel.selectedCat)
+            ZStack {
+                HomeContainer(viewModel: viewModel)
+                    .ignoresSafeArea()
+                    .fullScreenCover(isPresented: $viewModel.isNewCatRegisterPopup) {
+                        RegisterStart(popToRoot: $viewModel.isNewCatRegisterPopup)
+                            .environmentObject(viewModel.newCatRegisterViewModel)
+                    }
+                
+                if $viewModel.isCatPopup.wrappedValue {
+                    CatSelectPopup(isPopup: $viewModel.isCatPopup,
+                                   cat: $viewModel.selectedCat)
+                }
             }
-        }
+        
     }
 }
 /*

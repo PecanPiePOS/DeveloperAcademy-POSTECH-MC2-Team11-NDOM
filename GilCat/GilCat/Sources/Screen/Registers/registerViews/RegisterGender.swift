@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct RegisterGender: View {
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) var presentation
-    @Binding private var newCat: NewCatModel
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     @State private var genderPick: GilCatPicker.Choice = .first
     @State private var neuralizedPick: GilCatPicker.Choice = .first
@@ -13,8 +14,9 @@ struct RegisterGender: View {
     private let firstChoiceOfNeuralized = "⭕️"
     private let secondChoiceOfNeuralized = "❌"
     
-    init(_ newCat: Binding<NewCatModel>) {
-        self._newCat = newCat
+    init(popToRoot: Binding<Bool>) {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -27,7 +29,9 @@ struct RegisterGender: View {
                 if isNeuralizedShowing {
                     VStack {
                         getTitleView("중성화 여부")
-                        GilCatPicker(isClick: $neuralizedPick, firstSelect: firstChoiceOfNeuralized, secondSelect: secondChoiceOfNeuralized)
+                        GilCatPicker(isClick: $neuralizedPick,
+                                     firstSelect: firstChoiceOfNeuralized,
+                                     secondSelect: secondChoiceOfNeuralized)
                     }.transition(.opacity)
                 }
                 Spacer()
@@ -72,7 +76,7 @@ struct RegisterGender: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterAge($newCat), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterAge(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
             Button {
                 // 어떤게 클릭됐는지에 따라 값 줘야함
                 if isFirstClick {
@@ -98,11 +102,12 @@ struct RegisterGender: View {
             }
             .padding()
         }
+        .isDetailLink(false)
     }
 }
 
 struct RegisterGender_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(.constant(NewCatModel()))
+        RegisterGender(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }

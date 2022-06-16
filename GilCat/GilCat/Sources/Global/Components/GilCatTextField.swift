@@ -24,7 +24,7 @@ struct GilCatTextField: View {
                 .onChange(of: inputText) { _ in
                     if inputText.count > 8 {
                         inputText = String(inputText.prefix(8))
-                        //8글자 제한으로 종 입력시 placeHolder 줄바꿈 및 입력 커서 안맞는 현상 해결!🤩
+                        // 8글자 제한으로 종 입력시 placeHolder 줄바꿈 및 입력 커서 안맞는 현상 해결!🤩
                     }
                 }
         }

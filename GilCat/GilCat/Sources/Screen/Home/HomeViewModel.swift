@@ -8,6 +8,8 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    @Published var newCatRegisterViewModel: NewCatRegisterViewModel = NewCatRegisterViewModel()
+    
     @Published var catLists: [GilCatInfo] = [
         GilCatInfo(name: "나비 Dophie",
                    age: "2",
@@ -50,16 +52,17 @@ class HomeViewModel: ObservableObject {
                    gilCatMapInformation: .second)
     ]
     @Published var selectedCat: GilCatInfo = .empty
-    @Published var isPopup: Bool = false
+    @Published var isCatPopup: Bool = false
+    @Published var isNewCatRegisterPopup: Bool = false
     
     func catImageButtonTapped(_ index: Int) {
         selectedCat = catLists[index]
         withAnimation {
-            isPopup = true
+            isCatPopup = true
         }
     }
     
     func boxImageButtonTapped() {
-        
+        isNewCatRegisterPopup = true
     }
 }

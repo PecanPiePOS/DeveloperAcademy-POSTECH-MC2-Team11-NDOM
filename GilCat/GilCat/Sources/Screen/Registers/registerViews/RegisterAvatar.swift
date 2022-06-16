@@ -1,16 +1,18 @@
 import SwiftUI
 
 struct RegisterAvatar: View {
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) private var presentation
-    @Binding private var newCat: NewCatModel
+    @Binding private var isActiveForPopToRoot: Bool
     @State private var viewChoice: GilCatPicker.Choice = .first
     @State private var isLinkActive = false
     private let gridSpace: CGFloat = 20
     private let viewFirstChoice: String = "외형"
     private let viewSecondChoice: String = "색"
     
-    init(_ newCat: Binding<NewCatModel>) {
-        self._newCat = newCat
+    init(popToRoot: Binding<Bool>) {
+        Theme.navigationBarColors(background: .systemFill, titleColor: .white)
+        self._isActiveForPopToRoot = popToRoot
     }
     
     var body: some View {
@@ -138,7 +140,7 @@ struct RegisterAvatar: View {
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
     private func getMainButtomView() -> some View {
-        NavigationLink(destination: RegisterFinish($newCat), isActive: $isLinkActive) {
+        NavigationLink(destination: RegisterFinish(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
             Button {
                 isLinkActive = true
             } label: {
@@ -146,11 +148,12 @@ struct RegisterAvatar: View {
             }
             .padding()
         }
+        .isDetailLink(false)
     }
 }
 
 struct RegisterAvatar_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterGender(.constant(NewCatModel()))
+        RegisterGender(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }
