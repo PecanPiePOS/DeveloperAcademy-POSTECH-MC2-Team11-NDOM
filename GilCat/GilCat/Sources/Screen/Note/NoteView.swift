@@ -279,7 +279,7 @@ struct NoteView: View {
     
     @ViewBuilder
     private func foodWaterPanelView(text textPanel: String, Image image: String, time timetext: String ) -> some View {
-        NavigationLink(destination: NoteFoodView()) {
+        NavigationLink(destination: NoteWaterView()) {
             RoundedRectangle(cornerRadius: 40, style: .continuous)
                 .frame(width: 160, height: 230)
                 .foregroundColor(Color("PickerColor").opacity(0.9))

@@ -20,15 +20,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilb-DX-md6">
-                                        <rect key="frame" x="0.0" y="0.0" width="1593" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="978.5" height="896"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="3st-BU-yyf">
-                                                <rect key="frame" x="0.0" y="0.0" width="1593" height="896"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="978.5" height="896"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="ilb-DX-md6" secondAttribute="height" multiplier="16:9" id="HDb-fX-a2i"/>
+                                            <constraint firstAttribute="width" secondItem="ilb-DX-md6" secondAttribute="height" multiplier="4096:3750" id="HDb-fX-a2i"/>
                                             <constraint firstAttribute="bottom" secondItem="3st-BU-yyf" secondAttribute="bottom" id="RrQ-wy-MDw"/>
                                             <constraint firstItem="3st-BU-yyf" firstAttribute="leading" secondItem="ilb-DX-md6" secondAttribute="leading" id="cgp-Iw-Mv5"/>
                                             <constraint firstItem="3st-BU-yyf" firstAttribute="top" secondItem="ilb-DX-md6" secondAttribute="top" id="eIX-7Y-BEQ"/>
@@ -67,7 +67,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="4000" height="2250"/>
+        <image name="background" width="7373" height="6750"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
