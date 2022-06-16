@@ -84,7 +84,7 @@ struct CatSelectPopup: View {
                                     .font(.system(size: 20, weight: .heavy)))
                         }
                         .fullScreenCover(isPresented: $openNote) {
-                            NoteView().environmentObject(selectedCat)
+                            Note().environmentObject(selectedCat)
                         }
                         
                         HStack(alignment: .center, spacing: 16) {

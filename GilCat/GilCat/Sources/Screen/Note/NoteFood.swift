@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoteFoodView: View {
+struct NoteFood: View {
     
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
@@ -21,16 +21,16 @@ struct NoteFoodView: View {
             Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                infoTextView(Text: "※ 사료 이름과 시간을 선택해서 수정해주세요.")
+                infoText(Text: "※ 사료 이름과 시간을 선택해서 수정해주세요.")
                 Spacer()
                 ZStack {
-                    getfoodNameView(name: catInfo.dietInfo.name)
+                    getfoodName(name: catInfo.dietInfo.name)
                     Spacer()
                     HStack {
                         Spacer()
                             .frame(width: 300)
                         // MARK: 수정 뷰로 넘어가기
-                        NavigationLink(destination: NoteFoodEditView()) {
+                        NavigationLink(destination: NoteFoodEdit()) {
                             Image(systemName: "square.and.pencil")
                                 .resizable()
                                 .scaledToFit()
@@ -48,12 +48,12 @@ struct NoteFoodView: View {
                 // MARK: 커스텀 피커 뷰
                 GilCatTimePicker(hourEx: $catInfo.dietInfo.timeIndex)
                 HStack(spacing: 15) {
-                    foodPercentageView(amount: .less)
-                    foodPercentageView(amount: .mid)
-                    foodPercentageView(amount: .full)
+                    foodPercentage(amount: .less)
+                    foodPercentage(amount: .mid)
+                    foodPercentage(amount: .full)
                 }
                 Spacer()
-                createFoodView()
+                createFood()
             }
             .navigationTitle("급식 입력")
             .navigationViewStyle(.stack)
@@ -73,7 +73,7 @@ struct NoteFoodView: View {
     
     // MARK: 사료 이름 받아오기
     @ViewBuilder
-    private func getfoodNameView(name tenName: String) -> some View {
+    private func getfoodName(name tenName: String) -> some View {
         
         if catInfo.dietInfo.name.count <= 10 {
             Text(tenName.prefix(10))
@@ -102,7 +102,7 @@ struct NoteFoodView: View {
     
     // MARK: 빠져나가기
     @ViewBuilder
-    private func createFoodView() -> some View {
+    private func createFood() -> some View {
         Button {
             self.presentation.wrappedValue.dismiss()
         } label: {
@@ -123,7 +123,7 @@ struct NoteFoodView: View {
     
     // MARK: 첫 안내 뷰
     @ViewBuilder
-    private func infoTextView(Text text: String) -> some View {
+    private func infoText(Text text: String) -> some View {
         Text(text)
             .font(.system(size: 16, weight: .bold))
             .foregroundColor(.white)
@@ -133,7 +133,7 @@ struct NoteFoodView: View {
     
     // MARK: 급식량 선택
     @ViewBuilder
-    private func foodPercentageView(amount: Amount) -> some View {
+    private func foodPercentage(amount: Amount) -> some View {
         Text(amount.str)
             .font(.system(size: 22, weight: .heavy))
             .foregroundColor(.white)
@@ -163,9 +163,9 @@ struct NoteFoodView: View {
     }
 }
 
-struct NoteFoodView_Previews: PreviewProvider {
+struct NoteFood_Previews: PreviewProvider {
     static var previews: some View {
-        NoteFoodView()
+        NoteFood()
             .environmentObject(InfoToNote())
     }
 }

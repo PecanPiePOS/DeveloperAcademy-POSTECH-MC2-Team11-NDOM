@@ -32,7 +32,7 @@ struct HealthTagShow: View {
         .padding()
         .background(Color.backgroundColor)
         .sheet(isPresented: $isModalPresented) {
-            WriteTagView(isModalPresented: $isModalPresented, tags: $tempTags)
+            WriteTag(isModalPresented: $isModalPresented, tags: $tempTags)
         }
         .onAppear {
             self.tempTags = tags
@@ -95,7 +95,7 @@ struct HealthTagShow: View {
 }
 
 // 태그를 새로 추가할 떄 모달창으로 나타나는 뷰
-struct WriteTagView: View {
+struct WriteTag: View {
     @FocusState var isModalFocused: Bool?
     @Binding var isModalPresented: Bool
     @Binding var tags: [HealthTag]

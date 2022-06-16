@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct Login: View {
     
     enum FocusField: Hashable {
         case field
@@ -25,11 +25,11 @@ struct LoginView: View {
                     .edgesIgnoringSafeArea(.all
                     )
                 VStack(alignment: .leading) {
-                    nicknameTextFieldView(name: nickName)
-                    checkValidNicknameView(network: checkNetwork, duplicate: checkName, name: nickName)
+                    nicknameTextField(name: nickName)
+                    checkValidNickname(network: checkNetwork, duplicate: checkName, name: nickName)
                     Spacer()
                     NavigationLink(destination: Home(viewModel: HomeViewModel())) {
-                        createNicknameButtonView()
+                        createNicknameButton()
                     }
                     .disabled(!checkNetwork || checkName || nickName.count > 8 || nickName.count < 2)
                 }
@@ -42,7 +42,7 @@ struct LoginView: View {
     
     // MARK: 닉네임 받기
     @ViewBuilder
-    private func nicknameTextFieldView(name nickName: String) -> some View {
+    private func nicknameTextField(name nickName: String) -> some View {
         TextField("", text: $nickName)
             .focused($focusField, equals: .field)
             .onChange(of: nickName) { _ in
@@ -64,7 +64,7 @@ struct LoginView: View {
     
     // MARK: 조건 맞는지 확인하고 넘어가는 버튼
     @ViewBuilder
-    private func createNicknameButtonView() -> some View {
+    private func createNicknameButton() -> some View {
         Rectangle()
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height/12, alignment: .center)
             .cornerRadius(20)
@@ -81,7 +81,7 @@ struct LoginView: View {
     
     // MARK: 닉네임 조건에 따른 안내 문구
     @ViewBuilder
-    private func checkValidNicknameView(network checkNetwork: Bool, duplicate checkName: Bool, name nickName: String) -> some View {
+    private func checkValidNickname(network checkNetwork: Bool, duplicate checkName: Bool, name nickName: String) -> some View {
         if checkNetwork && checkName {
             Text("중복된 이름입니다.")
                 .font(.system(size: 13, weight: .light))
@@ -102,8 +102,8 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        Login()
     }
 }

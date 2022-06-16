@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoteFoodEditView: View {
+struct NoteFoodEdit: View {
     
     enum FocusField1: Hashable {
         case field
@@ -26,12 +26,12 @@ struct NoteFoodEditView: View {
             Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                infoTextView(Text: "※ 사료 이름과 시간을 선택해서 수정해주세요.")
-                infoNameView()
-                foodTextFieldView()
-                lastFoodView()
+                infoText(Text: "※ 사료 이름과 시간을 선택해서 수정해주세요.")
+                infoName()
+                foodTextField()
+                lastFood()
                 Spacer()
-                putFoodButtonView()
+                putFoodButton()
             }
         }
         .navigationTitle("급식사료 수정")
@@ -51,7 +51,7 @@ struct NoteFoodEditView: View {
     
     // MARK: 새로운 사료 이름 적는 Textfield
     @ViewBuilder
-    private func foodTextFieldView() -> some View {
+    private func foodTextField() -> some View {
         TextField("", text: $catInfo.dietInfo.name)
             .focused($focusField, equals: .field)
             .onAppear {
@@ -73,7 +73,7 @@ struct NoteFoodEditView: View {
     
     // MARK: 맨 상단 안내문
     @ViewBuilder
-    private func infoTextView(Text text: String) -> some View {
+    private func infoText(Text text: String) -> some View {
         Text(text)
             .font(.system(size: 16, weight: .bold))
             .foregroundColor(.white)
@@ -83,7 +83,7 @@ struct NoteFoodEditView: View {
     
     // MARK: 급식사료
     @ViewBuilder
-    private func infoNameView() -> some View {
+    private func infoName() -> some View {
         HStack {
             ZStack {
                 Image("fourLetter")
@@ -107,7 +107,7 @@ struct NoteFoodEditView: View {
     
     // MARK: 마지막 사료 - 아직 변수 넣지 않음, 데이터가 없음
     @ViewBuilder
-    private func lastFoodView() -> some View {
+    private func lastFood() -> some View {
             HStack {
                 Text("마지막 사료 :")
                     .font(.system(size: 16, weight: .medium))
@@ -132,7 +132,7 @@ struct NoteFoodEditView: View {
     
     // MARK: 빠져나가기
     @ViewBuilder
-    private func putFoodButtonView() -> some View {
+    private func putFoodButton() -> some View {
         Button {
             self.presentation.wrappedValue.dismiss()
         } label: {
@@ -153,9 +153,9 @@ struct NoteFoodEditView: View {
     }
 }
 
-struct NoteFoodEditView_Previews: PreviewProvider {
+struct NoteFoodEdit_Previews: PreviewProvider {
     static var previews: some View {
-        NoteFoodEditView()
+        NoteFoodEdit()
             .environmentObject(InfoToNote())
     }
 }

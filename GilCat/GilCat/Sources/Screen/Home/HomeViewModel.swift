@@ -114,7 +114,7 @@ class HomeViewModel: ObservableObject {
                    snackCount: 0,
                    healthTagInfo: [],
                    memoInfo: [],
-                   gilCatMapInformation: .eighth),
+                   gilCatMapInformation: .eighth)
 //        GilCatInfo(name: "디피",
 //                   age: "3",
 //                   gender: .male,
