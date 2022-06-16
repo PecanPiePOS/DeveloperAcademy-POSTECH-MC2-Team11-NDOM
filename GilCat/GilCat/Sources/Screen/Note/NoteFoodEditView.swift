@@ -22,22 +22,15 @@ struct NoteFoodEditView: View {
     }
     
     var body: some View {
-    
         ZStack {
             Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
-            
             VStack {
                 infoTextView(Text: "※ 사료 이름과 시간을 선택해서 수정해주세요.")
-
                 infoNameView()
-                
                 foodTextFieldView()
-                
                 lastFoodView()
-                
                 Spacer()
-                
                 putFoodButtonView()
             }
         }
@@ -56,6 +49,7 @@ struct NoteFoodEditView: View {
         }
     }
     
+    // MARK: 새로운 사료 이름 적는 Textfield
     @ViewBuilder
     private func foodTextFieldView() -> some View {
         TextField("", text: $catInfo.dietInfo.name)
@@ -77,7 +71,7 @@ struct NoteFoodEditView: View {
             .padding(.horizontal, 40)
     }
     
-    // 첫 안내 뷰
+    // MARK: 맨 상단 안내문
     @ViewBuilder
     private func infoTextView(Text text: String) -> some View {
         Text(text)
@@ -87,6 +81,7 @@ struct NoteFoodEditView: View {
             .padding(.top, 15)
     }
     
+    // MARK: 급식사료
     @ViewBuilder
     private func infoNameView() -> some View {
         HStack {
@@ -110,6 +105,7 @@ struct NoteFoodEditView: View {
         }
     }
     
+    // MARK: 마지막 사료 - 아직 변수 넣지 않음, 데이터가 없음
     @ViewBuilder
     private func lastFoodView() -> some View {
             HStack {
@@ -134,12 +130,10 @@ struct NoteFoodEditView: View {
             .padding(.top, 20)
     }
     
+    // MARK: 빠져나가기
     @ViewBuilder
     private func putFoodButtonView() -> some View {
         Button {
-            // 1. 선택된 값 받아오기
-//            saveDiet()
-            // 2. 빠져나가기
             self.presentation.wrappedValue.dismiss()
         } label: {
             Rectangle()
