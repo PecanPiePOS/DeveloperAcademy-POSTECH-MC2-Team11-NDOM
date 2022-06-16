@@ -9,7 +9,7 @@ import SwiftUI
 import ConfettiSwiftUI
 
 struct RegisterFinish: View {
-    @EnvironmentObject var newCat: NewCatModel
+    @EnvironmentObject var newCat: NewCatRegisterViewModel
     @Environment(\.presentationMode) private var presentation
     @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
@@ -150,6 +150,6 @@ struct RegisterFinish: View {
 
 struct RegisterFinish_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterFinish(popToRoot: .constant(false)).environmentObject(NewCatModel())
+        RegisterFinish(popToRoot: .constant(false)).environmentObject(NewCatRegisterViewModel())
     }
 }

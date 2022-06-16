@@ -10,20 +10,14 @@ import SwiftUI
 struct Home: View {
     
     @ObservedObject var viewModel: HomeViewModel
-    @StateObject var newCatModel: NewCatModel = NewCatModel()
-    @State var registerIsActive: Bool = false
+    
     var body: some View {
-        VStack {
-            Button {
-                registerIsActive = true
-            } label: {
-                Text("ajflajsfiajfhoaihfaoifhao")
-            }
             ZStack {
                 HomeContainer(viewModel: viewModel)
                     .ignoresSafeArea()
-                    .fullScreenCover(isPresented: $registerIsActive) {
-                        RegisterStart(popToRoot: $registerIsActive).environmentObject(newCatModel)
+                    .fullScreenCover(isPresented: $viewModel.isNewCatRegisterPopup) {
+                        RegisterStart(popToRoot: $viewModel.isNewCatRegisterPopup)
+                            .environmentObject(viewModel.newCatRegisterViewModel)
                     }
                 
                 if $viewModel.isCatPopup.wrappedValue {
@@ -31,7 +25,7 @@ struct Home: View {
                                    cat: $viewModel.selectedCat)
                 }
             }
-        }
+        
     }
 }
 /*
