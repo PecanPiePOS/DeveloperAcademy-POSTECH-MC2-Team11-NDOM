@@ -27,6 +27,7 @@ struct HealthTagShow: View {
                 TagArea(tags: $tempTags, type: .forEdit)
             }.frame(height: 400)
             Spacer()
+
             getMainButton(text: "수정 완료")
         }
         .padding()
@@ -107,6 +108,7 @@ struct WriteTag: View {
             GilCatTextField(inputText: $newTagText, placeHolder: "태그를 추가하세요.", textLimit: 15)
                 .focused($isModalFocused, equals: true)
             Spacer()
+
             Text("\(newTagText.count)/15")
                 .foregroundColor(.white)
                 .font(.system(size: 20, weight: .bold))

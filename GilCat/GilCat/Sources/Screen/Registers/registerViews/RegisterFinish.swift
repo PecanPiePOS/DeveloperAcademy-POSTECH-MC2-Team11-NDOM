@@ -37,18 +37,11 @@ struct RegisterFinish: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .navigationViewStyle(.stack)
-            // MARK: 툴바 수정
-            .toolbar {
-                ToolbarItem(placement: .navigation) {
-                    Image(systemName: "chevron.backward")
-                        .frame(width: 50, height: 40, alignment: .leading)
-                        .contentShape(Rectangle())
-                        .foregroundColor(.white)
-                        .onTapGesture {
-                            self.presentation.wrappedValue.dismiss()
-                        }
-                }
+
+            .onTapGesture {
+                self.presentation.wrappedValue.dismiss()
             }
+            
             // 폭죽 효과
             .confettiCannon(counter: $effectCounter)
             // 폭죽 효과 간격 세팅 (현재는 0.4, 0.8, 1.6초 이렇게 3번 터지게 해놨음)
@@ -103,7 +96,7 @@ struct RegisterFinish: View {
             isActiveForPopToRoot = false
             newCat.initcat()
         } label: {
-            GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .buttonColor)
+            GilCatMainButton(text: "관리 시작하기", foreground: Color.white, background: .constant(.buttonColor))
         }
         .padding()
     }

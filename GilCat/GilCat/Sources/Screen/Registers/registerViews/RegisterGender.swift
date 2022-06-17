@@ -100,7 +100,7 @@ struct RegisterGender: View {
                     isLinkActive = true
                 }
             } label: {
-                GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                GilCatMainButton(text: "다음", foreground: Color.white, background: .constant(.buttonColor))
             }
             .padding()
         }
