@@ -90,13 +90,14 @@ struct HealthTagShow: View {
             tags = tempTags
             presentation.wrappedValue.dismiss()
         } label: {
-            GilCatMainButton(text: text, foreground: .white, background: .buttonColor)
+            GilCatMainButton(text: text, foreground: .white, background: .constant(.buttonColor))
         }
     }
 }
 
 // 태그를 새로 추가할 떄 모달창으로 나타나는 뷰
 struct WriteTag: View {
+    @State private var buttonColor : Color = .gray
     @FocusState var isModalFocused: Bool?
     @Binding var isModalPresented: Bool
     @Binding var tags: [HealthTag]
@@ -106,6 +107,11 @@ struct WriteTag: View {
         VStack {
             getCloseButton()
             GilCatTextField(inputText: $newTagText, placeHolder: "태그를 추가하세요.", textLimit: 15)
+                .onChange(of: newTagText) { _ in
+                    withAnimation {
+                        buttonColor = newTagText.isEmpty ? Color.gray : Color.buttonColor
+                    }
+                }
                 .focused($isModalFocused, equals: true)
             Spacer()
 
@@ -145,11 +151,7 @@ struct WriteTag: View {
             newTagText = ""
             isModalPresented = false
         } label: {
-            if newTagText.isEmpty {
-                GilCatMainButton(text: text, foreground: .white, background: .gray)
-            } else {
-                GilCatMainButton(text: text, foreground: .white, background: .buttonColor)
-            }
+            GilCatMainButton(text: text, foreground: .white, background: $buttonColor)
         }.disabled(newTagText.isEmpty)
     }
 }
