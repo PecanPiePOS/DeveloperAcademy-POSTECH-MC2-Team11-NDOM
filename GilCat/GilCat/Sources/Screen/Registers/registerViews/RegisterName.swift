@@ -19,12 +19,7 @@ struct RegisterName: View {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
                 getTitleView("이름")
-                GilCatTextField(inputText: $newCat.name, placeHolder: "고양이 이름을 지어볼까요?", textLimit: 8).padding([.leading, .bottom])
-                    .onChange(of: newCat.name) { _ in
-                        withAnimation {
-                            buttonColor = newCat.name.isEmpty ? Color.gray : Color.buttonColor
-                        }
-                    }
+                getNameTextView()
                 Spacer()
                 getMainButtomView()
             }
@@ -55,6 +50,16 @@ struct RegisterName: View {
                 isFocused = true
             }
         }
+    }
+    // 이름 텍스트 필트 반환하기
+    @ViewBuilder
+    private func getNameTextView() -> some View {
+        GilCatTextField(inputText: $newCat.name, placeHolder: "고양이 이름을 지어볼까요?", textLimit: 8).padding([.leading, .bottom])
+            .onChange(of: newCat.name) { _ in
+                withAnimation {
+                    buttonColor = newCat.name.isEmpty ? Color.gray : Color.buttonColor
+                }
+            }
     }
     // 제목 뷰 반환하기
     @ViewBuilder

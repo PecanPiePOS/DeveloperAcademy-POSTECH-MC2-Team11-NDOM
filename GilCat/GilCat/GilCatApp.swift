@@ -8,7 +8,6 @@ struct GilCatApp: App {
     var body: some Scene {
         WindowGroup {
             Home(viewModel: viewModel)
-            
         }
     }
 }
