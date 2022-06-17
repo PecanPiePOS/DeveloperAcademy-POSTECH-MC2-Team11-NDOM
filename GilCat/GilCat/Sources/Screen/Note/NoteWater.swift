@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoteWaterView: View {
+struct NoteWater: View {
     
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var catInfo: InfoToNote
@@ -21,10 +21,10 @@ struct NoteWaterView: View {
             Color("BackGroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                infoTextView(Text: "※ 시간을 선택해서 수정해주세요.")
+                infoText(Text: "※ 시간을 선택해서 수정해주세요.")
                 Spacer()
                 HStack(alignment: .lastTextBaseline, spacing: 15) {
-                    getwaterNameView(name: "물")
+                    getwaterName(name: "물")
                 }
                 Image("waterBowl")
                     .resizable()
@@ -33,13 +33,13 @@ struct NoteWaterView: View {
                 // custom picker View
                 GilCatTimePicker(hourEx: $catInfo.waterInfo.timeIndex)
                 HStack(spacing: 15) {
-                    waterPercentageView(amount: .less)
-                    waterPercentageView(amount: .mid)
-                    waterPercentageView(amount: .full)
+                    waterPercentage(amount: .less)
+                    waterPercentage(amount: .mid)
+                    waterPercentage(amount: .full)
                 }
                 .padding()
                 Spacer()
-                createWaterView()
+                createWater()
                 
             }
             .navigationTitle("급수 입력")
@@ -60,7 +60,7 @@ struct NoteWaterView: View {
     
     // MARK: 물 텍스트
     @ViewBuilder
-    private func getwaterNameView(name foodName: String) -> some View {
+    private func getwaterName(name foodName: String) -> some View {
         Text(foodName)
             .font(.system(size: 30, weight: .heavy))
             .foregroundColor(.white)
@@ -70,7 +70,7 @@ struct NoteWaterView: View {
     
     // MARK: 빠져나가기
     @ViewBuilder
-    private func createWaterView() -> some View {
+    private func createWater() -> some View {
         Button {
             self.presentation.wrappedValue.dismiss()
         } label: {
@@ -91,7 +91,7 @@ struct NoteWaterView: View {
     
     // MARK: 첫 안내 뷰
     @ViewBuilder
-    private func infoTextView(Text text: String) -> some View {
+    private func infoText(Text text: String) -> some View {
         Text(text)
             .font(.system(size: 16, weight: .bold))
             .foregroundColor(.white)
@@ -101,7 +101,7 @@ struct NoteWaterView: View {
     
     // MARK: 급수량 선택
     @ViewBuilder
-    private func waterPercentageView(amount: Amount) -> some View {
+    private func waterPercentage(amount: Amount) -> some View {
         Text(amount.str)
             .font(.system(size: 22, weight: .heavy))
             .foregroundColor(.white)
@@ -130,8 +130,8 @@ struct NoteWaterView: View {
     }
 }
 
-struct NoteWaterView_Previews: PreviewProvider {
+struct NoteWater_Previews: PreviewProvider {
     static var previews: some View {
-        NoteWaterView().environmentObject(InfoToNote())
+        NoteWater().environmentObject(InfoToNote())
     }
 }

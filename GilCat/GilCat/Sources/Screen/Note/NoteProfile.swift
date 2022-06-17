@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoteProfileView: View {
+struct NoteProfile: View {
     @EnvironmentObject var catInfo: InfoToNote
     
     var body: some View {
@@ -17,10 +17,10 @@ struct NoteProfileView: View {
             VStack(alignment: .leading, spacing: 15) {
                 Spacer()
                 HStack(spacing: 20) {
-                    getCatNameView(Text: catInfo.name)
-                    getTNRInfoView(TNR: catInfo.neutralized)
+                    getCatName(Text: catInfo.name)
+                    getTNRInfo(TNR: catInfo.neutralized)
                 }
-                textProfileView()
+                textProfile()
                     .padding(.vertical, 10)
             }
             .padding(.top, 30)
@@ -30,7 +30,7 @@ struct NoteProfileView: View {
     
     // MARK: 고양이 이름 표시
     @ViewBuilder
-    private func getCatNameView(Text text: String) -> some View {
+    private func getCatName(Text text: String) -> some View {
         Text(text)
             .font(.system(size: 30, weight: .heavy))
             .foregroundColor(.white)
@@ -38,7 +38,7 @@ struct NoteProfileView: View {
     
     // MARK: TNR 정보 표시
     @ViewBuilder
-    private func getTNRInfoView(TNR checkTNR: Bool) -> some View {
+    private func getTNRInfo(TNR checkTNR: Bool) -> some View {
         RoundedRectangle(cornerRadius: 21)
             .frame(width: 74, height: 40)
             .foregroundColor(checkTNR ? Color(.red).opacity(0.7) : Color("ButtonColor") )
@@ -51,7 +51,7 @@ struct NoteProfileView: View {
     
     // MARK: 프로필 상세 내용
     @ViewBuilder
-    private func textProfileView() -> some View {
+    private func textProfile() -> some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("나이 ")
@@ -99,9 +99,9 @@ struct NoteProfileView: View {
     }
 }
 
-struct NoteProfileView_Previews: PreviewProvider {
+struct NoteProfile_Previews: PreviewProvider {
     static var previews: some View {
-        NoteProfileView()
+        NoteProfile()
             .environmentObject(InfoToNote())
     }
 }

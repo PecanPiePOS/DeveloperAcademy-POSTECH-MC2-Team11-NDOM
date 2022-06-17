@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoteMemoWriteView: View {
+struct NoteMemoWrite: View {
     @Environment(\.presentationMode) private var presentation
     @EnvironmentObject private var catInfo: InfoToNote
     @FocusState private var isFocused: Bool?
@@ -17,10 +17,10 @@ struct NoteMemoWriteView: View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
-                GilCatTextField(inputText: $inputText, placeHolder: "원하는 메모를 작성해보세요!", textLimit: 8).padding([.leading, .bottom])
+                GilCatTextField(inputText: $inputText, placeHolder: "원하는 메모를 작성해보세요!", textLimit: 54).padding([.leading, .bottom])
                 Spacer()
-                getTextLimitView()
-                getMainButtomView()
+                getTextLimit()
+                getMainButtom()
             }
         }
         .navigationTitle("메모장 기록")
@@ -48,7 +48,7 @@ struct NoteMemoWriteView: View {
     }
     // 제목 뷰 반환하기
     @ViewBuilder
-    private func getTitleView(_ text: String) -> some View {
+    private func getTitle(_ text: String) -> some View {
         HStack {
             GilCatTitle(titleText: text).padding([.top, .leading])
             Spacer()
@@ -56,7 +56,7 @@ struct NoteMemoWriteView: View {
     }
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
-    private func getMainButtomView() -> some View {
+    private func getMainButtom() -> some View {
         Button {
             // 현재 날짜와 시각 구하기
             let dateFormatter = DateFormatter()
@@ -74,14 +74,14 @@ struct NoteMemoWriteView: View {
     }
     // 글자 수 제한과 지금까지 얼마나 쳤는지 보여주는 뷰 반환하기
     @ViewBuilder
-    private func getTextLimitView() -> some View {
-        Text("\(inputText.count)/140")
+    private func getTextLimit() -> some View {
+        Text("\(inputText.count)/54")
             .foregroundColor(.white)
             .font(.system(size: 20, weight: .bold))
     }
 }
-struct NoteMemoWriteView_Previews: PreviewProvider {
+struct NoteMemoWrite_Previews: PreviewProvider {
     static var previews: some View {
-        NoteMemoWriteView()
+        NoteMemoWrite()
     }
 }
