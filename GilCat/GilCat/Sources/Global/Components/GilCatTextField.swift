@@ -4,7 +4,7 @@ import SwiftUI
 struct GilCatTextField: View {
     @Binding var inputText: String
     @State var placeHolder: String = ""
-    @State var textLimit : Int
+    @State var textLimit: Int
     /*
      사용방법:
      
@@ -12,7 +12,7 @@ struct GilCatTextField: View {
      
      */
     
-    private func customTextField(textLimit : Int) -> some View {
+    private func customTextField(textLimit: Int) -> some View {
         return ZStack {
             // 아무것도 안써져 있을 경우 Placeholder 보여주기
             if inputText.isEmpty {

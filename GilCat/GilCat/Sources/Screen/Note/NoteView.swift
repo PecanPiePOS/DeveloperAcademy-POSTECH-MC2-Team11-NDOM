@@ -9,7 +9,7 @@ import SwiftUI
 import PartialSheet
 
 struct NoteView: View {
-   
+    
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
     @State private var checkProfile = false
@@ -75,7 +75,7 @@ struct NoteView: View {
             }
         }
     }
-
+    
     // MARK: 츄르 카운트
     @ViewBuilder
     private func getSnapCountView() -> some View {
@@ -163,7 +163,7 @@ struct NoteView: View {
                                                      cornerRadius: 24)) {
                 NoteProfileView()
             }
-            .padding(.bottom, 20)
+                                                     .padding(.bottom, 20)
     }
     
     // MARK: 건강 태그 섹션
@@ -266,7 +266,6 @@ struct NoteView: View {
             .modifier(ScrollingHStackModifier(items: catInfo.memoInfo.count, itemWidth: 280, itemSpacing: 88))
         }
     }
-    
     
     // MARK: 마지막 급식급수
     @ViewBuilder

@@ -114,20 +114,7 @@ class HomeViewModel: ObservableObject {
                    snackCount: 0,
                    healthTagInfo: [],
                    memoInfo: [],
-                   gilCatMapInformation: .eighth),
-//        GilCatInfo(name: "디피",
-//                   age: "3",
-//                   gender: .male,
-//                   neutralized: true,
-//                   type: "페르시안",
-//                   avatarColor: .navy,
-//                   avatarBodyIndex: 2,
-//                   dietInfo: DietInfo.initCat,
-//                   waterInfo: WaterInfo.initCat,
-//                   snackCount: 0,
-//                   healthTagInfo: [],
-//                   memoInfo: [],
-//                   gilCatMapInformation: .),
+                   gilCatMapInformation: .eighth)
     ]
     @Published var selectedCat: GilCatInfo = .empty
     @Published var isCatPopup: Bool = false

@@ -90,7 +90,7 @@ struct HealthTagShow: View {
             tags = tempTags
             presentation.wrappedValue.dismiss()
         } label: {
-            GilCatMainButton(text: text, foreground: .white, background: .buttonColor)
+            GilCatMainButton(text: text, foreground: .white, background: .constant(.buttonColor))
         }
     }
 }
@@ -146,9 +146,9 @@ struct WriteTagView: View {
             isModalPresented = false
         } label: {
             if newTagText.isEmpty {
-                GilCatMainButton(text: text, foreground: .white, background: .gray)
+                GilCatMainButton(text: text, foreground: .white, background: .constant(.gray))
             } else {
-                GilCatMainButton(text: text, foreground: .white, background: .buttonColor)
+                GilCatMainButton(text: text, foreground: .white, background: .constant(.buttonColor))
             }
         }.disabled(newTagText.isEmpty)
     }
