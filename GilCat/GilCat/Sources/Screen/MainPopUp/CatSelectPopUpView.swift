@@ -47,7 +47,7 @@ struct CatSelectPopup: View {
                     HStack(alignment: .center, spacing: 26) {
                         getCatImage(Image: cat.imageName)
                         Text(cat.name)
-                            .frame(width: 115, height: 40, alignment: .center)
+                            .frame(width: 115, height: 40, alignment: .leading)
                             .padding(.top, 10)
                             .foregroundColor(Color.white)
                             .font(.system(size: 30, weight: .heavy))
