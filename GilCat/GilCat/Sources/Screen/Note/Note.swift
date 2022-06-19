@@ -8,7 +8,7 @@
 import SwiftUI
 import PartialSheet
 
-struct NoteView: View {
+struct Note: View {
    
     @EnvironmentObject var catInfo: InfoToNote
     @Environment(\.presentationMode) var presentation
@@ -25,26 +25,26 @@ struct NoteView: View {
                     LazyVStack {
                         getCatImage(Image: catInfo.imageName)
                         GilCatTitle(titleText: catInfo.name)
-                        getProfileView()
+                        getProfile()
                         HStack(spacing: 24) {
-                            NavigationLink(destination: NoteFoodView()) {
-                                foodWaterPanelView(text: "마지막 급식", Image: "foodBowl", time: catInfo.dietInfo.time)
+                            NavigationLink(destination: NoteFood()) {
+                                foodWaterPanel(text: "마지막 급식", Image: "foodBowl", time: catInfo.dietInfo.time)
                             }
-                            NavigationLink(destination: NoteWaterView()) {
-                                foodWaterPanelView(text: "마지막 급수", Image: "waterBowl", time: catInfo.waterInfo.time)
+                            NavigationLink(destination: NoteWater()) {
+                                foodWaterPanel(text: "마지막 급수", Image: "waterBowl", time: catInfo.waterInfo.time)
                             }
                         }
                         .padding()
-                        getSnapCountView()
+                        getSnackCount()
                         // MARK: 건강 상태
                         VStack {
-                            sectionHealthView()
-                            healthBoxView()
+                            sectionHealth()
+                            healthBox()
                         }
                         // MARK: 메모 박스
                         VStack {
-                            sectionMemoView()
-                            memoBoxView()
+                            sectionMemo()
+                            memoBox()
                         }
                     }
                 }
@@ -78,7 +78,7 @@ struct NoteView: View {
 
     // MARK: 츄르 카운트
     @ViewBuilder
-    private func getSnapCountView() -> some View {
+    private func getSnackCount() -> some View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)
             .frame(width: 340, height: 85)
             .foregroundColor(Color("PickerColor").opacity(0.9))
@@ -144,7 +144,7 @@ struct NoteView: View {
     
     // MARK: 프로필 자세히 보기
     @ViewBuilder
-    private func getProfileView() -> some View {
+    private func getProfile() -> some View {
         RoundedRectangle(cornerRadius: 36, style: .continuous)
             .foregroundColor(Color("ButtonColor"))
             .frame(width: 180, height: 44, alignment: .center)
@@ -161,14 +161,14 @@ struct NoteView: View {
                                                      handleBarStyle: .none,
                                                      cover: .enabled(Color.black.opacity(0.5)),
                                                      cornerRadius: 24)) {
-                NoteProfileView()
+                NoteProfile()
             }
             .padding(.bottom, 20)
     }
     
     // MARK: 건강 태그 섹션
     @ViewBuilder
-    private func sectionHealthView() -> some View {
+    private func sectionHealth() -> some View {
         HStack {
             Text("건강 상태")
                 .font(.system(size: 26, weight: .heavy))
@@ -191,7 +191,7 @@ struct NoteView: View {
     
     // MARK: 개인 메모장 섹션
     @ViewBuilder
-    private func sectionMemoView() -> some View {
+    private func sectionMemo() -> some View {
         HStack {
             Text("개인 메모장")
                 .font(.system(size: 26, weight: .heavy))
@@ -201,7 +201,7 @@ struct NoteView: View {
             
             Spacer()
             
-            NavigationLink(destination: NoteMemoWriteView()) {
+            NavigationLink(destination: NoteMemoWrite()) {
                 Image(systemName: "plus.circle")
                     .resizable()
                     .scaledToFit()
@@ -216,7 +216,7 @@ struct NoteView: View {
     
     // MARK: 건강상태 박스
     @ViewBuilder
-    private func healthBoxView() -> some View {
+    private func healthBox() -> some View {
         if activatedHealthTagInfo.isEmpty {
             Rectangle()
                 .frame(width: 340, height: 50)
@@ -234,14 +234,14 @@ struct NoteView: View {
     
     // MARK: 개인 메모장 박스
     @ViewBuilder
-    private func memoBoxView() -> some View {
+    private func memoBox() -> some View {
         if catInfo.memoInfo.isEmpty {
             Rectangle()
                 .frame(width: 340, height: 50)
                 .foregroundColor(Color.pickerColor)
                 .cornerRadius(30)
         } else {
-            HStack {
+            HStack(alignment: .center, spacing: 40) {
                 ForEach(catInfo.memoInfo, id: \.self) { memo in
                     VStack(alignment: .leading) {
                         Text(memo.date)
@@ -260,17 +260,16 @@ struct NoteView: View {
                     .frame(width: 340, height: 180)
                     .background(Color("PickerColor").opacity(0.9))
                     .cornerRadius(30)
-                    .padding(.horizontal, 10)
+//                    .padding(.horizontal, 10)
                 }
             }
-            .modifier(ScrollingHStackModifier(items: catInfo.memoInfo.count, itemWidth: 280, itemSpacing: 88))
+            .modifier(ScrollingHStackModifier(items: catInfo.memoInfo.count, itemWidth: 340, itemSpacing: 40))
         }
     }
     
-    
     // MARK: 마지막 급식급수
     @ViewBuilder
-    private func foodWaterPanelView(text textPanel: String, Image image: String, time timetext: String ) -> some View {
+    private func foodWaterPanel(text textPanel: String, Image image: String, time timetext: String ) -> some View {
         RoundedRectangle(cornerRadius: 40, style: .continuous)
             .frame(width: 160, height: 230)
             .foregroundColor(Color("PickerColor").opacity(0.9))
@@ -300,9 +299,9 @@ struct NoteView: View {
     }
 }
 
-struct NoteView_Previews: PreviewProvider {
+struct Note_Previews: PreviewProvider {
     static var previews: some View {
-        NoteView()
+        Note()
             .environmentObject(InfoToNote())
     }
 }

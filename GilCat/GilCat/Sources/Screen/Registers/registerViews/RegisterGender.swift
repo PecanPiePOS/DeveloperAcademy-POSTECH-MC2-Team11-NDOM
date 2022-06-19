@@ -23,19 +23,12 @@ struct RegisterGender: View {
         ZStack {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
-                getTitleView("성별")
+                title("성별")
                 GilCatPicker(isClick: $genderPick, firstSelect: firstChoiceOfGender, secondSelect: secondChoiceOfGender)
                 // 다음 버튼을 처음 누르고 난 뒤 페이드인 효과로 중성화 피커 나오게 함
-                if isNeuralizedShowing {
-                    VStack {
-                        getTitleView("중성화 여부")
-                        GilCatPicker(isClick: $neuralizedPick,
-                                     firstSelect: firstChoiceOfNeuralized,
-                                     secondSelect: secondChoiceOfNeuralized)
-                    }.transition(.opacity)
-                }
+                genderPickerAnimated()
                 Spacer()
-                getMainButtomView()
+                mainButton()
             }
         }
         .navigationTitle("성별 및 중성화")
@@ -55,21 +48,25 @@ struct RegisterGender: View {
             }
         }
         .onAppear {
-            if newCat.gender == .male {
-                genderPick = .first
-            } else {
-                genderPick = .second
-            }
-            if newCat.neutralized {
-                neuralizedPick = .first
-            } else {
-                neuralizedPick = .second
-            }
+            genderPick = newCat.gender == .male ? .first : .second
+            neuralizedPick = newCat.neutralized ? .first : .second
+        }
+    }
+    // 중성화 피커 반환하기
+    @ViewBuilder
+    private func genderPickerAnimated() -> some View {
+        if isNeuralizedShowing {
+            VStack {
+                title("중성화 여부")
+                GilCatPicker(isClick: $neuralizedPick,
+                             firstSelect: firstChoiceOfNeuralized,
+                             secondSelect: secondChoiceOfNeuralized)
+            }.transition(.opacity)
         }
     }
     // 제목 뷰 반환하기
     @ViewBuilder
-    private func getTitleView(_ text: String) -> some View {
+    private func title(_ text: String) -> some View {
         HStack {
             GilCatTitle(titleText: text).padding([.top, .leading])
             Spacer()
@@ -77,7 +74,7 @@ struct RegisterGender: View {
     }
     // 메인 버튼 뷰 반환하기
     @ViewBuilder
-    private func getMainButtomView() -> some View {
+    private func mainButton() -> some View {
         NavigationLink(destination: RegisterAge(popToRoot: $isActiveForPopToRoot), isActive: $isLinkActive) {
             Button {
                 // 어떤게 클릭됐는지에 따라 값 줘야함
@@ -100,7 +97,7 @@ struct RegisterGender: View {
                     isLinkActive = true
                 }
             } label: {
-                GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                GilCatMainButton(text: "다음", foreground: Color.white, background: .constant(.buttonColor))
             }
             .padding()
         }

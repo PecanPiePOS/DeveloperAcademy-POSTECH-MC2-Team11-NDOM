@@ -7,6 +7,7 @@ struct RegisterName: View {
     @Binding private var isActiveForPopToRoot: Bool
     @State private var isLinkActive = false
     @State private var isAlertActive = false
+    @State private var buttonColor : Color = .gray
     
     init(popToRoot: Binding<Bool>) {
         Theme.navigationBarColors(background: .systemFill, titleColor: .white)
@@ -18,7 +19,7 @@ struct RegisterName: View {
             Color.backgroundColor.ignoresSafeArea(.all)
             VStack {
                 getTitleView("이름")
-                GilCatTextField(inputText: $newCat.name, placeHolder: "고양이 이름을 지어볼까요?", textLimit: 8).padding([.leading, .bottom])
+                getNameTextView()
                 Spacer()
                 getMainButtomView()
             }
@@ -50,6 +51,16 @@ struct RegisterName: View {
             }
         }
     }
+    // 이름 텍스트 필트 반환하기
+    @ViewBuilder
+    private func getNameTextView() -> some View {
+        GilCatTextField(inputText: $newCat.name, placeHolder: "고양이 이름을 지어볼까요?", textLimit: 8).padding([.leading, .bottom])
+            .onChange(of: newCat.name) { _ in
+                withAnimation {
+                    buttonColor = newCat.name.isEmpty ? Color.gray : Color.buttonColor
+                }
+            }
+    }
     // 제목 뷰 반환하기
     @ViewBuilder
     private func getTitleView(_ text: String) -> some View {
@@ -70,11 +81,12 @@ struct RegisterName: View {
                     isLinkActive = true
                 }
             } label: {
-                GilCatMainButton(text: "다음", foreground: Color.white, background: .buttonColor)
+                GilCatMainButton(text: "다음", foreground: Color.white, background: $buttonColor)
             }
             .padding()
         }
         .isDetailLink(false)
+        .disabled(newCat.name.isEmpty) // 회색일떄 안 넘어가게 하는 구문
     }
     
 }
