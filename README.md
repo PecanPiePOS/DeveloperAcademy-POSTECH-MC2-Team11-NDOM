@@ -1,5 +1,13 @@
 # MC2-Team11-NDOM
 
+## Background Image
+
+## Introduction
+
+## Functions
+
+## Icon
+
 ## Screenshots
 |Home|Register|Note|
 |---|---|---|
