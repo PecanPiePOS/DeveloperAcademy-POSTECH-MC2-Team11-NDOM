@@ -1,10 +1,10 @@
 # MC2-Team11-NDOM
 
 ## Background Screen
-<img width="600" src="https://user-images.githubusercontent.com/72330884/174948786-68fe428c-18a5-4e18-94bb-e64051ee47b4.png">
+<img width="400" alt="background" src="https://user-images.githubusercontent.com/72330884/174948786-68fe428c-18a5-4e18-94bb-e64051ee47b4.png">
 
 ## Introduction
-# 🐈 GilCat 길캣
+### 🐈 GilCat 길캣
 
 길고양이 관리를 효과적으로 하고 싶은 캣맘과 캣대디에게 
 안전하고 공유 가능한 개인 기록장을 제공하는 App 입니다.
@@ -15,8 +15,8 @@
 - 포근하고 정서적인 UI
 
 
-## Icon
-<img width="200" src="https://user-images.githubusercontent.com/72330884/174949381-93e35de3-5487-4491-a5e7-d6c540865bc6.png">
+## App Icon
+<img width="100" alt="icon" src="https://user-images.githubusercontent.com/72330884/174949381-93e35de3-5487-4491-a5e7-d6c540865bc6.png">
 
 ## Screenshots
 |Home|Register|Note|
@@ -53,5 +53,8 @@ SnapToScroll
 ```
 
 ## Authors
+|Rev|Leo|Woody|Hardy|Dophi|PicanPie|
+|---|---|---|---|---|---|
+|<img width="100" alt="rev" src="https://user-images.githubusercontent.com/72330884/174957400-fa11f68c-3b3c-49ed-8205-95387431433d.png">|<img width="100" alt="leo" src="https://user-images.githubusercontent.com/72330884/174957424-3c2eaabc-b2c7-4423-a866-cfc5287ebd26.png">|<img width="100" alt="woody" src="https://user-images.githubusercontent.com/72330884/174957432-2464b0b7-53bd-4de4-aa39-477ac0cda6ad.png">|<img width="100" alt="hardy" src="https://user-images.githubusercontent.com/72330884/174957454-c2f2e622-44fe-42f7-83ab-53d87cd5ceea.png">|<img width="100" alt="dophi" src="https://user-images.githubusercontent.com/72330884/174957461-711a94f5-b4c3-4a46-9e51-3585269dd716.png">|<img width="100" alt="pp" src="https://user-images.githubusercontent.com/72330884/174957474-009f848e-e1b8-4679-acdd-842d24cbf8a5.png">|
 
 ## License
