@@ -1,6 +1,7 @@
 # MC2-Team11-NDOM
 
-## Background Image
+## Background Screen
+<img height="400" src="https://user-images.githubusercontent.com/72330884/174948786-68fe428c-18a5-4e18-94bb-e64051ee47b4.png">
 
 ## Introduction
 
