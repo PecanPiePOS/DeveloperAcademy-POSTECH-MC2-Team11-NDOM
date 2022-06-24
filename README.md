@@ -19,10 +19,11 @@
 <img width="100" alt="icon" src="https://user-images.githubusercontent.com/72330884/174949381-93e35de3-5487-4491-a5e7-d6c540865bc6.png">
 
 ## Screenshots
-|Home|Register|Note|
-|---|---|---|
+| Home                                                         | Register                                                     | Note                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img width="200" src="https://user-images.githubusercontent.com/56102421/175455645-7c1bdfbc-b59a-45f4-896e-318c98aa304b.gif"> | <img width="200" src="https://user-images.githubusercontent.com/81131715/175040352-dbd93c0d-1e89-48f9-baaf-b65bd0bc4346.gif"> | <img width="200" src="https://user-images.githubusercontent.com/56102421/175456486-bcd18052-e816-4bb8-b4eb-249137313598.gif"> |
 
-|<img width="200" src="https://user-images.githubusercontent.com/56102421/175455645-7c1bdfbc-b59a-45f4-896e-318c98aa304b.gif">|<img width="200" src="https://user-images.githubusercontent.com/81131715/175040352-dbd93c0d-1e89-48f9-baaf-b65bd0bc4346.gif">|<img width="150" src="https://user-images.githubusercontent.com/56102421/175456486-bcd18052-e816-4bb8-b4eb-249137313598.gif">|
+
 
 
 ## Development Environment
