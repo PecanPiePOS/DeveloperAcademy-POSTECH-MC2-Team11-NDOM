@@ -21,7 +21,7 @@
 ## Screenshots
 |Home|Register|Note|
 |---|---|---|
-|<img width="150" src="">|![Simulator Screen Recording - iPhone 13 - 2022-06-22 at 22 25 03](https://user-images.githubusercontent.com/81131715/175040352-dbd93c0d-1e89-48f9-baaf-b65bd0bc4346.gif)|<img width="150" src="">|
+|<img width="150" src="">|<img width="200" src="https://user-images.githubusercontent.com/81131715/175040352-dbd93c0d-1e89-48f9-baaf-b65bd0bc4346.gif">|<img width="150" src="">|
 
 
 
