@@ -56,7 +56,7 @@ SnapToScroll
 ```
 
 ## Authors
-|[Rev](https://github.com/heokyeol)|[Leo](https://github.com/leobang17)|[Woody](https://github.com/wody-d)|[Hardy](https://github.com/Kim-Yeon-ho)|[Dophi](https://github.com/ddophi98)|[PicanPie](https://github.com/PecanPiePOS)|
+|[Rev](https://github.com/heokyeol)|[Leo](https://github.com/leobang17)|[Woody](https://github.com/wody-d)|[Hardy](https://github.com/Kim-Yeon-ho)|[Dophi](https://github.com/ddophi98)|[PecanPie](https://github.com/PecanPiePOS)|
 |---|---|---|---|---|---|
 |<img width="100" alt="rev" src="https://user-images.githubusercontent.com/72330884/174957400-fa11f68c-3b3c-49ed-8205-95387431433d.png">|<img width="100" alt="leo" src="https://user-images.githubusercontent.com/72330884/174957424-3c2eaabc-b2c7-4423-a866-cfc5287ebd26.png">|<img width="100" alt="woody" src="https://user-images.githubusercontent.com/72330884/174957432-2464b0b7-53bd-4de4-aa39-477ac0cda6ad.png">|<img width="100" alt="hardy" src="https://user-images.githubusercontent.com/72330884/174957454-c2f2e622-44fe-42f7-83ab-53d87cd5ceea.png">|<img width="100" alt="dophi" src="https://user-images.githubusercontent.com/72330884/174957461-711a94f5-b4c3-4a46-9e51-3585269dd716.png">|<img width="100" alt="pp" src="https://user-images.githubusercontent.com/72330884/174957474-009f848e-e1b8-4679-acdd-842d24cbf8a5.png">|
 
